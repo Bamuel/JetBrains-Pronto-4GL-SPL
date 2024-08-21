@@ -1,0 +1,20 @@
+{
+  parserClass="com.bamuel.spllang.parser.SPLParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="SPL"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.bamuel.spllang.psi"
+  psiImplPackage="com.bamuel.spllang.psi.impl"
+
+  elementTypeHolderClass="com.bamuel.spllang.psi.SPLTypes"
+  elementTypeClass="com.bamuel.spllang.psi.SPLElementType"
+  tokenTypeClass="com.bamuel.spllang.psi.SPLTokenType"
+}
+
+splFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY
