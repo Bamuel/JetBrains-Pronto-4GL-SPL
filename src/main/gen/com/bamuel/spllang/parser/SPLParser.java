@@ -68,12 +68,13 @@ public class SPLParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
+  // SYMBOLS | SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
   public static boolean othersymbols(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "othersymbols")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, OTHERSYMBOLS, "<othersymbols>");
-    r = consumeToken(b, SEMICOLON);
+    r = consumeToken(b, SYMBOLS);
+    if (!r) r = consumeToken(b, SEMICOLON);
     if (!r) r = consumeToken(b, DOT);
     if (!r) r = consumeToken(b, EQUALS);
     if (!r) r = consumeToken(b, LBRACE);

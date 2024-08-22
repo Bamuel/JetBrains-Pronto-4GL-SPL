@@ -27,4 +27,4 @@ element_ ::= property | othersymbols
            | BLOCK_COMMENT
 
 property ::= (KEY? SEPARATOR VALUE?) | KEY
-othersymbols ::= SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
+othersymbols ::= SYMBOLS | SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT

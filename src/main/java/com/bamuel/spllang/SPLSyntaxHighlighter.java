@@ -31,7 +31,6 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey BAD_CHARACTER =
             createTextAttributesKey("SPL_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
-
     private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
     private static final TextAttributesKey[] SEPARATOR_KEYS = new TextAttributesKey[]{SEPARATOR};
     private static final TextAttributesKey[] KEY_KEYS = new TextAttributesKey[]{KEY};
@@ -76,5 +75,4 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         }
         return EMPTY_KEYS;
     }
-
 }

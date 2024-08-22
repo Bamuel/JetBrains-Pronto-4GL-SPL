@@ -30,6 +30,7 @@ public interface SPLTypes {
   IElementType SEMICOLON = new SPLTokenType("SEMICOLON");
   IElementType SEPARATOR = new SPLTokenType("SEPARATOR");
   IElementType STRING = new SPLTokenType("STRING");
+  IElementType SYMBOLS = new SPLTokenType("SYMBOLS");
   IElementType VALUE = new SPLTokenType("VALUE");
 
   class Factory {

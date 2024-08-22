@@ -32,9 +32,9 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 //CONSTANT_KEYWORDS=(ZERO|SPACES|TRUE|FALSE|YES|NO)
 //TYPE_KEYWORDS=(type|x|int|blob|boolean|alpha|xml-handle|string|date|time|like|pic)
 //KEYWORD=(if|for|while|endif|endfor|endwhile)
-KEYWORDCONTROL=(exit|break)
-KEYWORDOTHER=(menu|do|set|get|link|report|display|accept|print|mode|primary|refresh|reenter|object|field|version-number|open|initialise|ZERO|SPACES|TRUE|FALSE|YES|NO)
-KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
+//KEYWORDCONTROL=(exit|break)
+//KEYWORDOTHER=(menu|do|set|get|link|report|display|accept|print|mode|primary|refresh|reenter|object|field|version-number|open|initialise|ZERO|SPACES|TRUE|FALSE|YES|NO)
+//KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
 
 //IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
 
@@ -43,17 +43,17 @@ KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
 //                [procedure-clauses]
 //                procedural-statements
 //            [end-api]
-FUNCTION_DECLARATION=(api|field|local|menu|mode|object|parameter|procedure|returning|screen)
-FUNCTION_DECLARATION_END=(end-api|end-menu|end-procedure|end-screen)
-EXPORT_CLAUSE=export|user-trigger [can-override|no-override]
-RESPONSIVE_CLAUSE=responsive
+FUNCTION_DECLARATION=(api|field|local|menu|mode|object|parameter|procedure|returning|screen|confirmed|validation)
+FUNCTION_DECLARATION_END=(end-api|end-menu|end-procedure|end-screen|endapi|endmenu|endprocedure|endscreen|end-confirm|end-validations|endconfirm|endvalidations)
+EXPORT_CLAUSE=(export|user-trigger)
+RESPONSIVE_CLAUSE=(responsive)
 
 // SQL Keywords // SQL Operators // SQL Clauses
 KEYWORD_SQL=(SELECT|DISTINCT|FROM|WHERE|UNION|ALL|ORDER|BY|DESC|GROUP|HAVING|FOR|UPDATE|INNER|JOIN|LEFT|RIGHT|FULL|OUTER|ON|EXISTS|NOT|IN|ALL|ANY|COMPARISON)
 OPERATOR_SQL=(=|<>|!=|<|>|<=|>=|AND|OR|NOT|BETWEEN|LIKE)
 CLAUSE_SQL=(SELECT|FROM|WHERE|UNION|ORDER|BY|GROUP|HAVING|JOIN|ON|INNER|LEFT|RIGHT|FULL|OUTER)
 
-STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|if|initialise|insert|link|lock-method|message|message-box|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|string|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
+STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|message|message-box|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|string|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
 ARITHMETIC_EXPRESSIONS=(\+|-|\*|\/|%)
 RELATIONAL_EXPRESSIONS=(=|<>|!=|<=|>=|<|>|like|not like)
 LOGICAL_EXPRESSIONS=(and|or|not)
@@ -69,9 +69,9 @@ STRING_FUNCTIONS=(ascii-char|ascii-num|base64-to-blob|blob-append|blob-append-ba
 XML_FUNCTIONS=(xml-add-child-node|xml-add-child-node-blob|xml-add-child-node-clob|xml-add-child-node-no-quotes|xml-add-child-node-number|xml-add-child-node-text|xml-add-node-attribute|xml-add-ns|xml-child-node-blob|xml-child-node-clob|xml-child-node-text|xml-close-document|xml-copy-node-handle|xml-delete-node|xml-delete-node-attribute|xml-document-is-json|xml-free-node-handle|xml-get-child-by-name|xml-get-doc-encoding|xml-get-first-attribute-name|xml-get-first-child-node|xml-get-last-child-node|xml-get-next-attribute-name|xml-get-next-node|xml-get-node-attribute|xml-get-ns-prefix-url|xml-get-prev-node|xml-get-root-node|xml-modify-node-attribute|xml-modify-node-text|xml-new-document|xml-next-element-sibling|xml-node-blob|xml-node-clob|xml-node-name|xml-node-ns-prefix|xml-node-ns-url|xml-node-string|xml-node-text|xml-node-type|xml-parse-file|xml-parse-text|xml-prev-element-sibling|xml-save-as-file|xml-save-as-file-ex|xml-save-as-text|xml-save-as-text-ex|xml-set-json-array|xml-validate-doc)
 
 PREFDEFINED=(true|false|yes|no|zero|zero_date|zero_time|zero_date_time|space|spaces)
-
 PREPROCESSOR=(#include|#define|#define|#undef|#ifdef|#ifndef|#if|#else|#endif)
-
+KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endswitch|end-switch|parameters|returning|local field|local|detail|before|after)
+//if|for|while|endif|endfor|endwhile
 //SQL_DEFINE=(select|endselect|get|update|insert)
 //OPERATION_SIGN=(to|or|and|not|in|\\+|-|=|\\*|\/|\\+=|-=|\\*=|\/=|!=|<=|>=|<|>|<>)
 //MACROS=#(define|include|ifndef|if|else|endif)
@@ -83,11 +83,23 @@ PREPROCESSOR=(#include|#define|#define|#undef|#ifdef|#ifndef|#if|#else|#endif)
 <YYINITIAL> {COMMENT}                                       { return SPLTypes.COMMENT; }
 <YYINITIAL> {BLOCK_COMMENT}                                 { return SPLTypes.BLOCK_COMMENT; }
 
-<YYINITIAL> {KEYWORDCONTROL}                                { return SPLTypes.KEYWORD; }
-<YYINITIAL> {KEYWORDSECTION}                                { return SPLTypes.KEYWORD; }
-<YYINITIAL> {KEYWORDOTHER}                                  { return SPLTypes.KEYWORD; }
-
 <YYINITIAL> {FUNCTION_DECLARATION}                          { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {FUNCTION_DECLARATION_END}                      { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {EXPORT_CLAUSE}                                 { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {RESPONSIVE_CLAUSE}                             { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {SECURITY_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {STRING_FUNCTIONS}                              { return SPLTypes.FUNCTION_DECLARATION; }
+<YYINITIAL> {XML_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
+
+<YYINITIAL> {PREPROCESSOR}                                  { return SPLTypes.KEYWORD; }
+<YYINITIAL> {PREFDEFINED}                                   { return SPLTypes.KEYWORD; }
+<YYINITIAL> {STATEMENTS}                                    { return SPLTypes.KEYWORD; }
+<YYINITIAL> {KEYWORDS_OTHER}                                { return SPLTypes.KEYWORD; }
 
 <YYINITIAL> {SINGLEQUOTE}                                   { return SPLTypes.STRING; }
 <YYINITIAL> {DOUBLEQUOTE}                                   { return SPLTypes.STRING; }
@@ -105,5 +117,12 @@ PREPROCESSOR=(#include|#define|#define|#undef|#ifdef|#ifndef|#if|#else|#endif)
 <YYINITIAL> ")"                                             { return SPLTypes.RPAREN; }
 <YYINITIAL> ","                                             { return SPLTypes.COMMA; }
 <YYINITIAL> "@"                                             { return SPLTypes.AT; }
+
+<YYINITIAL> "\\"                                            { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "+"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "-"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "*"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "/"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "%"                                             { return SPLTypes.SYMBOLS; }
 
 [^]                                                         { return TokenType.BAD_CHARACTER; }

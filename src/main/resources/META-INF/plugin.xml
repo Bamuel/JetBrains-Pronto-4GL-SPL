@@ -25,5 +25,6 @@
         <fileType name="SPL File" implementationClass="com.bamuel.spllang.SPLFileType" fieldName="INSTANCE" language="SPL" extensions="spl"/>
         <lang.parserDefinition language="SPL" implementationClass="com.bamuel.spllang.SPLParserDefinition"/>
         <lang.syntaxHighlighterFactory language="SPL" implementationClass="com.bamuel.spllang.SPLSyntaxHighlighterFactory"/>
+        <colorSettingsPage implementation="com.bamuel.spllang.SPLColorSettingsPage"/>
     </extensions>
 </idea-plugin>
