@@ -36,7 +36,7 @@ KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
 
 //IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
 
-FUNCTION_DECLARATION=(api|procedure|screen|endprocedure|endscreen|endapi)
+FUNCTION_DECLARATION=(api|procedure|screen|endprocedure|endscreen|endapi|end-procedure|end-screen|end-api)
 //SQL_DEFINE=(select|endselect|get|update|insert)
 //OPERATION_SIGN=(to|or|and|not|in|\\+|-|=|\\*|\/|\\+=|-=|\\*=|\/=|!=|<=|>=|<|>|<>)
 //MACROS=#(define|include|ifndef|if|else|endif)
