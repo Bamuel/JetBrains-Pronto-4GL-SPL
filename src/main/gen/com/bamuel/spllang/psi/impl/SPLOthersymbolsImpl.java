@@ -11,32 +11,20 @@ import static com.bamuel.spllang.psi.SPLTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.bamuel.spllang.psi.*;
 
-public class SPLElement_Impl extends ASTWrapperPsiElement implements SPLElement_ {
+public class SPLOthersymbolsImpl extends ASTWrapperPsiElement implements SPLOthersymbols {
 
-  public SPLElement_Impl(@NotNull ASTNode node) {
+  public SPLOthersymbolsImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull SPLVisitor visitor) {
-    visitor.visitElement_(this);
+    visitor.visitOthersymbols(this);
   }
 
   @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof SPLVisitor) accept((SPLVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public SPLOthersymbols getOthersymbols() {
-    return findChildByClass(SPLOthersymbols.class);
-  }
-
-  @Override
-  @Nullable
-  public SPLProperty getProperty() {
-    return findChildByClass(SPLProperty.class);
   }
 
 }

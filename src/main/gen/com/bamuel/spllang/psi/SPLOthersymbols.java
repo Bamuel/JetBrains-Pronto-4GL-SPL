@@ -5,12 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface SPLElement_ extends PsiElement {
-
-  @Nullable
-  SPLOthersymbols getOthersymbols();
-
-  @Nullable
-  SPLProperty getProperty();
+public interface SPLOthersymbols extends PsiElement {
 
 }

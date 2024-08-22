@@ -62,5 +62,13 @@ FUNCTION_DECLARATION=(api|procedure|screen|endprocedure|endscreen|endapi|end-pro
 <YYINITIAL> {IDENTIFIER}                                    { return SPLTypes.IDENTIFIER; }
 
 <YYINITIAL> ";"                                             { return SPLTypes.SEMICOLON; }
+<YYINITIAL> "."                                             { return SPLTypes.DOT; }
+<YYINITIAL> "="                                             { return SPLTypes.EQUALS; }
+<YYINITIAL> "{"                                             { return SPLTypes.LBRACE; }
+<YYINITIAL> "}"                                             { return SPLTypes.RBRACE; }
+<YYINITIAL> "("                                             { return SPLTypes.LPAREN; }
+<YYINITIAL> ")"                                             { return SPLTypes.RPAREN; }
+<YYINITIAL> ","                                             { return SPLTypes.COMMA; }
+<YYINITIAL> "@"                                             { return SPLTypes.AT; }
 
 [^]                                                         { return TokenType.BAD_CHARACTER; }

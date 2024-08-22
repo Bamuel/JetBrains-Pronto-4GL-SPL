@@ -11,6 +11,10 @@ public class SPLVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitOthersymbols(@NotNull SPLOthersymbols o) {
+    visitPsiElement(o);
+  }
+
   public void visitProperty(@NotNull SPLProperty o) {
     visitPsiElement(o);
   }

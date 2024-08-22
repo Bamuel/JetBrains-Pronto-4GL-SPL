@@ -36,13 +36,12 @@ public class SPLParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // property
+  // property | othersymbols
   //            | FUNCTION_DECLARATION
   //            | KEYWORD
   //            | STRING
   //            | NUMBER
   //            | IDENTIFIER
-  //            | SEMICOLON
   //            | COMMENT
   //            | BLOCK_COMMENT
   public static boolean element_(PsiBuilder b, int l) {
@@ -50,12 +49,12 @@ public class SPLParser implements PsiParser, LightPsiParser {
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ELEMENT_, "<element>");
     r = property(b, l + 1);
+    if (!r) r = othersymbols(b, l + 1);
     if (!r) r = consumeToken(b, FUNCTION_DECLARATION);
     if (!r) r = consumeToken(b, KEYWORD);
     if (!r) r = consumeToken(b, STRING);
     if (!r) r = consumeToken(b, NUMBER);
     if (!r) r = consumeToken(b, IDENTIFIER);
-    if (!r) r = consumeToken(b, SEMICOLON);
     if (!r) r = consumeToken(b, COMMENT);
     if (!r) r = consumeToken(b, BLOCK_COMMENT);
     exit_section_(b, l, m, r, false, null);
@@ -66,6 +65,25 @@ public class SPLParser implements PsiParser, LightPsiParser {
   // element_
   static boolean item_(PsiBuilder b, int l) {
     return element_(b, l + 1);
+  }
+
+  /* ********************************************************** */
+  // SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
+  public static boolean othersymbols(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "othersymbols")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, OTHERSYMBOLS, "<othersymbols>");
+    r = consumeToken(b, SEMICOLON);
+    if (!r) r = consumeToken(b, DOT);
+    if (!r) r = consumeToken(b, EQUALS);
+    if (!r) r = consumeToken(b, LBRACE);
+    if (!r) r = consumeToken(b, RBRACE);
+    if (!r) r = consumeToken(b, LPAREN);
+    if (!r) r = consumeToken(b, RPAREN);
+    if (!r) r = consumeToken(b, COMMA);
+    if (!r) r = consumeToken(b, AT);
+    exit_section_(b, l, m, r, false, null);
+    return r;
   }
 
   /* ********************************************************** */
