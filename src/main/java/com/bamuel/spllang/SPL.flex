@@ -29,15 +29,15 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 
 //CONSTANT_KEYWORDS=(ZERO|SPACES|TRUE|FALSE|YES|NO)
 //TYPE_KEYWORDS=(type|x|int|blob|boolean|alpha|xml-handle|string|date|time|like|pic)
-//KEYWORD=(if|for|while|end-if|end-for|end-while)
+//KEYWORD=(if|for|while|endif|endfor|endwhile)
 KEYWORDCONTROL=(exit|break)
 KEYWORDOTHER=(menu|do|set|get|link|report|display|accept|print|mode|primary|refresh|reenter|object|field|version-number|open|initialise|ZERO|SPACES|TRUE|FALSE|YES|NO)
 KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
 
 //IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
 
-FUNCTION_DECLARATION=(api|procedure|screen|end-procedure|end-screen|end-api)
-//SQL_DEFINE=(select|end-select|get|update|insert)
+FUNCTION_DECLARATION=(api|procedure|screen|endprocedure|endscreen|endapi)
+//SQL_DEFINE=(select|endselect|get|update|insert)
 //OPERATION_SIGN=(to|or|and|not|in|\\+|-|=|\\*|\/|\\+=|-=|\\*=|\/=|!=|<=|>=|<|>|<>)
 //MACROS=#(define|include|ifndef|if|else|endif)
 
