@@ -15,6 +15,16 @@
 
 splFile ::= item_*
 
-private item_ ::= (property|COMMENT|CRLF)
+private item_ ::= element_
+
+element_ ::= property
+           | FUNCTION_DECLARATION
+           | KEYWORD
+           | STRING
+           | NUMBER
+           | IDENTIFIER
+           | SEMICOLON
+           | COMMENT
+           | BLOCK_COMMENT
 
 property ::= (KEY? SEPARATOR VALUE?) | KEY

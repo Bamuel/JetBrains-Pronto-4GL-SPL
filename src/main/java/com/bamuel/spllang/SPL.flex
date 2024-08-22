@@ -15,30 +15,52 @@ import com.intellij.psi.TokenType;
 %eof{  return;
 %eof}
 
-CRLF=\R
+//CRLF=\R
 WHITE_SPACE=[\ \n\t\f]
-FIRST_VALUE_CHARACTER=[^ \n\f\\] | "\\"{CRLF} | "\\".
-VALUE_CHARACTER=[^\n\f\\] | "\\"{CRLF} | "\\".
-END_OF_LINE_COMMENT=("#"|"!"|"//")[^\r\n]*
-SEPARATOR=[:=]
-KEY_CHARACTER=[^:=\ \n\t\f\\] | "\\ "
+IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_-]*
 
-%state WAITING_VALUE
+//Currently correct, but may need to be updated
+NUMBER=[0-9]+
+SINGLEQUOTE="'"[^']*"'"
+DOUBLEQUOTE="\""[^\"]*"\""
+COMMENT="//"[^\r\n]*
+BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
+
+
+//CONSTANT_KEYWORDS=(ZERO|SPACES|TRUE|FALSE|YES|NO)
+//TYPE_KEYWORDS=(type|x|int|blob|boolean|alpha|xml-handle|string|date|time|like|pic)
+//KEYWORD=(if|for|while|end-if|end-for|end-while)
+KEYWORDCONTROL=(exit|break)
+KEYWORDOTHER=(menu|do|set|get|link|report|display|accept|print|mode|primary|refresh|reenter|object|field|version-number|open|initialise|ZERO|SPACES|TRUE|FALSE|YES|NO)
+KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
+
+//IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
+
+FUNCTION_DECLARATION=(api|procedure|screen|end-procedure|end-screen|end-api)
+//SQL_DEFINE=(select|end-select|get|update|insert)
+//OPERATION_SIGN=(to|or|and|not|in|\\+|-|=|\\*|\/|\\+=|-=|\\*=|\/=|!=|<=|>=|<|>|<>)
+//MACROS=#(define|include|ifndef|if|else|endif)
 
 %%
 
-<YYINITIAL> {END_OF_LINE_COMMENT}                           { yybegin(YYINITIAL); return SPLTypes.COMMENT; }
+<YYINITIAL> {WHITE_SPACE}+                                  { return TokenType.WHITE_SPACE; }
 
-<YYINITIAL> {KEY_CHARACTER}+                                { yybegin(YYINITIAL); return SPLTypes.KEY; }
+<YYINITIAL> {COMMENT}                                       { return SPLTypes.COMMENT; }
+<YYINITIAL> {BLOCK_COMMENT}                                 { return SPLTypes.BLOCK_COMMENT; }
 
-<YYINITIAL> {SEPARATOR}                                     { yybegin(WAITING_VALUE); return SPLTypes.SEPARATOR; }
+<YYINITIAL> {KEYWORDCONTROL}                                { return SPLTypes.KEYWORD; }
+<YYINITIAL> {KEYWORDSECTION}                                { return SPLTypes.KEYWORD; }
+<YYINITIAL> {KEYWORDOTHER}                                  { return SPLTypes.KEYWORD; }
 
-<WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+               { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+<YYINITIAL> {FUNCTION_DECLARATION}                          { return SPLTypes.FUNCTION_DECLARATION; }
 
-<WAITING_VALUE> {WHITE_SPACE}+                              { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE; }
+<YYINITIAL> {SINGLEQUOTE}                                   { return SPLTypes.STRING; }
+<YYINITIAL> {DOUBLEQUOTE}                                   { return SPLTypes.STRING; }
 
-<WAITING_VALUE> {FIRST_VALUE_CHARACTER}{VALUE_CHARACTER}*   { yybegin(YYINITIAL); return SPLTypes.VALUE; }
+<YYINITIAL> {NUMBER}                                        { return SPLTypes.NUMBER; }
 
-({CRLF}|{WHITE_SPACE})+                                     { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
+<YYINITIAL> {IDENTIFIER}                                    { return SPLTypes.IDENTIFIER; }
+
+<YYINITIAL> ";"                                             { return SPLTypes.SEMICOLON; }
 
 [^]                                                         { return TokenType.BAD_CHARACTER; }

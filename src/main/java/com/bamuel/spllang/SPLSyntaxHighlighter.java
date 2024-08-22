@@ -18,10 +18,16 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
             createTextAttributesKey("SPL_SEPARATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN);
     public static final TextAttributesKey KEY =
             createTextAttributesKey("SPL_KEY", DefaultLanguageHighlighterColors.KEYWORD);
+    public static final TextAttributesKey KEYWORD =
+            createTextAttributesKey("SPL_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
+    public static final TextAttributesKey FUNCTION_DECLARATION =
+            createTextAttributesKey("SPL_FUNCTION_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
     public static final TextAttributesKey VALUE =
             createTextAttributesKey("SPL_VALUE", DefaultLanguageHighlighterColors.STRING);
     public static final TextAttributesKey COMMENT =
             createTextAttributesKey("SPL_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
+    public static final TextAttributesKey BLOCK_COMMENT =
+            createTextAttributesKey("SPL_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
     public static final TextAttributesKey BAD_CHARACTER =
             createTextAttributesKey("SPL_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
@@ -29,8 +35,11 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
     private static final TextAttributesKey[] SEPARATOR_KEYS = new TextAttributesKey[]{SEPARATOR};
     private static final TextAttributesKey[] KEY_KEYS = new TextAttributesKey[]{KEY};
+    private static final TextAttributesKey[] KEYWORD_KEYS = new TextAttributesKey[]{KEYWORD};
+    private static final TextAttributesKey[] FUNCTION_DECLARATION_KEYS = new TextAttributesKey[]{FUNCTION_DECLARATION};
     private static final TextAttributesKey[] VALUE_KEYS = new TextAttributesKey[]{VALUE};
     private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
+    private static final TextAttributesKey[] BLOCK_COMMENT_KEYS = new TextAttributesKey[]{BLOCK_COMMENT};
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
     @NotNull
@@ -47,11 +56,20 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         if (tokenType.equals(SPLTypes.KEY)) {
             return KEY_KEYS;
         }
+        if (tokenType.equals(SPLTypes.KEYWORD)) {
+            return KEYWORD_KEYS;
+        }
+        if (tokenType.equals(SPLTypes.FUNCTION_DECLARATION)) {
+            return FUNCTION_DECLARATION_KEYS;
+        }
         if (tokenType.equals(SPLTypes.VALUE)) {
             return VALUE_KEYS;
         }
         if (tokenType.equals(SPLTypes.COMMENT)) {
             return COMMENT_KEYS;
+        }
+        if (tokenType.equals(SPLTypes.BLOCK_COMMENT)) {
+            return BLOCK_COMMENT_KEYS;
         }
         if (tokenType.equals(TokenType.BAD_CHARACTER)) {
             return BAD_CHAR_KEYS;

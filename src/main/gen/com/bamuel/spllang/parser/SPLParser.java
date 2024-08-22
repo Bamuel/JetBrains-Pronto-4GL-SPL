@@ -36,14 +36,36 @@ public class SPLParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // property|COMMENT|CRLF
-  static boolean item_(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "item_")) return false;
+  // property
+  //            | FUNCTION_DECLARATION
+  //            | KEYWORD
+  //            | STRING
+  //            | NUMBER
+  //            | IDENTIFIER
+  //            | SEMICOLON
+  //            | COMMENT
+  //            | BLOCK_COMMENT
+  public static boolean element_(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "element_")) return false;
     boolean r;
+    Marker m = enter_section_(b, l, _NONE_, ELEMENT_, "<element>");
     r = property(b, l + 1);
+    if (!r) r = consumeToken(b, FUNCTION_DECLARATION);
+    if (!r) r = consumeToken(b, KEYWORD);
+    if (!r) r = consumeToken(b, STRING);
+    if (!r) r = consumeToken(b, NUMBER);
+    if (!r) r = consumeToken(b, IDENTIFIER);
+    if (!r) r = consumeToken(b, SEMICOLON);
     if (!r) r = consumeToken(b, COMMENT);
-    if (!r) r = consumeToken(b, CRLF);
+    if (!r) r = consumeToken(b, BLOCK_COMMENT);
+    exit_section_(b, l, m, r, false, null);
     return r;
+  }
+
+  /* ********************************************************** */
+  // element_
+  static boolean item_(PsiBuilder b, int l) {
+    return element_(b, l + 1);
   }
 
   /* ********************************************************** */
