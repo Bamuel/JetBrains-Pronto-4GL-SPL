@@ -26,6 +26,7 @@
         <lang.parserDefinition language="SPL" implementationClass="com.bamuel.spllang.SPLParserDefinition"/>
         <lang.syntaxHighlighterFactory language="SPL" implementationClass="com.bamuel.spllang.SPLSyntaxHighlighterFactory"/>
         <colorSettingsPage implementation="com.bamuel.spllang.SPLColorSettingsPage"/>
+        <lang.commenter language="SPL" implementationClass="com.bamuel.spllang.SPLCommenter"/>
         <fileType name="OP7 File" implementationClass="com.bamuel.spllang.OP7FileType" fieldName="INSTANCE" language="OP7" extensions="op7"/>
         <fileType name="ENQ File" implementationClass="com.bamuel.spllang.ENQFileType" fieldName="INSTANCE" language="ENQ" extensions="enq"/>
         <fileType name="PCS File" implementationClass="com.bamuel.spllang.PCSFileType" fieldName="INSTANCE" language="PCS" extensions="pcs"/>
