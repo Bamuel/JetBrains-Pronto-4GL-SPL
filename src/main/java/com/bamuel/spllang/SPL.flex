@@ -113,6 +113,8 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> "="                                             { return SPLTypes.EQUALS; }
 <YYINITIAL> "{"                                             { return SPLTypes.LBRACE; }
 <YYINITIAL> "}"                                             { return SPLTypes.RBRACE; }
+<YYINITIAL> "["                                             { return SPLTypes.LBRACE; }
+<YYINITIAL> "]"                                             { return SPLTypes.RBRACE; }
 <YYINITIAL> "("                                             { return SPLTypes.LPAREN; }
 <YYINITIAL> ")"                                             { return SPLTypes.RPAREN; }
 <YYINITIAL> ","                                             { return SPLTypes.COMMA; }
@@ -124,5 +126,11 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> "*"                                             { return SPLTypes.SYMBOLS; }
 <YYINITIAL> "/"                                             { return SPLTypes.SYMBOLS; }
 <YYINITIAL> "%"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "!="                                            { return SPLTypes.SYMBOLS; }
+<YYINITIAL> ":"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> ":"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> ">"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "<"                                             { return SPLTypes.SYMBOLS; }
+<YYINITIAL> "<>"                                            { return SPLTypes.SYMBOLS; }
 
 [^]                                                         { return TokenType.BAD_CHARACTER; }
