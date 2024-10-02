@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.1</version>
+    <version>1.2</version>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
     <description>
@@ -14,8 +14,9 @@
     <change-notes>
         <![CDATA[
             <ul>
-              <li><b>1.0</b> Initial release with basic syntax highlighting and file type recognition for SPL files.</li>
+              <li><b>1.2</b> Added Support for new file created</li>
               <li><b>1.1</b> Slightly better syntax highlighting and added Line/Block Comments</li>
+              <li><b>1.0</b> Initial release with basic syntax highlighting and file type recognition for SPL files.</li>
             </ul>
         ]]>
     </change-notes>
