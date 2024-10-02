@@ -1,0 +1,23 @@
+procedure main
+	// message-box "hello world."
+	// 	title "Joel Training"
+	// 	message-buttons MSG_BOX_YES_NO
+	local lf-full-name like shortname
+	do s_get-last-name parameters "Hello" returning lf-full-name
+	message lf-full-name
+end-procedure
+
+screen s_get-last-name
+	parameters lp-first-name pic x(10)
+	returning lr-full-name like shortname
+	local lf-last-name pic x(10)
+	window @1,1 to @25,40 title "window prompt"
+	accept lf-last-name @2,14 title "Last Name:"
+	validation
+	end-validations
+	confirm auto
+	confirmed
+		set lr-full-name = concat(str-concat(lp-first-name)," ",lf-last-name)
+		exit
+	end-confirm
+end-screen
