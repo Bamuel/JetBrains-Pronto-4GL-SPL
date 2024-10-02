@@ -31,4 +31,21 @@
         <fileType name="PCS File" implementationClass="com.bamuel.spllang.PCSFileType" fieldName="INSTANCE" language="PCS" extensions="pcs"/>
         <fileType name="ERR File" implementationClass="com.bamuel.spllang.ERRFileType" fieldName="INSTANCE" language="ERR" extensions="err"/>
     </extensions>
+
+    <actions>
+        <group id="SPL.NewFileGroup" text="New SPL File" description="Create a new 4GL Pronto file">
+            <add-to-group group-id="NewGroup" anchor="last"/>
+        </group>
+
+        <action id="SPL.NewFileSPL" class="com.bamuel.spllang.SPLFileAction" text="New SPL File" description="Create a new SPL file" icon="/icons/4GLProntoIco.png">
+            <add-to-group group-id="SPL.NewFileGroup" anchor="first"/>
+        </action>
+        <action id="SPL.NewFileENQ" class="com.bamuel.spllang.ENQFileAction" text="New ENQ File" description="Create a new ENQ file" icon="/icons/4GLProntoIcoEnq.png">
+            <add-to-group group-id="SPL.NewFileGroup" anchor="last"/>
+        </action>
+        <action id="SPL.NewFilePCS" class="com.bamuel.spllang.PCSFileAction" text="New PCS File" description="Create a new PCS file" icon="/icons/4GLProntoIcoPCS.png">
+            <add-to-group group-id="SPL.NewFileGroup" anchor="last"/>
+        </action>
+    </actions>
+
 </idea-plugin>
