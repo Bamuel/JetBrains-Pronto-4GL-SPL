@@ -27,7 +27,7 @@ public final class ERRFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getDefaultExtension() {
-        return "enq";
+        return "err";
     }
 
     @Override
