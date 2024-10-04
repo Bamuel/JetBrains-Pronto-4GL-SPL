@@ -7,9 +7,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import java.util.Objects;
 
-/**
- * Provides controller functionality for application settings.
- */
 final class AppSettingsConfigurable implements Configurable {
 
     private AppSettingsComponent mySettingsComponent;
@@ -34,31 +31,27 @@ final class AppSettingsConfigurable implements Configurable {
 
     @Override
     public boolean isModified() {
-        AppSettings.State state =
-                Objects.requireNonNull(AppSettings.getInstance().getState());
-        return !mySettingsComponent.getApplicationText().equals(state.application) ||
-                !mySettingsComponent.getPathText().equals(state.path);
+        AppSettings.State state = Objects.requireNonNull(AppSettings.getInstance().getState());
+        return !Objects.equals(mySettingsComponent.getApplicationText(), state.application) ||
+                !Objects.equals(mySettingsComponent.getData_area(), state.dataarea);
     }
 
     @Override
     public void apply() {
-        AppSettings.State state =
-                Objects.requireNonNull(AppSettings.getInstance().getState());
-        state.application = mySettingsComponent.getApplicationText();
-        state.path = mySettingsComponent.getPathText();
+        AppSettings.State state = Objects.requireNonNull(AppSettings.getInstance().getState());
+        state.application = mySettingsComponent.getApplicationText(); // Save the application
+        state.dataarea = mySettingsComponent.getData_area(); // Save the dataarea list
     }
 
     @Override
     public void reset() {
-        AppSettings.State state =
-                Objects.requireNonNull(AppSettings.getInstance().getState());
-        mySettingsComponent.setApplicationText(state.application);
-        mySettingsComponent.setPathText(state.path);
+        AppSettings.State state = Objects.requireNonNull(AppSettings.getInstance().getState());
+        mySettingsComponent.setApplicationText(state.application); // Load the application into the UI
+        mySettingsComponent.setData_area(state.dataarea); // Load the dataarea list into the UI
     }
 
     @Override
     public void disposeUIResources() {
         mySettingsComponent = null;
     }
-
 }

@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.3</version>
+    <version>1.4</version>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
     <description>
@@ -14,6 +14,7 @@
     <change-notes>
         <![CDATA[
             <ul>
+              <li><b>1.4</b> Better Settings Layout & Ability to select from multiple data-area</li>
               <li><b>1.3</b> Right Click run from Pronto Xi Thin Client & Plugin Settings & Bug Fixes</li>
               <li><b>1.2</b> Added Support for new file created</li>
               <li><b>1.1</b> Slightly better syntax highlighting and added Line/Block Comments</li>

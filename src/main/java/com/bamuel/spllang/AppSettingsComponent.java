@@ -1,6 +1,7 @@
 package com.bamuel.spllang;
 
 import com.intellij.ui.components.JBLabel;
+import com.intellij.ui.components.JBList;
 import com.intellij.ui.components.JBTextField;
 import com.intellij.util.ui.FormBuilder;
 import org.jetbrains.annotations.NotNull;
@@ -10,37 +11,61 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Supports creating and managing a {@link JPanel} for the Settings Dialog.
- * It dynamically updates a preview of the command string and provides a clickable hyperlink.
- */
 public class AppSettingsComponent {
 
     private final JPanel myMainPanel;
     private final JBTextField myApplicationText = new JBTextField();
-    private final JBTextField myPathText = new JBTextField();
-    private final JLabel myCommandPreview = new JLabel(); // Label for displaying the dynamic preview
-    private final JButton myHyperlinkButton = new JButton("Test Command"); // Button that acts as a clickable hyperlink
+    private final JLabel myCommandPreview = new JLabel();
+    private final JButton myHyperlinkButton = new JButton("Test Command");
+
+    private final JBList<String> myPathsList; // List for displaying the dataarea
+    private final DefaultListModel<String> pathsListModel; // Data model for the list
+    private final JButton addButton = new JButton("Add");
+    private final JButton editButton = new JButton("Edit");
+    private final JButton removeButton = new JButton("Remove");
 
     public AppSettingsComponent() {
+        pathsListModel = new DefaultListModel<>();
+        myPathsList = new JBList<>(pathsListModel); // Create the list component
+
+        JPanel listPanel = new JPanel(new BorderLayout());
+        listPanel.add(myPathsList, BorderLayout.CENTER);
+        listPanel.setPreferredSize(new Dimension(200, 150));
+        listPanel.add(new JScrollPane(myPathsList), BorderLayout.CENTER);
+
+        JPanel buttonsPanel = new JPanel();
+        buttonsPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        buttonsPanel.add(addButton);
+        buttonsPanel.add(editButton);
+        buttonsPanel.add(removeButton);
+
+        JPanel commandTestPanel = new JPanel();
+        commandTestPanel.add(myCommandPreview);
+        commandTestPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        commandTestPanel.add(myHyperlinkButton);
+
+        //official command format: application:data-area bmsmenu [-execute module function]
+        //pronto:data-area bmsmenu [-execute module function]
         myMainPanel = FormBuilder.createFormBuilder()
-                .addLabeledComponent(new JBLabel("Application:"), myApplicationText, 1, false)
-                .addLabeledComponent(new JBLabel("Path:"), myPathText, 1, false)
-                .addLabeledComponent(new JBLabel("Command Preview:"), myCommandPreview, 1, false)
-                .addComponent(myHyperlinkButton, 1)
+                .addLabeledComponent(new JBLabel("application:"), myApplicationText, 1, false)
+                .addLabeledComponent(new JBLabel("data-area:"), listPanel, 1, false)
+                .addComponent(buttonsPanel)
+                .addComponent(commandTestPanel)
                 .addComponentFillVertically(new JPanel(), 0)
                 .getPanel();
 
-
-        // Set initial preview and hyperlink button state
+        setupButtonActions();
         updateCommandPreview();
 
-        // Add listeners to update preview and hyperlink when user types
         myApplicationText.getDocument().addDocumentListener((SimpleDocumentListener) e -> updateCommandPreview());
-        myPathText.getDocument().addDocumentListener((SimpleDocumentListener) e -> updateCommandPreview());
-
-        // Add action listener to the hyperlink button
+        myPathsList.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                updateCommandPreview();
+            }
+        });
         myHyperlinkButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,22 +74,80 @@ public class AppSettingsComponent {
         });
     }
 
-    // Update the preview command dynamically as user types
-    private void updateCommandPreview() {
-        String application = myApplicationText.getText().trim();
-        String path = myPathText.getText().trim();
+    // Set up the button actions for Add, Edit, and Remove
+    private void setupButtonActions() {
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String newPath = JOptionPane.showInputDialog(myMainPanel, "Enter new dataarea:", "Add dataarea", JOptionPane.PLAIN_MESSAGE);
+                if (newPath != null && !newPath.trim().isEmpty()) {
+                    pathsListModel.addElement(newPath.trim());
+                }
+            }
+        });
 
-        // Construct the dynamic command preview
-        String command = application + ":" + path + " bmsmenu";
-        myCommandPreview.setText(command);
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = myPathsList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    String currentPath = pathsListModel.get(selectedIndex);
+                    String newPath = JOptionPane.showInputDialog(myMainPanel, "Edit dataarea:", currentPath);
+                    if (newPath != null && !newPath.trim().isEmpty()) {
+                        pathsListModel.set(selectedIndex, newPath.trim());
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(myMainPanel, "Please select a dataarea to edit.", "No dataarea Selected", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+
+        removeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int selectedIndex = myPathsList.getSelectedIndex();
+                if (selectedIndex != -1) {
+                    pathsListModel.remove(selectedIndex);
+                } else {
+                    JOptionPane.showMessageDialog(myMainPanel, "Please select a dataarea to remove.", "No dataarea Selected", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
     }
 
-    // Open the dynamically generated link in the browser
+    // Get the list of dataarea from the UI component
+    public List<String> getData_area() {
+        List<String> dataarea = new ArrayList<>();
+        for (int i = 0; i < pathsListModel.size(); i++) {
+            dataarea.add(pathsListModel.get(i));
+        }
+        return dataarea;
+    }
+
+    // Set the list of dataarea in the UI component
+    public void setData_area(List<String> dataarea) {
+        pathsListModel.clear();
+        for (String path : dataarea) {
+            pathsListModel.addElement(path);
+        }
+    }
+
+    private void updateCommandPreview() {
+        String application = myApplicationText.getText().trim();
+        String dataarea = myPathsList.getSelectedValue();
+
+        String command = application + ":" + dataarea + " bmsmenu";
+        myCommandPreview.setText(command);
+
+        //if the application&dataarea is null/blank, disable the hyperlink button
+        myHyperlinkButton.setEnabled(application != null && !application.isBlank() && dataarea != null && !dataarea.isBlank());
+    }
+
     private void openLinkInBrowser() {
         try {
             String application = myApplicationText.getText().trim();
-            String path = myPathText.getText().trim();
-            String command = application + ":" + path + " bmsmenu";
+            String dataarea = myPathsList.getSelectedValue();
+            String command = application + ":" + dataarea + " bmsmenu";
             URI uri = new URI(command.replace(" ", "%20"));
 
             if (Desktop.isDesktopSupported()) {
@@ -95,17 +178,7 @@ public class AppSettingsComponent {
         updateCommandPreview();
     }
 
-    @NotNull
-    public String getPathText() {
-        return myPathText.getText();
-    }
 
-    public void setPathText(@NotNull String newText) {
-        myPathText.setText(newText);
-        updateCommandPreview();
-    }
-
-    // Document listener helper for dynamic updates
     @FunctionalInterface
     public interface SimpleDocumentListener extends javax.swing.event.DocumentListener {
         void update(javax.swing.event.DocumentEvent e);
@@ -125,5 +198,4 @@ public class AppSettingsComponent {
             update(e);
         }
     }
-
 }

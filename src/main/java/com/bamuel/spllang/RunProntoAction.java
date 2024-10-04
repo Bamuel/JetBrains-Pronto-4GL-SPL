@@ -15,6 +15,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 
+import javax.swing.*;
 import java.awt.*;
 import java.net.URI;
 
@@ -24,12 +25,43 @@ public class RunProntoAction extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent event) {
         AppSettings appSettings = AppSettings.getInstance();
         String application = appSettings.getState().application;
-        String path = appSettings.getState().path;
 
-        // Check if application or path is blank, and show an error notification if so
-        if (application.isBlank() || path.isBlank()) {
+        // Check if dataarea is empty
+        if (appSettings.getState().dataarea.isEmpty()) {
             Notifications.Bus.notify(
-                    new Notification("RunProntoAction", "Error", "Application or path cannot be blank", NotificationType.ERROR)
+                    new Notification("RunProntoAction", "Error", "Data-Area cannot be blank", NotificationType.ERROR)
+            );
+            openSettings(); // Open settings for the user to configure
+            return;
+        }
+
+        // Get the list of dataareas
+        var dataareas = appSettings.getState().dataarea;
+        String dataarea;
+
+        // Handle selection based on the length of dataareas
+        if (dataareas.size() == 1) {
+            dataarea = dataareas.get(0); // Get the first dataarea
+        } else {
+            dataarea = (String) JOptionPane.showInputDialog(
+                    null,
+                    "Select Data-Area:",
+                    "Data-Area Selection",
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    dataareas.toArray(),
+                    dataareas.get(0) // Default selection
+            );
+            // If the user cancels the selection, return early
+            if (dataarea == null) {
+                return;
+            }
+        }
+
+        // Check if application is blank
+        if (application.isBlank() || dataarea.isBlank()) {
+            Notifications.Bus.notify(
+                    new Notification("RunProntoAction", "Error", "Application or Data-Area cannot be blank", NotificationType.ERROR)
             );
             openSettings(); // Open settings for the user to configure
             return;
@@ -79,7 +111,8 @@ public class RunProntoAction extends AnAction {
         String fileNameWithPathFromSourceRoot = filePathFromSourceRoot + "/" + fileNameWithoutExtension;
 
         // Construct the command
-        String command = String.format("%s:%s %s", application, path, fileNameWithPathFromSourceRoot.replaceFirst("^/", "")); // Construct the command
+        String command = String.format("%s:%s %s", application, dataarea, fileNameWithPathFromSourceRoot.replaceFirst("^/", ""));
+
         // Check if Desktop is supported on this platform
         if (Desktop.isDesktopSupported()) {
             try {

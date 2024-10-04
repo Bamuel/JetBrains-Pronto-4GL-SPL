@@ -7,31 +7,24 @@ import com.intellij.openapi.components.Storage;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
-/*
- * Supports storing the application settings in a persistent way.
- * The {@link com.intellij.openapi.components.State State} and {@link Storage}
- * annotations define the name of the data and the filename where these persistent
- * application settings are stored.
- */
+import java.util.ArrayList;
+import java.util.List;
 
 @State(
         name = "com.bamuel.spllang.AppSettings",
         storages = @Storage("SPLlangSettingsPlugin.xml")
 )
-final class AppSettings
-        implements PersistentStateComponent<AppSettings.State> {
-
+final class AppSettings implements PersistentStateComponent<AppSettings.State> {
     static class State {
         @NonNls
         public String application = "pronto"; // Default value for application
-        public String path = ""; // Default value for path
+        public List<String> dataarea = new ArrayList<>(); // Default value for dataarea
     }
 
     private State myState = new State();
 
     static AppSettings getInstance() {
-        return ApplicationManager.getApplication()
-                .getService(AppSettings.class);
+        return ApplicationManager.getApplication().getService(AppSettings.class);
     }
 
     @Override
@@ -43,5 +36,4 @@ final class AppSettings
     public void loadState(@NotNull State state) {
         myState = state;
     }
-
 }
