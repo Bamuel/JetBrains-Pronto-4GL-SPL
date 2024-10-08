@@ -23,7 +23,7 @@ NUMBER=[0-9]+
 SINGLEQUOTE="'"[^']*"'"
 DOUBLEQUOTE="\""[^\"]*"\""
 
-OVERRIDE_SCREEN_DEFINITION=(screen|menu|procedure) {IDENTIFIER}
+OVERRIDE_SCREEN_DEFINITION=(screen|menu|procedure)
 OVERRIDE_STATEMENT=(accept|display|option|mode|confirm|trigger|window|box|message)
 CLAUSES_FOR_STATEMENTS={IDENTIFIER} = {IDENTIFIER}
 
