@@ -1,19 +1,25 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.4</version>
+    <version>1.5</version>
+    <category>Languages</category>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
     <description>
-        This plugin provides basic support for 4GL scripts for Pronto Xi ERP within JetBrains IDEs.
-        Features include:
-        - Syntax highlighting for SPL keywords, comments, strings, and numbers.
-        - File type recognition for .spl, .op7, .enq, .pcs, .err files.
+        <![CDATA[
+This plugin provides basic support for 4GL scripts for Pronto Xi ERP:
+<ul>
+    <li>Syntax highlighting.</li>
+    <li>File type recognition for .spl, .op7, .enq, .pcs, .err files.</li>
+    <li>Running SPL files from Pronto Xi Thin Client.</li>
+</ul>
+    ]]>
     </description>
 
     <change-notes>
         <![CDATA[
             <ul>
+              <li><b>1.5</b> Numbers and Syntax Highlighter</li>
               <li><b>1.4</b> Better Settings Layout & Ability to select from multiple data-area</li>
               <li><b>1.3</b> Right Click run from Pronto Xi Thin Client & Plugin Settings & Bug Fixes</li>
               <li><b>1.2</b> Added Support for new file created</li>
