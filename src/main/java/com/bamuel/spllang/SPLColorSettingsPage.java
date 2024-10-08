@@ -14,11 +14,10 @@ import java.util.Map;
 final class SPLColorSettingsPage implements ColorSettingsPage {
 
     private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("FUNCTION_DECLARATION", SPLSyntaxHighlighter.FUNCTION_DECLARATION),
-            new AttributesDescriptor("Key", SPLSyntaxHighlighter.KEY),
-            new AttributesDescriptor("Separator", SPLSyntaxHighlighter.SEPARATOR),
-            new AttributesDescriptor("Value", SPLSyntaxHighlighter.VALUE),
-            new AttributesDescriptor("Bad value", SPLSyntaxHighlighter.BAD_CHARACTER)
+            new AttributesDescriptor("Function & Declaration", SPLSyntaxHighlighter.FUNCTION_DECLARATION),
+            new AttributesDescriptor("Keyword", SPLSyntaxHighlighter.KEYWORD),
+            new AttributesDescriptor("String", SPLSyntaxHighlighter.STRING),
+            new AttributesDescriptor("Number", SPLSyntaxHighlighter.NUMBER)
     };
 
     @Override
