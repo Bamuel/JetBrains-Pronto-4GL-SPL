@@ -17,14 +17,13 @@ splFile ::= item_*
 
 private item_ ::= element_
 
-element_ ::= property | othersymbols
-           | FUNCTION_DECLARATION
+element_ ::= FUNCTION_DECLARATION
            | KEYWORD
            | STRING
            | NUMBER
            | IDENTIFIER
            | COMMENT
            | BLOCK_COMMENT
+           | othersymbols_
 
-property ::= (KEY? SEPARATOR VALUE?) | KEY
-othersymbols ::= SYMBOLS | SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
+othersymbols_ ::= SYMBOLS | SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
