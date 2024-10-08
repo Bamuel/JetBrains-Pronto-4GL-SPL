@@ -15,13 +15,13 @@ public final class PCSFileType extends LanguageFileType {
     @NotNull
     @Override
     public String getName() {
-        return "Pronto Customer Screen File";
+        return "PRONTO Screen Customiser File";
     }
 
     @NotNull
     @Override
     public String getDescription() {
-        return "Pronto customer screen file";
+        return "PRONTO screen customiser file";
     }
 
     @NotNull

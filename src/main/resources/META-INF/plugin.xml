@@ -35,10 +35,17 @@ This plugin provides basic support for 4GL scripts for Pronto Xi ERP:
         <lang.syntaxHighlighterFactory language="SPL" implementationClass="com.bamuel.spllang.SPLSyntaxHighlighterFactory"/>
         <colorSettingsPage implementation="com.bamuel.spllang.SPLColorSettingsPage"/>
         <lang.commenter language="SPL" implementationClass="com.bamuel.spllang.SPLCommenter"/>
+
         <fileType name="SPL Compiled File" implementationClass="com.bamuel.spllang.OP7FileType" fieldName="INSTANCE" language="OP7" extensions="op7"/>
+
         <fileType name="SPL ENQ File" implementationClass="com.bamuel.spllang.ENQFileType" fieldName="INSTANCE" language="ENQ" extensions="enq"/>
-        <fileType name="Pronto Customer Screen File" implementationClass="com.bamuel.spllang.PCSFileType" fieldName="INSTANCE" language="PCS" extensions="pcs"/>
+
+        <fileType name="PRONTO Screen Customiser File" implementationClass="com.bamuel.spllang.PCSFileType" fieldName="INSTANCE" language="PCS" extensions="pcs"/>
+        <lang.parserDefinition language="PCS" implementationClass="com.bamuel.spllang.PCSParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="PCS" implementationClass="com.bamuel.spllang.PCSSyntaxHighlighterFactory"/>
+
         <fileType name="SPL Error File" implementationClass="com.bamuel.spllang.ERRFileType" fieldName="INSTANCE" language="ERR" extensions="err"/>
+
         <applicationConfigurable instance="com.bamuel.spllang.AppSettingsConfigurable" id="com.bamuel.spllang.AppSettingsConfigurable" displayName="Pronto Xi Settings"/>
         <applicationService serviceImplementation="com.bamuel.spllang.AppSettings"/>
     </extensions>

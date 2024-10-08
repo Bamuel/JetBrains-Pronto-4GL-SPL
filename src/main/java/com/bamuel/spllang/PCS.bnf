@@ -1,0 +1,32 @@
+{
+  parserClass="com.bamuel.spllang.parser.PCSParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="PCS"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.bamuel.spllang.psi"
+  psiImplPackage="com.bamuel.spllang.psi.impl"
+
+  elementTypeHolderClass="com.bamuel.spllang.psi.PCSTypes"
+  elementTypeClass="com.bamuel.spllang.psi.PCSElementType"
+  tokenTypeClass="com.bamuel.spllang.psi.PCSTokenType"
+}
+
+pcsFile ::= item_*
+
+private item_ ::= element_
+
+element_ ::= COMMENT
+           | BLOCK_COMMENT
+           | OVERRIDE_SCREEN_DEFINITION
+           | OVERRIDE_STATEMENT
+           | CLAUSES_FOR_STATEMENTS
+           | IDENTIFIER
+           | LBRACE
+           | RBRACE
+           | EQUALS
+           | SEMICOLON
+           | NUMBER
+           | COMMA
+           | STRING
