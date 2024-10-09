@@ -18,6 +18,7 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
 public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
 
     public static final TextAttributesKey FUNCTION_DECLARATION = createTextAttributesKey("PCS_FUNCTION_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
+    public static final TextAttributesKey CONSTANT = createTextAttributesKey("PCS_CONSTANT", DefaultLanguageHighlighterColors.CONSTANT);
     public static final TextAttributesKey KEYWORDS = createTextAttributesKey("PCS_KEYWORDS", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("PCS_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey STRING = createTextAttributesKey("PCS_STRING", DefaultLanguageHighlighterColors.STRING);
@@ -30,15 +31,16 @@ public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final Map<IElementType, TextAttributesKey[]> TOKEN_HIGHLIGHT_MAP = new HashMap<>();
 
     static {
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_STATEMENT, new TextAttributesKey[]{FUNCTION_DECLARATION});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_SCREEN_DEFINITION, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_STATEMENT, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BOOLEAN, new TextAttributesKey[]{KEYWORDS});
 
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMON_CLAUSES_STATEMENTS, new TextAttributesKey[]{KEYWORDS});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_POINT, new TextAttributesKey[]{KEYWORDS});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_TYPE, new TextAttributesKey[]{KEYWORDS});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RUN, new TextAttributesKey[]{KEYWORDS});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COLOR, new TextAttributesKey[]{KEYWORDS});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ATTRIBUTES, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMON_CLAUSES_STATEMENTS, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_POINT, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_TYPE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RUN, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COLOR, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ATTRIBUTES, new TextAttributesKey[]{CONSTANT});
 
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.NUMBER, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.FLOAT, new TextAttributesKey[]{NUMBER});

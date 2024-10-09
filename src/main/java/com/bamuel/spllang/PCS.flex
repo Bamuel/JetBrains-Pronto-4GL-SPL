@@ -135,12 +135,14 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> ","                                             { return PCSTypes.COMMA; }
 
 // Match special characters and symbols
+<YYINITIAL> "["                                            { return PCSTypes.LSQUARE; }
+<YYINITIAL> "]"                                            { return PCSTypes.RSQUARE; }
 <YYINITIAL> "{"                                            { return PCSTypes.LBRACE; }
 <YYINITIAL> "}"                                            { return PCSTypes.RBRACE; }
 <YYINITIAL> "="                                            { return PCSTypes.EQUALS; }
 <YYINITIAL> ";"                                            { return PCSTypes.SEMICOLON; }
 <YYINITIAL> "/"                                            { return PCSTypes.SLASH; }
-<YYINITIAL> {IDENTIFIER}                                    { return PCSTypes.IDENTIFIER; }
+<YYINITIAL> {IDENTIFIER}                                   { return PCSTypes.IDENTIFIER; }
 
 // Catch-all for bad characters
 [^]                                                         { return TokenType.BAD_CHARACTER; }
