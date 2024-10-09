@@ -15,24 +15,90 @@
 
 pcsFile ::= override_screen_definition_*
 
-override_screen_definition_ ::= OVERRIDE_SCREEN_DEFINITION IDENTIFIER? LBRACE override_statements_ RBRACE
+override_screen_definition_ ::= OVERRIDE_SCREEN_DEFINITION name_of_screen_menu_procedure LBRACE override_statements_ RBRACE
+name_of_screen_menu_procedure ::= IDENTIFIER
 
 override_statements_ ::= override_statement_*
 override_statement_ ::= OVERRIDE_STATEMENT LBRACE clauses_for_statement_* RBRACE
 
-clauses_for_statement_ ::= clause_for_common_ | clause_for_trigger_point_ | clause_for_trigger_type_
+clauses_for_statement_ ::= clause_for_common_ | clause_for_trigger_point_ | clause_for_trigger_type_ | clause_for_run_ | clause_for_color_ | clause_for_attribute_
 
 clause_for_common_ ::= COMMON_CLAUSES_STATEMENTS EQUALS value_
-clause_for_trigger_point_ ::=  TRIGGER_POINT EQUALS TRIGGER_POINT_EQUALS
-clause_for_trigger_type_ ::=  TRIGGER_TYPE EQUALS TRIGGER_TYPE_EQUALS
-
 value_ ::= STRING
          | NUMBER
          | FLOAT
          | COORDINATES
+         | FLOAT_COORDINATES
          | PICTURE
          | BOOLEAN
          | IDENTIFIER
+
+clause_for_trigger_point_ ::= TRIGGER_POINT EQUALS trigger_point_value_
+trigger_point_value_ ::= TRIGGER_POINT_SCREEN_LOAD
+                       | TRIGGER_POINT_SCREEN_EXIT
+                       | TRIGGER_POINT_BEFORE_ACCEPT
+                       | TRIGGER_POINT_AFTER_ACCEPT
+                       | TRIGGER_POINT_ON_HELP
+                       | TRIGGER_POINT_BEFORE_CONFIRM
+                       | TRIGGER_POINT_CONFIRMED
+                       | TRIGGER_POINT_NOT_CONFIRMED
+                       | TRIGGER_POINT_VALIDATE_MODE
+                       | TRIGGER_POINT_OPTION
+                       | TRIGGER_POINT_BEFORE_OPTION
+                       | TRIGGER_POINT_DISPLAY
+
+
+clause_for_trigger_type_ ::=  TRIGGER_TYPE EQUALS trigger_type_value_
+trigger_type_value_ ::= TRIGGER_TYPE_WINDOWS
+                      | TRIGGER_TYPE_WINDOWS_WITH_STATUS
+                      | TRIGGER_TYPE_UNIX
+                      | TRIGGER_TYPE_COMMAND
+                      | TRIGGER_TYPE_UNIX_WITH_STATUS
+                      | TRIGGER_TYPE_COMMAND_WITH_STATUS
+                      | TRIGGER_TYPE_PRONTO
+                      | TRIGGER_TYPE_EXPORT_DATA_GRID
+
+clause_for_run_ ::= RUN EQUALS STRING additional_values_?
+additional_values_ ::= value_*
+
+clause_for_color_ ::= COLOR EQUALS color_value_
+color_value_ ::= color_list_ SLASH color_list_
+color_list_ ::= COLOR_AQUA
+              | COLOR_BLACK
+              | COLOR_BLUE
+              | COLOR_FUCHSIA
+              | COLOR_GREEN
+              | COLOR_GREY
+              | COLOR_LIME
+              | COLOR_MAROON
+              | COLOR_NAVY
+              | COLOR_OLIVE
+              | COLOR_PURPLE
+              | COLOR_RED
+              | COLOR_SILVER
+              | COLOR_TEAL
+              | COLOR_WHITE
+              | COLOR_YELLOW
+              | NUMBER
+
+clause_for_attribute_ ::= ATTRIBUTES EQUALS attribute_value_*
+//atributes = attribute_lists_,attribute_lists_,attribute_lists_, attribute_lists_...
+attribute_value_ ::= attribute_lists_ COMMA?
+attribute_lists_ ::= ATTRIBUTES_UNDERLINE
+                   | ATTRIBUTES_UNDERLINED
+                   | ATTRIBUTES_PROMPT
+                   | ATTRIBUTES_DATA
+                   | ATTRIBUTES_INVERSE
+                   | ATTRIBUTES_BOLD
+                   | ATTRIBUTES_ITALIC
+                   | ATTRIBUTES_FLASH
+                   | ATTRIBUTES_FIXED
+                   | ATTRIBUTES_SUNKEN
+                   | ATTRIBUTES_BACKGROUND
+                   | ATTRIBUTES_CENTER
+                   | ATTRIBUTES_RIGHT
+                   | ATTRIBUTES_LEFT
+
 
 // Define the other elements
 element_ ::= COMMENT

@@ -21,7 +21,6 @@ public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey KEYWORDS = createTextAttributesKey("PCS_KEYWORDS", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("PCS_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey STRING = createTextAttributesKey("PCS_STRING", DefaultLanguageHighlighterColors.STRING);
-    public static final TextAttributesKey BOOLEAN = createTextAttributesKey("PCS_BOOLEAN", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey COMMA = createTextAttributesKey("PCS_COMMA", DefaultLanguageHighlighterColors.COMMA);
     public static final TextAttributesKey BRACES = createTextAttributesKey("PCS_BRACES", DefaultLanguageHighlighterColors.BRACKETS);
     public static final TextAttributesKey COMMENT = createTextAttributesKey("PCS_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
@@ -33,12 +32,21 @@ public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
     static {
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_STATEMENT, new TextAttributesKey[]{FUNCTION_DECLARATION});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_SCREEN_DEFINITION, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMON_CLAUSES_STATEMENTS, new TextAttributesKey[]{KEYWORDS});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_POINT, new TextAttributesKey[]{KEYWORDS});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_TYPE, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RUN, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COLOR, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ATTRIBUTES, new TextAttributesKey[]{KEYWORDS});
+
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.NUMBER, new TextAttributesKey[]{NUMBER});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.FLOAT, new TextAttributesKey[]{NUMBER});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COORDINATES, new TextAttributesKey[]{NUMBER});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.FLOAT_COORDINATES, new TextAttributesKey[]{NUMBER});
+
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.STRING, new TextAttributesKey[]{STRING});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BOOLEAN, new TextAttributesKey[]{BOOLEAN});
+
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMA, new TextAttributesKey[]{COMMA});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.LBRACE, new TextAttributesKey[]{BRACES});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RBRACE, new TextAttributesKey[]{BRACES});
