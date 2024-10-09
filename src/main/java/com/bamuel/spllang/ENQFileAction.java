@@ -33,7 +33,7 @@ public class ENQFileAction extends AnAction {
         } else {
             // Prompt for directory if current one is not found
             FileChooserDescriptor descriptor = new FileChooserDescriptor(false, true, false, false, false, false);
-            selectedDirectory = FileChooser.chooseFile(descriptor, project, project.getBaseDir());
+            selectedDirectory = FileChooser.chooseFile(descriptor, project, null);
         }
 
         if (selectedDirectory != null) {
