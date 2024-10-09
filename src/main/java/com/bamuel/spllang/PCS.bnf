@@ -13,15 +13,30 @@
   tokenTypeClass="com.bamuel.spllang.psi.PCSTokenType"
 }
 
-pcsFile ::= item_*
+pcsFile ::= override_screen_definition_*
 
-private item_ ::= element_
+override_screen_definition_ ::= OVERRIDE_SCREEN_DEFINITION IDENTIFIER? LBRACE override_statements_ RBRACE
 
+override_statements_ ::= override_statement_*
+override_statement_ ::= OVERRIDE_STATEMENT LBRACE clauses_for_statement_* RBRACE
+
+clauses_for_statement_ ::= clause_for_common_ | clause_for_trigger_point_ | clause_for_trigger_type_
+
+clause_for_common_ ::= COMMON_CLAUSES_STATEMENTS EQUALS value_
+clause_for_trigger_point_ ::=  TRIGGER_POINT EQUALS TRIGGER_POINT_EQUALS
+clause_for_trigger_type_ ::=  TRIGGER_TYPE EQUALS TRIGGER_TYPE_EQUALS
+
+value_ ::= STRING
+         | NUMBER
+         | FLOAT
+         | COORDINATES
+         | PICTURE
+         | BOOLEAN
+         | IDENTIFIER
+
+// Define the other elements
 element_ ::= COMMENT
            | BLOCK_COMMENT
-           | OVERRIDE_SCREEN_DEFINITION
-           | OVERRIDE_STATEMENT
-           | CLAUSES_FOR_STATEMENTS
            | IDENTIFIER
            | LBRACE
            | RBRACE

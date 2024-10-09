@@ -10,31 +10,42 @@ import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
 public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
 
-    public static final TextAttributesKey OVERRIDE_SCREEN_DEFINITION = createTextAttributesKey("PCS_OVERRIDE_SCREEN_DEFINITION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
-    public static final TextAttributesKey OVERRIDE_STATEMENT = createTextAttributesKey("PCS_OVERRIDE_STATEMENT", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
+    public static final TextAttributesKey FUNCTION_DECLARATION = createTextAttributesKey("PCS_FUNCTION_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
+    public static final TextAttributesKey KEYWORDS = createTextAttributesKey("PCS_KEYWORDS", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("PCS_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey STRING = createTextAttributesKey("PCS_STRING", DefaultLanguageHighlighterColors.STRING);
+    public static final TextAttributesKey BOOLEAN = createTextAttributesKey("PCS_BOOLEAN", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey COMMA = createTextAttributesKey("PCS_COMMA", DefaultLanguageHighlighterColors.COMMA);
-    public static final TextAttributesKey LBRACE = createTextAttributesKey("PCS_LBRACE", DefaultLanguageHighlighterColors.PARENTHESES);
-    public static final TextAttributesKey RBRACE = createTextAttributesKey("PCS_RBRACE", DefaultLanguageHighlighterColors.PARENTHESES);
+    public static final TextAttributesKey BRACES = createTextAttributesKey("PCS_BRACES", DefaultLanguageHighlighterColors.BRACKETS);
     public static final TextAttributesKey COMMENT = createTextAttributesKey("PCS_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
     public static final TextAttributesKey BLOCK_COMMENT = createTextAttributesKey("PCS_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
     public static final TextAttributesKey BAD_CHARACTER = createTextAttributesKey("PCS_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
 
-    private static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
-    private static final TextAttributesKey[] OVERRIDE_SCREEN_DEFINITION_KEYS = new TextAttributesKey[]{OVERRIDE_SCREEN_DEFINITION};
-    private static final TextAttributesKey[] OVERRIDE_STATEMENT_KEYS = new TextAttributesKey[]{OVERRIDE_STATEMENT};
-    private static final TextAttributesKey[] NUMBER_KEYS = new TextAttributesKey[]{NUMBER};
-    private static final TextAttributesKey[] STRING_KEYS = new TextAttributesKey[]{STRING};
-    private static final TextAttributesKey[] COMMA_KEYS = new TextAttributesKey[]{COMMA};
-    private static final TextAttributesKey[] PARENTHESES_KEYS = new TextAttributesKey[]{LBRACE, RBRACE};
-    private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
-    private static final TextAttributesKey[] BLOCK_COMMENT_KEYS = new TextAttributesKey[]{BLOCK_COMMENT};
-    private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
+    private static final Map<IElementType, TextAttributesKey[]> TOKEN_HIGHLIGHT_MAP = new HashMap<>();
+
+    static {
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_STATEMENT, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_SCREEN_DEFINITION, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMON_CLAUSES_STATEMENTS, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_POINT, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_TYPE, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.NUMBER, new TextAttributesKey[]{NUMBER});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.STRING, new TextAttributesKey[]{STRING});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BOOLEAN, new TextAttributesKey[]{BOOLEAN});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMA, new TextAttributesKey[]{COMMA});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.LBRACE, new TextAttributesKey[]{BRACES});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RBRACE, new TextAttributesKey[]{BRACES});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMENT, new TextAttributesKey[]{COMMENT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BLOCK_COMMENT, new TextAttributesKey[]{BLOCK_COMMENT});
+        TOKEN_HIGHLIGHT_MAP.put(TokenType.BAD_CHARACTER, new TextAttributesKey[]{BAD_CHARACTER});
+    }
 
     @NotNull
     @Override
@@ -44,33 +55,6 @@ public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
 
     @Override
     public TextAttributesKey @NotNull [] getTokenHighlights(IElementType tokenType) {
-        if (tokenType.equals(PCSTypes.OVERRIDE_SCREEN_DEFINITION)) {
-            return OVERRIDE_SCREEN_DEFINITION_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.OVERRIDE_STATEMENT)) {
-            return OVERRIDE_STATEMENT_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.NUMBER)) {
-            return NUMBER_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.STRING)) {
-            return STRING_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.COMMA)) {
-            return COMMA_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.LBRACE) || tokenType.equals(PCSTypes.RBRACE)) {
-            return PARENTHESES_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.COMMENT)) {
-            return COMMENT_KEYS;
-        }
-        if (tokenType.equals(PCSTypes.BLOCK_COMMENT)) {
-            return BLOCK_COMMENT_KEYS;
-        }
-        if (tokenType.equals(TokenType.BAD_CHARACTER)) {
-            return BAD_CHAR_KEYS;
-        }
-        return EMPTY_KEYS;
+        return TOKEN_HIGHLIGHT_MAP.getOrDefault(tokenType, new TextAttributesKey[0]);
     }
 }
