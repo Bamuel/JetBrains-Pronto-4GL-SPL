@@ -17,8 +17,12 @@ import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAtt
 
 public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
 
-    public static final TextAttributesKey KEYWORD = createTextAttributesKey("SPL_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey FUNCTION_DECLARATION = createTextAttributesKey("SPL_FUNCTION_DECLARATION", DefaultLanguageHighlighterColors.FUNCTION_DECLARATION);
+    public static final TextAttributesKey FUNCTION_CALL = createTextAttributesKey("SPL_FUNCTION_CALL", DefaultLanguageHighlighterColors.FUNCTION_CALL);
+    public static final TextAttributesKey METADATA = createTextAttributesKey("SPL_PARAMETER", DefaultLanguageHighlighterColors.METADATA);
+    public static final TextAttributesKey CONSTANT = createTextAttributesKey("SPL_CONSTANT", DefaultLanguageHighlighterColors.CONSTANT);
+    public static final TextAttributesKey KEYWORD = createTextAttributesKey("SPL_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
+    public static final TextAttributesKey IDENTIFIER = createTextAttributesKey("SPL_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER);
     public static final TextAttributesKey STRING = createTextAttributesKey("SPL_STRING", DefaultLanguageHighlighterColors.STRING);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("SPL_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey COMMA = createTextAttributesKey("SPL_COMMA", DefaultLanguageHighlighterColors.COMMA);
@@ -31,8 +35,106 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final Map<IElementType, TextAttributesKey[]> TOKEN_HIGHLIGHT_MAP = new HashMap<>();
 
     static {
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.KEYWORD, new TextAttributesKey[]{KEYWORD});
+
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TITLE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DEFAULT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WINDOW, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROMPT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DETAIL, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ICON, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TYPE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PIC, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OCCURS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LIKE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.JUSTIFY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.USE_NAME_IN_DB, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DB_COLUMN_NAME, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DRILL_BACK, new TextAttributesKey[]{METADATA});
+
+
+        //message-box
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX, new TextAttributesKey[]{KEYWORD});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS_VALUES, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_ICON_VALUES, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TAG, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.HELP_CONTEXT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OPTIONAL, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BELL, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COLOUR, new TextAttributesKey[]{METADATA});
+
+        //screen
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_RESPONSIVE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RELATIVE_TO, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WINDOW_POSITION, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_PRIMARY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_ON, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_SAME_DIFFERENT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_SELECT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_QUICK_LINK, new TextAttributesKey[]{METADATA});
+
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_REVIEW, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_ALLOWED, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_PROMPT_FOR_SEARCH, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_FIND_FOR_CURRENCY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_DATA_GRID, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_REVIEW_OCCURS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_REVIEW_FROM_START, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_NO_REVIEW_ROW_SEPARATORS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_NO_REVIEW_COLUMN_SEPARATORS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_NO_REVIEW_SEPARATORS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_START_ON_CURRENT_RECORD, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_LEAVE_PARENT_SCREEN, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_WHEN, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMETERS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RETURNING, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STOP_EXIT_ALL_KEY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_POSITION_ON_OK, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_STAY_IN_CORRECT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_FORM_ENTRY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.EXPORT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CAN_OVERRIDE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_HELP_CONTEXT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BEFORE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.AFTER, new TextAttributesKey[]{METADATA});
+
+        //procedure
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCEDURE, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCEDURE_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //api
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.API, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.API_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //field
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FIELD, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //local
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCAL, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //menu
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //message
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGE, new TextAttributesKey[]{KEYWORD});
+
+        //preprocessor
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREPROCESSOR, new TextAttributesKey[]{KEYWORD});
+
+
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMTEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CONCAT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRCONCAT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STR_FUNC, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.GETENV, new TextAttributesKey[]{FUNCTION_CALL});
+
+
+        //The rest that haven't been configured
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FUNCTION_DECLARATION, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.KEYWORD, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NUMBER, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMA, new TextAttributesKey[]{COMMA});
