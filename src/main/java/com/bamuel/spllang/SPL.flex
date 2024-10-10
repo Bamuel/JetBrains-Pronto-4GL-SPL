@@ -182,10 +182,17 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 //api
 <YYINITIAL> (api|API)                                       { return SPLTypes.API; }
 <YYINITIAL> (end-api|END-API|endapi|ENDAPI)                 { return SPLTypes.API_END; }
+
+//field & local field
 <YYINITIAL> (field|FIELD|fields|FIELDS)                     { return SPLTypes.FIELD; }
 <YYINITIAL> (local|LOCAL)                                   { return SPLTypes.LOCAL; }
+
+//menu
 <YYINITIAL> (menu|MENU)                                     { return SPLTypes.MENU; }
 <YYINITIAL> (end-menu|endmenu|END-MENU|ENDMENU)             { return SPLTypes.MENU_END; }
+<YYINITIAL> (treemenu|TREEMENU|tree-menu|TREE-MENU)         { return SPLTypes.TREEMENU; }
+<YYINITIAL> (nohide|NOHIDE|no-hide|NO-HIDE)                 { return SPLTypes.NOHIDE; }
+<YYINITIAL> (button-width|BUTTON-WIDTH|buttonwidth|BUTTONWIDTH) { return SPLTypes.MENU_BUTTON_WIDTH; }
 
 
 

@@ -61,29 +61,18 @@ getenv_ ::= GETENV LPAREN string_ RPAREN
 preprocessors_ ::= PREPROCESSOR (BAD_CHARACTER)?
 
 //screen
-screen_ ::= SCREEN IDENTIFIER (SCREEN_RESPONSIVE)? (screenwindow_)? (screenwindowpositivion)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (screencolour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (screenlocal_)? (screenparameters_)? (screenreturning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (screenexport_)? (screenhelpcontext_)? (screenbefore_)? (screendetail_)? (screenafter_)? SCREEN_END
-screenwindow_ ::= WINDOW rowcol_ "to" rowcol_ (screenrelative_)?
-screenrelative_ ::= RELATIVE_TO "to" rowcol_
-screenwindowpositivion ::= WINDOW_POSITION ("is")? number_
+screen_ ::= SCREEN IDENTIFIER (SCREEN_RESPONSIVE)? (window_)? (windowpositision_)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (colour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (export_)? (screenhelpcontext_)? (before_)? (detail_)? (after_)? SCREEN_END
 screentitle_ ::= TITLE string_
 screenprimary_ ::= SCREEN_PRIMARY IDENTIFIER (SCREEN_ON)? (SCREEN_SAME_DIFFERENT (fieldlist_*))?
 screenselect_ ::= SCREEN_SELECT selectclauses_
 screenquicklink_ ::= SCREEN_QUICK_LINK ("on")? IDENTIFIER
-screencolour_ ::= COLOUR ("is")? IDENTIFIER ("on")? IDENTIFIER
+
 screenreview_ ::= SCREEN_REVIEW ("is")? "colour" ("on")? IDENTIFIER
 screenallowed_ ::= SCREEN_ALLOWED ("is"|"are")? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"find"|"next"|"prev"|"next-scr"|"prev-scr") item_* //todo: [mode-name ...]]
 screenprompt_ ::= PROMPT rowcol_
 screendatagrid_ ::= SCREEN_DATA_GRID item_* //todo: datagrid
 screenreviewoccurs ::= SCREEN_REVIEW_OCCURS number_ ("by" number_)?
 screenwhen_ ::= SCREEN_WHEN item_* //todo: conditon
-screenlocal_ ::= LOCAL fieldlist_*
-screenparameters_ ::= PARAMETERS ("are") fieldlist_*
-screenreturning_ ::= RETURNING fieldlist_*
-screenexport_ ::= EXPORT (CAN_OVERRIDE)?
-screenhelpcontext_ ::= SCREEN_HELP_CONTEXT ("is") string_ string_
-screenbefore_ ::= BEFORE item_* //todo: procedural-statements
-screendetail_ ::= DETAIL item_* //todo: procedural-statements
-screenafter_ ::= AFTER item_* //todo: procedural-statements
 
 procedure_ ::= PROCEDURE IDENTIFIER item_* PROCEDURE_END//todo: procedural-statements
 api_ ::= API IDENTIFIER item_* API_END //todo: procedural-statements
@@ -103,9 +92,22 @@ fielddrillback_ ::= DRILL_BACK ("is")? string_
 local_ ::= LOCAL (FIELD)? (IDENTIFIER fieldclauses_)*
 
 //menu
-menu_ ::= MENU IDENTIFIER item_* MENU_END //todo: menu items
+menu_ ::= MENU IDENTIFIER menucaluses_ MENU_END //todo: menu items
+menucaluses_ ::= (window_)? (windowpositision_)? (local_)? (parameters_)? (returning_)? (menubuttonwidth_)? (STOP_EXIT_ALL_KEY)? (TITLE ("is")? string_)? (TREEMENU)? (NOHIDE)? (colour_)? (export_)? (helpcontext_)? (before_)? (detail_)? (after_)?
+menubuttonwidth_ ::= MENU_BUTTON_WIDTH ("is")? number_
 
 
+parameters_ ::= PARAMETERS ("are") fieldlist_*
+returning_ ::= RETURNING fieldlist_*
+export_ ::= EXPORT (CAN_OVERRIDE)?
+colour_ ::= COLOUR ("is")? IDENTIFIER ("on")? IDENTIFIER
+helpcontext_ ::= SCREEN_HELP_CONTEXT ("is") string_ string_
+window_ ::= WINDOW rowcol_ "to" rowcol_ (relative_)?
+relative_ ::= RELATIVE_TO "to" rowcol_
+windowpositision_ ::= WINDOW_POSITION ("is")? number_
+before_ ::= BEFORE item_* //todo: procedural-statements
+detail_ ::= DETAIL item_* //todo: procedural-statements
+after_ ::= AFTER item_* //todo: procedural-statements
 
 //row and col
 //Syntax @row,col
