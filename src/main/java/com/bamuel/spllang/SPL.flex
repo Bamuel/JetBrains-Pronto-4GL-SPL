@@ -107,7 +107,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (optional|OPTIONAL)                                  { return SPLTypes.OPTIONAL; }
 <YYINITIAL> (bell|BELL)                                          { return SPLTypes.BELL; }
 <YYINITIAL> (no-bell|NO-BELL|nobell|NOBELL)                      { return SPLTypes.NOBELL; }
-<YYINITIAL> (colour|COLOUR)                                      { return SPLTypes.COLOUR; }
+<YYINITIAL> (colour|COLOUR|color|COLOR)                          { return SPLTypes.COLOUR; }
 <YYINITIAL> (type|TYPE)                                          { return SPLTypes.TYPE; }
 <YYINITIAL> (pic|PIC|picture|PICTURE)                            { return SPLTypes.PIC; }
 <YYINITIAL> (occurs|OCCURS)                                      { return SPLTypes.OCCURS; }
