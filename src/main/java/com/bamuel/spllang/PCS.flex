@@ -19,11 +19,10 @@ import com.intellij.psi.TokenType;
 // Define whitespace and identifier patterns
 WHITE_SPACE=[\ \n\t\f]
 IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_-]*
-NUMBER=[0-9]+
-FLOAT=[0-9]+\.[0-9]+
-COORDINATES=[0-9]+,[0-9]+
-FLOAT_COORDINATES=[0-9]+\.[0-9]+,[0-9]+\.[0-9]+
-PICTURE=x\([0-9]+\)
+NUMBER=-?[0-9]+
+FLOAT=-?[0-9]+\.[0-9]+
+COORDINATES=(-?[0-9]+),(-?[0-9]+)
+FLOAT_COORDINATES=(-?[0-9]+\.[0-9]+),(-?[0-9]+\.[0-9]+)
 BOOLEAN=(true|false)
 
 
@@ -32,7 +31,7 @@ DOUBLEQUOTE="\""[^\"]*"\""
 
 OVERRIDE_SCREEN_DEFINITION=(screen|menu|procedure)
 OVERRIDE_STATEMENT=(accept|display|option|mode|confirm|trigger|window|box|message)
-COMMON_CLAUSES_STATEMENTS=(suppress|name|orig_coordinates|orig_coordinate|orig_text|tag|text|helpline|title|default|allow|allowed|disallow|disallowed|add|supress|readonly|read_only|scale|coordinate|coordinates|title_coordinate|title_coordinates|picture|window_size)
+COMMON_CLAUSES_STATEMENTS=(suppress|name|orig_coordinates|orig_coordinate|orig_text|tag|text|helpline|title|default|allow|allowed|disallow|disallowed|add|supress|readonly|read_only|scale|coordinate|coordinates|title_coordinate|title_coordinates|picture|window_size|lock|filter|column_number)
 
 // Define comment styles
 COMMENT="#"[^\r\n]*
@@ -70,6 +69,7 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> "option"                                        { return PCSTypes.TRIGGER_POINT_OPTION; }
 <YYINITIAL> "before_option"                                 { return PCSTypes.TRIGGER_POINT_BEFORE_OPTION; }
 <YYINITIAL> "display"                                       { return PCSTypes.TRIGGER_POINT_DISPLAY; }
+<YYINITIAL> "pre_validate"                                  { return PCSTypes.TRIGGER_POINT_PREVALIDATE; }
 
 //trigger_type
 //trigger_type = windows|windows_with_status|unix|command|unix_with_status|command_with_status|pronto|export_data_grid
@@ -94,7 +94,7 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> "blue"                                         { return PCSTypes.COLOR_BLUE; }
 <YYINITIAL> "fuchsia"                                      { return PCSTypes.COLOR_FUCHSIA; }
 <YYINITIAL> "green"                                        { return PCSTypes.COLOR_GREEN; }
-<YYINITIAL> "grey"                                         { return PCSTypes.COLOR_GREY; }
+<YYINITIAL> (grey|gray)                                    { return PCSTypes.COLOR_GREY; }
 <YYINITIAL> "lime"                                         { return PCSTypes.COLOR_LIME; }
 <YYINITIAL> "maroon"                                       { return PCSTypes.COLOR_MAROON; }
 <YYINITIAL> "navy"                                         { return PCSTypes.COLOR_NAVY; }
@@ -123,6 +123,8 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> "center"                                       { return PCSTypes.ATTRIBUTES_CENTER; }
 <YYINITIAL> "right"                                        { return PCSTypes.ATTRIBUTES_RIGHT; }
 <YYINITIAL> "left"                                         { return PCSTypes.ATTRIBUTES_LEFT; }
+<YYINITIAL> "border"                                       { return PCSTypes.ATTRIBUTES_BORDER; }
+<YYINITIAL> "uppercase"                                    { return PCSTypes.ATTRIBUTES_UPPERCASE; }
 
 
 // Match identifiers
@@ -130,13 +132,14 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> {FLOAT}                                         { return PCSTypes.FLOAT; }
 <YYINITIAL> {COORDINATES}                                   { return PCSTypes.COORDINATES; }
 <YYINITIAL> {FLOAT_COORDINATES}                             { return PCSTypes.FLOAT_COORDINATES; }
-<YYINITIAL> {PICTURE}                                       { return PCSTypes.PICTURE; }
 <YYINITIAL> {BOOLEAN}                                       { return PCSTypes.BOOLEAN; }
 <YYINITIAL> ","                                             { return PCSTypes.COMMA; }
 
 // Match special characters and symbols
 <YYINITIAL> "["                                            { return PCSTypes.LSQUARE; }
 <YYINITIAL> "]"                                            { return PCSTypes.RSQUARE; }
+<YYINITIAL> "("                                            { return PCSTypes.LPAREN; }
+<YYINITIAL> ")"                                            { return PCSTypes.RPAREN; }
 <YYINITIAL> "{"                                            { return PCSTypes.LBRACE; }
 <YYINITIAL> "}"                                            { return PCSTypes.RBRACE; }
 <YYINITIAL> "="                                            { return PCSTypes.EQUALS; }

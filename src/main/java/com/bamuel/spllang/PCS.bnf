@@ -21,18 +21,31 @@ name_of_screen_menu_procedure ::= IDENTIFIER
 override_statements_ ::= comments_? override_statement_* comments_?
 override_statement_ ::= OVERRIDE_STATEMENT LBRACE clauses_for_statement_* RBRACE
 
-clauses_for_statement_ ::= comments_? list_of_clauses_ comments_?
-list_of_clauses_ ::= clause_for_common_ | clause_for_trigger_point_ | clause_for_trigger_type_ | clause_for_run_ | clause_for_color_ | clause_for_attribute_
+clauses_for_statement_ ::= clause_for_common_ | clause_for_trigger_point_ | clause_for_trigger_type_ | clause_for_run_ | clause_for_color_ | clause_for_attribute_
 
-clause_for_common_ ::= COMMON_CLAUSES_STATEMENTS EQUALS value_
+clause_for_common_ ::= COMMON_CLAUSES_STATEMENTS EQUALS value_*
 value_ ::= STRING
          | NUMBER
          | FLOAT
          | COORDINATES
          | FLOAT_COORDINATES
-         | PICTURE
+         | picture_
          | BOOLEAN
+         | COMMA
          | IDENTIFIER
+         | LSQUARE | RSQUARE
+         | LPAREN | RPAREN
+         | "<" | ">"
+         | SLASH
+         | "!"
+
+//The following picture string characters are used to specify the format of a field being defined.
+// They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
+// todo: add more picture string characters, this covers the basics.
+picture_ ::= pic_group_ | pic_words
+pic_words ::= ("ddmmmyybhh:mm" | "dd-mmm-yyyy hh:mm:ss") // Date and time format
+pic_group_ ::= (NUMBER | IDENTIFIER | "-") (".")? (LPAREN (NUMBER | IDENTIFIER) RPAREN)? (".")? (IDENTIFIER LPAREN (NUMBER | IDENTIFIER) RPAREN)?
+
 
 clause_for_trigger_point_ ::= TRIGGER_POINT EQUALS trigger_point_value_
 trigger_point_value_ ::= TRIGGER_POINT_SCREEN_LOAD
@@ -47,9 +60,13 @@ trigger_point_value_ ::= TRIGGER_POINT_SCREEN_LOAD
                        | TRIGGER_POINT_OPTION
                        | TRIGGER_POINT_BEFORE_OPTION
                        | TRIGGER_POINT_DISPLAY
+                       | TRIGGER_POINT_PREVALIDATE
+                       | OVERRIDE_STATEMENT
+                       | COMMON_CLAUSES_STATEMENTS
+                       | IDENTIFIER
 
 
-clause_for_trigger_type_ ::=  TRIGGER_TYPE EQUALS trigger_type_value_
+clause_for_trigger_type_ ::= TRIGGER_TYPE EQUALS trigger_type_value_
 trigger_type_value_ ::= TRIGGER_TYPE_WINDOWS
                       | TRIGGER_TYPE_WINDOWS_WITH_STATUS
                       | TRIGGER_TYPE_UNIX
@@ -58,9 +75,9 @@ trigger_type_value_ ::= TRIGGER_TYPE_WINDOWS
                       | TRIGGER_TYPE_COMMAND_WITH_STATUS
                       | TRIGGER_TYPE_PRONTO
                       | TRIGGER_TYPE_EXPORT_DATA_GRID
+                      | IDENTIFIER
 
-clause_for_run_ ::= RUN EQUALS STRING additional_values_?
-additional_values_ ::= value_*
+clause_for_run_ ::= RUN EQUALS value_*
 
 clause_for_color_ ::= COLOR EQUALS color_value_
 color_value_ ::= color_list_ SLASH color_list_
@@ -99,6 +116,8 @@ attribute_lists_ ::= ATTRIBUTES_UNDERLINE
                    | ATTRIBUTES_CENTER
                    | ATTRIBUTES_RIGHT
                    | ATTRIBUTES_LEFT
+                   | ATTRIBUTES_BORDER
+                   | ATTRIBUTES_UPPERCASE
 
 // Define the comments
 comments_ ::= comment_*
