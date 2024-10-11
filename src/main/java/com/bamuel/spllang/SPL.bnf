@@ -23,61 +23,55 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         environmentfunction_ ::= getenv_
         stringfunction_ ::= paramtext_ | concat_ | strconcat_ | str_
 
-//Syntax message-box  alpha-expression
-messagebox_ ::= MESSAGEBOX alphaexpression_ messsageboxtitle_? messageboxbuttons_? messageboxdefault_? messageboxicon_? messageboxtag_? messageboxhelpcontext_? messageboxoptional_? messageboxbell_? item_* //todo: figure out what the end of a messagebox default is.
-alphaexpression_ ::= STRING | IDENTIFIER | stringfunction_
+
+// Messagebox rule
+messagebox_ ::= MESSAGEBOX string_ messsageboxtitle_? messageboxbuttons_? messageboxdefault_? messageboxicon_? messageboxtag_? messageboxhelpcontext_? messageboxoptional_? messageboxbell_? item_*
+
 messsageboxtitle_ ::= TITLE ("is")? string_
 messageboxbuttons_ ::= MESSAGEBOX_BUTTONS MESSAGEBOX_BUTTONS_VALUES
 messageboxdefault_ ::= DEFAULT ("is")? MESSAGEBOX_BUTTONS_VALUES
 messageboxicon_ ::= ICON ("is")? MESSAGEBOX_ICON_VALUES
 messageboxtag_ ::= TAG ("is")? NUMBER
-messageboxhelpcontext_ ::= HELP_CONTEXT alphaexpression_
+messageboxhelpcontext_ ::= HELP_CONTEXT string_
 messageboxoptional_ ::= OPTIONAL
 messageboxbell_ ::= BELL
 
 
-//Syntax PARAM-TEXT(text,params)
+// Function syntax
 paramtext_ ::= PARAMTEXT LPAREN STRING (COMMA param_list_)? RPAREN
 param_list_ ::= string_ (COMMA string_)*
 
-//Syntax CONCAT(string1,string2,...)
 concat_ ::= CONCAT LPAREN string_ (COMMA? string_)* RPAREN
-//Syntax STR-CONCAT(string1,string2,...)
 strconcat_ ::= STRCONCAT LPAREN string_ (COMMA? string_)* RPAREN
-
-//Syntax STR(number)
 str_ ::= STR_FUNC LPAREN number_ RPAREN
 
-//message expression [pic [is] picture-string]
-//   [expression [pic[ture] [is] expression]] ....
-//   [no-bell]
+// Message rule
 message_ ::= MESSAGE (string_)? (NOBELL)?
 
-//Syntax GET-ENV(name)
+// Environment function
 getenv_ ::= GETENV LPAREN string_ RPAREN
 
-//PREPROCESSOR
-//Syntax #include "filename"
+// Preprocessor rule
 preprocessors_ ::= PREPROCESSOR (BAD_CHARACTER)?
 
-//screen
+// Screen rule
 screen_ ::= SCREEN IDENTIFIER (SCREEN_RESPONSIVE)? (window_)? (windowpositision_)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (colour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (export_)? (screenhelpcontext_)? (before_)? (detail_)? (after_)? SCREEN_END
+
 screentitle_ ::= TITLE ("is")? string_
 screenprimary_ ::= SCREEN_PRIMARY IDENTIFIER (SCREEN_ON)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?
 screenselect_ ::= SCREEN_SELECT selectclauses_
 screenquicklink_ ::= SCREEN_QUICK_LINK ("on")? IDENTIFIER
-
 screenreview_ ::= SCREEN_REVIEW ("is")? "colour" ("on")? IDENTIFIER
 screenallowed_ ::= SCREEN_ALLOWED ("is"|"are")? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"SEARCH"|"ENTRY"|"CORRECT"|"REMOVE"|"find"|"next"|"prev"|"next-scr"|"prev-scr"|"search"|"entry"|"correct"|"remove") IDENTIFIER* //todo: [mode-name ...]]
 screenprompt_ ::= PROMPT rowcol_
 screendatagrid_ ::= SCREEN_DATA_GRID item_* //todo: datagrid
 screenreviewoccurs ::= SCREEN_REVIEW_OCCURS number_ ("by" number_)?
-screenwhen_ ::= SCREEN_WHEN item_* //todo: conditon
+screenwhen_ ::= WHEN item_* //todo: conditon
 
-//api
+// API rule
 api_ ::= API IDENTIFIER item_* API_END //todo: procedural-statements
 
-//field
+// Field rule
 field_ ::= FIELD (IDENTIFIER fieldclauses_)*
 fieldclauses_ ::= (fieldtype_)? (fieldpic_)? (fieldoccurs_)? (fieldlike_)? (fieldcase_)? (JUSTIFY)? (USE_NAME_IN_DB)? (fielddbcolumnname_)? (fielddrillback_)?
 fieldtype_ ::= TYPE ("is")? datatypes_
@@ -89,14 +83,15 @@ fieldcase_ ::= ("UPPERCASE" | "LOWERCASE" | "uppercase" | "lowercase")
 fielddbcolumnname_ ::= DB_COLUMN_NAME ("is")? string_
 fielddrillback_ ::= DRILL_BACK ("is")? string_
 
-//local fields
+// Local field rule
 local_ ::= LOCAL (FIELD)? (IDENTIFIER fieldclauses_)*
 
-//menu
+// Menu rule
 menu_ ::= MENU IDENTIFIER menucaluses_ MENU_END
 menucaluses_ ::= (window_)? (windowpositision_)? (local_)? (parameters_)? (returning_)? (menubuttonwidth_)? (STOP_EXIT_ALL_KEY)? (TITLE ("is")? string_)? (TREEMENU)? (NOHIDE)? (colour_)? (export_)? (helpcontext_)? (before_)? (detail_)? (after_)?
 menubuttonwidth_ ::= MENU_BUTTON_WIDTH ("is")? number_
 
+// Mode rule
 mode_ ::= MODE IDENTIFIER modeclauses_
 modeclauses_ ::= (modeprompt_)? (help_)? (security_)? (modeentry_)? (process_)? (modecurrency_)? (LOCK)? (modeperform_)? (modewhen_)? (colour_)? (modeicon_)? (alwaysshowaddnohide_)?
 modeprompt_ ::= PROMPT ("is")? string_
@@ -109,25 +104,25 @@ modeperform_ ::= PERFORM IDENTIFIER
 modewhen_ ::= WHEN item_*
 modeicon_ ::= ICON ("is")? modeiconlist_
 modeiconlist_ ::= "FOLDER-ICON"
-            | "ADMIN-FOLDER-ICON"
-            | "REPORT-FOLDER-ICON"
-            | "ADMIN-ICON"
-            | "REPORT-ICON"
-            | "SCREEN-ICON"
-            | "TRANSACTION-ICON"
-            | "PERIOD-END-ICON"
-            | "QUESTION-ICON"
-            | "BLANK-ICON"
-            | "FAVOURITES-FOLDER-ICON"
-            | "LOCKED-FOLDER-ICON"
-            | "BLUE-FOLDER-ICON"
-            | "RED-FOLDER-ICON"
-            | "GREEN-FOLDER-ICON"
-            | "ENQUIRY-FOLDER-ICON"
+                | "ADMIN-FOLDER-ICON"
+                | "REPORT-FOLDER-ICON"
+                | "ADMIN-ICON"
+                | "REPORT-ICON"
+                | "SCREEN-ICON"
+                | "TRANSACTION-ICON"
+                | "PERIOD-END-ICON"
+                | "QUESTION-ICON"
+                | "BLANK-ICON"
+                | "FAVOURITES-FOLDER-ICON"
+                | "LOCKED-FOLDER-ICON"
+                | "BLUE-FOLDER-ICON"
+                | "RED-FOLDER-ICON"
+                | "GREEN-FOLDER-ICON"
+                | "ENQUIRY-FOLDER-ICON"
 alwaysshowaddnohide_ ::= (ALWAYS_SHOW)? (ALWAYS_ADD)? (NOHIDE)?
 
 
-//object
+// Object rule
 object_ ::= OBJECT (IDENTIFIER objectclauses_)*
 objectclauses_ ::= (objectlike_)? (objecttype_)? (objectseparator_)? (objectfile_)? (objectrecord_)? (objectkey_)? (NOJOINS)? (NOROWID)?
 objectlike_ ::= LIKE IDENTIFIER
@@ -138,16 +133,17 @@ objectfile_ ::= FILE ("is")? string_
 objectrecord_ ::= RECORD ("is")? (IDENTIFIER fieldclauses_)* RECORD_END
 objectkey_ ::= KEY ("is")? (IDENTIFIER (DESC)? (UNIQUE)? (DB_INDEX_ONLY)? (COMPRESS)?)*
 
-//parameter
+// Parameters rule
 parameters_ ::= PARAMETERS ("are"|"is")? (IDENTIFIER fieldclauses_)*
 
-//returning
+// Returning rule
 returning_ ::= RETURNING (IDENTIFIER fieldclauses_)*
 
-//procedure
+// Procedure rule
 procedure_ ::= PROCEDURE IDENTIFIER procedureclauses_ PROCEDURE_END//todo: procedural-statements
 procedureclauses_ ::= (window_)? (relative_)? (NOHIDE)? (windowpositision_)? (colour_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (TITLE string_)? (export_)? (AUTO_TRANSACTION)? (helpcontext_)? item_*
 
+// Other rules
 export_ ::= EXPORT (CAN_OVERRIDE)?
 colour_ ::= COLOUR ("is")? IDENTIFIER ("on" IDENTIFIER)?
 helpcontext_ ::= SCREEN_HELP_CONTEXT ("is") string_ string_
@@ -161,7 +157,6 @@ after_ ::= AFTER item_* //todo: procedural-statements
 //row and col
 //Syntax @row,col
 rowcol_ ::= AT NUMBER COMMA NUMBER
-fieldlist_ ::= IDENTIFIER ((COMMA|LIKE)? (string_)?)*
 selectclauses_ ::= "SELECT" item_* //todo: sql select
 
 string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | stringfunction_ | environmentfunction_

@@ -26,8 +26,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey STRING = createTextAttributesKey("SPL_STRING", DefaultLanguageHighlighterColors.STRING);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("SPL_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey COMMA = createTextAttributesKey("SPL_COMMA", DefaultLanguageHighlighterColors.COMMA);
-    public static final TextAttributesKey LPARENTHESES = createTextAttributesKey("SPL_LPAREN", DefaultLanguageHighlighterColors.PARENTHESES);
-    public static final TextAttributesKey RPARENTHESES = createTextAttributesKey("SPL_RPAREN", DefaultLanguageHighlighterColors.PARENTHESES);
+    public static final TextAttributesKey PARENTHESES = createTextAttributesKey("SPL_PARENTHESES", DefaultLanguageHighlighterColors.PARENTHESES);
     public static final TextAttributesKey COMMENT = createTextAttributesKey("SPL_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
     public static final TextAttributesKey BLOCK_COMMENT = createTextAttributesKey("SPL_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
     public static final TextAttributesKey BAD_CHARACTER = createTextAttributesKey("SPL_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER);
@@ -36,6 +35,28 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
 
     static {
 
+        //Function Declaration
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.API, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.API_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FIELD, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCAL, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODE, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OBJECT, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMETERS, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCEDURE, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCEDURE_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RETURNING, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FUNCTION_DECLARATION, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //Metadata but also Function Declaration
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RECORD, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RECORD_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
+        //Metadata
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TITLE, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DEFAULT, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WINDOW, new TextAttributesKey[]{METADATA});
@@ -51,6 +72,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DB_COLUMN_NAME, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DRILL_BACK, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.HELP, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SECURITY, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PERFORM, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SEPARATOR, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE, new TextAttributesKey[]{METADATA});
@@ -62,7 +84,6 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOJOINS, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOROWID, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCESS, new TextAttributesKey[]{METADATA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODEENTRY, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODECURRENCY, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCK, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ALWAYS_SHOW, new TextAttributesKey[]{METADATA});
@@ -71,28 +92,12 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TREEMENU, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOHIDE, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU_BUTTON_WIDTH, new TextAttributesKey[]{METADATA});
-
-
-
-        //record
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RECORD, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RECORD_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-
-        //message-box
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS, new TextAttributesKey[]{METADATA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS_VALUES, new TextAttributesKey[]{CONSTANT});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_ICON_VALUES, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TAG, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.HELP_CONTEXT, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OPTIONAL, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BELL, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COLOUR, new TextAttributesKey[]{METADATA});
-
-        //screen
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_RESPONSIVE, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RELATIVE_TO, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WINDOW_POSITION, new TextAttributesKey[]{METADATA});
@@ -101,7 +106,6 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_SAME_DIFFERENT, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_SELECT, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_QUICK_LINK, new TextAttributesKey[]{METADATA});
-
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_REVIEW, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_ALLOWED, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_PROMPT_FOR_SEARCH, new TextAttributesKey[]{METADATA});
@@ -125,37 +129,18 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BEFORE, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.AFTER, new TextAttributesKey[]{METADATA});
 
-        //procedure
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCEDURE, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCEDURE_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-        //api
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.API, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.API_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-        //field
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FIELD, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-        //local
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCAL, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-        //menu
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-        //mode
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODE, new TextAttributesKey[]{FUNCTION_DECLARATION});
-
-        //message
+        //Keywords
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGE, new TextAttributesKey[]{KEYWORD});
-
-        //preprocessor
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREPROCESSOR, new TextAttributesKey[]{KEYWORD});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.KEYWORD, new TextAttributesKey[]{KEYWORD});
 
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMETERS, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RETURNING, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        //Constants
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS_VALUES, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_ICON_VALUES, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODEENTRY, new TextAttributesKey[]{CONSTANT});
 
-
+        //Function Call
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMTEXT, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CONCAT, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRCONCAT, new TextAttributesKey[]{FUNCTION_CALL});
@@ -163,16 +148,16 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.GETENV, new TextAttributesKey[]{FUNCTION_CALL});
 
 
-        //The rest that haven't been configured
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FUNCTION_DECLARATION, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.KEYWORD, new TextAttributesKey[]{KEYWORD});
+        //Other
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NUMBER, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMA, new TextAttributesKey[]{COMMA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LPAREN, new TextAttributesKey[]{LPARENTHESES});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RPAREN, new TextAttributesKey[]{RPARENTHESES});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LPAREN, new TextAttributesKey[]{PARENTHESES});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RPAREN, new TextAttributesKey[]{PARENTHESES});
+
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMENT, new TextAttributesKey[]{COMMENT});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BLOCK_COMMENT, new TextAttributesKey[]{BLOCK_COMMENT});
+
         TOKEN_HIGHLIGHT_MAP.put(TokenType.BAD_CHARACTER, new TextAttributesKey[]{BAD_CHARACTER});
     }
 

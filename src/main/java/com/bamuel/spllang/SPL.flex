@@ -45,7 +45,7 @@ KEYWORD_SQL=(SELECT|DISTINCT|FROM|WHERE|UNION|ALL|ORDER|BY|DESC|GROUP|HAVING|FOR
 OPERATOR_SQL=(=|<>|!=|<|>|<=|>=|AND|OR|NOT|BETWEEN|LIKE)
 CLAUSE_SQL=(SELECT|FROM|WHERE|UNION|ORDER|BY|GROUP|HAVING|JOIN|ON|INNER|LEFT|RIGHT|FULL|OUTER)
 
-STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|string|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
+STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
 ARITHMETIC_EXPRESSIONS=(\+|-|\*|\/|%)
 RELATIONAL_EXPRESSIONS=(=|<>|!=|<=|>=|<|>|like|not like)
 LOGICAL_EXPRESSIONS=(and|or|not)
