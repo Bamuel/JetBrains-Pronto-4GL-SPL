@@ -20,7 +20,7 @@ WHITE_SPACE=[\ \n\t\f]
 IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_-]*
 
 //Currently correct, but may need to be updated
-NUMBER=[0-9]+
+NUMBER=-?[0-9]+
 
 SINGLEQUOTE="'"[^']*"'"
 DOUBLEQUOTE="\""[^\"]*"\""
@@ -37,7 +37,7 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 //KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
 //IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
 
-FUNCTION_DECLARATION=(mode|object|parameter|returning|confirmed|validation)
+FUNCTION_DECLARATION=(confirmed|validation)
 FUNCTION_DECLARATION_END=(end-confirm|end-validations|endconfirm|endvalidations)
 
 // SQL Keywords // SQL Operators // SQL Clauses
@@ -118,13 +118,25 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (drill-back|DRILL-BACK)                              { return SPLTypes.DRILL_BACK; }
 <YYINITIAL> (relative to|RELATIVE TO)                            { return SPLTypes.RELATIVE_TO; }
 <YYINITIAL> (window-position|WINDOW-POSITION|windowposition|WINDOWPOSITION) { return SPLTypes.WINDOW_POSITION; }
-<YYINITIAL> (parameters|PARAMETERS)                              { return SPLTypes.PARAMETERS; }
+<YYINITIAL> (parameters|PARAMETERS|parameter|PARAMETER)          { return SPLTypes.PARAMETERS; }
 <YYINITIAL> (returning|RETURNING)                                { return SPLTypes.RETURNING; }
 <YYINITIAL> (stop-exit-all-key|STOP-EXIT-ALL-KEY)                { return SPLTypes.STOP_EXIT_ALL_KEY; }
 <YYINITIAL> (export|user-trigger|EXPORT|USER-TRIGGER)            { return SPLTypes.EXPORT; }
 <YYINITIAL> (can-override|no-override|CAN-OVERRIDE|NO-OVERRIDE)  { return SPLTypes.CAN_OVERRIDE; }
 <YYINITIAL> (before|BEFORE)                                      { return SPLTypes.BEFORE; }
 <YYINITIAL> (after|AFTER)                                        { return SPLTypes.AFTER; }
+<YYINITIAL> (separator|SEPARATOR)                                { return SPLTypes.SEPARATOR; }
+<YYINITIAL> (file|FILE)                                          { return SPLTypes.FILE; }
+<YYINITIAL> (record|RECORD)                                      { return SPLTypes.RECORD; }
+<YYINITIAL> (end-record|endrecord|END-RECORD|ENDRECORD)          { return SPLTypes.RECORD_END; }
+<YYINITIAL> (key|KEY)                                            { return SPLTypes.KEY; }
+<YYINITIAL> (desc|DESC|descending|DESCENDING)                    { return SPLTypes.DESC; }
+//<YYINITIAL> (asc|ASC|ascending|ASCENDING)                        { return SPLTypes.ASC; }
+<YYINITIAL> (unique|UNIQUE)                                      { return SPLTypes.UNIQUE; }
+<YYINITIAL> (db-index-only|DB-INDEX-ONLY)                        { return SPLTypes.DB_INDEX_ONLY; }
+<YYINITIAL> (compress|COMPRESS)                                  { return SPLTypes.COMPRESS; }
+<YYINITIAL> (nojoins|NOJOINS|no-joins|NO-JOINS)                  { return SPLTypes.NOJOINS; }
+<YYINITIAL> (norowid|NOROWID|no-rowid|NO-ROWID)                  { return SPLTypes.NOROWID; }
 
 
 
@@ -166,7 +178,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (no-review-separators)                          { return SPLTypes.SCREEN_NO_REVIEW_SEPARATORS; }
 <YYINITIAL> (start-on-current-record|START-ON-CURRENT-RECORD) { return SPLTypes.SCREEN_START_ON_CURRENT_RECORD; }
 <YYINITIAL> (leave-parent-screen|LEAVE-PARENT-SCREEN)       { return SPLTypes.SCREEN_LEAVE_PARENT_SCREEN; }
-<YYINITIAL> (when|WHEN)                                     { return SPLTypes.SCREEN_WHEN; }
+<YYINITIAL> (when|WHEN)                                     { return SPLTypes.WHEN; }
 <YYINITIAL> (position-on-ok|no-ok-cancel)                   { return SPLTypes.SCREEN_POSITION_ON_OK; }
 <YYINITIAL> (stay-in-correct|STAY-IN-CORRECT)               { return SPLTypes.SCREEN_STAY_IN_CORRECT; }
 <YYINITIAL> (form-entry|FORM-ENTRY)                         { return SPLTypes.SCREEN_FORM_ENTRY; }
@@ -178,6 +190,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 //proceedure
 <YYINITIAL> (procedure|PROCEDURE)                           { return SPLTypes.PROCEDURE; }
 <YYINITIAL> (end-procedure|END-PROCEDURE|endprocedure|ENDPROCEDURE) { return SPLTypes.PROCEDURE_END; }
+<YYINITIAL> (auto-transaction|AUTO-TRANSACTION|autotransaction|AUTOTRANSACTION) { return SPLTypes.AUTO_TRANSACTION; }
 
 //api
 <YYINITIAL> (api|API)                                       { return SPLTypes.API; }
@@ -194,6 +207,20 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (nohide|NOHIDE|no-hide|NO-HIDE)                 { return SPLTypes.NOHIDE; }
 <YYINITIAL> (button-width|BUTTON-WIDTH|buttonwidth|BUTTONWIDTH) { return SPLTypes.MENU_BUTTON_WIDTH; }
 
+//mode
+<YYINITIAL> (mode|MODE)                                     { return SPLTypes.MODE; }
+<YYINITIAL> (help|HELP)                                     { return SPLTypes.HELP; }
+<YYINITIAL> (security|SECURITY)                             { return SPLTypes.SECURITY; }
+<YYINITIAL> (entry|correct|remove|duplicate|entry-once|find|next-scr|prev-scr) { return SPLTypes.MODEENTRY; }
+<YYINITIAL> (process|PROCESS)                               { return SPLTypes.PROCESS; }
+<YYINITIAL> (currency|CURRENCY)                             { return SPLTypes.MODECURRENCY; }
+<YYINITIAL> (lock|LOCK)                                     { return SPLTypes.LOCK; }
+<YYINITIAL> (perform|PERFORM)                               { return SPLTypes.PERFORM; }
+<YYINITIAL> (always-show|ALWAYS-SHOW)                       { return SPLTypes.ALWAYS_SHOW; }
+<YYINITIAL> (always-add|ALWAYS-ADD)                         { return SPLTypes.ALWAYS_ADD; }
+
+//object
+<YYINITIAL> (object|OBJECT)                                 { return SPLTypes.OBJECT; }
 
 
 <YYINITIAL> ";"                                             { return SPLTypes.SEMICOLON; }

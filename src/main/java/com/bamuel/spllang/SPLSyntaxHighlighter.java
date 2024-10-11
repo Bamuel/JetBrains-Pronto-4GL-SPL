@@ -50,6 +50,33 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.USE_NAME_IN_DB, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DB_COLUMN_NAME, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DRILL_BACK, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.HELP, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PERFORM, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SEPARATOR, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.KEY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DESC, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.UNIQUE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DB_INDEX_ONLY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMPRESS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOJOINS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOROWID, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PROCESS, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODEENTRY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODECURRENCY, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCK, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ALWAYS_SHOW, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ALWAYS_ADD, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.AUTO_TRANSACTION, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TREEMENU, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOHIDE, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU_BUTTON_WIDTH, new TextAttributesKey[]{METADATA});
+
+
+
+        //record
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RECORD, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RECORD_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
 
 
         //message-box
@@ -87,9 +114,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_NO_REVIEW_SEPARATORS, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_START_ON_CURRENT_RECORD, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_LEAVE_PARENT_SCREEN, new TextAttributesKey[]{METADATA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_WHEN, new TextAttributesKey[]{METADATA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMETERS, new TextAttributesKey[]{METADATA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RETURNING, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WHEN, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STOP_EXIT_ALL_KEY, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_POSITION_ON_OK, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_STAY_IN_CORRECT, new TextAttributesKey[]{METADATA});
@@ -118,11 +143,17 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU, new TextAttributesKey[]{FUNCTION_DECLARATION});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MENU_END, new TextAttributesKey[]{FUNCTION_DECLARATION});
 
+        //mode
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODE, new TextAttributesKey[]{FUNCTION_DECLARATION});
+
         //message
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGE, new TextAttributesKey[]{KEYWORD});
 
         //preprocessor
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREPROCESSOR, new TextAttributesKey[]{KEYWORD});
+
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMETERS, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RETURNING, new TextAttributesKey[]{FUNCTION_DECLARATION});
 
 
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMTEXT, new TextAttributesKey[]{FUNCTION_CALL});
