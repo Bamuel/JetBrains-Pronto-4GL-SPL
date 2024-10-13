@@ -1,5 +1,9 @@
 # Pronto 4GL SPL Language Support
 **Pronto 4GL SPL Language Support**  is a JetBrains IDE plugin designed to provide comprehensive support for 4GL scripts used in Pronto Xi ERP. This plugin enhances your development experience with syntax highlighting, code navigation, and file recognition for various script types, making it easier to work with SPL and related files.
+
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/25523)](https://plugins.jetbrains.com/plugin/25523)
+[![Version](https://img.shields.io/jetbrains/plugin/v/25523)](https://plugins.jetbrains.com/plugin/25523)
+
 ## Features
 
 - **Syntax Highlighting** : Full syntax highlighting support for SPL keywords, comments (line and block), strings, and numbers, improving code readability.
