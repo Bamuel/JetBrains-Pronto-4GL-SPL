@@ -182,7 +182,8 @@ zstr_ ::= ZSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
 message_ ::= MESSAGE (string_)? (NOBELL)?
 
 // Preprocessor rule
-preprocessors_ ::= PREPROCESSOR (BAD_CHARACTER)?
+preprocessors_ ::= PREPROCESSOR (IDENTIFIER | STRING)
+
 
 // Screen rule
 screen_ ::= SCREEN IDENTIFIER (SCREEN_RESPONSIVE)? (window_)? (windowpositision_)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (colour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (export_)? (screenhelpcontext_)? (before_)? (detail_)? (after_)? SCREEN_END
@@ -371,6 +372,7 @@ element_ ::= FUNCTION_DECLARATION
            | SCREEN_PRIMARY
            | LOCAL
            | SCREEN_ALLOWED
+           | MESSAGEBOX_BUTTONS
            | MESSAGEBOX_BUTTONS_VALUES
            | MESSAGEBOX_ICON_VALUES
            | othersymbols_
