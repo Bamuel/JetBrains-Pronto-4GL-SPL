@@ -140,13 +140,41 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_ICON_VALUES, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODEENTRY, new TextAttributesKey[]{CONSTANT});
 
-        //Function Call
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PARAMTEXT, new TextAttributesKey[]{FUNCTION_CALL});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CONCAT, new TextAttributesKey[]{FUNCTION_CALL});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRCONCAT, new TextAttributesKey[]{FUNCTION_CALL});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STR_FUNC, new TextAttributesKey[]{FUNCTION_CALL});
+        //Environment Functions
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.GETENV, new TextAttributesKey[]{FUNCTION_CALL});
 
+        //String Functions
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ASCII_CHAR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ASCII_NUM, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BASE64TOBLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BLOBAPPEND, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BLOBAPPENDBASE64, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BLOBSECTION, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BLOBTOBASE64, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CONCAT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FORMATPICTURE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FREEBLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FSTR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LEFTJUSTIFY, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOWERCASE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LTRIM, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MAXALPHAVALUE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NUM, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PATTERN, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.READBLOBFROMFILE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RESERVED, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RIGHTJUSTIFY, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RTRIM, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SIZEOF, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SQLSUBSTRING, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STR_FUNC, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRLEN, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SUBSTRING, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SUBSTRINGUTF8, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.UPPERCASE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.VALIDNUMBER, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WRITEBLOBTOFILE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ZSTR, new TextAttributesKey[]{FUNCTION_CALL});
 
         //Other
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});

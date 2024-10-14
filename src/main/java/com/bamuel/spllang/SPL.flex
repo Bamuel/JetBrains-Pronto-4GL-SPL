@@ -57,7 +57,7 @@ ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-aut
 FILEHANDLING_FUNCTIONS=(cd|cd-without-close-all|client-file-browse|dir|file-exists|file-name|file-owner|file-size|file-status|file-version|finish-dir-search|is-a-dir|local-cd|local-cd-without-close-all|local-dir|mkdir|modification-time|next-dir-entry|rmdir|start-dir-search)
 OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-method|ole-call-method|ole-create-control|ole-create-instance|ole-enum-next|ole-enum-reset|ole-error-description|ole-get-active-object|ole-get-dispatch-id|ole-get-event|ole-get-property|ole-put-property|ole-put-property-byref|ole-query-interface|ole-release|ole-status|ole-unadvise-all|ole-unadvise-event)
 SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
-STRING_FUNCTIONS=(ascii-char|ascii-num|base64-to-blob|blob-append|blob-append-base64|blob-section|blob-to-base64|format-picture|free-blob|fstr|left-justify|ltrim|max-alpha-value|num|pattern|read-blob-from-file|reserved|right-justify|rtrim|size-of|sql-substring|str-len|sub-string|substring-utf8|valid-number|write-blob-to-file|zstr)
+//STRING_FUNCTIONS=(blob-section|blob-to-base64|format-picture|free-blob|fstr|left-justify|ltrim|max-alpha-value|num|pattern|read-blob-from-file|reserved|right-justify|rtrim|size-of|sql-substring|str-len|sub-string|substring-utf8|valid-number|write-blob-to-file|zstr)
 XML_FUNCTIONS=(xml-add-child-node|xml-add-child-node-blob|xml-add-child-node-clob|xml-add-child-node-no-quotes|xml-add-child-node-number|xml-add-child-node-text|xml-add-node-attribute|xml-add-ns|xml-child-node-blob|xml-child-node-clob|xml-child-node-text|xml-close-document|xml-copy-node-handle|xml-delete-node|xml-delete-node-attribute|xml-document-is-json|xml-free-node-handle|xml-get-child-by-name|xml-get-doc-encoding|xml-get-first-attribute-name|xml-get-first-child-node|xml-get-last-child-node|xml-get-next-attribute-name|xml-get-next-node|xml-get-node-attribute|xml-get-ns-prefix-url|xml-get-prev-node|xml-get-root-node|xml-modify-node-attribute|xml-modify-node-text|xml-new-document|xml-next-element-sibling|xml-node-blob|xml-node-clob|xml-node-name|xml-node-ns-prefix|xml-node-ns-url|xml-node-string|xml-node-text|xml-node-type|xml-parse-file|xml-parse-text|xml-prev-element-sibling|xml-save-as-file|xml-save-as-file-ex|xml-save-as-text|xml-save-as-text-ex|xml-set-json-array|xml-validate-doc)
 
 PREFDEFINED=(true|false|yes|no|zero|zero_date|zero_time|zero_date_time|space|spaces)
@@ -83,7 +83,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {SECURITY_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
-<YYINITIAL> {STRING_FUNCTIONS}                              { return SPLTypes.FUNCTION_DECLARATION; }
+//<YYINITIAL> {STRING_FUNCTIONS}                              { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {XML_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 
 <YYINITIAL> {PREPROCESSOR}                                  { return SPLTypes.PREPROCESSOR; }
@@ -148,10 +148,44 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 
 
 <YYINITIAL> (param-text|PARAM-TEXT|paramtext|PARAMTEXT)     { return SPLTypes.PARAMTEXT; }
-<YYINITIAL> (concat|CONCAT)                                 { return SPLTypes.CONCAT; }
 <YYINITIAL> (str-concat|STR-CONCAT|strconcat|STRCONCAT)     { return SPLTypes.STRCONCAT; }
-<YYINITIAL> (str|STR)                                       { return SPLTypes.STR_FUNC; }
+
 <YYINITIAL> (message|MESSAGE)                               { return SPLTypes.MESSAGE; }
+
+//string functions
+<YYINITIAL> (ascii-char|ASCII-CHAR)                         { return SPLTypes.ASCII_CHAR; }
+<YYINITIAL> (ascii-num|ascii|asc|ASCII-NUM|ASCII|ASC)       { return SPLTypes.ASCII_NUM; }
+<YYINITIAL> (base64-to-blob|BASE64-TO-BLOB)                 { return SPLTypes.BASE64TOBLOB; }
+<YYINITIAL> (blob-append|BLOB-APPEND)                       { return SPLTypes.BLOBAPPEND; }
+<YYINITIAL> (blob-append-base64|BLOB-APPEND-BASE64)         { return SPLTypes.BLOBAPPENDBASE64; }
+<YYINITIAL> (blob-section|BLOB-SECTION)                     { return SPLTypes.BLOBSECTION; }
+<YYINITIAL> (blob-to-base64|BLOB-TO-BASE64)                 { return SPLTypes.BLOBTOBASE64; }
+<YYINITIAL> (concat|CONCAT)                                 { return SPLTypes.CONCAT; }
+<YYINITIAL> (format-picture|FORMAT-PICTURE)                 { return SPLTypes.FORMATPICTURE; }
+<YYINITIAL> (free-blob|FREE-BLOB)                           { return SPLTypes.FREEBLOB; }
+<YYINITIAL> (fstr|FSTR)                                     { return SPLTypes.FSTR; }
+<YYINITIAL> (left-justify|LEFT-JUSTIFY)                     { return SPLTypes.LEFTJUSTIFY; }
+<YYINITIAL> (lowercase|LOWERCASE)                           { return SPLTypes.LOWERCASE; }
+<YYINITIAL> (ltrim|LTRIM)                                   { return SPLTypes.LTRIM; }
+<YYINITIAL> (max-alpha-value|MAX-ALPHA-VALUE)               { return SPLTypes.MAXALPHAVALUE; }
+<YYINITIAL> (num|NUM)                                       { return SPLTypes.NUM; }
+<YYINITIAL> (pattern|PATTERN)                               { return SPLTypes.PATTERN; }
+<YYINITIAL> (read-blob-from-file|READ-BLOB-FROM-FILE)       { return SPLTypes.READBLOBFROMFILE; }
+<YYINITIAL> (reserved|RESERVED)                             { return SPLTypes.RESERVED; }
+<YYINITIAL> (right-justify|RIGHT-JUSTIFY)                   { return SPLTypes.RIGHTJUSTIFY; }
+<YYINITIAL> (rtrim|RTRIM)                                   { return SPLTypes.RTRIM; }
+<YYINITIAL> (size-of|SIZE-OF)                               { return SPLTypes.SIZEOF; }
+<YYINITIAL> (sql-substring|SQL-SUBSTRING)                   { return SPLTypes.SQLSUBSTRING; }
+<YYINITIAL> (str|STR)                                       { return SPLTypes.STR_FUNC; }
+<YYINITIAL> (str-len|STR-LEN)                               { return SPLTypes.STRLEN; }
+<YYINITIAL> (sub-string|SUB-STRING)                         { return SPLTypes.SUBSTRING; }
+<YYINITIAL> (substring-utf8|SUBSTRING-UTF8)                 { return SPLTypes.SUBSTRINGUTF8; }
+<YYINITIAL> (uppercase|UPPERCASE)                           { return SPLTypes.UPPERCASE; }
+<YYINITIAL> (valid-number|VALID-NUMBER)                     { return SPLTypes.VALIDNUMBER; }
+<YYINITIAL> (write-blob-to-file|WRITE-BLOB-TO-FILE)         { return SPLTypes.WRITEBLOBTOFILE; }
+<YYINITIAL> (zstr|ZSTR)                                     { return SPLTypes.ZSTR; }
+
+
 
 <YYINITIAL> (get-env|getenv|GET-ENV|GETENV)                 { return SPLTypes.GETENV; }
 

@@ -21,7 +21,10 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
     function_ ::= environmentfunction_ | stringfunction_
         environmentfunction_ ::= getenv_
-        stringfunction_ ::= paramtext_ | concat_ | strconcat_ | str_
+        stringfunction_ ::= ascii-char_ | ascii-num_ | base64toblob_| blobappend_ | blobappendbase64_ | blobsection_ | blobtobase64_
+        | concat_ |  formatpicture_ | freeblob_ | fstr_ | leftjustify_ | lowercase_ | ltrim_ | maxalphavalue_ | num_ | paramtext_ | pattern_
+        | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
+        | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
 
 
 // Messagebox rule
@@ -37,13 +40,42 @@ messageboxoptional_ ::= OPTIONAL
 messageboxbell_ ::= BELL
 
 
-// Function syntax
+//String functions
+ascii-char_ ::= ASCII_CHAR LPAREN number_ RPAREN
+ascii-num_ ::= ASCII_NUM LPAREN string_ RPAREN
+base64toblob_ ::= BASE64TOBLOB LPAREN string_ COMMA string_ RPAREN
+blobappend_ ::= BLOBAPPEND LPAREN string_ COMMA string_ RPAREN
+blobappendbase64_ ::= BLOBAPPENDBASE64 LPAREN string_ COMMA string_ RPAREN
+blobsection_ ::= BLOBSECTION LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+blobtobase64_ ::= BLOBTOBASE64 LPAREN string_ COMMA string_ COMMA string_ RPAREN
+concat_ ::= CONCAT LPAREN string_ (COMMA? string_)* RPAREN
+formatpicture_ ::= FORMATPICTURE LPAREN string_ COMMA picture_ RPAREN
+freeblob_ ::= FREEBLOB LPAREN string_ RPAREN
+fstr_ ::= FSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
+leftjustify_ ::= LEFTJUSTIFY LPAREN string_ RPAREN
+lowercase_ ::= LOWERCASE LPAREN string_ RPAREN
+ltrim_ ::= LTRIM LPAREN string_ RPAREN
+maxalphavalue_ ::= MAXALPHAVALUE LPAREN number_ RPAREN
+num_ ::= NUM LPAREN string_ RPAREN
 paramtext_ ::= PARAMTEXT LPAREN STRING (COMMA param_list_)? RPAREN
 param_list_ ::= string_ (COMMA string_)*
-
-concat_ ::= CONCAT LPAREN string_ (COMMA? string_)* RPAREN
+pattern_ ::= PATTERN LPAREN string_ COMMA string_  RPAREN
+readblobfromfile_ ::= READBLOBFROMFILE LPAREN string_ COMMA string_ RPAREN
+reserved_ ::= RESERVED LPAREN string_ RPAREN
+rightjustify_ ::= RIGHTJUSTIFY LPAREN string_ RPAREN
+rtrim_ ::= RTRIM LPAREN string_ RPAREN
+sizeof_ ::= SIZEOF LPAREN string_ RPAREN
+sqlsubstring_ ::= SQLSUBSTRING LPAREN string_ COMMA number_ COMMA number_ RPAREN
 strconcat_ ::= STRCONCAT LPAREN string_ (COMMA? string_)* RPAREN
 str_ ::= STR_FUNC LPAREN number_ RPAREN
+strlen_ ::= STRLEN LPAREN string_ RPAREN
+substring_ ::= SUBSTRING LPAREN string_ COMMA number_ COMMA number_ RPAREN
+substringutf8_ ::= SUBSTRINGUTF8 LPAREN string_ COMMA number_ COMMA number_ COMMA number_ RPAREN
+uppercase_ ::= UPPERCASE LPAREN string_ RPAREN
+validnumber_ ::= VALIDNUMBER LPAREN string_ RPAREN
+writeblobtofile_ ::= WRITEBLOBTOFILE LPAREN string_ COMMA string_ RPAREN
+zstr_ ::= ZSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
+
 
 // Message rule
 message_ ::= MESSAGE (string_)? (NOBELL)?
@@ -225,6 +257,7 @@ element_ ::= FUNCTION_DECLARATION
            | ALWAYS_ADD
            | SCREEN_PRIMARY
            | LOCAL
+           | SCREEN_ALLOWED
            | MESSAGEBOX_BUTTONS_VALUES
            | MESSAGEBOX_ICON_VALUES
            | othersymbols_
