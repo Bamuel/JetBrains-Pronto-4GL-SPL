@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.7</version>
+    <version>1.8</version>
     <category>Languages</category>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
@@ -19,6 +19,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
     <change-notes>
         <![CDATA[
             <ul>
+              <li><b>1.8</b> Syntax Highlighting for .err files</li>
               <li><b>1.7</b> Syntax Highlighting for .spl files Declarations and some Function/Statement</li>
               <li><b>1.6</b> Syntax Highlighting for .pcs files</li>
               <li><b>1.5</b> Numbers and Syntax Highlighter</li>
@@ -49,6 +50,8 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <lang.commenter language="PCS" implementationClass="com.bamuel.spllang.PCSCommenter"/>
 
         <fileType name="SPL Error File" implementationClass="com.bamuel.spllang.ERRFileType" fieldName="INSTANCE" language="ERR" extensions="err"/>
+        <lang.parserDefinition language="ERR" implementationClass="com.bamuel.spllang.ERRParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="ERR" implementationClass="com.bamuel.spllang.ERRSyntaxHighlighterFactory"/>
 
         <applicationConfigurable instance="com.bamuel.spllang.AppSettingsConfigurable" id="com.bamuel.spllang.AppSettingsConfigurable" displayName="Pronto Xi Settings"/>
         <applicationService serviceImplementation="com.bamuel.spllang.AppSettings"/>

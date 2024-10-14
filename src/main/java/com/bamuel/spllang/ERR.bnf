@@ -1,0 +1,26 @@
+{
+  parserClass="com.bamuel.spllang.parser.ERRParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="ERR"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.bamuel.spllang.psi"
+  psiImplPackage="com.bamuel.spllang.psi.impl"
+
+  elementTypeHolderClass="com.bamuel.spllang.psi.ERRTypes"
+  elementTypeClass="com.bamuel.spllang.psi.ERRElementType"
+  tokenTypeClass="com.bamuel.spllang.psi.ERRTokenType"
+}
+
+root ::= (info_message|error_message|warning_message)*
+
+// Define structure for INFO, ERROR, and WARNING messages
+info_message ::= filepath_? LINE_NUMBER? INFO message_* (DASH VARIABLE)?
+error_message ::= filepath_?  LINE_NUMBER? ERROR message_* (DASH VARIABLE)?
+warning_message ::= filepath_?  LINE_NUMBER? WARNING message_* (DASH VARIABLE)?
+filepath_ ::= (MESSAGE | SYMBOL | DASH | "_")* COMMA
+message_ ::= MESSAGE | SYMBOL | KEYWORD | COMMA
+
+// OTHER
+other_::= COMMENT|NUMBER
