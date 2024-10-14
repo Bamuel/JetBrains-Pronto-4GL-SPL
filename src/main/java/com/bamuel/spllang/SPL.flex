@@ -53,7 +53,7 @@ LOGICAL_EXPRESSIONS=(and|or|not)
 //FUNCTIONS
 ARITHMETIC_FUNCTIONS=(aand|abs|anot|aor|cos|fraction|integer|lshift|max-value|max-presentation-value|min-value|power-of|random|rshift|sign-of|sin|smallest-increment|square-root|sum|sum-array|tan)
 DATETIME_FUNCTIONS=(add-month|client-date-time-string|date-from-date-time|date-time|date-to-julian|day|day-name|days-in-month|dow|gmt|hour|julian|julian-to-date|leap-year|minute|month|month-name|second|systime|time-from-date-time|time-zone|tod|today|year)
-ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-auth|colour-picker|create-db-schema|create-db-user|currency-sign|database-type|db-command|db-table-name|dde-error-status|dde-execute|dde-initiate|dde-poke|dde-request|dde-terminate|delete-registry-value|enable-status-bar|enable-system-menu|enable-tool-bar|error-description|escape|exit-status|find-parameter|get-env|get-field-value|get-field-value-numeric|get-function-code|get-module-code|get-param|get-registry-enum-key|get-registry-enum-value|get-registry-value|get-system-metrics|gid|grant-db-schema|hide-dockable-windows|idx|if-then-else|io-count|line-no|local-no and local-yes|login-id|mail-add-line|mail-attach|mail-cancel|mail-from-name|mail-reply-to|mail-send|mail-start|max-screen-columns|max-screen-rows|message-status|mode-name|mouse-column|mouse-row|node-name|occurrence|operating-system|page-no|param-cnt|pid|pronto-release|prouser-flags|refresh-quick-links|report-is-xml|review-row|revoke-db-schema|rgb-to-colour|screen-mode|search|search-mode|set-app-user function|set-data-area-name|set-background-image|set-background-url|set-environment|set-function-code|set-help-context|set-keyboard-focus|set-module-code|set-registry-value|set-web-window|sleep|spool-file-name|time-elapsed|transaction-active|tty|uid|user-group|valid-activation-key|wait-for-input)
+//ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-auth|colour-picker|create-db-schema|create-db-user|currency-sign|database-type|db-command|db-table-name|dde-error-status|dde-execute|dde-initiate|dde-poke|dde-request|dde-terminate|delete-registry-value|enable-status-bar|enable-system-menu|enable-tool-bar|error-description|escape|exit-status|find-parameter|get-env|get-field-value|get-field-value-numeric|get-function-code|get-module-code|get-param|get-registry-enum-key|get-registry-enum-value|get-registry-value|get-system-metrics|gid|grant-db-schema|hide-dockable-windows|idx|if-then-else|io-count|line-no|local-no and local-yes|login-id|mail-add-line|mail-attach|mail-cancel|mail-from-name|mail-reply-to|mail-send|mail-start|max-screen-columns|max-screen-rows|message-status|mode-name|mouse-column|mouse-row|node-name|occurrence|operating-system|page-no|param-cnt|pid|pronto-release|prouser-flags|refresh-quick-links|report-is-xml|review-row|revoke-db-schema|rgb-to-colour|screen-mode|search|search-mode|set-app-user function|set-data-area-name|set-background-image|set-background-url|set-environment|set-function-code|set-help-context|set-keyboard-focus|set-module-code|set-registry-value|set-web-window|sleep|spool-file-name|time-elapsed|transaction-active|tty|uid|user-group|valid-activation-key|wait-for-input)
 FILEHANDLING_FUNCTIONS=(cd|cd-without-close-all|client-file-browse|dir|file-exists|file-name|file-owner|file-size|file-status|file-version|finish-dir-search|is-a-dir|local-cd|local-cd-without-close-all|local-dir|mkdir|modification-time|next-dir-entry|rmdir|start-dir-search)
 OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-method|ole-call-method|ole-create-control|ole-create-instance|ole-enum-next|ole-enum-reset|ole-error-description|ole-get-active-object|ole-get-dispatch-id|ole-get-event|ole-get-property|ole-put-property|ole-put-property-byref|ole-query-interface|ole-release|ole-status|ole-unadvise-all|ole-unadvise-event)
 SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
@@ -79,7 +79,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> {FUNCTION_DECLARATION_END}                      { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
-<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
+//<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {SECURITY_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
@@ -146,13 +146,9 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (MSG_BOX_OK|MSG_BOX_CANCEL|MSG_BOX_YES|MSG_BOX_NO|MSG_BOX_RETRY|MSG_BOX_OK_CANCEL|MSG_BOX_YES_NO|MSG_BOX_YES_NO_CANCEL) { return SPLTypes.MESSAGEBOX_BUTTONS_VALUES; }
 <YYINITIAL> (MSG_BOX_STOP|MSG_BOX_WARNING|MSG_BOX_INFORMATION|MSG_BOX_QUESTION|MSG_BOX_EXCLAMATION) { return SPLTypes.MESSAGEBOX_ICON_VALUES; }
 
-
-<YYINITIAL> (param-text|PARAM-TEXT|paramtext|PARAMTEXT)     { return SPLTypes.PARAMTEXT; }
-<YYINITIAL> (str-concat|STR-CONCAT|strconcat|STRCONCAT)     { return SPLTypes.STRCONCAT; }
-
 <YYINITIAL> (message|MESSAGE)                               { return SPLTypes.MESSAGE; }
 
-//string functions
+//String functions
 <YYINITIAL> (ascii-char|ASCII-CHAR)                         { return SPLTypes.ASCII_CHAR; }
 <YYINITIAL> (ascii-num|ascii|asc|ASCII-NUM|ASCII|ASC)       { return SPLTypes.ASCII_NUM; }
 <YYINITIAL> (base64-to-blob|BASE64-TO-BLOB)                 { return SPLTypes.BASE64TOBLOB; }
@@ -170,6 +166,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (max-alpha-value|MAX-ALPHA-VALUE)               { return SPLTypes.MAXALPHAVALUE; }
 <YYINITIAL> (num|NUM)                                       { return SPLTypes.NUM; }
 <YYINITIAL> (pattern|PATTERN)                               { return SPLTypes.PATTERN; }
+<YYINITIAL> (param-text|PARAM-TEXT|paramtext|PARAMTEXT)     { return SPLTypes.PARAMTEXT; }
 <YYINITIAL> (read-blob-from-file|READ-BLOB-FROM-FILE)       { return SPLTypes.READBLOBFROMFILE; }
 <YYINITIAL> (reserved|RESERVED)                             { return SPLTypes.RESERVED; }
 <YYINITIAL> (right-justify|RIGHT-JUSTIFY)                   { return SPLTypes.RIGHTJUSTIFY; }
@@ -177,6 +174,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (size-of|SIZE-OF)                               { return SPLTypes.SIZEOF; }
 <YYINITIAL> (sql-substring|SQL-SUBSTRING)                   { return SPLTypes.SQLSUBSTRING; }
 <YYINITIAL> (str|STR)                                       { return SPLTypes.STR_FUNC; }
+<YYINITIAL> (str-concat|STR-CONCAT|strconcat|STRCONCAT)     { return SPLTypes.STRCONCAT; }
 <YYINITIAL> (str-len|STR-LEN)                               { return SPLTypes.STRLEN; }
 <YYINITIAL> (sub-string|SUB-STRING)                         { return SPLTypes.SUBSTRING; }
 <YYINITIAL> (substring-utf8|SUBSTRING-UTF8)                 { return SPLTypes.SUBSTRINGUTF8; }
@@ -185,9 +183,106 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (write-blob-to-file|WRITE-BLOB-TO-FILE)         { return SPLTypes.WRITEBLOBTOFILE; }
 <YYINITIAL> (zstr|ZSTR)                                     { return SPLTypes.ZSTR; }
 
-
-
+//Environment functions
+<YYINITIAL> (active-pid|ACTIVE-PID)                         { return SPLTypes.ACTIVE_PID; }
+<YYINITIAL> (api-application-name|API-APPLICATION-NAME)     { return SPLTypes.API_APPLICATION_NAME; }
+<YYINITIAL> (batched|BATCHED)                               { return SPLTypes.BATCHED; }
+<YYINITIAL> (can-dde|CAN-DDE)                               { return SPLTypes.CAN_DDE; }
+<YYINITIAL> (check-auth|CHECK-AUTH)                         { return SPLTypes.CHECK_AUTH; }
+<YYINITIAL> (colour-picker|COLOUR-PICKER)                   { return SPLTypes.COLOUR_PICKER; }
+<YYINITIAL> (create-db-schema|CREATE-DB-SCHEMA)             { return SPLTypes.CREATE_DB_SCHEMA; }
+<YYINITIAL> (create-db-user|CREATE-DB-USER)                 { return SPLTypes.CREATE_DB_USER; }
+<YYINITIAL> (currency-sign|CURRENCY-SIGN)                   { return SPLTypes.CURRENCY_SIGN; }
+<YYINITIAL> (database-type|DATABASE-TYPE)                   { return SPLTypes.DATABASE_TYPE; }
+<YYINITIAL> (db-command|DB-COMMAND)                         { return SPLTypes.DB_COMMAND; }
+<YYINITIAL> (db-table-name|DB-TABLE-NAME)                   { return SPLTypes.DB_TABLE_NAME; }
+<YYINITIAL> (dde-error-status|DDE-ERROR-STATUS)             { return SPLTypes.DDE_ERROR_STATUS; }
+<YYINITIAL> (dde-execute|DDE-EXECUTE)                       { return SPLTypes.DDE_EXECUTE; }
+<YYINITIAL> (dde-initiate|DDE-INITIATE)                     { return SPLTypes.DDE_INITIATE; }
+<YYINITIAL> (dde-poke|DDE-POKE)                             { return SPLTypes.DDE_POKE; }
+<YYINITIAL> (dde-request|DDE-REQUEST)                       { return SPLTypes.DDE_REQUEST; }
+<YYINITIAL> (dde-terminate|DDE-TERMINATE)                   { return SPLTypes.DDE_TERMINATE; }
+<YYINITIAL> (delete-registry-value|DELETE-REGISTRY-VALUE)   { return SPLTypes.DELETE_REGISTRY_VALUE; }
+<YYINITIAL> (enable-status-bar|ENABLE-STATUS-BAR)           { return SPLTypes.ENABLE_STATUS_BAR; }
+<YYINITIAL> (enable-system-menu|ENABLE-SYSTEM-MENU)         { return SPLTypes.ENABLE_SYSTEM_MENU; }
+<YYINITIAL> (enable-tool-bar|ENABLE-TOOL-BAR)               { return SPLTypes.ENABLE_TOOL_BAR; }
+<YYINITIAL> (error-description|ERROR-DESCRIPTION)           { return SPLTypes.ERROR_DESCRIPTION; }
+<YYINITIAL> (escape|ESCAPE)                                 { return SPLTypes.ESCAPE; }
+<YYINITIAL> (exit-status|EXIT-STATUS)                       { return SPLTypes.EXIT_STATUS; }
+<YYINITIAL> (find-parameter|FIND-PARAMETER)                 { return SPLTypes.FIND_PARAMETER; }
 <YYINITIAL> (get-env|getenv|GET-ENV|GETENV)                 { return SPLTypes.GETENV; }
+<YYINITIAL> (get-field-value|GET-FIELD-VALUE)               { return SPLTypes.GET_FIELD_VALUE; }
+<YYINITIAL> (get-field-value-numeric|GET-FIELD-VALUE-NUMERIC) { return SPLTypes.GET_FIELD_VALUE_NUMERIC; }
+<YYINITIAL> (get-function-code|GET-FUNCTION-CODE)           { return SPLTypes.GET_FUNCTION_CODE; }
+<YYINITIAL> (get-module-code|GET-MODULE-CODE)               { return SPLTypes.GET_MODULE_CODE; }
+<YYINITIAL> (get-param|GET-PARAM)                           { return SPLTypes.GET_PARAM; }
+<YYINITIAL> (get-registry-enum-key|GET-REGISTRY-ENUM-KEY)   { return SPLTypes.GET_REGISTRY_ENUM_KEY; }
+<YYINITIAL> (get-registry-enum-value|GET-REGISTRY-ENUM-VALUE) { return SPLTypes.GET_REGISTRY_ENUM_VALUE; }
+<YYINITIAL> (get-registry-value|GET-REGISTRY-VALUE)         { return SPLTypes.GET_REGISTRY_VALUE; }
+<YYINITIAL> (get-system-metrics|GET-SYSTEM-METRICS)         { return SPLTypes.GET_SYSTEM_METRICS; }
+<YYINITIAL> (gid|GID)                                       { return SPLTypes.GID; }
+<YYINITIAL> (grant-db-schema|GRANT-DB-SCHEMA)               { return SPLTypes.GRANT_DB_SCHEMA; }
+<YYINITIAL> (hide-dockable-windows|HIDE-DOCKABLE-WINDOWS)   { return SPLTypes.HIDE_DOCKABLE_WINDOWS; }
+<YYINITIAL> (idx|IDX)                                       { return SPLTypes.IDX; }
+<YYINITIAL> (if-then-else|IF-THEN-ELSE)                     { return SPLTypes.IF_THEN_ELSE; }
+<YYINITIAL> (io-count|IO-COUNT)                             { return SPLTypes.IO_COUNT; }
+<YYINITIAL> (line-no|LINE-NO)                               { return SPLTypes.LINE_NO; }
+<YYINITIAL> (local-no|local-yes|LOCAL-NO|LOCAL-YES)         { return SPLTypes.LOCAL_NO_AND_LOCAL_YES; }
+<YYINITIAL> (login-id|LOGIN-ID)                             { return SPLTypes.LOGIN_ID; }
+<YYINITIAL> (mail-add-line|MAIL-ADD-LINE)                   { return SPLTypes.MAIL_ADD_LINE; }
+<YYINITIAL> (mail-attach|MAIL-ATTACH)                       { return SPLTypes.MAIL_ATTACH; }
+<YYINITIAL> (mail-cancel|MAIL-CANCEL)                       { return SPLTypes.MAIL_CANCEL; }
+<YYINITIAL> (mail-from-name|MAIL-FROM-NAME)                 { return SPLTypes.MAIL_FROM_NAME; }
+<YYINITIAL> (mail-reply-to|MAIL-REPLY-TO)                   { return SPLTypes.MAIL_REPLY_TO; }
+<YYINITIAL> (mail-send|MAIL-SEND)                           { return SPLTypes.MAIL_SEND; }
+<YYINITIAL> (mail-start|MAIL-START)                         { return SPLTypes.MAIL_START; }
+<YYINITIAL> (max-screen-columns|MAX-SCREEN-COLUMNS)         { return SPLTypes.MAX_SCREEN_COLUMNS; }
+<YYINITIAL> (max-screen-rows|MAX-SCREEN-ROWS)               { return SPLTypes.MAX_SCREEN_ROWS; }
+<YYINITIAL> (message-status|MESSAGE-STATUS)                 { return SPLTypes.MESSAGE_STATUS; }
+<YYINITIAL> (mode-name|MODE-NAME)                           { return SPLTypes.MODE_NAME; }
+<YYINITIAL> (mouse-column|MOUSE-COLUMN)                     { return SPLTypes.MOUSE_COLUMN; }
+<YYINITIAL> (mouse-row|MOUSE-ROW)                           { return SPLTypes.MOUSE_ROW; }
+<YYINITIAL> (node-name|NODE-NAME)                           { return SPLTypes.NODE_NAME; }
+<YYINITIAL> (occurrence|OCCURRENCE)                         { return SPLTypes.OCCURRENCE; }
+<YYINITIAL> (operating-system|OPERATING-SYSTEM)             { return SPLTypes.OPERATING_SYSTEM; }
+<YYINITIAL> (page-no|PAGE-NO)                               { return SPLTypes.PAGE_NO; }
+<YYINITIAL> (param-cnt|PARAM-CNT)                           { return SPLTypes.PARAM_CNT; }
+<YYINITIAL> (pid|PID)                                       { return SPLTypes.PID; }
+<YYINITIAL> (pronto-release|PRONTO-RELEASE)                 { return SPLTypes.PRONTO_RELEASE; }
+<YYINITIAL> (prouser-flags|PROUSER-FLAGS)                   { return SPLTypes.PROUSER_FLAGS; }
+<YYINITIAL> (refresh-quick-links|REFRESH-QUICK-LINKS)       { return SPLTypes.REFRESH_QUICK_LINKS; }
+<YYINITIAL> (report-is-xml|REPORT-IS-XML)                   { return SPLTypes.REPORT_IS_XML; }
+<YYINITIAL> (review-row|REVIEW-ROW)                         { return SPLTypes.REVIEW_ROW; }
+<YYINITIAL> (revoke-db-schema|REVOKE-DB-SCHEMA)             { return SPLTypes.REVOKE_DB_SCHEMA; }
+<YYINITIAL> (rgb-to-colour|RGB-TO-COLOUR)                   { return SPLTypes.RGB_TO_COLOUR; }
+<YYINITIAL> (screen-mode|SCREEN-MODE)                       { return SPLTypes.SCREEN_MODE; }
+<YYINITIAL> (search|SEARCH)                                 { return SPLTypes.SEARCH; }
+<YYINITIAL> (search-mode|SEARCH-MODE)                       { return SPLTypes.SEARCH_MODE; }
+<YYINITIAL> (set-app-user|SET-APP-USER)                     { return SPLTypes.SET_APP_USER; }
+<YYINITIAL> (set-data-area-name|SET-DATA-AREA-NAME)         { return SPLTypes.SET_DATA_AREA_NAME; }
+<YYINITIAL> (set-background-image|SET-BACKGROUND-IMAGE)     { return SPLTypes.SET_BACKGROUND_IMAGE; }
+<YYINITIAL> (set-background-url|SET-BACKGROUND-URL)         { return SPLTypes.SET_BACKGROUND_URL; }
+<YYINITIAL> (set-environment|SET-ENVIRONMENT|set-env|SET-ENV){ return SPLTypes.SET_ENVIRONMENT; }
+<YYINITIAL> (set-function-code|SET-FUNCTION-CODE)           { return SPLTypes.SET_FUNCTION_CODE; }
+<YYINITIAL> (set-help-context|SET-HELP-CONTEXT)             { return SPLTypes.SET_HELP_CONTEXT; }
+<YYINITIAL> (set-keyboard-focus|SET-KEYBOARD-FOCUS)         { return SPLTypes.SET_KEYBOARD_FOCUS; }
+<YYINITIAL> (set-module-code|SET-MODULE-CODE)               { return SPLTypes.SET_MODULE_CODE; }
+<YYINITIAL> (set-registry-value|SET-REGISTRY-VALUE)         { return SPLTypes.SET_REGISTRY_VALUE; }
+<YYINITIAL> (set-web-window|SET-WEB-WINDOW)                 { return SPLTypes.SET_WEB_WINDOW; }
+<YYINITIAL> (sleep|SLEEP)                                   { return SPLTypes.SLEEP; }
+<YYINITIAL> (spool-file-name|SPOOL-FILE-NAME)               { return SPLTypes.SPOOL_FILE_NAME; }
+<YYINITIAL> (time-elapsed|TIME-ELAPSED)                     { return SPLTypes.TIME_ELAPSED; }
+<YYINITIAL> (transaction-active|TRANSACTION-ACTIVE)         { return SPLTypes.TRANSACTION_ACTIVE; }
+<YYINITIAL> (tty|TTY)                                       { return SPLTypes.TTY; }
+<YYINITIAL> (uid|UID)                                       { return SPLTypes.UID; }
+<YYINITIAL> (user-group|USER-GROUP)                         { return SPLTypes.USER_GROUP; }
+<YYINITIAL> (valid-activation-key|VALID-ACTIVATION-KEY)     { return SPLTypes.VALID_ACTIVATION_KEY; }
+<YYINITIAL> (wait-for-input|WAIT-FOR-INPUT)                 { return SPLTypes.WAIT_FOR_INPUT; }
+
+
+
+
+
 
 //SCREEN DEFINITION
 <YYINITIAL> (screen|SCREEN)                                 { return SPLTypes.SCREEN; }

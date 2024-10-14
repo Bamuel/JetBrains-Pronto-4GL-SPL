@@ -20,24 +20,125 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     statement_ ::= messagebox_ | message_
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
     function_ ::= environmentfunction_ | stringfunction_
-        environmentfunction_ ::= getenv_
+
+        environmentfunction_ ::= activepid_ | apiapplication-name_ | batched_ | can-dee_ | check-auth_ | colour-picker_
+        | create-db-schema_ | create-db-user_ | currency-sign_ | database-type_ | db-command_ | db-table-name_ | dde-error-status_
+        | dde-execute_ | dde-initiate_ | dde-poke_ | dde-request_ | dde-terminate_ | delete-registry-value_ | enable-status-bar_
+        | enable-system-menu_ | enable-tool-bar_ | error-description_ | escape_ | exit-status_ | find-parameter_ | getenv_ | get-field-value_
+        | get-field-value-numeric_ | get-function-code_ | get-module-code_ | get-param_ | get-registry-enum-key_ | get-registry-enum-value_
+        | get-registry-value_ | get-system-metrics_ | gid_ | grant-db-schema_ | hide-dockable-windows_ | idx_ | if-then-else_ | io-count_
+        | line-no_ | local-no_ | login-id_ | mail-add-line_ | mail-attach_ | mail-cancel_ | mail-from-name_ | mail-reply-to_ | mail-send_
+        | mail-start_ | max-screen-columns_ | max-screen-rows_ | message-status_ | mode-name_ | mouse-column_ | mouse-row_ | node-name_
+        | occurrence_ | operating-system_ | page-no_ | param-cnt_ | pid_ | pronto-release_ | prouser-flags_ | refresh-quick-links_
+        | report-is-xml_ | review-row_ | revoke-db-schema_ | rgb-to-colour_ | screen-mode_ | search_ | search-mode_ | set-app-user_
+        | set-data-area-name_ | set-background-image_ | set-background-url_ | set-environment_ | set-function-code_ | set-help-context_
+        | set-keyboard-focus_ | set-module-code_ | set-registry-value_ | set-web-window_ | sleep_ | spool-file-name_ | time-elapsed_
+        | transaction-active_ | tty_ | uid_ | user-group_ | valid-activation-key_ | wait-for-input_
+
         stringfunction_ ::= ascii-char_ | ascii-num_ | base64toblob_| blobappend_ | blobappendbase64_ | blobsection_ | blobtobase64_
         | concat_ |  formatpicture_ | freeblob_ | fstr_ | leftjustify_ | lowercase_ | ltrim_ | maxalphavalue_ | num_ | paramtext_ | pattern_
         | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
 
 
-// Messagebox rule
-messagebox_ ::= MESSAGEBOX string_ messsageboxtitle_? messageboxbuttons_? messageboxdefault_? messageboxicon_? messageboxtag_? messageboxhelpcontext_? messageboxoptional_? messageboxbell_? item_*
-
-messsageboxtitle_ ::= TITLE ("is")? string_
-messageboxbuttons_ ::= MESSAGEBOX_BUTTONS MESSAGEBOX_BUTTONS_VALUES
-messageboxdefault_ ::= DEFAULT ("is")? MESSAGEBOX_BUTTONS_VALUES
-messageboxicon_ ::= ICON ("is")? MESSAGEBOX_ICON_VALUES
-messageboxtag_ ::= TAG ("is")? NUMBER
-messageboxhelpcontext_ ::= HELP_CONTEXT string_
-messageboxoptional_ ::= OPTIONAL
-messageboxbell_ ::= BELL
+// Environment function
+activepid_ ::= ACTIVE_PID LPAREN number_ RPAREN
+apiapplication-name_ ::= API_APPLICATION_NAME LPAREN RPAREN
+batched_ ::= BATCHED LPAREN RPAREN
+can-dee_ ::= CAN_DDE LPAREN RPAREN
+check-auth_ ::= CHECK_AUTH LPAREN number_ RPAREN
+colour-picker_ ::= COLOUR_PICKER LPAREN string_ RPAREN
+create-db-schema_ ::= CREATE_DB_SCHEMA LPAREN string_ COMMA "SPACES" RPAREN
+create-db-user_ ::= CREATE_DB_USER LPAREN string_ COMMA "SPACES" RPAREN
+currency-sign_ ::= CURRENCY_SIGN LPAREN RPAREN
+database-type_ ::= DATABASE_TYPE LPAREN RPAREN
+db-command_ ::= DB_COMMAND LPAREN string_ RPAREN
+db-table-name_ ::= DB_TABLE_NAME LPAREN string_ RPAREN
+dde-error-status_ ::= DDE_ERROR_STATUS LPAREN RPAREN
+dde-execute_ ::= DDE_EXECUTE LPAREN string_ COMMA string_ RPAREN
+dde-initiate_ ::= DDE_INITIATE LPAREN string_ COMMA string_ RPAREN
+dde-poke_ ::= DDE_POKE LPAREN string_ COMMA string_ COMMA string_ RPAREN
+dde-request_ ::= DDE_REQUEST LPAREN string_ COMMA string_ RPAREN
+dde-terminate_ ::= DDE_TERMINATE LPAREN string_ RPAREN
+delete-registry-value_ ::= DELETE_REGISTRY_VALUE LPAREN string_ RPAREN
+enable-status-bar_ ::= ENABLE_STATUS_BAR LPAREN boolean_ RPAREN
+enable-system-menu_ ::= ENABLE_SYSTEM_MENU LPAREN boolean_ RPAREN
+enable-tool-bar_ ::= ENABLE_TOOL_BAR LPAREN boolean_ RPAREN
+error-description_ ::= ERROR_DESCRIPTION LPAREN number_ RPAREN
+escape_ ::= ESCAPE LPAREN RPAREN
+exit-status_ ::= EXIT_STATUS LPAREN RPAREN
+find-parameter_ ::= FIND_PARAMETER LPAREN string_ RPAREN
+getenv_ ::= GETENV LPAREN string_ RPAREN
+get-field-value_ ::= GET_FIELD_VALUE LPAREN string_ RPAREN
+get-field-value-numeric_ ::= GET_FIELD_VALUE_NUMERIC LPAREN string_ RPAREN
+get-function-code_ ::= GET_FUNCTION_CODE LPAREN string_ RPAREN
+get-module-code_ ::= GET_MODULE_CODE LPAREN string_ RPAREN
+get-param_ ::= GET_PARAM LPAREN number_ RPAREN
+get-registry-enum-key_ ::= GET_REGISTRY_ENUM_KEY LPAREN string_ COMMA number_ RPAREN
+get-registry-enum-value_ ::= GET_REGISTRY_ENUM_VALUE LPAREN string_ COMMA number_ COMMA string_ RPAREN
+get-registry-value_ ::= GET_REGISTRY_VALUE LPAREN string_ RPAREN
+get-system-metrics_ ::= GET_SYSTEM_METRICS LPAREN number_ RPAREN
+gid_ ::= GID LPAREN RPAREN
+grant-db-schema_ ::= GRANT_DB_SCHEMA LPAREN string_ COMMA string_ RPAREN
+hide-dockable-windows_ ::= HIDE_DOCKABLE_WINDOWS LPAREN (dockableflags_)? RPAREN
+dockableflags_ ::= "0"| "non-zero"
+idx_ ::= IDX LPAREN string_ (COMMA string_)* RPAREN
+if-then-else_ ::= IF_THEN_ELSE LPAREN condition_ COMMA string_ COMMA string_ RPAREN //todo: condition
+io-count_ ::= IO_COUNT LPAREN RPAREN
+line-no_ ::= LINE_NO LPAREN RPAREN
+local-no_ ::= LOCAL_NO_AND_LOCAL_YES LPAREN RPAREN
+login-id_ ::= LOGIN_ID LPAREN RPAREN
+mail-add-line_ ::= MAIL_ADD_LINE LPAREN string_ RPAREN
+mail-attach_ ::= MAIL_ATTACH LPAREN string_ COMMA string_ COMMA number_ COMMA number_ COMMA number_ RPAREN
+mail-cancel_ ::= MAIL_CANCEL LPAREN RPAREN
+mail-from-name_ ::= MAIL_FROM_NAME LPAREN string_ RPAREN
+mail-reply-to_ ::= MAIL_REPLY_TO LPAREN string_ COMMA string_ RPAREN
+mail-send_ ::= MAIL_SEND LPAREN string_ COMMA boolean_ COMMA boolean_ RPAREN
+mail-start_ ::= MAIL_START LPAREN string_ RPAREN
+max-screen-columns_ ::= MAX_SCREEN_COLUMNS LPAREN RPAREN
+max-screen-rows_ ::= MAX_SCREEN_ROWS LPAREN RPAREN
+message-status_ ::= MESSAGE_STATUS LPAREN RPAREN
+mode-name_ ::= MODE_NAME LPAREN RPAREN
+mouse-column_ ::= MOUSE_COLUMN LPAREN RPAREN
+mouse-row_ ::= MOUSE_ROW LPAREN RPAREN
+node-name_ ::= NODE_NAME LPAREN RPAREN
+occurrence_ ::= OCCURRENCE LPAREN string_ RPAREN
+operating-system_ ::= OPERATING_SYSTEM LPAREN RPAREN
+page-no_ ::= PAGE_NO LPAREN string_ RPAREN
+param-cnt_ ::= PARAM_CNT LPAREN RPAREN
+pid_ ::= PID LPAREN RPAREN
+pronto-release_ ::= PRONTO_RELEASE LPAREN RPAREN
+prouser-flags_ ::= PROUSER_FLAGS LPAREN RPAREN
+refresh-quick-links_ ::= REFRESH_QUICK_LINKS LPAREN RPAREN
+report-is-xml_ ::= REPORT_IS_XML LPAREN string_ RPAREN
+review-row_ ::= REVIEW_ROW LPAREN RPAREN
+revoke-db-schema_ ::= REVOKE_DB_SCHEMA LPAREN string_ COMMA string_ RPAREN
+rgb-to-colour_ ::= RGB_TO_COLOUR LPAREN number_ RPAREN
+screen-mode_ ::= SCREEN_MODE LPAREN RPAREN
+search_ ::= SEARCH LPAREN RPAREN
+search-mode_ ::= SEARCH_MODE LPAREN RPAREN
+set-app-user_ ::= SET_APP_USER LPAREN string_ RPAREN
+set-data-area-name_ ::= SET_DATA_AREA_NAME LPAREN string_ RPAREN
+set-background-image_ ::= SET_BACKGROUND_IMAGE LPAREN string_ RPAREN
+set-background-url_ ::= SET_BACKGROUND_URL LPAREN string_ COMMA background-urlflags_ RPAREN
+background-urlflags_ ::= "1" | "2" | "4" | "8" //todo:  flag settings can be combined by adding the values together.
+set-environment_ ::= SET_ENVIRONMENT LPAREN string_ COMMA string_ RPAREN
+set-function-code_ ::= SET_FUNCTION_CODE LPAREN string_ RPAREN
+set-help-context_ ::= SET_HELP_CONTEXT LPAREN string_ COMMA number_ RPAREN
+set-keyboard-focus_ ::= SET_KEYBOARD_FOCUS LPAREN string_ COMMA string_ RPAREN //todo: 2nd string is flag not sure what the values are
+set-module-code_ ::= SET_MODULE_CODE LPAREN string_ RPAREN
+set-registry-value_ ::= SET_REGISTRY_VALUE LPAREN string_ COMMA string_ RPAREN
+set-web-window_ ::= SET_WEB_WINDOW LPAREN string_ COMMA string_ COMMA string_ COMMA webwindowflag_ RPAREN
+webwindowflag_ ::= "1" | "2" | "3" | "4" | "8" | "16" | "32" | "64" //todo:  flag settings can be combined by adding the values together.
+sleep_ ::= SLEEP LPAREN number_ RPAREN
+spool-file-name_ ::= SPOOL_FILE_NAME LPAREN (string_)? RPAREN
+time-elapsed_ ::= TIME_ELAPSED LPAREN number_ COMMA number_ RPAREN
+transaction-active_ ::= TRANSACTION_ACTIVE LPAREN RPAREN
+tty_ ::= TTY LPAREN RPAREN
+uid_ ::= UID LPAREN RPAREN
+user-group_ ::= USER_GROUP LPAREN RPAREN
+valid-activation-key_ ::= VALID_ACTIVATION_KEY LPAREN string_ COMMA string_ RPAREN
+wait-for-input_ ::= WAIT_FOR_INPUT LPAREN RPAREN
 
 
 //String functions
@@ -79,9 +180,6 @@ zstr_ ::= ZSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
 
 // Message rule
 message_ ::= MESSAGE (string_)? (NOBELL)?
-
-// Environment function
-getenv_ ::= GETENV LPAREN string_ RPAREN
 
 // Preprocessor rule
 preprocessors_ ::= PREPROCESSOR (BAD_CHARACTER)?
@@ -186,13 +284,28 @@ before_ ::= BEFORE item_* //todo: procedural-statements
 detail_ ::= DETAIL item_* //todo: procedural-statements
 after_ ::= AFTER item_* //todo: procedural-statements
 
+// Messagebox rule
+messagebox_ ::= MESSAGEBOX string_ messsageboxtitle_? messageboxbuttons_? messageboxdefault_? messageboxicon_? messageboxtag_? messageboxhelpcontext_? messageboxoptional_? messageboxbell_? item_*
+
+messsageboxtitle_ ::= TITLE ("is")? string_
+messageboxbuttons_ ::= MESSAGEBOX_BUTTONS MESSAGEBOX_BUTTONS_VALUES
+messageboxdefault_ ::= DEFAULT ("is")? MESSAGEBOX_BUTTONS_VALUES
+messageboxicon_ ::= ICON ("is")? MESSAGEBOX_ICON_VALUES
+messageboxtag_ ::= TAG ("is")? NUMBER
+messageboxhelpcontext_ ::= HELP_CONTEXT string_
+messageboxoptional_ ::= OPTIONAL
+messageboxbell_ ::= BELL
+
+
 //row and col
 //Syntax @row,col
 rowcol_ ::= AT NUMBER COMMA NUMBER
 selectclauses_ ::= "SELECT" item_* //todo: sql select
 
 string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | stringfunction_ | environmentfunction_
-number_ ::= NUMBER | IDENTIFIER
+number_ ::= NUMBER | IDENTIFIER | environmentfunction_
+boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
+condition_ ::= item_*
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
 // todo: add more picture string characters, this covers the basics.
