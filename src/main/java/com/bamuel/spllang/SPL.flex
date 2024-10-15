@@ -22,6 +22,9 @@ IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_-]*
 //Currently correct, but may need to be updated
 NUMBER=-?[0-9]+
 
+DATE=(\d{2}-[A-Z]{3}-\d{4})
+TIME=(\d{2}:\d{2}:\d{2})
+
 SINGLEQUOTE="'"[^']*"'"
 DOUBLEQUOTE="\""[^\"]*"\""
 
@@ -52,7 +55,7 @@ LOGICAL_EXPRESSIONS=(and|or|not)
 
 //FUNCTIONS
 //ARITHMETIC_FUNCTIONS=(aand|abs|anot|aor|cos|fraction|integer|lshift|max-value|max-presentation-value|min-value|power-of|random|rshift|sign-of|sin|smallest-increment|square-root|sum|sum-array|tan)
-DATETIME_FUNCTIONS=(add-month|client-date-time-string|date-from-date-time|date-time|date-to-julian|day|day-name|days-in-month|dow|gmt|hour|julian|julian-to-date|leap-year|minute|month|month-name|second|systime|time-from-date-time|time-zone|tod|today|year)
+//DATETIME_FUNCTIONS=(add-month|client-date-time-string|date-from-date-time|date-time|date-to-julian|day|day-name|days-in-month|dow|gmt|hour|julian|julian-to-date|leap-year|minute|month|month-name|second|systime|time-from-date-time|time-zone|tod|today|year)
 //ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-auth|colour-picker|create-db-schema|create-db-user|currency-sign|database-type|db-command|db-table-name|dde-error-status|dde-execute|dde-initiate|dde-poke|dde-request|dde-terminate|delete-registry-value|enable-status-bar|enable-system-menu|enable-tool-bar|error-description|escape|exit-status|find-parameter|get-env|get-field-value|get-field-value-numeric|get-function-code|get-module-code|get-param|get-registry-enum-key|get-registry-enum-value|get-registry-value|get-system-metrics|gid|grant-db-schema|hide-dockable-windows|idx|if-then-else|io-count|line-no|local-no and local-yes|login-id|mail-add-line|mail-attach|mail-cancel|mail-from-name|mail-reply-to|mail-send|mail-start|max-screen-columns|max-screen-rows|message-status|mode-name|mouse-column|mouse-row|node-name|occurrence|operating-system|page-no|param-cnt|pid|pronto-release|prouser-flags|refresh-quick-links|report-is-xml|review-row|revoke-db-schema|rgb-to-colour|screen-mode|search|search-mode|set-app-user function|set-data-area-name|set-background-image|set-background-url|set-environment|set-function-code|set-help-context|set-keyboard-focus|set-module-code|set-registry-value|set-web-window|sleep|spool-file-name|time-elapsed|transaction-active|tty|uid|user-group|valid-activation-key|wait-for-input)
 FILEHANDLING_FUNCTIONS=(cd|cd-without-close-all|client-file-browse|dir|file-exists|file-name|file-owner|file-size|file-status|file-version|finish-dir-search|is-a-dir|local-cd|local-cd-without-close-all|local-dir|mkdir|modification-time|next-dir-entry|rmdir|start-dir-search)
 OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-method|ole-call-method|ole-create-control|ole-create-instance|ole-enum-next|ole-enum-reset|ole-error-description|ole-get-active-object|ole-get-dispatch-id|ole-get-event|ole-get-property|ole-put-property|ole-put-property-byref|ole-query-interface|ole-release|ole-status|ole-unadvise-all|ole-unadvise-event)
@@ -78,7 +81,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> {FUNCTION_DECLARATION}                          { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {FUNCTION_DECLARATION_END}                      { return SPLTypes.FUNCTION_DECLARATION; }
 //<YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
-<YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
+//<YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
 //<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
@@ -262,7 +265,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (set-data-area-name|SET-DATA-AREA-NAME)         { return SPLTypes.SET_DATA_AREA_NAME; }
 <YYINITIAL> (set-background-image|SET-BACKGROUND-IMAGE)     { return SPLTypes.SET_BACKGROUND_IMAGE; }
 <YYINITIAL> (set-background-url|SET-BACKGROUND-URL)         { return SPLTypes.SET_BACKGROUND_URL; }
-<YYINITIAL> (set-environment|SET-ENVIRONMENT|set-env|SET-ENV){ return SPLTypes.SET_ENVIRONMENT; }
+<YYINITIAL> (set-environment|SET-ENVIRONMENT|set-env|SET-ENV) { return SPLTypes.SET_ENVIRONMENT; }
 <YYINITIAL> (set-function-code|SET-FUNCTION-CODE)           { return SPLTypes.SET_FUNCTION_CODE; }
 <YYINITIAL> (set-help-context|SET-HELP-CONTEXT)             { return SPLTypes.SET_HELP_CONTEXT; }
 <YYINITIAL> (set-keyboard-focus|SET-KEYBOARD-FOCUS)         { return SPLTypes.SET_KEYBOARD_FOCUS; }
@@ -301,6 +304,35 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (sum|SUM)                                       { return SPLTypes.SUM; }
 <YYINITIAL> (sum-array|SUM-ARRAY)                           { return SPLTypes.SUM_ARRAY; }
 <YYINITIAL> (tan|TAN)                                       { return SPLTypes.TAN; }
+
+//DateTime functions
+<YYINITIAL> {DATE}                                          { return SPLTypes.DATE; }
+<YYINITIAL> {TIME}                                          { return SPLTypes.TIME; }
+<YYINITIAL> (add-month|ADD-MONTH)                           { return SPLTypes.ADD_MONTH; }
+<YYINITIAL> (client-date-time-string|CLIENT-DATE-TIME-STRING) { return SPLTypes.CLIENT_DATE_TIME_STRING; }
+<YYINITIAL> (date-from-date-time|DATE-FROM-DATE-TIME)       { return SPLTypes.DATE_FROM_DATE_TIME; }
+<YYINITIAL> (date-time|DATE-TIME)                           { return SPLTypes.DATE_TIME; }
+<YYINITIAL> (date-to-julian|DATE-TO-JULIAN)                 { return SPLTypes.DATE_TO_JULIAN; }
+<YYINITIAL> (day|DAY)                                       { return SPLTypes.DAY; }
+<YYINITIAL> (day-name|DAY-NAME)                             { return SPLTypes.DAY_NAME; }
+<YYINITIAL> (days-in-month|DAYS-IN-MONTH)                   { return SPLTypes.DAYS_IN_MONTH; }
+<YYINITIAL> (dow|DOW)                                       { return SPLTypes.DOW; }
+<YYINITIAL> (gmt|GMT|gmtime|GMTIME)                         { return SPLTypes.GMT; }
+<YYINITIAL> (hour|HOUR)                                     { return SPLTypes.HOUR; }
+<YYINITIAL> (julian|JULIAN)                                 { return SPLTypes.JULIAN; }
+<YYINITIAL> (julian-to-date|JULIAN-TO-DATE|julian2date|JULIAN2DATE) { return SPLTypes.JULIAN_TO_DATE; }
+<YYINITIAL> (leap-year|LEAP-YEAR)                           { return SPLTypes.LEAP_YEAR; }
+<YYINITIAL> (minute|MINUTE)                                 { return SPLTypes.MINUTE; }
+<YYINITIAL> (month|MONTH)                                   { return SPLTypes.MONTH; }
+<YYINITIAL> (month-name|MONTH-NAME)                         { return SPLTypes.MONTH_NAME; }
+<YYINITIAL> (second|SECOND)                                 { return SPLTypes.SECOND; }
+<YYINITIAL> (systime|SYSTIME|sys-time|SYS-TIME)             { return SPLTypes.SYSTIME; }
+<YYINITIAL> (time-from-date-time|TIME-FROM-DATE-TIME)       { return SPLTypes.TIME_FROM_DATE_TIME; }
+<YYINITIAL> (time-zone|TIME-ZONE)                           { return SPLTypes.TIME_ZONE; }
+<YYINITIAL> (tod|TOD)                                       { return SPLTypes.TOD; }
+<YYINITIAL> (today|TODAY)                                   { return SPLTypes.TODAY; }
+<YYINITIAL> (year|YEAR)                                     { return SPLTypes.YEAR; }
+
 
 
 

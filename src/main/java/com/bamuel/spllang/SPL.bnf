@@ -19,10 +19,14 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_
     statement_ ::= messagebox_ | message_
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
-    function_ ::= arithmeticfunction_  | environmentfunction_ | stringfunction_
+    function_ ::= arithmeticfunction_  | datetimefunction_ | environmentfunction_ | stringfunction_
 
         arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
         | min-value_ | power-of_ | random_ | rshift_ | sign-of_ | sin_ | smallest-increment_ | square-root_ | sum_ | sum-array_ | tan_
+
+        datetimefunction_ ::= add-month_ | client-date-time-string_ | date-from-date-time_ | date-time_ | date-to-julian_ | day_ | day-name_
+        | days-in-month_ | dow_ | gmt_ | hour_ | julian_ | julian-to-date_ | leap-year_ | minute_ | month_ | month-name_ | second_
+        | systime_ | time-from-date-time_ | time-zone_ | tod_ | today_ | year_
 
         environmentfunction_ ::= activepid_ | apiapplication-name_ | batched_ | can-dee_ | check-auth_ | colour-picker_
         | create-db-schema_ | create-db-user_ | currency-sign_ | database-type_ | db-command_ | db-table-name_ | dde-error-status_
@@ -66,7 +70,31 @@ sum_ ::= SUM LPAREN number_ RPAREN
 sum-array_ ::= SUM_ARRAY LPAREN number_ COMMA number_ COMMA number_ RPAREN
 tan_ ::= TAN LPAREN number_ RPAREN
 
-
+//Date and time functions
+add-month_ ::= ADD_MONTH LPAREN datestring_ COMMA number_ COMMA number_ RPAREN
+client-date-time-string_ ::= CLIENT_DATE_TIME_STRING LPAREN RPAREN
+date-from-date-time_ ::= DATE_FROM_DATE_TIME LPAREN datestring_ COMMA boolean_ RPAREN
+date-time_ ::= DATE_TIME LPAREN DATE COMMA TIME COMMA boolean_ RPAREN
+date-to-julian_ ::= DATE_TO_JULIAN LPAREN string_ RPAREN
+day_ ::= DAY LPAREN datestring_ RPAREN
+day-name_ ::= DAY_NAME LPAREN datestring_ RPAREN
+days-in-month_ ::= DAYS_IN_MONTH LPAREN number_ COMMA number_ RPAREN
+dow_ ::= DOW LPAREN datestring_ RPAREN
+gmt_ ::= GMT LPAREN RPAREN
+hour_ ::= HOUR LPAREN datestring_ RPAREN //todo: stricter TIME
+julian_ ::= JULIAN LPAREN number_ COMMA number_ COMMA number_ RPAREN
+julian-to-date_ ::= JULIAN_TO_DATE LPAREN datestring_ RPAREN
+leap-year_ ::= LEAP_YEAR LPAREN number_ RPAREN
+minute_ ::= MINUTE LPAREN datestring_ RPAREN //todo: stricter TIME
+month_ ::= MONTH LPAREN datestring_ RPAREN
+month-name_ ::= MONTH_NAME LPAREN datestring_ RPAREN
+second_ ::= SECOND LPAREN datestring_ RPAREN //todo: stricter TIME
+systime_ ::= SYSTIME LPAREN RPAREN
+time-from-date-time_ ::= TIME_FROM_DATE_TIME LPAREN datestring_ COMMA boolean_ RPAREN
+time-zone_ ::= TIME_ZONE LPAREN RPAREN
+tod_ ::= TOD LPAREN RPAREN
+today_ ::= TODAY LPAREN RPAREN
+year_ ::= YEAR LPAREN datestring_ RPAREN
 
 
 // Environment function
@@ -331,15 +359,16 @@ messageboxbell_ ::= BELL
 rowcol_ ::= AT NUMBER COMMA NUMBER
 selectclauses_ ::= "SELECT" item_* //todo: sql select
 
-string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | stringfunction_ | environmentfunction_
-number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | environmentfunction_
+string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | datetimefunction_ | stringfunction_ | environmentfunction_
+number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | datetimefunction_ | environmentfunction_
 boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
+datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_
 condition_ ::= item_*
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
 // todo: add more picture string characters, this covers the basics.
 picture_ ::= pic_group_ | pic_words
-pic_words ::= "ddmmmyybhh:mm"  // Date and time format
+pic_words ::= "ddmmmyybhh:mm"| "HH:MM:SS" // Date and time format
 pic_group_ ::= (NUMBER | IDENTIFIER) (LPAREN number_ RPAREN)? (IDENTIFIER LPAREN number_ RPAREN)?
 
 element_ ::= FUNCTION_DECLARATION
