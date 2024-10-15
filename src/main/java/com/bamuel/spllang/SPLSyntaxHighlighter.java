@@ -286,6 +286,29 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.USER_GROUP, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.VALID_ACTIVATION_KEY, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WAIT_FOR_INPUT, new TextAttributesKey[]{FUNCTION_CALL});
+
+        //File Functions
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CD, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CD_WITHOUT_CLOSE_ALL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CLIENT_FILE_BROWSE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DIR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE_EXISTS, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE_NAME, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE_OWNER, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE_SIZE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE_STATUS, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FILE_VERSION, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.FINISH_DIR_SEARCH, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.IS_A_DIR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCAL_CD, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCAL_CD_WITHOUT_CLOSE_ALL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LOCAL_DIR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MKDIR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODIFICATION_TIME, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NEXT_DIR_ENTRY, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RMDIR, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.START_DIR_SEARCH, new TextAttributesKey[]{FUNCTION_CALL});
+
         //String Functions
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ASCII_CHAR, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ASCII_NUM, new TextAttributesKey[]{FUNCTION_CALL});

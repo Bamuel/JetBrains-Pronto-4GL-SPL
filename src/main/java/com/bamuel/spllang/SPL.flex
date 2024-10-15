@@ -57,7 +57,6 @@ LOGICAL_EXPRESSIONS=(and|or|not)
 //ARITHMETIC_FUNCTIONS=(aand|abs|anot|aor|cos|fraction|integer|lshift|max-value|max-presentation-value|min-value|power-of|random|rshift|sign-of|sin|smallest-increment|square-root|sum|sum-array|tan)
 //DATETIME_FUNCTIONS=(add-month|client-date-time-string|date-from-date-time|date-time|date-to-julian|day|day-name|days-in-month|dow|gmt|hour|julian|julian-to-date|leap-year|minute|month|month-name|second|systime|time-from-date-time|time-zone|tod|today|year)
 //ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-auth|colour-picker|create-db-schema|create-db-user|currency-sign|database-type|db-command|db-table-name|dde-error-status|dde-execute|dde-initiate|dde-poke|dde-request|dde-terminate|delete-registry-value|enable-status-bar|enable-system-menu|enable-tool-bar|error-description|escape|exit-status|find-parameter|get-env|get-field-value|get-field-value-numeric|get-function-code|get-module-code|get-param|get-registry-enum-key|get-registry-enum-value|get-registry-value|get-system-metrics|gid|grant-db-schema|hide-dockable-windows|idx|if-then-else|io-count|line-no|local-no and local-yes|login-id|mail-add-line|mail-attach|mail-cancel|mail-from-name|mail-reply-to|mail-send|mail-start|max-screen-columns|max-screen-rows|message-status|mode-name|mouse-column|mouse-row|node-name|occurrence|operating-system|page-no|param-cnt|pid|pronto-release|prouser-flags|refresh-quick-links|report-is-xml|review-row|revoke-db-schema|rgb-to-colour|screen-mode|search|search-mode|set-app-user function|set-data-area-name|set-background-image|set-background-url|set-environment|set-function-code|set-help-context|set-keyboard-focus|set-module-code|set-registry-value|set-web-window|sleep|spool-file-name|time-elapsed|transaction-active|tty|uid|user-group|valid-activation-key|wait-for-input)
-FILEHANDLING_FUNCTIONS=(cd|cd-without-close-all|client-file-browse|dir|file-exists|file-name|file-owner|file-size|file-status|file-version|finish-dir-search|is-a-dir|local-cd|local-cd-without-close-all|local-dir|mkdir|modification-time|next-dir-entry|rmdir|start-dir-search)
 OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-method|ole-call-method|ole-create-control|ole-create-instance|ole-enum-next|ole-enum-reset|ole-error-description|ole-get-active-object|ole-get-dispatch-id|ole-get-event|ole-get-property|ole-put-property|ole-put-property-byref|ole-query-interface|ole-release|ole-status|ole-unadvise-all|ole-unadvise-event)
 SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
 //STRING_FUNCTIONS=(blob-section|blob-to-base64|format-picture|free-blob|fstr|left-justify|ltrim|max-alpha-value|num|pattern|read-blob-from-file|reserved|right-justify|rtrim|size-of|sql-substring|str-len|sub-string|substring-utf8|valid-number|write-blob-to-file|zstr)
@@ -83,7 +82,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 //<YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
 //<YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
 //<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
-<YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
+//<YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {SECURITY_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
 //<YYINITIAL> {STRING_FUNCTIONS}                              { return SPLTypes.FUNCTION_DECLARATION; }
@@ -151,40 +150,56 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 
 <YYINITIAL> (message|MESSAGE)                               { return SPLTypes.MESSAGE; }
 
-//String functions
-<YYINITIAL> (ascii-char|ASCII-CHAR)                         { return SPLTypes.ASCII_CHAR; }
-<YYINITIAL> (ascii-num|ascii|asc|ASCII-NUM|ASCII|ASC)       { return SPLTypes.ASCII_NUM; }
-<YYINITIAL> (base64-to-blob|BASE64-TO-BLOB)                 { return SPLTypes.BASE64TOBLOB; }
-<YYINITIAL> (blob-append|BLOB-APPEND)                       { return SPLTypes.BLOBAPPEND; }
-<YYINITIAL> (blob-append-base64|BLOB-APPEND-BASE64)         { return SPLTypes.BLOBAPPENDBASE64; }
-<YYINITIAL> (blob-section|BLOB-SECTION)                     { return SPLTypes.BLOBSECTION; }
-<YYINITIAL> (blob-to-base64|BLOB-TO-BASE64)                 { return SPLTypes.BLOBTOBASE64; }
-<YYINITIAL> (concat|CONCAT)                                 { return SPLTypes.CONCAT; }
-<YYINITIAL> (format-picture|FORMAT-PICTURE)                 { return SPLTypes.FORMATPICTURE; }
-<YYINITIAL> (free-blob|FREE-BLOB)                           { return SPLTypes.FREEBLOB; }
-<YYINITIAL> (fstr|FSTR)                                     { return SPLTypes.FSTR; }
-<YYINITIAL> (left-justify|LEFT-JUSTIFY)                     { return SPLTypes.LEFTJUSTIFY; }
-<YYINITIAL> (lowercase|LOWERCASE)                           { return SPLTypes.LOWERCASE; }
-<YYINITIAL> (ltrim|LTRIM)                                   { return SPLTypes.LTRIM; }
-<YYINITIAL> (max-alpha-value|MAX-ALPHA-VALUE)               { return SPLTypes.MAXALPHAVALUE; }
-<YYINITIAL> (num|NUM)                                       { return SPLTypes.NUM; }
-<YYINITIAL> (pattern|PATTERN)                               { return SPLTypes.PATTERN; }
-<YYINITIAL> (param-text|PARAM-TEXT|paramtext|PARAMTEXT)     { return SPLTypes.PARAMTEXT; }
-<YYINITIAL> (read-blob-from-file|READ-BLOB-FROM-FILE)       { return SPLTypes.READBLOBFROMFILE; }
-<YYINITIAL> (reserved|RESERVED)                             { return SPLTypes.RESERVED; }
-<YYINITIAL> (right-justify|RIGHT-JUSTIFY)                   { return SPLTypes.RIGHTJUSTIFY; }
-<YYINITIAL> (rtrim|RTRIM)                                   { return SPLTypes.RTRIM; }
-<YYINITIAL> (size-of|SIZE-OF)                               { return SPLTypes.SIZEOF; }
-<YYINITIAL> (sql-substring|SQL-SUBSTRING)                   { return SPLTypes.SQLSUBSTRING; }
-<YYINITIAL> (str|STR)                                       { return SPLTypes.STR_FUNC; }
-<YYINITIAL> (str-concat|STR-CONCAT|strconcat|STRCONCAT)     { return SPLTypes.STRCONCAT; }
-<YYINITIAL> (str-len|STR-LEN)                               { return SPLTypes.STRLEN; }
-<YYINITIAL> (sub-string|SUB-STRING)                         { return SPLTypes.SUBSTRING; }
-<YYINITIAL> (substring-utf8|SUBSTRING-UTF8)                 { return SPLTypes.SUBSTRINGUTF8; }
-<YYINITIAL> (uppercase|UPPERCASE)                           { return SPLTypes.UPPERCASE; }
-<YYINITIAL> (valid-number|VALID-NUMBER)                     { return SPLTypes.VALIDNUMBER; }
-<YYINITIAL> (write-blob-to-file|WRITE-BLOB-TO-FILE)         { return SPLTypes.WRITEBLOBTOFILE; }
-<YYINITIAL> (zstr|ZSTR)                                     { return SPLTypes.ZSTR; }
+//Arithmetic functions
+<YYINITIAL> (aand|AAND)                                     { return SPLTypes.AAND; }
+<YYINITIAL> (abs|ABS)                                       { return SPLTypes.ABS; }
+<YYINITIAL> (anot|ANOT)                                     { return SPLTypes.ANOT; }
+<YYINITIAL> (aor|AOR)                                       { return SPLTypes.AOR; }
+<YYINITIAL> (cos|COS)                                       { return SPLTypes.COS; }
+<YYINITIAL> (fraction|FRACTION)                             { return SPLTypes.FRACTION; }
+<YYINITIAL> (integer|INTEGER)                               { return SPLTypes.INTEGER; }
+<YYINITIAL> (lshift|LSHIFT)                                 { return SPLTypes.LSHIFT; }
+<YYINITIAL> (max-value|MAX-VALUE)                           { return SPLTypes.MAX_VALUE; }
+<YYINITIAL> (max-presentation-value|MAX-PRESENTATION-VALUE) { return SPLTypes.MAX_PRESENTATION_VALUE; }
+<YYINITIAL> (min-value|MIN-VALUE)                           { return SPLTypes.MIN_VALUE; }
+<YYINITIAL> (power-of|POWER-OF)                             { return SPLTypes.POWER_OF; }
+<YYINITIAL> (random|RANDOM)                                 { return SPLTypes.RANDOM; }
+<YYINITIAL> (rshift|RSHIFT)                                 { return SPLTypes.RSHIFT; }
+<YYINITIAL> (sign-of|SIGN-OF)                               { return SPLTypes.SIGN_OF; }
+<YYINITIAL> (sin|SIN)                                       { return SPLTypes.SIN; }
+<YYINITIAL> (smallest-increment|SMALLEST-INCREMENT)         { return SPLTypes.SMALLEST_INCREMENT; }
+<YYINITIAL> (square-root|SQUARE-ROOT)                       { return SPLTypes.SQUARE_ROOT; }
+<YYINITIAL> (sum|SUM)                                       { return SPLTypes.SUM; }
+<YYINITIAL> (sum-array|SUM-ARRAY)                           { return SPLTypes.SUM_ARRAY; }
+<YYINITIAL> (tan|TAN)                                       { return SPLTypes.TAN; }
+
+//DateTime functions
+<YYINITIAL> {DATE}                                          { return SPLTypes.DATE; }
+<YYINITIAL> {TIME}                                          { return SPLTypes.TIME; }
+<YYINITIAL> (add-month|ADD-MONTH)                           { return SPLTypes.ADD_MONTH; }
+<YYINITIAL> (client-date-time-string|CLIENT-DATE-TIME-STRING) { return SPLTypes.CLIENT_DATE_TIME_STRING; }
+<YYINITIAL> (date-from-date-time|DATE-FROM-DATE-TIME)       { return SPLTypes.DATE_FROM_DATE_TIME; }
+<YYINITIAL> (date-time|DATE-TIME)                           { return SPLTypes.DATE_TIME; }
+<YYINITIAL> (date-to-julian|DATE-TO-JULIAN)                 { return SPLTypes.DATE_TO_JULIAN; }
+<YYINITIAL> (day|DAY)                                       { return SPLTypes.DAY; }
+<YYINITIAL> (day-name|DAY-NAME)                             { return SPLTypes.DAY_NAME; }
+<YYINITIAL> (days-in-month|DAYS-IN-MONTH)                   { return SPLTypes.DAYS_IN_MONTH; }
+<YYINITIAL> (dow|DOW)                                       { return SPLTypes.DOW; }
+<YYINITIAL> (gmt|GMT|gmtime|GMTIME)                         { return SPLTypes.GMT; }
+<YYINITIAL> (hour|HOUR)                                     { return SPLTypes.HOUR; }
+<YYINITIAL> (julian|JULIAN)                                 { return SPLTypes.JULIAN; }
+<YYINITIAL> (julian-to-date|JULIAN-TO-DATE|julian2date|JULIAN2DATE) { return SPLTypes.JULIAN_TO_DATE; }
+<YYINITIAL> (leap-year|LEAP-YEAR)                           { return SPLTypes.LEAP_YEAR; }
+<YYINITIAL> (minute|MINUTE)                                 { return SPLTypes.MINUTE; }
+<YYINITIAL> (month|MONTH)                                   { return SPLTypes.MONTH; }
+<YYINITIAL> (month-name|MONTH-NAME)                         { return SPLTypes.MONTH_NAME; }
+<YYINITIAL> (second|SECOND)                                 { return SPLTypes.SECOND; }
+<YYINITIAL> (systime|SYSTIME|sys-time|SYS-TIME)             { return SPLTypes.SYSTIME; }
+<YYINITIAL> (time-from-date-time|TIME-FROM-DATE-TIME)       { return SPLTypes.TIME_FROM_DATE_TIME; }
+<YYINITIAL> (time-zone|TIME-ZONE)                           { return SPLTypes.TIME_ZONE; }
+<YYINITIAL> (tod|TOD)                                       { return SPLTypes.TOD; }
+<YYINITIAL> (today|TODAY)                                   { return SPLTypes.TODAY; }
+<YYINITIAL> (year|YEAR)                                     { return SPLTypes.YEAR; }
 
 //Environment functions
 <YYINITIAL> (active-pid|ACTIVE-PID)                         { return SPLTypes.ACTIVE_PID; }
@@ -282,59 +297,62 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (valid-activation-key|VALID-ACTIVATION-KEY)     { return SPLTypes.VALID_ACTIVATION_KEY; }
 <YYINITIAL> (wait-for-input|WAIT-FOR-INPUT)                 { return SPLTypes.WAIT_FOR_INPUT; }
 
-//Arithmetic functions
-<YYINITIAL> (aand|AAND)                                     { return SPLTypes.AAND; }
-<YYINITIAL> (abs|ABS)                                       { return SPLTypes.ABS; }
-<YYINITIAL> (anot|ANOT)                                     { return SPLTypes.ANOT; }
-<YYINITIAL> (aor|AOR)                                       { return SPLTypes.AOR; }
-<YYINITIAL> (cos|COS)                                       { return SPLTypes.COS; }
-<YYINITIAL> (fraction|FRACTION)                             { return SPLTypes.FRACTION; }
-<YYINITIAL> (integer|INTEGER)                               { return SPLTypes.INTEGER; }
-<YYINITIAL> (lshift|LSHIFT)                                 { return SPLTypes.LSHIFT; }
-<YYINITIAL> (max-value|MAX-VALUE)                           { return SPLTypes.MAX_VALUE; }
-<YYINITIAL> (max-presentation-value|MAX-PRESENTATION-VALUE) { return SPLTypes.MAX_PRESENTATION_VALUE; }
-<YYINITIAL> (min-value|MIN-VALUE)                           { return SPLTypes.MIN_VALUE; }
-<YYINITIAL> (power-of|POWER-OF)                             { return SPLTypes.POWER_OF; }
-<YYINITIAL> (random|RANDOM)                                 { return SPLTypes.RANDOM; }
-<YYINITIAL> (rshift|RSHIFT)                                 { return SPLTypes.RSHIFT; }
-<YYINITIAL> (sign-of|SIGN-OF)                               { return SPLTypes.SIGN_OF; }
-<YYINITIAL> (sin|SIN)                                       { return SPLTypes.SIN; }
-<YYINITIAL> (smallest-increment|SMALLEST-INCREMENT)         { return SPLTypes.SMALLEST_INCREMENT; }
-<YYINITIAL> (square-root|SQUARE-ROOT)                       { return SPLTypes.SQUARE_ROOT; }
-<YYINITIAL> (sum|SUM)                                       { return SPLTypes.SUM; }
-<YYINITIAL> (sum-array|SUM-ARRAY)                           { return SPLTypes.SUM_ARRAY; }
-<YYINITIAL> (tan|TAN)                                       { return SPLTypes.TAN; }
+//File handling functions
+<YYINITIAL> (cd|CD)                                         { return SPLTypes.CD; }
+<YYINITIAL> (cd-without-close-all|CD-WITHOUT-CLOSE-ALL)     { return SPLTypes.CD_WITHOUT_CLOSE_ALL; }
+<YYINITIAL> (client-file-browse|CLIENT-FILE-BROWSE)         { return SPLTypes.CLIENT_FILE_BROWSE; }
+<YYINITIAL> (dir|DIR)                                       { return SPLTypes.DIR; }
+<YYINITIAL> (file-exists|FILE-EXISTS)                       { return SPLTypes.FILE_EXISTS; }
+<YYINITIAL> (file-name|FILE-NAME)                           { return SPLTypes.FILE_NAME; }
+<YYINITIAL> (file-owner|FILE-OWNER)                         { return SPLTypes.FILE_OWNER; }
+<YYINITIAL> (file-size|FILE-SIZE)                           { return SPLTypes.FILE_SIZE; }
+<YYINITIAL> (file-status|FILE-STATUS)                       { return SPLTypes.FILE_STATUS; }
+<YYINITIAL> (file-version|FILE-VERSION)                     { return SPLTypes.FILE_VERSION; }
+<YYINITIAL> (finish-dir-search|FINISH-DIR-SEARCH)           { return SPLTypes.FINISH_DIR_SEARCH; }
+<YYINITIAL> (is-a-dir|IS-A-DIR)                             { return SPLTypes.IS_A_DIR; }
+<YYINITIAL> (local-cd|LOCAL-CD)                             { return SPLTypes.LOCAL_CD; }
+<YYINITIAL> (local-cd-without-close-all|LOCAL-CD-WITHOUT-CLOSE-ALL) { return SPLTypes.LOCAL_CD_WITHOUT_CLOSE_ALL; }
+<YYINITIAL> (local-dir|LOCAL-DIR)                           { return SPLTypes.LOCAL_DIR; }
+<YYINITIAL> (mkdir|MKDIR)                                   { return SPLTypes.MKDIR; }
+<YYINITIAL> (modification-time|MODIFICATION-TIME)           { return SPLTypes.MODIFICATION_TIME; }
+<YYINITIAL> (next-dir-entry|NEXT-DIR-ENTRY)                 { return SPLTypes.NEXT_DIR_ENTRY; }
+<YYINITIAL> (rmdir|RMDIR)                                   { return SPLTypes.RMDIR; }
+<YYINITIAL> (start-dir-search|START-DIR-SEARCH|next-dir-entry|finish-dir-search|NEXT-DIR-ENTRY|FINISH-DIR-SEARCH) { return SPLTypes.START_DIR_SEARCH; }
 
-//DateTime functions
-<YYINITIAL> {DATE}                                          { return SPLTypes.DATE; }
-<YYINITIAL> {TIME}                                          { return SPLTypes.TIME; }
-<YYINITIAL> (add-month|ADD-MONTH)                           { return SPLTypes.ADD_MONTH; }
-<YYINITIAL> (client-date-time-string|CLIENT-DATE-TIME-STRING) { return SPLTypes.CLIENT_DATE_TIME_STRING; }
-<YYINITIAL> (date-from-date-time|DATE-FROM-DATE-TIME)       { return SPLTypes.DATE_FROM_DATE_TIME; }
-<YYINITIAL> (date-time|DATE-TIME)                           { return SPLTypes.DATE_TIME; }
-<YYINITIAL> (date-to-julian|DATE-TO-JULIAN)                 { return SPLTypes.DATE_TO_JULIAN; }
-<YYINITIAL> (day|DAY)                                       { return SPLTypes.DAY; }
-<YYINITIAL> (day-name|DAY-NAME)                             { return SPLTypes.DAY_NAME; }
-<YYINITIAL> (days-in-month|DAYS-IN-MONTH)                   { return SPLTypes.DAYS_IN_MONTH; }
-<YYINITIAL> (dow|DOW)                                       { return SPLTypes.DOW; }
-<YYINITIAL> (gmt|GMT|gmtime|GMTIME)                         { return SPLTypes.GMT; }
-<YYINITIAL> (hour|HOUR)                                     { return SPLTypes.HOUR; }
-<YYINITIAL> (julian|JULIAN)                                 { return SPLTypes.JULIAN; }
-<YYINITIAL> (julian-to-date|JULIAN-TO-DATE|julian2date|JULIAN2DATE) { return SPLTypes.JULIAN_TO_DATE; }
-<YYINITIAL> (leap-year|LEAP-YEAR)                           { return SPLTypes.LEAP_YEAR; }
-<YYINITIAL> (minute|MINUTE)                                 { return SPLTypes.MINUTE; }
-<YYINITIAL> (month|MONTH)                                   { return SPLTypes.MONTH; }
-<YYINITIAL> (month-name|MONTH-NAME)                         { return SPLTypes.MONTH_NAME; }
-<YYINITIAL> (second|SECOND)                                 { return SPLTypes.SECOND; }
-<YYINITIAL> (systime|SYSTIME|sys-time|SYS-TIME)             { return SPLTypes.SYSTIME; }
-<YYINITIAL> (time-from-date-time|TIME-FROM-DATE-TIME)       { return SPLTypes.TIME_FROM_DATE_TIME; }
-<YYINITIAL> (time-zone|TIME-ZONE)                           { return SPLTypes.TIME_ZONE; }
-<YYINITIAL> (tod|TOD)                                       { return SPLTypes.TOD; }
-<YYINITIAL> (today|TODAY)                                   { return SPLTypes.TODAY; }
-<YYINITIAL> (year|YEAR)                                     { return SPLTypes.YEAR; }
-
-
-
+//String functions
+<YYINITIAL> (ascii-char|ASCII-CHAR)                         { return SPLTypes.ASCII_CHAR; }
+<YYINITIAL> (ascii-num|ascii|asc|ASCII-NUM|ASCII|ASC)       { return SPLTypes.ASCII_NUM; }
+<YYINITIAL> (base64-to-blob|BASE64-TO-BLOB)                 { return SPLTypes.BASE64TOBLOB; }
+<YYINITIAL> (blob-append|BLOB-APPEND)                       { return SPLTypes.BLOBAPPEND; }
+<YYINITIAL> (blob-append-base64|BLOB-APPEND-BASE64)         { return SPLTypes.BLOBAPPENDBASE64; }
+<YYINITIAL> (blob-section|BLOB-SECTION)                     { return SPLTypes.BLOBSECTION; }
+<YYINITIAL> (blob-to-base64|BLOB-TO-BASE64)                 { return SPLTypes.BLOBTOBASE64; }
+<YYINITIAL> (concat|CONCAT)                                 { return SPLTypes.CONCAT; }
+<YYINITIAL> (format-picture|FORMAT-PICTURE)                 { return SPLTypes.FORMATPICTURE; }
+<YYINITIAL> (free-blob|FREE-BLOB)                           { return SPLTypes.FREEBLOB; }
+<YYINITIAL> (fstr|FSTR)                                     { return SPLTypes.FSTR; }
+<YYINITIAL> (left-justify|LEFT-JUSTIFY)                     { return SPLTypes.LEFTJUSTIFY; }
+<YYINITIAL> (lowercase|LOWERCASE)                           { return SPLTypes.LOWERCASE; }
+<YYINITIAL> (ltrim|LTRIM)                                   { return SPLTypes.LTRIM; }
+<YYINITIAL> (max-alpha-value|MAX-ALPHA-VALUE)               { return SPLTypes.MAXALPHAVALUE; }
+<YYINITIAL> (num|NUM)                                       { return SPLTypes.NUM; }
+<YYINITIAL> (pattern|PATTERN)                               { return SPLTypes.PATTERN; }
+<YYINITIAL> (param-text|PARAM-TEXT|paramtext|PARAMTEXT)     { return SPLTypes.PARAMTEXT; }
+<YYINITIAL> (read-blob-from-file|READ-BLOB-FROM-FILE)       { return SPLTypes.READBLOBFROMFILE; }
+<YYINITIAL> (reserved|RESERVED)                             { return SPLTypes.RESERVED; }
+<YYINITIAL> (right-justify|RIGHT-JUSTIFY)                   { return SPLTypes.RIGHTJUSTIFY; }
+<YYINITIAL> (rtrim|RTRIM)                                   { return SPLTypes.RTRIM; }
+<YYINITIAL> (size-of|SIZE-OF)                               { return SPLTypes.SIZEOF; }
+<YYINITIAL> (sql-substring|SQL-SUBSTRING)                   { return SPLTypes.SQLSUBSTRING; }
+<YYINITIAL> (str|STR)                                       { return SPLTypes.STR_FUNC; }
+<YYINITIAL> (str-concat|STR-CONCAT|strconcat|STRCONCAT)     { return SPLTypes.STRCONCAT; }
+<YYINITIAL> (str-len|STR-LEN)                               { return SPLTypes.STRLEN; }
+<YYINITIAL> (sub-string|SUB-STRING)                         { return SPLTypes.SUBSTRING; }
+<YYINITIAL> (substring-utf8|SUBSTRING-UTF8)                 { return SPLTypes.SUBSTRINGUTF8; }
+<YYINITIAL> (uppercase|UPPERCASE)                           { return SPLTypes.UPPERCASE; }
+<YYINITIAL> (valid-number|VALID-NUMBER)                     { return SPLTypes.VALIDNUMBER; }
+<YYINITIAL> (write-blob-to-file|WRITE-BLOB-TO-FILE)         { return SPLTypes.WRITEBLOBTOFILE; }
+<YYINITIAL> (zstr|ZSTR)                                     { return SPLTypes.ZSTR; }
 
 //SCREEN DEFINITION
 <YYINITIAL> (screen|SCREEN)                                 { return SPLTypes.SCREEN; }

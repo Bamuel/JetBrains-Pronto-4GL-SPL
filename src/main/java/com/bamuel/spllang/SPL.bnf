@@ -19,7 +19,7 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_
     statement_ ::= messagebox_ | message_
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
-    function_ ::= arithmeticfunction_  | datetimefunction_ | environmentfunction_ | stringfunction_
+    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_
 
         arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
         | min-value_ | power-of_ | random_ | rshift_ | sign-of_ | sin_ | smallest-increment_ | square-root_ | sum_ | sum-array_ | tan_
@@ -27,6 +27,10 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         datetimefunction_ ::= add-month_ | client-date-time-string_ | date-from-date-time_ | date-time_ | date-to-julian_ | day_ | day-name_
         | days-in-month_ | dow_ | gmt_ | hour_ | julian_ | julian-to-date_ | leap-year_ | minute_ | month_ | month-name_ | second_
         | systime_ | time-from-date-time_ | time-zone_ | tod_ | today_ | year_
+
+        filehandlingfunction_ ::= cd_ | cd-without-close-all_ | client-file-browse_ | dir_ | file-exists_ | file-name_ | file-owner_ | file-size_
+        | file-status_ | file-version_ | finish-dir-search_ | is-a-dir_ | local-cd_ | local-cd-without-close-all_ | local-dir_ | mkdir_
+        | modification-time_ | next-dir-entry_ | rmdir_ | start-dir-search_
 
         environmentfunction_ ::= activepid_ | apiapplication-name_ | batched_ | can-dee_ | check-auth_ | colour-picker_
         | create-db-schema_ | create-db-user_ | currency-sign_ | database-type_ | db-command_ | db-table-name_ | dde-error-status_
@@ -196,6 +200,31 @@ user-group_ ::= USER_GROUP LPAREN RPAREN
 valid-activation-key_ ::= VALID_ACTIVATION_KEY LPAREN string_ COMMA string_ RPAREN
 wait-for-input_ ::= WAIT_FOR_INPUT LPAREN RPAREN
 
+//File handling functions
+//FILEHANDLING_FUNCTIONS=(cd|cd-without-close-all|client-file-browse|dir|file-exists|file-name|file-owner|file-size|file-status|file-version|finish-dir-search|is-a-dir|local-cd|local-cd-without-close-all|local-dir|mkdir|modification-time|next-dir-entry|rmdir|start-dir-search)
+cd_ ::= CD LPAREN string_ RPAREN
+cd-without-close-all_ ::= CD_WITHOUT_CLOSE_ALL LPAREN string_ RPAREN
+client-file-browse_ ::= CLIENT_FILE_BROWSE LPAREN string_ COMMA string_ COMMA browsefilters_* COMMA string_ COMMA browseflag_ RPAREN
+browsefilters_ ::= "|" | "." | "*" | ";" | string_
+browseflag_ ::= "1" | "2" | "4"
+dir_ ::= DIR LPAREN RPAREN
+file-exists_ ::= FILE_EXISTS LPAREN string_ COMMA number_ RPAREN
+file-name_ ::= FILE_NAME LPAREN string_ RPAREN
+file-owner_ ::= FILE_OWNER LPAREN string_ RPAREN
+file-size_ ::= FILE_SIZE LPAREN string_ RPAREN
+file-status_ ::= FILE_STATUS LPAREN RPAREN
+file-version_ ::= FILE_VERSION LPAREN string_ RPAREN
+finish-dir-search_ ::= FINISH_DIR_SEARCH LPAREN RPAREN
+is-a-dir_ ::= IS_A_DIR LPAREN string_ RPAREN
+local-cd_ ::= LOCAL_CD LPAREN RPAREN
+local-cd-without-close-all_ ::= LOCAL_CD_WITHOUT_CLOSE_ALL LPAREN RPAREN
+local-dir_ ::= LOCAL_DIR LPAREN RPAREN
+mkdir_ ::= MKDIR LPAREN string_ RPAREN
+modification-time_ ::= MODIFICATION_TIME LPAREN string_ RPAREN
+next-dir-entry_ ::= NEXT_DIR_ENTRY LPAREN RPAREN
+rmdir_ ::= RMDIR LPAREN string_ RPAREN
+start-dir-search_ ::= START_DIR_SEARCH LPAREN (string_ COMMA string_)? RPAREN
+
 
 //String functions
 ascii-char_ ::= ASCII_CHAR LPAREN number_ RPAREN
@@ -359,10 +388,10 @@ messageboxbell_ ::= BELL
 rowcol_ ::= AT NUMBER COMMA NUMBER
 selectclauses_ ::= "SELECT" item_* //todo: sql select
 
-string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | datetimefunction_ | stringfunction_ | environmentfunction_
+string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
 number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | datetimefunction_ | environmentfunction_
 boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
-datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_
+datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_ | modification-time_
 condition_ ::= item_*
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
