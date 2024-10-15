@@ -51,7 +51,7 @@ RELATIONAL_EXPRESSIONS=(=|<>|!=|<=|>=|<|>|like|not like)
 LOGICAL_EXPRESSIONS=(and|or|not)
 
 //FUNCTIONS
-ARITHMETIC_FUNCTIONS=(aand|abs|anot|aor|cos|fraction|integer|lshift|max-value|max-presentation-value|min-value|power-of|random|rshift|sign-of|sin|smallest-increment|square-root|sum|sum-array|tan)
+//ARITHMETIC_FUNCTIONS=(aand|abs|anot|aor|cos|fraction|integer|lshift|max-value|max-presentation-value|min-value|power-of|random|rshift|sign-of|sin|smallest-increment|square-root|sum|sum-array|tan)
 DATETIME_FUNCTIONS=(add-month|client-date-time-string|date-from-date-time|date-time|date-to-julian|day|day-name|days-in-month|dow|gmt|hour|julian|julian-to-date|leap-year|minute|month|month-name|second|systime|time-from-date-time|time-zone|tod|today|year)
 //ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-auth|colour-picker|create-db-schema|create-db-user|currency-sign|database-type|db-command|db-table-name|dde-error-status|dde-execute|dde-initiate|dde-poke|dde-request|dde-terminate|delete-registry-value|enable-status-bar|enable-system-menu|enable-tool-bar|error-description|escape|exit-status|find-parameter|get-env|get-field-value|get-field-value-numeric|get-function-code|get-module-code|get-param|get-registry-enum-key|get-registry-enum-value|get-registry-value|get-system-metrics|gid|grant-db-schema|hide-dockable-windows|idx|if-then-else|io-count|line-no|local-no and local-yes|login-id|mail-add-line|mail-attach|mail-cancel|mail-from-name|mail-reply-to|mail-send|mail-start|max-screen-columns|max-screen-rows|message-status|mode-name|mouse-column|mouse-row|node-name|occurrence|operating-system|page-no|param-cnt|pid|pronto-release|prouser-flags|refresh-quick-links|report-is-xml|review-row|revoke-db-schema|rgb-to-colour|screen-mode|search|search-mode|set-app-user function|set-data-area-name|set-background-image|set-background-url|set-environment|set-function-code|set-help-context|set-keyboard-focus|set-module-code|set-registry-value|set-web-window|sleep|spool-file-name|time-elapsed|transaction-active|tty|uid|user-group|valid-activation-key|wait-for-input)
 FILEHANDLING_FUNCTIONS=(cd|cd-without-close-all|client-file-browse|dir|file-exists|file-name|file-owner|file-size|file-status|file-version|finish-dir-search|is-a-dir|local-cd|local-cd-without-close-all|local-dir|mkdir|modification-time|next-dir-entry|rmdir|start-dir-search)
@@ -77,7 +77,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 
 <YYINITIAL> {FUNCTION_DECLARATION}                          { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {FUNCTION_DECLARATION_END}                      { return SPLTypes.FUNCTION_DECLARATION; }
-<YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
+//<YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
 //<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
@@ -279,8 +279,28 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (valid-activation-key|VALID-ACTIVATION-KEY)     { return SPLTypes.VALID_ACTIVATION_KEY; }
 <YYINITIAL> (wait-for-input|WAIT-FOR-INPUT)                 { return SPLTypes.WAIT_FOR_INPUT; }
 
-
-
+//Arithmetic functions
+<YYINITIAL> (aand|AAND)                                     { return SPLTypes.AAND; }
+<YYINITIAL> (abs|ABS)                                       { return SPLTypes.ABS; }
+<YYINITIAL> (anot|ANOT)                                     { return SPLTypes.ANOT; }
+<YYINITIAL> (aor|AOR)                                       { return SPLTypes.AOR; }
+<YYINITIAL> (cos|COS)                                       { return SPLTypes.COS; }
+<YYINITIAL> (fraction|FRACTION)                             { return SPLTypes.FRACTION; }
+<YYINITIAL> (integer|INTEGER)                               { return SPLTypes.INTEGER; }
+<YYINITIAL> (lshift|LSHIFT)                                 { return SPLTypes.LSHIFT; }
+<YYINITIAL> (max-value|MAX-VALUE)                           { return SPLTypes.MAX_VALUE; }
+<YYINITIAL> (max-presentation-value|MAX-PRESENTATION-VALUE) { return SPLTypes.MAX_PRESENTATION_VALUE; }
+<YYINITIAL> (min-value|MIN-VALUE)                           { return SPLTypes.MIN_VALUE; }
+<YYINITIAL> (power-of|POWER-OF)                             { return SPLTypes.POWER_OF; }
+<YYINITIAL> (random|RANDOM)                                 { return SPLTypes.RANDOM; }
+<YYINITIAL> (rshift|RSHIFT)                                 { return SPLTypes.RSHIFT; }
+<YYINITIAL> (sign-of|SIGN-OF)                               { return SPLTypes.SIGN_OF; }
+<YYINITIAL> (sin|SIN)                                       { return SPLTypes.SIN; }
+<YYINITIAL> (smallest-increment|SMALLEST-INCREMENT)         { return SPLTypes.SMALLEST_INCREMENT; }
+<YYINITIAL> (square-root|SQUARE-ROOT)                       { return SPLTypes.SQUARE_ROOT; }
+<YYINITIAL> (sum|SUM)                                       { return SPLTypes.SUM; }
+<YYINITIAL> (sum-array|SUM-ARRAY)                           { return SPLTypes.SUM_ARRAY; }
+<YYINITIAL> (tan|TAN)                                       { return SPLTypes.TAN; }
 
 
 

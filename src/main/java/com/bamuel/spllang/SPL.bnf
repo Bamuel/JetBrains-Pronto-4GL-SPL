@@ -19,7 +19,10 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_
     statement_ ::= messagebox_ | message_
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
-    function_ ::= environmentfunction_ | stringfunction_
+    function_ ::= arithmeticfunction_  | environmentfunction_ | stringfunction_
+
+        arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
+        | min-value_ | power-of_ | random_ | rshift_ | sign-of_ | sin_ | smallest-increment_ | square-root_ | sum_ | sum-array_ | tan_
 
         environmentfunction_ ::= activepid_ | apiapplication-name_ | batched_ | can-dee_ | check-auth_ | colour-picker_
         | create-db-schema_ | create-db-user_ | currency-sign_ | database-type_ | db-command_ | db-table-name_ | dde-error-status_
@@ -39,6 +42,31 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         | concat_ |  formatpicture_ | freeblob_ | fstr_ | leftjustify_ | lowercase_ | ltrim_ | maxalphavalue_ | num_ | paramtext_ | pattern_
         | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
+
+//Arithmetic functions
+aand_ ::= AAND LPAREN number_ COMMA number_ RPAREN
+abs_ ::= ABS LPAREN number_ RPAREN
+anot_ ::= ANOT LPAREN number_ RPAREN
+aor_ ::= AOR LPAREN number_ COMMA number_ RPAREN
+cos_ ::= COS LPAREN number_ RPAREN
+fraction_ ::= FRACTION LPAREN number_ RPAREN
+integer_ ::= INTEGER LPAREN number_ RPAREN
+lshift_ ::= LSHIFT LPAREN number_ COMMA number_ RPAREN
+max-value_ ::= MAX_VALUE LPAREN number_ RPAREN
+max-presentation-value_ ::= MAX_PRESENTATION_VALUE LPAREN number_ RPAREN
+min-value_ ::= MIN_VALUE LPAREN number_ RPAREN
+power-of_ ::= POWER_OF LPAREN number_ COMMA number_ RPAREN
+random_ ::= RANDOM LPAREN number_ RPAREN
+rshift_ ::= RSHIFT LPAREN number_ COMMA number_ RPAREN
+sign-of_ ::= SIGN_OF LPAREN number_ RPAREN
+sin_ ::= SIN LPAREN number_ RPAREN
+smallest-increment_ ::= SMALLEST_INCREMENT LPAREN number_ RPAREN
+square-root_ ::= SQUARE_ROOT LPAREN number_ RPAREN
+sum_ ::= SUM LPAREN number_ RPAREN
+sum-array_ ::= SUM_ARRAY LPAREN number_ COMMA number_ COMMA number_ RPAREN
+tan_ ::= TAN LPAREN number_ RPAREN
+
+
 
 
 // Environment function
@@ -304,7 +332,7 @@ rowcol_ ::= AT NUMBER COMMA NUMBER
 selectclauses_ ::= "SELECT" item_* //todo: sql select
 
 string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | stringfunction_ | environmentfunction_
-number_ ::= NUMBER | IDENTIFIER | environmentfunction_
+number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | environmentfunction_
 boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
 condition_ ::= item_*
 //The following picture string characters are used to specify the format of a field being defined.
