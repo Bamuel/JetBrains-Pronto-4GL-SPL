@@ -17,7 +17,8 @@ splFile ::= item_*
 
 item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_
-    statement_ ::= messagebox_ | message_
+    statement_ ::= abort_ | accept_ | acknowledge_ | audit_ | back-to-detail_ | beginwork_ | box_ | break_
+                 | call_ | callurl_ | checkbox_ | message_ | messagebox_
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
     function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_
 
@@ -50,6 +51,65 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         | concat_ |  formatpicture_ | freeblob_ | fstr_ | leftjustify_ | lowercase_ | ltrim_ | maxalphavalue_ | num_ | paramtext_ | pattern_
         | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
+
+//Statement rules
+//STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
+abort_ ::= ABORT string_ (PIC ("is")? picture_)? NOLOG
+
+accept_ ::= ACCEPT IDENTIFIER rowcol_ col_? accepttitle_? NOTITLE? MULTILINE? rows_? columns_? acceptpicture_? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? OPTIONAL? acceptdefault_? acceptallow_? acceptdisallow_? JUSTIFY? AUTO_RETURN? timeout_? acceptedits_? acceptfill_? acceptlookup_? accpetcase_? acceptjustify_? accepthelp_? BOLD? DIM? FLASHING? INVERSE? ITALIC? UNDERLINED? FOREGROUND? BACKGROUND? BLANK? acceptonerror_? acceptfunctionkey_? accepttag_? accepthelpcontext_? accepthelpscreen_? acceptwhen_? SHOW_VALUE? NO_CLEAR? SUPPRESS? CONDITIONAL_SUPPRESS? READ_ONLY? FIXED_WIDTH_FONT? colour_? beforeaccept_? acceptvalidation_? USE_VALIDATE_TRIGGER? acceptproceduralstatement_ acceptscale_? NO_WARNING? acceptonchange_?
+accepttitle_ ::= (TITLE|COLUMNTITLE) ("is")? string_ rowcol_?
+rows_ ::= ROWS number_
+columns_ ::= COLUMNS number_
+acceptpicture_ ::= PIC ("is")? picture_
+acceptdefault_ ::= DEFAULT ("is")? string_
+acceptallow_ ::= ALLOW string_ ("to" string_)*
+acceptdisallow_ ::= DISALLOW string_ ("to" string_)*
+timeout_ ::= TIMEOUT ("is")? number_
+acceptedits_ ::= EDIT ("is"|"are")? (string_)*
+acceptfill_ ::= FILL ("with")? ("leading"|"trailing")? string_
+acceptlookup_ ::= LOOKUP ("not")? ("in")? string_ ("on index" string_)? ("key" ("is")? string_*)?
+accpetcase_ ::= LOWERCASE | UPPERCASE
+acceptjustify_ ::= LEFT | CENTRE | RIGHT | CENTRE_COORD | RIGHT_COORD
+accepthelp_ ::= HELP ("is")? string_
+acceptonerror_ ::= ON_ERROR item_* END_ON //todo: procedural-statements
+acceptfunctionkey_ ::= "on" FUNCTION_KEY item_* END_ON //todo: procedural-statements
+accepttag_ ::= TAG ("is")? NUMBER
+accepthelpcontext_ ::= HELP_CONTEXT ("is")? string_*
+accepthelpscreen_ ::= HELP_SCREEN ("primary") IDENTIFIER rowcol_ (OCCURS number_)? SHOWING IDENTIFIER STRING (COMMA IDENTIFIER STRING)* (USING IDENTIFIER)
+acceptwhen_ ::= WHEN condition_ //todo: condition
+beforeaccept_ ::= BEFORE_ACCEPT item_* END_BEFORE_ACCEPT //todo: procedural-statements
+acceptvalidation_ ::= VALIDATIONS item_* END_VALIDATIONS //todo: procedural-statements
+acceptproceduralstatement_ ::= item_* //todo: procedural-statements
+acceptscale_ ::= SCALE ("is")? number_
+acceptonchange_ ::= ON_CHANGE item_* END_ON //todo: procedural-statements
+
+acknowledge_ ::= ACKNOWLEDGE string_ (PROMPT ("is")? string_)?
+audit_ ::= AUDIT ("ON"|"OFF")? (IDENTIFIER)*
+back-to-detail_ ::= BACK_TO_DETAIL
+beginwork_ ::= BEGIN_WORK ("on" string_ (COMMA string_)*)? (LEAVING string_ (COMMA string_)*)? FREE_LOCKS? (ON_ERROR number_* item_* ELSE item_* END_ON)? //todo: procedural-statements
+box_ ::= BOX (rowcol_ "to" rowcol_)? DOUBLE? NO_CROSS? (TITLE "is" string_)? SUNKEN? colour_? ABSOLUTE_COORDINATES
+break_ ::= BREAK
+call_ ::= CALL string_ parameters_? max_parameters_? returning_? callhome_? BATCH? LEAVE_FILES_OPEN? EXTERNAL? backgroundnowait_? (ON_ERROR item_* END_ON)?
+max_parameters_ ::= MAX_PARAMETERS ("are")? number_
+callhome_ ::= HOME ("is")? string_
+backgroundnowait_ ::= BACKGROUND | BACKGROUNDNOWAITWAIT
+callurl_ ::= CALL_URL string_ httpheaders_? httpbody_? httpmethod_? httpproxy_? httpauthany_? timeout_? cacertificate_? sslcertificate_? sslkey_? sslkeypassword_? allowredirection_? sftpcommand_? sftppostcommand_? sftpcreatedirs_? urluser_? urlloginoptions_? callreturning_? (ON_ERROR number_? item_* END_ON)?
+httpheaders_ ::= HTTP_HEADERS ("are")? string_|"file" ("is")? string_?
+httpbody_ ::= HTTP_BODY ("is")? string_|"file" ("is")? string_?
+httpmethod_ ::= HTTP_METHOD ("is")? string_ //todo: http methods
+httpproxy_ ::= HTTP_PROXY ("is")? string_
+httpauthany_ ::= HTTP_AUTH_ANY
+cacertificate_ ::= CA_CERTIFICATE ("is")? string_
+sslcertificate_ ::= SSL_CERTIFICATE ("is")? string_
+sslkey_ ::= SSL_KEY ("is")? string_ (SSL_KEY_PASSWORD ("is")? string_)?
+allowredirection_ ::= ALLOW_REDIRECTION
+sftpcommand_ ::= SFTP_COMMAND ("is")? string_
+sftppostcommand_ ::= SFTP_POST_COMMAND ("is")? string_
+sftpcreatedirs_ ::= SFTP_CREATE_DIRS
+urluser_ ::= URL_USER ("is")? string_ (string_)?
+urlloginoptions_ ::= URL_LOGIN_OPTIONS ("is")? string_
+callreturning_ ::= RETURNING (HTTP_HEADERS ("in")? string_|"file" ("is")? string_?)? (HTTP_BODY ("is") string_|"file" ("is")? string_?)?
+checkbox_ ::= CHECK_BOX string_ rowcol_ (VALUES string_ string_)? (TITLE string_)? colour_? RIGHT_COORDINATE? (DEFAULT ("is")? ("TRUE"|"FALSE"))? READ_ONLY? (WHEN condition_)? (BEFORE_CHECK_BOX item_* END_BEFORE_CHECK_BOX)? (VALIDATIONS item_* END_VALIDATIONS)? (ON_CHANGE item_* END_ON)? CHECK_BOX_END?
 
 //Arithmetic functions
 aand_ ::= AAND LPAREN number_ COMMA number_ RPAREN
@@ -282,7 +342,7 @@ screenallowed_ ::= SCREEN_ALLOWED ("is"|"are")? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"
 screenprompt_ ::= PROMPT rowcol_
 screendatagrid_ ::= SCREEN_DATA_GRID item_* //todo: datagrid
 screenreviewoccurs ::= SCREEN_REVIEW_OCCURS number_ ("by" number_)?
-screenwhen_ ::= WHEN item_* //todo: conditon
+screenwhen_ ::= WHEN condition_ //todo: conditon
 
 // API rule
 api_ ::= API IDENTIFIER item_* API_END //todo: procedural-statements
@@ -317,7 +377,7 @@ modeentry_ ::= MODEENTRY
 process_ ::= PROCESS
 modecurrency_ ::= MODECURRENCY
 modeperform_ ::= PERFORM IDENTIFIER
-modewhen_ ::= WHEN item_*
+modewhen_ ::= WHEN condition_
 modeicon_ ::= ICON ("is")? modeiconlist_
 modeiconlist_ ::= "FOLDER-ICON"
                 | "ADMIN-FOLDER-ICON"

@@ -40,15 +40,15 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 //KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
 //IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
 
-FUNCTION_DECLARATION=(confirmed|validation)
-FUNCTION_DECLARATION_END=(end-confirm|end-validations|endconfirm|endvalidations)
+FUNCTION_DECLARATION=(confirmed)
+FUNCTION_DECLARATION_END=(end-confirm|endconfirm)
 
 // SQL Keywords // SQL Operators // SQL Clauses
 KEYWORD_SQL=(SELECT|DISTINCT|FROM|WHERE|UNION|ALL|ORDER|BY|DESC|GROUP|HAVING|FOR|UPDATE|INNER|JOIN|LEFT|RIGHT|FULL|OUTER|ON|EXISTS|NOT|IN|ALL|ANY|COMPARISON)
 OPERATOR_SQL=(=|<>|!=|<|>|<=|>=|AND|OR|NOT|BETWEEN|LIKE)
 CLAUSE_SQL=(SELECT|FROM|WHERE|UNION|ORDER|BY|GROUP|HAVING|JOIN|ON|INNER|LEFT|RIGHT|FULL|OUTER)
 
-STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
+//STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
 ARITHMETIC_EXPRESSIONS=(\+|-|\*|\/|%)
 RELATIONAL_EXPRESSIONS=(=|<>|!=|<=|>=|<|>|like|not like)
 LOGICAL_EXPRESSIONS=(and|or|not)
@@ -90,7 +90,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 
 <YYINITIAL> {PREPROCESSOR}                                  { return SPLTypes.PREPROCESSOR; }
 <YYINITIAL> {PREFDEFINED}                                   { return SPLTypes.KEYWORD; }
-<YYINITIAL> {STATEMENTS}                                    { return SPLTypes.KEYWORD; }
+//<YYINITIAL> {STATEMENTS}                                    { return SPLTypes.KEYWORD; }
 <YYINITIAL> {KEYWORDS_OTHER}                                { return SPLTypes.KEYWORD; }
 
 <YYINITIAL> {SINGLEQUOTE}                                   { return SPLTypes.STRING; }
@@ -98,6 +98,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 
 <YYINITIAL> {NUMBER}                                        { return SPLTypes.NUMBER; }
 
+//Clauses
 <YYINITIAL> (title|TITLE)                                        { return SPLTypes.TITLE; }
 <YYINITIAL> (default|DEFAULT)                                    { return SPLTypes.DEFAULT; }
 <YYINITIAL> (window|WINDOW)                                      { return SPLTypes.WINDOW; }
@@ -133,22 +134,119 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (end-record|endrecord|END-RECORD|ENDRECORD)          { return SPLTypes.RECORD_END; }
 <YYINITIAL> (key|KEY)                                            { return SPLTypes.KEY; }
 <YYINITIAL> (desc|DESC|descending|DESCENDING)                    { return SPLTypes.DESC; }
-//<YYINITIAL> (asc|ASC|ascending|ASCENDING)                        { return SPLTypes.ASC; }
 <YYINITIAL> (unique|UNIQUE)                                      { return SPLTypes.UNIQUE; }
 <YYINITIAL> (db-index-only|DB-INDEX-ONLY)                        { return SPLTypes.DB_INDEX_ONLY; }
 <YYINITIAL> (compress|COMPRESS)                                  { return SPLTypes.COMPRESS; }
 <YYINITIAL> (nojoins|NOJOINS|no-joins|NO-JOINS)                  { return SPLTypes.NOJOINS; }
 <YYINITIAL> (norowid|NOROWID|no-rowid|NO-ROWID)                  { return SPLTypes.NOROWID; }
-
-
-
-
-<YYINITIAL> (message-box|messagebox|MESSAGE-BOX|MESSAGEBOX) { return SPLTypes.MESSAGEBOX; }
-<YYINITIAL> (message-buttons|MESSAGE-BUTTONS)               { return SPLTypes.MESSAGEBOX_BUTTONS; }
+<YYINITIAL> (column-title|COLUMN-TITLE)                           { return SPLTypes.COLUMNTITLE; }
+<YYINITIAL> (no-log|nolog|NO-LOG|NOLOG)                          { return SPLTypes.NOLOG; }
+<YYINITIAL> (no-title|notitle|NO-TITLE|NOTITLE)                  { return SPLTypes.NOTITLE; }
+<YYINITIAL> (multi-line|multiline|MULTI-LINE|MULTILINE)          { return SPLTypes.MULTILINE; }
+<YYINITIAL> (rows|ROWS)                                          { return SPLTypes.ROWS; }
+<YYINITIAL> (columns|COLUMNS)                                    { return SPLTypes.COLUMNS; }
+<YYINITIAL> (blank-when-zero|BLANK-WHEN-ZERO)                    { return SPLTypes.BLANK_WHEN_ZERO; }
+<YYINITIAL> (blank-decimals-when-zero|BLANK-DECIMALS-WHEN-ZERO)  { return SPLTypes.BLANK_DECIMALS_WHEN_ZERO; }
+<YYINITIAL> (allow|ALLOW)                                        { return SPLTypes.ALLOW; }
+<YYINITIAL> (disallow|DISALLOW)                                  { return SPLTypes.DISALLOW; }
+<YYINITIAL> (auto-return|AUTO-RETURN)                            { return SPLTypes.AUTO_RETURN; }
+<YYINITIAL> (time-out|TIME-OUT|timeout|TIMEOUT)                  { return SPLTypes.TIMEOUT; }
+<YYINITIAL> (edit|EDIT|edits|EDITS)                              { return SPLTypes.EDIT; }
+<YYINITIAL> (fill|FILL)                                          { return SPLTypes.FILL; }
+<YYINITIAL> (lookup|LOOKUP)                                      { return SPLTypes.LOOKUP; }
+<YYINITIAL> (left|LEFT)                                          { return SPLTypes.LEFT; }
+<YYINITIAL> (centre|CENTRE)                                      { return SPLTypes.CENTRE; }
+<YYINITIAL> (right|RIGHT)                                        { return SPLTypes.RIGHT; }
+<YYINITIAL> (centre-coord|CENTRE-COORD)                          { return SPLTypes.CENTRE_COORD; }
+<YYINITIAL> (right-coord|RIGHT-COORD)                            { return SPLTypes.RIGHT_COORD; }
+<YYINITIAL> (bold|BOLD)                                          { return SPLTypes.BOLD; }
+<YYINITIAL> (dim|DIM)                                            { return SPLTypes.DIM; }
+<YYINITIAL> (flashing|FLASHING)                                  { return SPLTypes.FLASHING; }
+<YYINITIAL> (inverse|INVERSE)                                    { return SPLTypes.INVERSE; }
+<YYINITIAL> (italic|ITALIC)                                      { return SPLTypes.ITALIC; }
+<YYINITIAL> (underlined|UNDERLINED)                              { return SPLTypes.UNDERLINED; }
+<YYINITIAL> (foreground|FOREGROUND)                              { return SPLTypes.FOREGROUND; }
+<YYINITIAL> (background|BACKGROUND)                              { return SPLTypes.BACKGROUND; }
+<YYINITIAL> (blank|BLANK)                                        { return SPLTypes.BLANK; }
+<YYINITIAL> (on error|ON ERROR)                                  { return SPLTypes.ON_ERROR; }
+<YYINITIAL> (end-on|END-ON|endon|ENDON)                          { return SPLTypes.END_ON; }
+<YYINITIAL> (UP-ARROW|DOWN-ARROW|LEFT-ARROW|RIGHT-ARROW|HELP-KEY) { return SPLTypes.FUNCTION_KEY; }
+<YYINITIAL> (help-screen|HELP-SCREEN)                            { return SPLTypes.HELP_SCREEN; }
+<YYINITIAL> (showing|SHOWING)                                    { return SPLTypes.SHOWING; }
+<YYINITIAL> (using|USING)                                        { return SPLTypes.USING; }
+<YYINITIAL> (show-value|SHOW-VALUE)                              { return SPLTypes.SHOW_VALUE; }
+<YYINITIAL> (no-clear|NO-CLEAR)                                  { return SPLTypes.NO_CLEAR; }
+<YYINITIAL> (suppress|SUPPRESS)                                  { return SPLTypes.SUPPRESS; }
+<YYINITIAL> (conditional-suppress|CONDITIONAL-SUPPRESS)          { return SPLTypes.CONDITIONAL_SUPPRESS; }
+<YYINITIAL> (read-only|READ-ONLY|readonly|READONLY)              { return SPLTypes.READ_ONLY; }
+<YYINITIAL> (fixed-width-font|FIXED-WIDTH-FONT)                  { return SPLTypes.FIXED_WIDTH_FONT; }
+<YYINITIAL> (before-accept|BEFORE-ACCEPT)                        { return SPLTypes.BEFORE_ACCEPT; }
+<YYINITIAL> (end-before-accept|END-BEFORE-ACCEPT)                { return SPLTypes.END_BEFORE_ACCEPT; }
+<YYINITIAL> (validations|VALIDATIONS|validation|VALIDATION)      { return SPLTypes.VALIDATIONS; }
+<YYINITIAL> (end-validations|END-VALIDATIONS|end-validation|END-VALIDATION) { return SPLTypes.END_VALIDATIONS; }
+<YYINITIAL> (use-validate-trigger|USE-VALIDATE-TRIGGER)          { return SPLTypes.USE_VALIDATE_TRIGGER; }
+<YYINITIAL> (scale|SCALE)                                        { return SPLTypes.SCALE; }
+<YYINITIAL> (no warning|NO WARNING)                              { return SPLTypes.NO_WARNING; }
+<YYINITIAL> (on change|ON CHANGE)                                { return SPLTypes.ON_CHANGE; }
+<YYINITIAL> (leaving|LEAVING)                                    { return SPLTypes.LEAVING; }
+<YYINITIAL> (free-locks|FREE-LOCKS)                              { return SPLTypes.FREE_LOCKS; }
+<YYINITIAL> (double|DOUBLE)                                      { return SPLTypes.DOUBLE; }
+<YYINITIAL> (no-cross|NO-CROSS)                                  { return SPLTypes.NO_CROSS; }
+<YYINITIAL> (sunken|SUNKEN)                                      { return SPLTypes.SUNKEN; }
+<YYINITIAL> (absolute-coordinates|ABSOLUTE-COORDINATES)          { return SPLTypes.ABSOLUTE_COORDINATES; }
+<YYINITIAL> (max-parameters|MAX-PARAMETERS)                      { return SPLTypes.MAX_PARAMETERS; }
+<YYINITIAL> (home|HOME)                                          { return SPLTypes.HOME; }
+<YYINITIAL> (batch|BATCH)                                        { return SPLTypes.BATCH; }
+<YYINITIAL> (leave-files-open|LEAVE-FILES-OPEN)                  { return SPLTypes.LEAVE_FILES_OPEN; }
+<YYINITIAL> (external|EXTERNAL)                                  { return SPLTypes.EXTERNAL; }
+<YYINITIAL> (no-wait|wait)                                       { return SPLTypes.BACKGROUNDNOWAITWAIT; }
+<YYINITIAL> (http-headers|HTTP-HEADERS)                          { return SPLTypes.HTTP_HEADERS; }
+<YYINITIAL> (http-body|HTTP-BODY)                                { return SPLTypes.HTTP_BODY; }
+<YYINITIAL> (http-method|HTTP-METHOD)                            { return SPLTypes.HTTP_METHOD; }
+<YYINITIAL> (http-proxy|HTTP-PROXY)                              { return SPLTypes.HTTP_PROXY; }
+<YYINITIAL> (http-auth-any|HTTP-AUTH-ANY)                        { return SPLTypes.HTTP_AUTH_ANY; }
+<YYINITIAL> (ca-certificate|CA-CERTIFICATE)                      { return SPLTypes.CA_CERTIFICATE; }
+<YYINITIAL> (ssl-certificate|SSL-CERTIFICATE)                    { return SPLTypes.SSL_CERTIFICATE; }
+<YYINITIAL> (ssl-key|SSL-KEY)                                    { return SPLTypes.SSL_KEY; }
+<YYINITIAL> (ssl_key_password|SSL_KEY_PASSWORD)                  { return SPLTypes.SSL_KEY_PASSWORD; }
+<YYINITIAL> (allow-redirection|ALLOW-REDIRECTION)                { return SPLTypes.ALLOW_REDIRECTION; }
+<YYINITIAL> (sftp-command|SFTP-COMMAND)                          { return SPLTypes.SFTP_COMMAND; }
+<YYINITIAL> (sftp-post-command|SFTP-POST-COMMAND)                { return SPLTypes.SFTP_POST_COMMAND; }
+<YYINITIAL> (sftp-create-dirs|SFTP-CREATE-DIRS)                  { return SPLTypes.SFTP_CREATE_DIRS; }
+<YYINITIAL> (url-user|URL-USER)                                  { return SPLTypes.URL_USER; }
+<YYINITIAL> (url-login-options|URL-LOGIN-OPTIONS)                { return SPLTypes.URL_LOGIN_OPTIONS; }
+<YYINITIAL> (values|VALUES)                                      { return SPLTypes.VALUES; }
+<YYINITIAL> (right-coordinate|RIGHT-COORDINATE)                  { return SPLTypes.RIGHT_COORDINATE; }
+<YYINITIAL> (before-check-box|BEFORE-CHECK-BOX)                  { return SPLTypes.BEFORE_CHECK_BOX; }
+<YYINITIAL> (end-before-check-box|END-BEFORE-CHECK-BOX)          { return SPLTypes.END_BEFORE_CHECK_BOX; }
+<YYINITIAL> (message-buttons|MESSAGE-BUTTONS)                    { return SPLTypes.MESSAGEBOX_BUTTONS; }
 <YYINITIAL> (MSG_BOX_OK|MSG_BOX_CANCEL|MSG_BOX_YES|MSG_BOX_NO|MSG_BOX_RETRY|MSG_BOX_OK_CANCEL|MSG_BOX_YES_NO|MSG_BOX_YES_NO_CANCEL) { return SPLTypes.MESSAGEBOX_BUTTONS_VALUES; }
 <YYINITIAL> (MSG_BOX_STOP|MSG_BOX_WARNING|MSG_BOX_INFORMATION|MSG_BOX_QUESTION|MSG_BOX_EXCLAMATION) { return SPLTypes.MESSAGEBOX_ICON_VALUES; }
 
-<YYINITIAL> (message|MESSAGE)                               { return SPLTypes.MESSAGE; }
+
+
+
+
+//Statements
+//STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
+<YYINITIAL> (abort|ABORT)                                     { return SPLTypes.ABORT; }
+<YYINITIAL> (accept|ACCEPT)                                   { return SPLTypes.ACCEPT; }
+<YYINITIAL> (acknowledge|ACKNOWLEDGE)                         { return SPLTypes.ACKNOWLEDGE; }
+<YYINITIAL> (audit|AUDIT|auditon|AUDITON)                     { return SPLTypes.AUDIT; }
+<YYINITIAL> (back-to-detail|BACK-TO-DETAIL)                   { return SPLTypes.BACK_TO_DETAIL; }
+<YYINITIAL> (begin work|BEGIN WORK)                           { return SPLTypes.BEGIN_WORK; }
+<YYINITIAL> (box|BOX)                                         { return SPLTypes.BOX; }
+<YYINITIAL> (break|BREAK)                                     { return SPLTypes.BREAK; }
+<YYINITIAL> (call|CALL)                                       { return SPLTypes.CALL; }
+<YYINITIAL> (call-url|CALL-URL)                               { return SPLTypes.CALL_URL; }
+<YYINITIAL> (check-box|CHECK-BOX)                             { return SPLTypes.CHECK_BOX; }
+<YYINITIAL> (end-check-box|end-check-box)                     { return SPLTypes.CHECK_BOX_END; }
+
+
+<YYINITIAL> (message-box|messagebox|MESSAGE-BOX|MESSAGEBOX)   { return SPLTypes.MESSAGEBOX; }
+<YYINITIAL> (message|MESSAGE)                                 { return SPLTypes.MESSAGE; }
+
+<YYINITIAL> (else|ELSE)                                        { return SPLTypes.ELSE; }
 
 //Arithmetic functions
 <YYINITIAL> (aand|AAND)                                     { return SPLTypes.AAND; }
