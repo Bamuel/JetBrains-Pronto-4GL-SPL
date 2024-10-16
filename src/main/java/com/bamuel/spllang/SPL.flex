@@ -365,6 +365,7 @@ PREPROCESSOR=(#include|#define|#define|#undef|#ifdef|#ifndef|#if|#else|#endif|#I
 <YYINITIAL> (check-box|CHECK-BOX)                             { return SPLTypes.CHECK_BOX; }
 <YYINITIAL> (end-check-box|end-check-box)                     { return SPLTypes.CHECK_BOX_END; }
 <YYINITIAL> (clear|CLEAR)                                     { return SPLTypes.CLEAR; }
+<YYINITIAL> (close|CLOSE)                                     { return SPLTypes.CLOSE; }
 <YYINITIAL> (command|COMMAND)                                 { return SPLTypes.COMMAND; }
 <YYINITIAL> (commit work|COMMIT WORK)                         { return SPLTypes.COMMIT_WORK; }
 <YYINITIAL> (confirm|CONFIRM)                                 { return SPLTypes.CONFIRM; }

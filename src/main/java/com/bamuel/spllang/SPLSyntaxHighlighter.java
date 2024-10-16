@@ -64,6 +64,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CHECK_BOX, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CHECK_BOX_END, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CLEAR, new TextAttributesKey[]{KEYWORD});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CLOSE, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMAND, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMIT_WORK, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CONFIRM, new TextAttributesKey[]{KEYWORD});
