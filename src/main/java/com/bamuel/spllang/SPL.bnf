@@ -17,9 +17,15 @@ splFile ::= item_*
 
 item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_
-    statement_ ::= abort_ | accept_ | acknowledge_ | audit_ | back-to-detail_ | beginwork_ | box_ | break_
-                 | call_ | callurl_ | checkbox_ | message_ | messagebox_
+
+    statement_ ::= abort_ | accept_ | acknowledge_ | audit_ | back-to-detail_ | beginwork_ | box_ | break_ | call_ | callurl_ | checkbox_ | clear_ | close_ | command_ | commitwork_ | confirm_ | continue_
+                 | continueentry_ | delete_ | disablealltriggers_ | display_ | do_ | dropdown_ | exit_ | extract_ | field-group_ | for_ | get_ | if_ | initialise_ | insert_ | link_ | lock-method_ | message_ | messagebox_
+                 | need_ | open_ | option_ | page_ | pause_ | pop_ | position_ | print_ | push_ | query_ | radio-button_ | re-enter_ | refresh_ | repeat_ | report_ | reportfinish_ | reportsection_ | reportsectionfinish_
+                 | re-select_ | restore_ | rollbackwork_ | save_ | screengroup_ | screensection_ | select_ | serial_ | set_ | set2_ | set-date-validation_ | skip_ | sql-delete_ | sql-update_ | statement-group_ | stringstatement_ | switch_
+                 | transaction_ | unlock_ | update_ | version-number_ | web-client-local-agent_ | while_
+
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
+
     function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_
 
         arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
@@ -53,10 +59,8 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
 
 //Statement rules
-//STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
-abort_ ::= ABORT string_ (PIC ("is")? picture_)? NOLOG
-
-accept_ ::= ACCEPT IDENTIFIER rowcol_ col_? accepttitle_? NOTITLE? MULTILINE? rows_? columns_? acceptpicture_? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? OPTIONAL? acceptdefault_? acceptallow_? acceptdisallow_? JUSTIFY? AUTO_RETURN? timeout_? acceptedits_? acceptfill_? acceptlookup_? accpetcase_? acceptjustify_? accepthelp_? BOLD? DIM? FLASHING? INVERSE? ITALIC? UNDERLINED? FOREGROUND? BACKGROUND? BLANK? acceptonerror_? acceptfunctionkey_? accepttag_? accepthelpcontext_? accepthelpscreen_? acceptwhen_? SHOW_VALUE? NO_CLEAR? SUPPRESS? CONDITIONAL_SUPPRESS? READ_ONLY? FIXED_WIDTH_FONT? colour_? beforeaccept_? acceptvalidation_? USE_VALIDATE_TRIGGER? acceptproceduralstatement_ acceptscale_? NO_WARNING? acceptonchange_?
+abort_ ::= ABORT string_ (PIC ("is")? picture_)? NOLOG?
+accept_ ::= ACCEPT IDENTIFIER rowcol_ col_? accepttitle_? NOTITLE? MULTILINE? rows_? columns_? acceptpicture_? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? OPTIONAL? acceptdefault_? acceptallow_? acceptdisallow_? JUSTIFY? AUTO_RETURN? timeout_? acceptedits_? acceptfill_? acceptlookup_? accpetcase_? acceptjustify_? accepthelp_? BOLD? DIM? FLASHING? INVERSE? ITALIC? UNDERLINED? FOREGROUND? BACKGROUND? BLANK? acceptonerror_? acceptfunctionkey_? accepttag_? accepthelpcontext_? accepthelpscreen_? acceptwhen_? SHOW_VALUE? NO_CLEAR? SUPPRESS? CONDITIONAL_SUPPRESS? READ_ONLY? FIXED_WIDTH_FONT? colour_? beforeaccept_? acceptvalidation_? USE_VALIDATE_TRIGGER? acceptproceduralstatement_ scale_? NO_WARNING? acceptonchange_?
 accepttitle_ ::= (TITLE|COLUMNTITLE) ("is")? string_ rowcol_?
 rows_ ::= ROWS number_
 columns_ ::= COLUMNS number_
@@ -71,29 +75,28 @@ acceptlookup_ ::= LOOKUP ("not")? ("in")? string_ ("on index" string_)? ("key" (
 accpetcase_ ::= LOWERCASE | UPPERCASE
 acceptjustify_ ::= LEFT | CENTRE | RIGHT | CENTRE_COORD | RIGHT_COORD
 accepthelp_ ::= HELP ("is")? string_
-acceptonerror_ ::= ON_ERROR item_* END_ON //todo: procedural-statements
-acceptfunctionkey_ ::= "on" FUNCTION_KEY item_* END_ON //todo: procedural-statements
+acceptonerror_ ::= ON ERROR statement_* END_ON
+acceptfunctionkey_ ::= ON FUNCTION_KEY statement_* END_ON
 accepttag_ ::= TAG ("is")? NUMBER
 accepthelpcontext_ ::= HELP_CONTEXT ("is")? string_*
 accepthelpscreen_ ::= HELP_SCREEN ("primary") IDENTIFIER rowcol_ (OCCURS number_)? SHOWING IDENTIFIER STRING (COMMA IDENTIFIER STRING)* (USING IDENTIFIER)
 acceptwhen_ ::= WHEN condition_ //todo: condition
-beforeaccept_ ::= BEFORE_ACCEPT item_* END_BEFORE_ACCEPT //todo: procedural-statements
-acceptvalidation_ ::= VALIDATIONS item_* END_VALIDATIONS //todo: procedural-statements
-acceptproceduralstatement_ ::= item_* //todo: procedural-statements
-acceptscale_ ::= SCALE ("is")? number_
-acceptonchange_ ::= ON_CHANGE item_* END_ON //todo: procedural-statements
-
-acknowledge_ ::= ACKNOWLEDGE string_ (PROMPT ("is")? string_)?
+beforeaccept_ ::= BEFORE_ACCEPT statement_* END_BEFORE_ACCEPT
+acceptvalidation_ ::= VALIDATIONS statement_* END_VALIDATIONS
+acceptproceduralstatement_ ::= statement_*
+scale_ ::= SCALE ("is")? number_
+acceptonchange_ ::= ON CHANGE statement_* END_ON
+acknowledge_ ::= ACKNOWLEDGE string_ (prompt_)?
 audit_ ::= AUDIT ("ON"|"OFF")? (IDENTIFIER)*
 back-to-detail_ ::= BACK_TO_DETAIL
-beginwork_ ::= BEGIN_WORK ("on" string_ (COMMA string_)*)? (LEAVING string_ (COMMA string_)*)? FREE_LOCKS? (ON_ERROR number_* item_* ELSE item_* END_ON)? //todo: procedural-statements
-box_ ::= BOX (rowcol_ "to" rowcol_)? DOUBLE? NO_CROSS? (TITLE "is" string_)? SUNKEN? colour_? ABSOLUTE_COORDINATES
+beginwork_ ::= BEGIN_WORK (ON string_ (COMMA string_)*)? (LEAVING string_ (COMMA string_)*)? FREE_LOCKS? (ON ERROR number_* statement_* END_ON)?
+box_ ::= BOX (rowcol_ "to" rowcol_)? DOUBLE? NO_CROSS? (TITLE ("is")? string_)? SUNKEN? colour_? ABSOLUTE_COORDINATES
 break_ ::= BREAK
-call_ ::= CALL string_ parameters_? max_parameters_? returning_? callhome_? BATCH? LEAVE_FILES_OPEN? EXTERNAL? backgroundnowait_? (ON_ERROR item_* END_ON)?
+call_ ::= CALL string_ parameters_? max_parameters_? returning_? home_? BATCH? LEAVE_FILES_OPEN? EXTERNAL? backgroundnowait_? (ON ERROR statement_* END_ON)?
 max_parameters_ ::= MAX_PARAMETERS ("are")? number_
-callhome_ ::= HOME ("is")? string_
+home_ ::= HOME ("is")? string_
 backgroundnowait_ ::= BACKGROUND | BACKGROUNDNOWAITWAIT
-callurl_ ::= CALL_URL string_ httpheaders_? httpbody_? httpmethod_? httpproxy_? httpauthany_? timeout_? cacertificate_? sslcertificate_? sslkey_? sslkeypassword_? allowredirection_? sftpcommand_? sftppostcommand_? sftpcreatedirs_? urluser_? urlloginoptions_? callreturning_? (ON_ERROR number_? item_* END_ON)?
+callurl_ ::= CALL_URL string_ httpheaders_? httpbody_? httpmethod_? httpproxy_? httpauthany_? timeout_? cacertificate_? sslcertificate_? sslkey_? sslkeypassword_? allowredirection_? sftpcommand_? sftppostcommand_? sftpcreatedirs_? urluser_? urlloginoptions_? callreturning_? (ON ERROR number_? statement_* END_ON)?
 httpheaders_ ::= HTTP_HEADERS ("are")? string_|"file" ("is")? string_?
 httpbody_ ::= HTTP_BODY ("is")? string_|"file" ("is")? string_?
 httpmethod_ ::= HTTP_METHOD ("is")? string_ //todo: http methods
@@ -109,7 +112,100 @@ sftpcreatedirs_ ::= SFTP_CREATE_DIRS
 urluser_ ::= URL_USER ("is")? string_ (string_)?
 urlloginoptions_ ::= URL_LOGIN_OPTIONS ("is")? string_
 callreturning_ ::= RETURNING (HTTP_HEADERS ("in")? string_|"file" ("is")? string_?)? (HTTP_BODY ("is") string_|"file" ("is")? string_?)?
-checkbox_ ::= CHECK_BOX string_ rowcol_ (VALUES string_ string_)? (TITLE string_)? colour_? RIGHT_COORDINATE? (DEFAULT ("is")? ("TRUE"|"FALSE"))? READ_ONLY? (WHEN condition_)? (BEFORE_CHECK_BOX item_* END_BEFORE_CHECK_BOX)? (VALIDATIONS item_* END_VALIDATIONS)? (ON_CHANGE item_* END_ON)? CHECK_BOX_END?
+checkbox_ ::= CHECK_BOX string_ rowcol_ (VALUES string_ string_)? (TITLE string_)? colour_? RIGHT_COORDINATE? (DEFAULT ("is")? ("TRUE"|"FALSE"))? READ_ONLY? (WHEN condition_)? (BEFORE_CHECK_BOX statement_* END_BEFORE_CHECK_BOX)? (VALIDATIONS statement_* END_VALIDATIONS)? (ON CHANGE item_* END_ON)? CHECK_BOX_END?
+clear_ ::= CLEAR clearoptions_?
+clearoptions_ ::= (ROWS number_ ("to") number_) | (rowcol_ ("to") rowcol_) | (DATA) | (DATA|PROMPT rowcol_ "to" rowcol_) | ABSOLUTE_COORDINATES
+close_ ::= (CLOSE (string_ ("and remove")? (ON ERROR statement_* END_ON)?)) | (CLOSE "ALL" ("LOCAL"|"RECONNECT")?)
+command_ ::= COMMAND parameters_? home_? NO_MESSAGE? NO_REFRESH? NO_XTERM? max_parameters_? BATCH? (BACKGROUND|BACKGROUNDNOWAITWAIT)? EXTERNAL? (ON ERROR statement_* END_ON)? 
+commitwork_ ::= COMMIT_WORK (ON ERROR statement_* END_ON)?
+confirm_ ::= CONFIRM rowcol_? (AUTO? (WHEN condition_)?)? prompt_? NO_PROMPT? (DEFAULT ("is")? ("yes"|"no"))? (NO_WINDOW|WINDOW)? (BEFORE statement_*)? (CONFIRMED statement_*)? (NOT_CONFIRMED statement_*)? (AFTER statement_*)? CONFIRM_END
+continue_ ::= CONTINUE
+continueentry_ ::= CONTINUE_ENTRY
+delete_ ::= DELETE string_ NO_WARNING? (ON ERROR statement_* END_ON)?
+disablealltriggers_ ::= DISABLE_ALL_TRIGGERS
+display_ ::= DISPLAY displayoptions_
+displayoptions_ ::= displayoption1_ | displayoption2_
+displayoption1_ ::= string_ rowcol_ (COL number_)? (PIC picture_)? (TITLE string_)? MULTILINE? (ROWS number_)? (COLUMNS number_)? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? BOLD? DIM? FLASHING? INVERSE? ITALIC? UNDERLINED? BELL? FOREGROUND? BACKGROUND? DATA? PROMPT? colour_? scale_? FIXED_WIDTH_FONT? acceptjustify_? (HELP_IS string_)?
+displayoption2_ ::= BITMAP string_ rowcol_ ("to" rowcol_)? BACKGROUNDNOWAITWAIT
+do_ ::= DO string_ (SCREEN_MODE string_)? SAME? ONCE? SUB_SCREEN? (INITIAL_MODE ("is")? string_)? parameters_? returning_? (NEXT string_)? BACKGROUNDNOWAITWAIT? NO_SECTION?
+dropdown_ ::= DROP_DOWN DYNAMIC? OPTIONAL? EDIT? (WIDTH ("is")? number_)? concat_title_? DROP_DOWN_END
+concat_title_ ::= CONCAT_TITLE (dropdownvalues_? | selectclauses_?)
+dropdownvalues_ ::= (string_ TITLE string_)* | (ICON "is"? string_)* | (WHEN condition_ SHOW_VALUE?)
+exit_ ::= EXIT number_? //todo: any number between -1 and 255
+extract_ ::= EXTRACT ALL? ((NEXT|PREVIOUS) (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?)? LOCK? (ON INDEX string_)? (KEY ("is")? string_*)? (WHERE condition_)? (FINISH WHEN condition_)? (ON ERROR statement_* END_ON)? (DETAIL statement_*)? (BEFORE (IDENTIFIER fieldclauses_)* statement_*)? (AFTER (IDENTIFIER fieldclauses_)* statement_*)? EXTRACT_END 
+field-group_ ::= FIELD_GROUP (WHEN condition_)? (TITLE ("is")? string_)? VERTICAL? WRAP? (TAG ("is")? number_)? statement_* FIELD_GROUP_END
+for_ ::= FOR string_ EQUALS expression_ DOWN? TO expression_ (STEP expression_)? DETAIL? statement_* FOR_END 
+get_ ::= GET ((IDENTIFIER fieldclauses_)* FROM)? string_ (NEXT|PREVIOUS)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)? (FROM | FIRST | LAST | CURRENT | LOOKUP)? (LOCK)? (ON INDEX string_)? (KEY ("is")? string_*)? (ON ERROR statement_* END_ON)?
+if_ ::= IF expression_ THEN? statement_* (ELSEIF expression_ statement_*)* (ELSE statement_*)? ENDIF
+initialise_ ::= INITIALISE string_ (LEAVING string_ (COMMA string_)*)?
+insert_ ::= INSERT string_ LOCK? (ON ERROR statement_* END_ON)?
+link_ ::= LINK string_ NO_MAIN?
+lock-method_ ::= LOCK_METHOD ("is")? (BACKGROUNDNOWAITWAIT|WAIT_WITH_TIMEOUT)?
+message_ ::= MESSAGE (string_)* (NOBELL)?
+messagebox_ ::= MESSAGEBOX string_ messsageboxtitle_? messageboxbuttons_? messageboxdefault_? messageboxicon_? messageboxtag_? messageboxhelpcontext_? messageboxoptional_? messageboxbell_?
+messsageboxtitle_ ::= TITLE ("is")? string_
+messageboxbuttons_ ::= MESSAGEBOX_BUTTONS MESSAGEBOX_BUTTONS_VALUES
+messageboxdefault_ ::= DEFAULT ("is")? MESSAGEBOX_BUTTONS_VALUES
+messageboxicon_ ::= ICON ("is")? MESSAGEBOX_ICON_VALUES
+messageboxtag_ ::= TAG ("is")? NUMBER
+messageboxhelpcontext_ ::= HELP_CONTEXT string_
+messageboxoptional_ ::= OPTIONAL
+messageboxbell_ ::= BELL
+need_ ::= NEED string_ ("lines")? (ON string_)?
+open_ ::= OPEN string_ (FILE ("is")? string_)? LOCK? CREATE? TRUNCATE? PERMANENTTEMPORARY? PRIVATE? NO_TRIGGERS? LOCAL? READ_ONLY? INDEX_ON_CLOSE? (ON ERROR statement_* END_ON)? 
+option_ ::= OPTION menuoption_ (DETAIL? statement_*)? OPTION_END
+//todo: buttonstyle values
+menuoption_ ::= string_ rowcol_ ("to" rowcol_)? (ROWS number_)? (COLUMNS number_)? (SECURITY string_? ("is")? number_)? (WHEN condition_)? help_? log_? scale_? colour_? BOLD? ITALIC? UNDERLINED? (BITMAP ("is")? string_)? (BITMAP_PUSHED ("is")? string_)? (BITMAP_FOCUS ("is")? string_)? (BITMAP_HOVER ("is")? string_)? (BITMAP_GREYED ("is")? string_)? NO_ASPECT_RATIO? modeicon_? (BUTTON_STYLE ("is")? string_)? (DEFAULT_BUTTON ("is")? string_)? (TEXT_POSITION ("is")? string_)? (HOTKEY ("is")? string_)? HIDDEN? ABSOLUTE_COORDINATES? NO_THEME?
+log_ ::= LOG string_?
+page_ ::= PAGE NO_HEADER? NO_FOOTER? (ON string_)?
+pause_ ::= PAUSE
+pop_ ::= POP (string_ (LEAVING string_ (COMMA string_)*)? (LEAVING ALL)? )|((string_ (COMMA string_)*) FROM string_)
+position_ ::= POSITION (BEFORE|AFTER)? string_ (ON INDEX string_)? (KEY ("is")? string_*)? (FIRST|LAST)? NO_WARNING?
+print_ ::= PRINT string_ (("in") COLUMN number_)? rowcol_? (PIC ("is")? picture_)? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? BOLD? UNDERLINED? ITALIC? (SUBSCRIPT|SUPERSCRIPT)? (FONT number_)? (STATIC)? colour_? scale_? (LEFT|RIGHT|CENTRE)? (SECTION ("is")? string_)? accepttag_? expression_? NO_NEWLINE? (ON string_)?
+push_ ::= PUSH string_
+query_ ::= QUERY string_ parameters_? home_? BATCH? NO_PAUSE? SPOOL? max_parameters_? (ON ERROR statement_* END_ON)? 
+radio-button_ ::= RADIO_BUTTON string_ (rowcol_ boolean_ TITLE string_ colour_?)* (BUTTON_WHEN expression_)? (RIGHT_COORDINATE)? (DEFAULT ("is")? expression_)? (WHEN expression_)? READ_ONLY? (BEFORE_RADIO_BUTTON statement_* END_BEFORE_RADIO_BUTTON)? (VALIDATIONS statement_* END_VALIDATIONS)? (ON CHANGE item_* END_ON)? RADIO_BUTTON_END
+re-enter_ ::= RE_ENTER (string_)? (OPTIONAL|AUTO)?
+refresh_ ::= REFRESH (DATA|WHENS|PROMPTS|REVIEW|TITLE|string_)
+repeat_ ::= REPEAT statement_* UNTIL expression_ statement_* REPEAT_END
+report_ ::= REPORT string_ (FILE ("is")? string_)? (DIRECT ("to")? string_)? (NAME ("is")? string_)? (HEADER ("is")? string_)? (FOOTER ("is")? string_)? (WIDTH ("is")? expression_)? (DEPTH ("is")? expression_)? (LENGTH ("is")? expression_)? (MARGIN ("is")? expression_)? (DEFAULT FONT ("is")? expression_)? FULL_PAGE? (FORM TYPE ("is")? string_) NO_XML? SPOOL_ONLY? FULL_XML? NO_MESSAGE? (ON ERROR statement_* END_ON)? 
+reportfinish_ ::= REPORT FINISHED (ON string_)?
+reportsection_ ::= REPORT SECTION ("is")? string_? (HIDDEN|CAN_HIDE)? colour_? (STYLE_CLASS ("is")? string_)? (ON string_)?
+reportsectionfinish_ ::= REPORT SECTION FINISHED (ON string_)?
+re-select_ ::= RE_SELECT
+restore_ ::= RESTORE (string_ (LEAVING string_ (COMMA string_)*)? (LEAVING ALL)? )|((string_ (COMMA string_)*) FROM string_)
+rollbackwork_ ::= ROLLBACK_WORK (ON ERROR statement_* END_ON)? 
+save_ ::= SAVE string_
+screengroup_ ::= SCREEN_GROUP (WHEN condition_)? (TITLE ("is")? string_)? (NEXT ROW)? HORIZONTAL? (WIDTH ("is")? number_)? (GROUP_STYLE ("is")? number_)? (TAG ("is")? number_)? statement_* SCREEN_GROUP_END
+screensection_ ::= SCREEN_SECTION (WHEN condition_)? (TITLE ("is")? string_)? help_? (SECTION_WHEN condition_)? ALWAYS_SHOW? (HIDDEN|HIDE)? do_ SCREEN_SECTION_END
+select_ ::= selectclauses_ (ON ERROR statement_* END_ON)? (BEFORE statement_* END_BEFORE)? (AFTER statement_* END_AFTER)? SELECT_END
+selectclauses_ ::= SELECT DISTINCT? selectlist_* FROM string_ (WHERE condition_)? (DATABASE_SQL|LOCAL_SQL)? (ORDER "by" (string_ DESC?)*)? (GROUP "by" string_*)? (HAVING condition_)? ((FOR UPDATE) | FOR_UPDATE)?
+selectlist_ ::=  "*" | (IDENTIFIER (COMMA IDENTIFIER)*)
+serial_ ::= SERIAL string_ string_ (ON INDEX string_)? (KEY ("is")? expression_) (ON ERROR statement_* END_ON)? 
+set_ ::= SET objectarraystring_* assignmentoperator_ (expression_|objectarraystring_*) (NO_WARNING)?
+objectarraystring_ ::= string_ | "[" | "]" | "*" | "."
+set2_ ::= SET (PAGE_NO|(DEFAULT FONT)) assignmentoperator_ expression_ (ON string_)?
+assignmentoperator_ ::= "=" | "+=" | "-=" | "*=" | "/=" | "%="
+set-date-validation_ ::= SET_DATE_VALIDATION accepthelpcontext_?
+skip_ ::= SKIP ((expression_? ("lines")?)|("to" ("line")? expression_)) (ON string_)?
+sql-delete_ ::= SQL_DELETE ALL? string_ (WHERE condition_)? (ON ERROR statement_* END_ON)? 
+sql-update_ ::= SQL_UPDATE ALL? string_ SET (IDENTIFIER "=" expression_)* (WHERE condition_)? (ON ERROR statement_* END_ON)? //todo: expression with subquery & procedural-statements
+statement-group_ ::= STATEMENT_GROUP item_* STATEMENT_GROUP_END
+stringstatement_ ::= stringstatement1_ | stringstatement2_ | stringstatement3_
+stringstatement1_ ::= STRINGSTATMENT string_ (INSERTING|REPLACING) string_ "at" string_
+stringstatement2_ ::= STRINGSTATMENT string_ DELETING string_ "to" string_
+stringstatement3_ ::= STRINGSTATMENT string_ APPENDING string_
+switch_ ::= SWITCH ON string_ (CASE string_ statement_*)* (ELSE statement_*)? SWITCH_END
+transaction_ ::= TRANSACTION (transactionbegin_ | transactioncommit_ | transactionrollback_)
+transactionbegin_ ::= BEGIN (ON string_ (COMMA STRING)*)? (LEAVING string_ (COMMA STRING)*)? FREE_LOCKS? (ON ERROR statement_* END_ON)? 
+transactioncommit_ ::= COMMIT (ON ERROR statement_* END_ON)? 
+transactionrollback_ ::= ROLLBACK (ON ERROR statement_* END_ON)? 
+unlock_ ::= UNLOCK (string_|ALL) LOCAL?
+update_ ::= UPDATE string_ NO_WARNING? LOCK? (ON ERROR statement_* END_ON)? 
+version-number_ ::= VERSION_NUMBER ("is")? number_
+web-client-local-agent_ ::= WEB_CLIENT_LOCAL_AGENT ("ON"| "OFF")
+while_ ::= WHILE expression_ DETAIL? statement_* WHILE_END
+
 
 //Arithmetic functions
 aand_ ::= AAND LPAREN number_ COMMA number_ RPAREN
@@ -323,9 +419,6 @@ writeblobtofile_ ::= WRITEBLOBTOFILE LPAREN string_ COMMA string_ RPAREN
 zstr_ ::= ZSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
 
 
-// Message rule
-message_ ::= MESSAGE (string_)? (NOBELL)?
-
 // Preprocessor rule
 preprocessors_ ::= PREPROCESSOR (IDENTIFIER | STRING)
 
@@ -334,18 +427,18 @@ preprocessors_ ::= PREPROCESSOR (IDENTIFIER | STRING)
 screen_ ::= SCREEN IDENTIFIER (SCREEN_RESPONSIVE)? (window_)? (windowpositision_)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (colour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (export_)? (screenhelpcontext_)? (before_)? (detail_)? (after_)? SCREEN_END
 
 screentitle_ ::= TITLE ("is")? string_
-screenprimary_ ::= SCREEN_PRIMARY IDENTIFIER (SCREEN_ON)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?
-screenselect_ ::= SCREEN_SELECT selectclauses_
-screenquicklink_ ::= SCREEN_QUICK_LINK ("on")? IDENTIFIER
-screenreview_ ::= SCREEN_REVIEW ("is")? "colour" ("on")? IDENTIFIER
+screenprimary_ ::= SCREEN_PRIMARY IDENTIFIER (ON INDEX)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?
+screenselect_ ::= SELECT selectclauses_
+screenquicklink_ ::= SCREEN_QUICK_LINK (ON)? IDENTIFIER
+screenreview_ ::= SCREEN_REVIEW ("is")? "colour" (ON)? IDENTIFIER
 screenallowed_ ::= SCREEN_ALLOWED ("is"|"are")? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"SEARCH"|"ENTRY"|"CORRECT"|"REMOVE"|"find"|"next"|"prev"|"next-scr"|"prev-scr"|"search"|"entry"|"correct"|"remove") IDENTIFIER* //todo: [mode-name ...]]
 screenprompt_ ::= PROMPT rowcol_
-screendatagrid_ ::= SCREEN_DATA_GRID item_* //todo: datagrid
+screendatagrid_ ::= SCREEN_DATA_GRID
 screenreviewoccurs ::= SCREEN_REVIEW_OCCURS number_ ("by" number_)?
 screenwhen_ ::= WHEN condition_ //todo: conditon
 
 // API rule
-api_ ::= API IDENTIFIER item_* API_END //todo: procedural-statements
+api_ ::= API IDENTIFIER procedureclauses_ API_END 
 
 // Field rule
 field_ ::= FIELD (IDENTIFIER fieldclauses_)*
@@ -369,8 +462,8 @@ menubuttonwidth_ ::= MENU_BUTTON_WIDTH ("is")? number_
 
 // Mode rule
 mode_ ::= MODE IDENTIFIER modeclauses_
-modeclauses_ ::= (modeprompt_)? (help_)? (security_)? (modeentry_)? (process_)? (modecurrency_)? (LOCK)? (modeperform_)? (modewhen_)? (colour_)? (modeicon_)? (alwaysshowaddnohide_)?
-modeprompt_ ::= PROMPT ("is")? string_
+modeclauses_ ::= (prompt_)? (help_)? (security_)? (modeentry_)? (process_)? (modecurrency_)? (LOCK)? (modeperform_)? (modewhen_)? (colour_)? (modeicon_)? (alwaysshowaddnohide_)?
+prompt_ ::= PROMPT ("is")? string_
 help_ ::= HELP ("is")? string_
 security_ ::= SECURITY ("is")? number_
 modeentry_ ::= MODEENTRY
@@ -416,43 +509,30 @@ parameters_ ::= PARAMETERS ("are"|"is")? (IDENTIFIER fieldclauses_)*
 returning_ ::= RETURNING (IDENTIFIER fieldclauses_)*
 
 // Procedure rule
-procedure_ ::= PROCEDURE IDENTIFIER procedureclauses_ PROCEDURE_END//todo: procedural-statements
-procedureclauses_ ::= (window_)? (relative_)? (NOHIDE)? (windowpositision_)? (colour_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (TITLE string_)? (export_)? (AUTO_TRANSACTION)? (helpcontext_)? item_*
+procedure_ ::= PROCEDURE IDENTIFIER procedureclauses_ PROCEDURE_END
+procedureclauses_ ::= (window_)? (relative_)? (NOHIDE)? (windowpositision_)? (colour_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (TITLE string_)? (export_)? (AUTO_TRANSACTION)? (helpcontext_)? statement_*
 
 // Other rules
 export_ ::= EXPORT (CAN_OVERRIDE)?
-colour_ ::= COLOUR ("is")? IDENTIFIER ("on" IDENTIFIER)?
+colour_ ::= COLOUR ("is")? IDENTIFIER (ON IDENTIFIER)?
 helpcontext_ ::= SCREEN_HELP_CONTEXT ("is") string_ string_
 window_ ::= WINDOW rowcol_ "to" rowcol_ (relative_)?
 relative_ ::= RELATIVE_TO "to" rowcol_
 windowpositision_ ::= WINDOW_POSITION ("is")? number_
-before_ ::= BEFORE item_* //todo: procedural-statements
-detail_ ::= DETAIL item_* //todo: procedural-statements
-after_ ::= AFTER item_* //todo: procedural-statements
-
-// Messagebox rule
-messagebox_ ::= MESSAGEBOX string_ messsageboxtitle_? messageboxbuttons_? messageboxdefault_? messageboxicon_? messageboxtag_? messageboxhelpcontext_? messageboxoptional_? messageboxbell_? item_*
-
-messsageboxtitle_ ::= TITLE ("is")? string_
-messageboxbuttons_ ::= MESSAGEBOX_BUTTONS MESSAGEBOX_BUTTONS_VALUES
-messageboxdefault_ ::= DEFAULT ("is")? MESSAGEBOX_BUTTONS_VALUES
-messageboxicon_ ::= ICON ("is")? MESSAGEBOX_ICON_VALUES
-messageboxtag_ ::= TAG ("is")? NUMBER
-messageboxhelpcontext_ ::= HELP_CONTEXT string_
-messageboxoptional_ ::= OPTIONAL
-messageboxbell_ ::= BELL
+before_ ::= BEFORE statement_*
+detail_ ::= DETAIL statement_*
+after_ ::= AFTER statement_* 
 
 
 //row and col
 //Syntax @row,col
 rowcol_ ::= AT NUMBER COMMA NUMBER
-selectclauses_ ::= "SELECT" item_* //todo: sql select
-
+expression_ ::= item_* //todo: expression
+condition_ ::= item_* //todo: condition, Need to double check the differnce between expression and condition
 string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
-number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | datetimefunction_ | environmentfunction_
+number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | datetimefunction_ | environmentfunction_ | filehandlingfunction_
 boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
 datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_ | modification-time_
-condition_ ::= item_*
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
 // todo: add more picture string characters, this covers the basics.
@@ -507,20 +587,230 @@ element_ ::= FUNCTION_DECLARATION
            | COMPRESS
            | NOJOINS
            | NOROWID
+           | COLUMNTITLE
+           | NOLOG
+           | NOTITLE
+           | MULTILINE
+           | ROWS
+           | COLUMNS
+           | BLANK_WHEN_ZERO
+           | BLANK_DECIMALS_WHEN_ZERO
+           | ALLOW
+           | DISALLOW
+           | AUTO_RETURN
+           | TIMEOUT
+           | EDIT
+           | FILL
+           | LOOKUP
+           | LEFT
+           | CENTRE
+           | RIGHT
+           | CENTRE_COORD
+           | RIGHT_COORD
+           | BOLD
+           | DIM
+           | FLASHING
+           | INVERSE
+           | ITALIC
+           | UNDERLINED
+           | FOREGROUND
+           | BACKGROUND
+           | BLANK
+           | ERROR
+           | END_ON
+           | FUNCTION_KEY
+           | HELP_SCREEN
+           | SHOWING
+           | USING
+           | SHOW_VALUE
+           | NO_CLEAR
+           | SUPPRESS
+           | CONDITIONAL_SUPPRESS
+           | READ_ONLY
+           | FIXED_WIDTH_FONT
+           | BEFORE_ACCEPT
+           | END_BEFORE_ACCEPT
+           | VALIDATIONS
+           | END_VALIDATIONS
+           | USE_VALIDATE_TRIGGER
+           | SCALE
+           | NO_WARNING
+           | CHANGE
+           | LEAVING
+           | FREE_LOCKS
+           | DOUBLE
+           | NO_CROSS
+           | SUNKEN
+           | ABSOLUTE_COORDINATES
+           | MAX_PARAMETERS
+           | HOME
+           | BATCH
+           | LEAVE_FILES_OPEN
+           | EXTERNAL
+           | BACKGROUNDNOWAITWAIT
+           | HTTP_HEADERS
+           | HTTP_BODY
+           | HTTP_METHOD
+           | HTTP_PROXY
+           | HTTP_AUTH_ANY
+           | CA_CERTIFICATE
+           | SSL_CERTIFICATE
+           | SSL_KEY
+           | SSL_KEY_PASSWORD
+           | ALLOW_REDIRECTION
+           | SFTP_COMMAND
+           | SFTP_POST_COMMAND
+           | SFTP_CREATE_DIRS
+           | URL_USER
+           | URL_LOGIN_OPTIONS
+           | VALUES
+           | RIGHT_COORDINATE
+           | BEFORE_CHECK_BOX
+           | END_BEFORE_CHECK_BOX
+           | MESSAGEBOX_BUTTONS
+           | DATA
+           | NO_MESSAGE
+           | NO_REFRESH
+           | NO_XTERM
+           | AUTO
+           | NO_PROMPT
+           | NO_WINDOW
+           | CONFIRMED
+           | NOT_CONFIRMED
+           | COL
+           | BITMAP
+           | HELP_IS
+           | SAME
+           | ONCE
+           | SUB_SCREEN
+           | INITIAL_MODE
+           | NEXT
+           | NO_SECTION
+           | DYNAMIC
+           | CONCAT_TITLE
+           | WIDTH
+           | PREVIOUS
+           | FINISH
+           | ALL
+           | WHERE
+           | WRAP
+           | VERTICAL
+           | DOWN
+           | STEP
+           | SCREEN_RESPONSIVE
+           | SCREEN_PRIMARY
+           | INDEX
+           | SCREEN_SAME_DIFFERENT
+           | SCREEN_QUICK_LINK
+           | SCREEN_REVIEW
+           | SCREEN_ALLOWED
+           | SCREEN_PROMPT_FOR_SEARCH
+           | SCREEN_FIND_FOR_CURRENCY
+           | SCREEN_DATA_GRID
+           | SCREEN_REVIEW_OCCURS
+           | SCREEN_REVIEW_FROM_START
+           | SCREEN_NO_REVIEW_ROW_SEPARATORS
+           | SCREEN_NO_REVIEW_COLUMN_SEPARATORS
+           | SCREEN_NO_REVIEW_SEPARATORS
+           | SCREEN_START_ON_CURRENT_RECORD
+           | SCREEN_LEAVE_PARENT_SCREEN
+           | WHEN
+           | SCREEN_POSITION_ON_OK
+           | SCREEN_STAY_IN_CORRECT
+           | SCREEN_FORM_ENTRY
+           | AUTO_TRANSACTION
+           | TREEMENU
+           | NOHIDE
+           | MENU_BUTTON_WIDTH
            | HELP
+           | SECURITY
            | PROCESS
-           | MODEENTRY
            | MODECURRENCY
            | LOCK
            | PERFORM
            | ALWAYS_SHOW
            | ALWAYS_ADD
-           | SCREEN_PRIMARY
-           | LOCAL
-           | SCREEN_ALLOWED
-           | MESSAGEBOX_BUTTONS
+           | FROM
+           | FIRST
+           | LAST
+           | CURRENT
+           | THEN
+           | ELSE
+           | ELSEIF
+           | NO_MAIN
+           | WAIT_WITH_TIMEOUT
+           | CREATE
+           | TRUNCATE
+           | PERMANENTTEMPORARY
+           | PRIVATE
+           | NO_TRIGGERS
+           | INDEX_ON_CLOSE
+           | LOG
+           | BITMAP_PUSHED
+           | BITMAP_FOCUS
+           | BITMAP_HOVER
+           | BITMAP_GREYED
+           | NO_ASPECT_RATIO
+           | BUTTON_STYLE
+           | DEFAULT_BUTTON
+           | TEXT_POSITION
+           | HOTKEY
+           | HIDDEN
+           | NO_THEME
+           | NO_HEADER
+           | NO_FOOTER
+           | ON
+           | COLUMN
+           | SUBSCRIPT
+           | SUPERSCRIPT
+           | FONT
+           | SECTION
+           | NO_NEWLINE
+           | NO_PAUSE
+           | SPOOL
+           | BUTTON_WHEN
+           | BEFORE_RADIO_BUTTON
+           | END_BEFORE_RADIO_BUTTON
+           | WHENS
+           | PROMPTS
+           | REVIEW
+           | UNTIL
+           | DIRECT
+           | NAME
+           | HEADER
+           | FOOTER
+           | DEPTH
+           | LENGTH
+           | MARGIN
+           | FULL_PAGE
+           | FORM
+           | NO_XML
+           | SPOOL_ONLY
+           | FULL_XML
+           | CAN_HIDE
+           | STYLE_CLASS
+           | ROW
+           | GROUP_STYLE
+           | SECTION_WHEN
+           | HIDE
+           | DISTINCT
+           | DATABASE_SQL
+           | LOCAL_SQL
+           | ORDER
+           | GROUP
+           | FOR_UPDATE
+           | HAVING
+           | INSERTING
+           | REPLACING
+           | DELETING
+           | APPENDING
+           | CASE
+           | BEGIN
+           | COMMIT
+           | ROLLBACK
            | MESSAGEBOX_BUTTONS_VALUES
            | MESSAGEBOX_ICON_VALUES
+           | MODEENTRY
            | othersymbols_
 
 othersymbols_ ::= SYMBOLS | SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT

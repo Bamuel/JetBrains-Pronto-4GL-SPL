@@ -31,44 +31,17 @@ DOUBLEQUOTE="\""[^\"]*"\""
 COMMENT="//"[^\r\n]*
 BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 
-
-//CONSTANT_KEYWORDS=(ZERO|SPACES|TRUE|FALSE|YES|NO)
-//TYPE_KEYWORDS=(type|x|int|blob|boolean|alpha|xml-handle|string|date|time|like|pic)
-//KEYWORD=(if|for|while|endif|endfor|endwhile)
-//KEYWORDCONTROL=(exit|break)
-//KEYWORDOTHER=(menu|do|set|get|link|report|display|accept|print|mode|primary|refresh|reenter|object|field|version-number|open|initialise|ZERO|SPACES|TRUE|FALSE|YES|NO)
-//KEYWORDSECTION=(parameters|returning|local field|local|detail|before|after)
-//IDENTIFIER=(like|pic|type|x|int|blob|boolean|alpha|xml-handle|string|date|time)
-
-FUNCTION_DECLARATION=(confirmed)
-FUNCTION_DECLARATION_END=(end-confirm|endconfirm)
-
-// SQL Keywords // SQL Operators // SQL Clauses
-KEYWORD_SQL=(SELECT|DISTINCT|FROM|WHERE|UNION|ALL|ORDER|BY|DESC|GROUP|HAVING|FOR|UPDATE|INNER|JOIN|LEFT|RIGHT|FULL|OUTER|ON|EXISTS|NOT|IN|ALL|ANY|COMPARISON)
-OPERATOR_SQL=(=|<>|!=|<|>|<=|>=|AND|OR|NOT|BETWEEN|LIKE)
-CLAUSE_SQL=(SELECT|FROM|WHERE|UNION|ORDER|BY|GROUP|HAVING|JOIN|ON|INNER|LEFT|RIGHT|FULL|OUTER)
-
 //STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
-ARITHMETIC_EXPRESSIONS=(\+|-|\*|\/|%)
-RELATIONAL_EXPRESSIONS=(=|<>|!=|<=|>=|<|>|like|not like)
-LOGICAL_EXPRESSIONS=(and|or|not)
 
 //FUNCTIONS
-//ARITHMETIC_FUNCTIONS=(aand|abs|anot|aor|cos|fraction|integer|lshift|max-value|max-presentation-value|min-value|power-of|random|rshift|sign-of|sin|smallest-increment|square-root|sum|sum-array|tan)
-//DATETIME_FUNCTIONS=(add-month|client-date-time-string|date-from-date-time|date-time|date-to-julian|day|day-name|days-in-month|dow|gmt|hour|julian|julian-to-date|leap-year|minute|month|month-name|second|systime|time-from-date-time|time-zone|tod|today|year)
-//ENVIRONMENT_FUNCTIONS=(active-pid|api-application-name|batched|can-dde|check-auth|colour-picker|create-db-schema|create-db-user|currency-sign|database-type|db-command|db-table-name|dde-error-status|dde-execute|dde-initiate|dde-poke|dde-request|dde-terminate|delete-registry-value|enable-status-bar|enable-system-menu|enable-tool-bar|error-description|escape|exit-status|find-parameter|get-env|get-field-value|get-field-value-numeric|get-function-code|get-module-code|get-param|get-registry-enum-key|get-registry-enum-value|get-registry-value|get-system-metrics|gid|grant-db-schema|hide-dockable-windows|idx|if-then-else|io-count|line-no|local-no and local-yes|login-id|mail-add-line|mail-attach|mail-cancel|mail-from-name|mail-reply-to|mail-send|mail-start|max-screen-columns|max-screen-rows|message-status|mode-name|mouse-column|mouse-row|node-name|occurrence|operating-system|page-no|param-cnt|pid|pronto-release|prouser-flags|refresh-quick-links|report-is-xml|review-row|revoke-db-schema|rgb-to-colour|screen-mode|search|search-mode|set-app-user function|set-data-area-name|set-background-image|set-background-url|set-environment|set-function-code|set-help-context|set-keyboard-focus|set-module-code|set-registry-value|set-web-window|sleep|spool-file-name|time-elapsed|transaction-active|tty|uid|user-group|valid-activation-key|wait-for-input)
 OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-method|ole-call-method|ole-create-control|ole-create-instance|ole-enum-next|ole-enum-reset|ole-error-description|ole-get-active-object|ole-get-dispatch-id|ole-get-event|ole-get-property|ole-put-property|ole-put-property-byref|ole-query-interface|ole-release|ole-status|ole-unadvise-all|ole-unadvise-event)
 SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
-//STRING_FUNCTIONS=(blob-section|blob-to-base64|format-picture|free-blob|fstr|left-justify|ltrim|max-alpha-value|num|pattern|read-blob-from-file|reserved|right-justify|rtrim|size-of|sql-substring|str-len|sub-string|substring-utf8|valid-number|write-blob-to-file|zstr)
 XML_FUNCTIONS=(xml-add-child-node|xml-add-child-node-blob|xml-add-child-node-clob|xml-add-child-node-no-quotes|xml-add-child-node-number|xml-add-child-node-text|xml-add-node-attribute|xml-add-ns|xml-child-node-blob|xml-child-node-clob|xml-child-node-text|xml-close-document|xml-copy-node-handle|xml-delete-node|xml-delete-node-attribute|xml-document-is-json|xml-free-node-handle|xml-get-child-by-name|xml-get-doc-encoding|xml-get-first-attribute-name|xml-get-first-child-node|xml-get-last-child-node|xml-get-next-attribute-name|xml-get-next-node|xml-get-node-attribute|xml-get-ns-prefix-url|xml-get-prev-node|xml-get-root-node|xml-modify-node-attribute|xml-modify-node-text|xml-new-document|xml-next-element-sibling|xml-node-blob|xml-node-clob|xml-node-name|xml-node-ns-prefix|xml-node-ns-url|xml-node-string|xml-node-text|xml-node-type|xml-parse-file|xml-parse-text|xml-prev-element-sibling|xml-save-as-file|xml-save-as-file-ex|xml-save-as-text|xml-save-as-text-ex|xml-set-json-array|xml-validate-doc)
 
 PREFDEFINED=(true|false|yes|no|zero|zero_date|zero_time|zero_date_time|space|spaces)
 PREPROCESSOR=(#include|#define|#define|#undef|#ifdef|#ifndef|#if|#else|#endif|#INCLUDE|#DEFINE|#DEFINE|#UNDEF|#IFDEF|#IFNDEF|#IF|#ELSE|#ENDIF)
-KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endswitch|end-switch|local field)
-//if|for|while|endif|endfor|endwhile
 //SQL_DEFINE=(select|endselect|get|update|insert)
 //OPERATION_SIGN=(to|or|and|not|in|\\+|-|=|\\*|\/|\\+=|-=|\\*=|\/=|!=|<=|>=|<|>|<>)
-//MACROS=#(define|include|ifndef|if|else|endif)
 
 %%
 
@@ -77,26 +50,34 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> {COMMENT}                                       { return SPLTypes.COMMENT; }
 <YYINITIAL> {BLOCK_COMMENT}                                 { return SPLTypes.BLOCK_COMMENT; }
 
-<YYINITIAL> {FUNCTION_DECLARATION}                          { return SPLTypes.FUNCTION_DECLARATION; }
-<YYINITIAL> {FUNCTION_DECLARATION_END}                      { return SPLTypes.FUNCTION_DECLARATION; }
-//<YYINITIAL> {ARITHMETIC_FUNCTIONS}                          { return SPLTypes.FUNCTION_DECLARATION; }
-//<YYINITIAL> {DATETIME_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
-//<YYINITIAL> {ENVIRONMENT_FUNCTIONS}                         { return SPLTypes.FUNCTION_DECLARATION; }
-//<YYINITIAL> {FILEHANDLING_FUNCTIONS}                        { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {SECURITY_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
-//<YYINITIAL> {STRING_FUNCTIONS}                              { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {XML_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
-
 <YYINITIAL> {PREPROCESSOR}                                  { return SPLTypes.PREPROCESSOR; }
+
 <YYINITIAL> {PREFDEFINED}                                   { return SPLTypes.KEYWORD; }
-//<YYINITIAL> {STATEMENTS}                                    { return SPLTypes.KEYWORD; }
-<YYINITIAL> {KEYWORDS_OTHER}                                { return SPLTypes.KEYWORD; }
 
 <YYINITIAL> {SINGLEQUOTE}                                   { return SPLTypes.STRING; }
 <YYINITIAL> {DOUBLEQUOTE}                                   { return SPLTypes.STRING; }
 
 <YYINITIAL> {NUMBER}                                        { return SPLTypes.NUMBER; }
+
+<YYINITIAL> {DATE}                                          { return SPLTypes.DATE; }
+<YYINITIAL> {TIME}                                          { return SPLTypes.TIME; }
+
+//Declaration functions
+<YYINITIAL> (screen|SCREEN)                                 { return SPLTypes.SCREEN; }
+<YYINITIAL> (end-screen|END-SCREEN|endscreen|ENDSCREEN)     { return SPLTypes.SCREEN_END; }
+<YYINITIAL> (procedure|PROCEDURE)                           { return SPLTypes.PROCEDURE; }
+<YYINITIAL> (end-procedure|END-PROCEDURE|endprocedure|ENDPROCEDURE) { return SPLTypes.PROCEDURE_END; }
+<YYINITIAL> (api|API)                                       { return SPLTypes.API; }
+<YYINITIAL> (end-api|END-API|endapi|ENDAPI)                 { return SPLTypes.API_END; }
+<YYINITIAL> (field|FIELD|fields|FIELDS)                     { return SPLTypes.FIELD; }
+<YYINITIAL> (local|LOCAL)                                   { return SPLTypes.LOCAL; }
+<YYINITIAL> (menu|MENU)                                     { return SPLTypes.MENU; }
+<YYINITIAL> (end-menu|endmenu|END-MENU|ENDMENU)             { return SPLTypes.MENU_END; }
+<YYINITIAL> (mode|MODE)                                     { return SPLTypes.MODE; }
+<YYINITIAL> (object|OBJECT)                                 { return SPLTypes.OBJECT; }
 
 //Clauses
 <YYINITIAL> (title|TITLE)                                        { return SPLTypes.TITLE; }
@@ -139,7 +120,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (compress|COMPRESS)                                  { return SPLTypes.COMPRESS; }
 <YYINITIAL> (nojoins|NOJOINS|no-joins|NO-JOINS)                  { return SPLTypes.NOJOINS; }
 <YYINITIAL> (norowid|NOROWID|no-rowid|NO-ROWID)                  { return SPLTypes.NOROWID; }
-<YYINITIAL> (column-title|COLUMN-TITLE)                           { return SPLTypes.COLUMNTITLE; }
+<YYINITIAL> (column-title|COLUMN-TITLE)                          { return SPLTypes.COLUMNTITLE; }
 <YYINITIAL> (no-log|nolog|NO-LOG|NOLOG)                          { return SPLTypes.NOLOG; }
 <YYINITIAL> (no-title|notitle|NO-TITLE|NOTITLE)                  { return SPLTypes.NOTITLE; }
 <YYINITIAL> (multi-line|multiline|MULTI-LINE|MULTILINE)          { return SPLTypes.MULTILINE; }
@@ -168,7 +149,7 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (foreground|FOREGROUND)                              { return SPLTypes.FOREGROUND; }
 <YYINITIAL> (background|BACKGROUND)                              { return SPLTypes.BACKGROUND; }
 <YYINITIAL> (blank|BLANK)                                        { return SPLTypes.BLANK; }
-<YYINITIAL> (on error|ON ERROR)                                  { return SPLTypes.ON_ERROR; }
+<YYINITIAL> (error|ERROR)                                        { return SPLTypes.ERROR; }
 <YYINITIAL> (end-on|END-ON|endon|ENDON)                          { return SPLTypes.END_ON; }
 <YYINITIAL> (UP-ARROW|DOWN-ARROW|LEFT-ARROW|RIGHT-ARROW|HELP-KEY) { return SPLTypes.FUNCTION_KEY; }
 <YYINITIAL> (help-screen|HELP-SCREEN)                            { return SPLTypes.HELP_SCREEN; }
@@ -186,8 +167,8 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (end-validations|END-VALIDATIONS|end-validation|END-VALIDATION) { return SPLTypes.END_VALIDATIONS; }
 <YYINITIAL> (use-validate-trigger|USE-VALIDATE-TRIGGER)          { return SPLTypes.USE_VALIDATE_TRIGGER; }
 <YYINITIAL> (scale|SCALE)                                        { return SPLTypes.SCALE; }
-<YYINITIAL> (no warning|NO WARNING)                              { return SPLTypes.NO_WARNING; }
-<YYINITIAL> (on change|ON CHANGE)                                { return SPLTypes.ON_CHANGE; }
+<YYINITIAL> (no-warning|NO-WARNING)                              { return SPLTypes.NO_WARNING; }
+<YYINITIAL> (change|CHANGE)                                      { return SPLTypes.CHANGE; }
 <YYINITIAL> (leaving|LEAVING)                                    { return SPLTypes.LEAVING; }
 <YYINITIAL> (free-locks|FREE-LOCKS)                              { return SPLTypes.FREE_LOCKS; }
 <YYINITIAL> (double|DOUBLE)                                      { return SPLTypes.DOUBLE; }
@@ -220,10 +201,152 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (before-check-box|BEFORE-CHECK-BOX)                  { return SPLTypes.BEFORE_CHECK_BOX; }
 <YYINITIAL> (end-before-check-box|END-BEFORE-CHECK-BOX)          { return SPLTypes.END_BEFORE_CHECK_BOX; }
 <YYINITIAL> (message-buttons|MESSAGE-BUTTONS)                    { return SPLTypes.MESSAGEBOX_BUTTONS; }
+<YYINITIAL> (data|DATA)                                          { return SPLTypes.DATA; }
+<YYINITIAL> (no-message|NO-MESSAGE)                              { return SPLTypes.NO_MESSAGE; }
+<YYINITIAL> (no-refresh|NO-REFRESH)                              { return SPLTypes.NO_REFRESH; }
+<YYINITIAL> (no-xterm|NO-XTERM)                                  { return SPLTypes.NO_XTERM; }
+<YYINITIAL> (auto|AUTO)                                          { return SPLTypes.AUTO; }
+<YYINITIAL> (no-prompt|NO-PROMPT)                                { return SPLTypes.NO_PROMPT; }
+<YYINITIAL> (no-window|NO-WINDOW)                                { return SPLTypes.NO_WINDOW; }
+<YYINITIAL> (comfirmed|CONFIRMED)                                { return SPLTypes.CONFIRMED; }
+<YYINITIAL> (not-confirmed|NOT-CONFIRMED)                        { return SPLTypes.NOT_CONFIRMED; }
+<YYINITIAL> (col|COL)                                            { return SPLTypes.COL; }
+<YYINITIAL> (bitmap|BITMAP)                                      { return SPLTypes.BITMAP; }
+<YYINITIAL> (help-is|HELP-IS)                                    { return SPLTypes.HELP_IS; }
+<YYINITIAL> (same|SAME)                                          { return SPLTypes.SAME; }
+<YYINITIAL> (once|ONCE)                                          { return SPLTypes.ONCE; }
+<YYINITIAL> (sub-screen|SUB-SCREEN)                              { return SPLTypes.SUB_SCREEN; }
+<YYINITIAL> (initial-mode|INITIAL-MODE)                          { return SPLTypes.INITIAL_MODE; }
+<YYINITIAL> (next|NEXT)                                          { return SPLTypes.NEXT; }
+<YYINITIAL> (no-section|NO-SECTION)                              { return SPLTypes.NO_SECTION; }
+<YYINITIAL> (dynamic|DYNAMIC)                                    { return SPLTypes.DYNAMIC; }
+<YYINITIAL> (concat-title|CONCAT-TITLE)                          { return SPLTypes.CONCAT_TITLE; }
+<YYINITIAL> (width|WIDTH)                                        { return SPLTypes.WIDTH; }
+<YYINITIAL> (previous|PREVIOUS)                                  { return SPLTypes.PREVIOUS; }
+<YYINITIAL> (finish|FINISH)                                      { return SPLTypes.FINISH; }
+<YYINITIAL> (all|ALL)                                            { return SPLTypes.ALL; }
+<YYINITIAL> (where|WHERE)                                        { return SPLTypes.WHERE; }
+<YYINITIAL> (wrap|WRAP)                                          { return SPLTypes.WRAP; }
+<YYINITIAL> (vertical|VERTICAL)                                  { return SPLTypes.VERTICAL; }
+<YYINITIAL> (down|DOWN)                                          { return SPLTypes.DOWN; }
+<YYINITIAL> (step|STEP)                                          { return SPLTypes.STEP; }
+<YYINITIAL> (responsive|RESPONSIVE)                              { return SPLTypes.SCREEN_RESPONSIVE; }
+<YYINITIAL> (primary|PRIMARY)                                    { return SPLTypes.SCREEN_PRIMARY; }
+<YYINITIAL> (index|INDEX)                                        { return SPLTypes.INDEX; }
+<YYINITIAL> (same|different|SAME|DIFFERENT)                      { return SPLTypes.SCREEN_SAME_DIFFERENT; }
+<YYINITIAL> (quick-link|QUICK-LINK)                              { return SPLTypes.SCREEN_QUICK_LINK; }
+<YYINITIAL> (review colour|REVIEW COLOUR)                        { return SPLTypes.SCREEN_REVIEW; }
+<YYINITIAL> (allowed|ALLOWED)                                    { return SPLTypes.SCREEN_ALLOWED; }
+<YYINITIAL> (no-prompt-for-search|prompt-for-search)             { return SPLTypes.SCREEN_PROMPT_FOR_SEARCH; }
+<YYINITIAL> (find-for-currency|FIND-FOR-CURRENCY)                { return SPLTypes.SCREEN_FIND_FOR_CURRENCY; }
+<YYINITIAL> (data-grid|DATA-GRID)                                { return SPLTypes.SCREEN_DATA_GRID; }
+<YYINITIAL> (review occurs|REVIEW OCCURS)                        { return SPLTypes.SCREEN_REVIEW_OCCURS; }
+<YYINITIAL> (review-from-start|review-from-current|review-from-end|review-bottom-to-top) { return SPLTypes.SCREEN_REVIEW_FROM_START; }
+<YYINITIAL> (no-review-row-separators)                           { return SPLTypes.SCREEN_NO_REVIEW_ROW_SEPARATORS; }
+<YYINITIAL> (no-review-column-separators)                        { return SPLTypes.SCREEN_NO_REVIEW_COLUMN_SEPARATORS; }
+<YYINITIAL> (no-review-separators)                               { return SPLTypes.SCREEN_NO_REVIEW_SEPARATORS; }
+<YYINITIAL> (start-on-current-record|START-ON-CURRENT-RECORD)    { return SPLTypes.SCREEN_START_ON_CURRENT_RECORD; }
+<YYINITIAL> (leave-parent-screen|LEAVE-PARENT-SCREEN)            { return SPLTypes.SCREEN_LEAVE_PARENT_SCREEN; }
+<YYINITIAL> (when|WHEN)                                          { return SPLTypes.WHEN; }
+<YYINITIAL> (position-on-ok|no-ok-cancel)                        { return SPLTypes.SCREEN_POSITION_ON_OK; }
+<YYINITIAL> (stay-in-correct|STAY-IN-CORRECT)                    { return SPLTypes.SCREEN_STAY_IN_CORRECT; }
+<YYINITIAL> (form-entry|FORM-ENTRY)                              { return SPLTypes.SCREEN_FORM_ENTRY; }
+<YYINITIAL> (auto-transaction|AUTO-TRANSACTION|autotransaction|AUTOTRANSACTION) { return SPLTypes.AUTO_TRANSACTION; }
+<YYINITIAL> (treemenu|TREEMENU|tree-menu|TREE-MENU)              { return SPLTypes.TREEMENU; }
+<YYINITIAL> (nohide|NOHIDE|no-hide|NO-HIDE)                      { return SPLTypes.NOHIDE; }
+<YYINITIAL> (button-width|BUTTON-WIDTH|buttonwidth|BUTTONWIDTH)  { return SPLTypes.MENU_BUTTON_WIDTH; }
+<YYINITIAL> (help|HELP)                                          { return SPLTypes.HELP; }
+<YYINITIAL> (security|SECURITY)                                  { return SPLTypes.SECURITY; }
+<YYINITIAL> (process|PROCESS)                                    { return SPLTypes.PROCESS; }
+<YYINITIAL> (currency|CURRENCY)                                  { return SPLTypes.MODECURRENCY; }
+<YYINITIAL> (lock|LOCK)                                          { return SPLTypes.LOCK; }
+<YYINITIAL> (perform|PERFORM)                                    { return SPLTypes.PERFORM; }
+<YYINITIAL> (always-show|ALWAYS-SHOW)                            { return SPLTypes.ALWAYS_SHOW; }
+<YYINITIAL> (always-add|ALWAYS-ADD)                              { return SPLTypes.ALWAYS_ADD; }
+<YYINITIAL> (from|FROM)                                          { return SPLTypes.FROM; }
+<YYINITIAL> (first|FIRST)                                        { return SPLTypes.FIRST; }
+<YYINITIAL> (last|LAST)                                          { return SPLTypes.LAST; }
+<YYINITIAL> (current|CURRENT)                                    { return SPLTypes.CURRENT; }
+<YYINITIAL> (then|THEN)                                          { return SPLTypes.THEN; }
+<YYINITIAL> (else|ELSE)                                          { return SPLTypes.ELSE; }
+<YYINITIAL> (elseif|ELSEIF|else-if|ELSE-IF)                      { return SPLTypes.ELSEIF; }
+<YYINITIAL> (no-main|NO-MAIN)                                    { return SPLTypes.NO_MAIN; }
+<YYINITIAL> (wait-with-timeout|WAIT-WITH-TIMEOUT)                { return SPLTypes.WAIT_WITH_TIMEOUT; }
+<YYINITIAL> (create|CREATE)                                      { return SPLTypes.CREATE; }
+<YYINITIAL> (truncate|TRUNCATE)                                  { return SPLTypes.TRUNCATE; }
+<YYINITIAL> (permanent|temporary|PERMANENT|TEMPORARY)            { return SPLTypes.PERMANENTTEMPORARY; }
+<YYINITIAL> (private|PRIVATE)                                    { return SPLTypes.PRIVATE; }
+<YYINITIAL> (no-triggers|NO-TRIGGERS)                            { return SPLTypes.NO_TRIGGERS; }
+<YYINITIAL> (index-on-close|INDEX-ON-CLOSE)                      { return SPLTypes.INDEX_ON_CLOSE; }
+<YYINITIAL> (log|LOG)                                            { return SPLTypes.LOG; }
+<YYINITIAL> (bitmap-pushed|BITMAP-PUSHED)                        { return SPLTypes.BITMAP_PUSHED; }
+<YYINITIAL> (bitmap-focus|BITMAP-FOCUS)                          { return SPLTypes.BITMAP_FOCUS; }
+<YYINITIAL> (bitmap-hover|BITMAP-HOVER)                          { return SPLTypes.BITMAP_HOVER; }
+<YYINITIAL> (bitmap-greyed|BITMAP-GREYED)                        { return SPLTypes.BITMAP_GREYED; }
+<YYINITIAL> (no-aspect-ratio|NO-ASPECT-RATIO)                    { return SPLTypes.NO_ASPECT_RATIO; }
+<YYINITIAL> (button-style|BUTTON-STYLE)                          { return SPLTypes.BUTTON_STYLE; }
+<YYINITIAL> (default-button|DEFAULT-BUTTON)                      { return SPLTypes.DEFAULT_BUTTON; }
+<YYINITIAL> (text-position|TEXT-POSITION)                        { return SPLTypes.TEXT_POSITION; }
+<YYINITIAL> (hot-key|HOT-KEY)                                    { return SPLTypes.HOTKEY; }
+<YYINITIAL> (hidden|HIDDEN)                                      { return SPLTypes.HIDDEN; }
+<YYINITIAL> (no-theme|NO-THEME)                                  { return SPLTypes.NO_THEME; }
+<YYINITIAL> (no-header|NO-HEADER)                                { return SPLTypes.NO_HEADER; }
+<YYINITIAL> (no-footer|NO-FOOTER)                                { return SPLTypes.NO_FOOTER; }
+<YYINITIAL> (on|ON)                                              { return SPLTypes.ON; }
+<YYINITIAL> (column|column)                                      { return SPLTypes.COLUMN; }
+<YYINITIAL> (subscript|SUBSCRIPT)                                { return SPLTypes.SUBSCRIPT; }
+<YYINITIAL> (superscript|SUPERSCRIPT)                            { return SPLTypes.SUPERSCRIPT; }
+<YYINITIAL> (font|FONT)                                          { return SPLTypes.FONT; }
+<YYINITIAL> (section|SECTION)                                    { return SPLTypes.SECTION; }
+<YYINITIAL> (no-newline|NO-NEWLINE)                              { return SPLTypes.NO_NEWLINE; }
+<YYINITIAL> (no-pause|NO-PAUSE)                                  { return SPLTypes.NO_PAUSE; }
+<YYINITIAL> (spool|SPOOL)                                        { return SPLTypes.SPOOL; }
+<YYINITIAL> (button_when|BUTTON-WHEN)                            { return SPLTypes.BUTTON_WHEN; }
+<YYINITIAL> (before-radio-button|BEFORE-RADIO-BUTTON)            { return SPLTypes.BEFORE_RADIO_BUTTON; }
+<YYINITIAL> (end-before-radio-button|END-BEFORE-RADIO-BUTTON)    { return SPLTypes.END_BEFORE_RADIO_BUTTON; }
+<YYINITIAL> (whens|WHENS)                                        { return SPLTypes.WHENS; }
+<YYINITIAL> (prompts|PROMPTS)                                    { return SPLTypes.PROMPTS; }
+<YYINITIAL> (review|REVIEW)                                      { return SPLTypes.REVIEW; }
+<YYINITIAL> (until|UNTIL)                                        { return SPLTypes.UNTIL; }
+<YYINITIAL> (direct|DIRECT)                                      { return SPLTypes.DIRECT; }
+<YYINITIAL> (name|NAME)                                          { return SPLTypes.NAME; }
+<YYINITIAL> (header|HEADER)                                      { return SPLTypes.HEADER; }
+<YYINITIAL> (footer|FOOTER)                                      { return SPLTypes.FOOTER; }
+<YYINITIAL> (depth|DEPTH)                                        { return SPLTypes.DEPTH; }
+<YYINITIAL> (length|LENGTH)                                      { return SPLTypes.LENGTH; }
+<YYINITIAL> (margin|MARGIN)                                      { return SPLTypes.MARGIN; }
+<YYINITIAL> (full-page|FULL-PAGE)                                { return SPLTypes.FULL_PAGE; }
+<YYINITIAL> (form|FORM)                                          { return SPLTypes.FORM; }
+<YYINITIAL> (no-xml|NO-XML)                                      { return SPLTypes.NO_XML; }
+<YYINITIAL> (spool-only|SPOOL-ONLY)                              { return SPLTypes.SPOOL_ONLY; }
+<YYINITIAL> (full-xml|FULL-XML)                                  { return SPLTypes.FULL_XML; }
+<YYINITIAL> (can-hide|CAN-HIDE)                                  { return SPLTypes.CAN_HIDE; }
+<YYINITIAL> (style-class|STYLE-CLASS)                            { return SPLTypes.STYLE_CLASS; }
+<YYINITIAL> (row|ROW)                                            { return SPLTypes.ROW; }
+<YYINITIAL> (group_style|GROUP_STYLE)                            { return SPLTypes.GROUP_STYLE; }
+<YYINITIAL> (section-when|SECTION-WHEN)                          { return SPLTypes.SECTION_WHEN; }
+<YYINITIAL> (hide|HIDE)                                          { return SPLTypes.HIDE; }
+<YYINITIAL> (distinct|DISTINCT)                                  { return SPLTypes.DISTINCT; }
+<YYINITIAL> (database-sql|DATABASE-SQL)                          { return SPLTypes.DATABASE_SQL; }
+<YYINITIAL> (local-sql|LOCAL-SQL)                                { return SPLTypes.LOCAL_SQL; }
+<YYINITIAL> (order|ORDER)                                        { return SPLTypes.ORDER; }
+<YYINITIAL> (group|GROUP)                                        { return SPLTypes.GROUP; }
+<YYINITIAL> (for-update|FOR-UPDATE)                              { return SPLTypes.FOR_UPDATE; }
+<YYINITIAL> (having|HAVING)                                      { return SPLTypes.HAVING; }
+<YYINITIAL> (inserting|INSERTING)                                { return SPLTypes.INSERTING; }
+<YYINITIAL> (replacing|REPLACING)                                { return SPLTypes.REPLACING; }
+<YYINITIAL> (deleting|DELETING)                                  { return SPLTypes.DELETING; }
+<YYINITIAL> (appending|APPENDING)                                { return SPLTypes.APPENDING; }
+<YYINITIAL> (case|CASE)                                          { return SPLTypes.CASE; }
+<YYINITIAL> (begin|BEGIN)                                        { return SPLTypes.BEGIN; }
+<YYINITIAL> (commit|COMMIT)                                      { return SPLTypes.COMMIT; }
+<YYINITIAL> (rollback|ROLLBACK)                                  { return SPLTypes.ROLLBACK; }
+
+
+//Constants
 <YYINITIAL> (MSG_BOX_OK|MSG_BOX_CANCEL|MSG_BOX_YES|MSG_BOX_NO|MSG_BOX_RETRY|MSG_BOX_OK_CANCEL|MSG_BOX_YES_NO|MSG_BOX_YES_NO_CANCEL) { return SPLTypes.MESSAGEBOX_BUTTONS_VALUES; }
 <YYINITIAL> (MSG_BOX_STOP|MSG_BOX_WARNING|MSG_BOX_INFORMATION|MSG_BOX_QUESTION|MSG_BOX_EXCLAMATION) { return SPLTypes.MESSAGEBOX_ICON_VALUES; }
-
-
+<YYINITIAL> (entry|correct|remove|duplicate|entry-once|find|next-scr|prev-scr) { return SPLTypes.MODEENTRY; }
 
 
 
@@ -241,12 +364,84 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (call-url|CALL-URL)                               { return SPLTypes.CALL_URL; }
 <YYINITIAL> (check-box|CHECK-BOX)                             { return SPLTypes.CHECK_BOX; }
 <YYINITIAL> (end-check-box|end-check-box)                     { return SPLTypes.CHECK_BOX_END; }
-
-
-<YYINITIAL> (message-box|messagebox|MESSAGE-BOX|MESSAGEBOX)   { return SPLTypes.MESSAGEBOX; }
+<YYINITIAL> (clear|CLEAR)                                     { return SPLTypes.CLEAR; }
+<YYINITIAL> (command|COMMAND)                                 { return SPLTypes.COMMAND; }
+<YYINITIAL> (commit work|COMMIT WORK)                         { return SPLTypes.COMMIT_WORK; }
+<YYINITIAL> (confirm|CONFIRM)                                 { return SPLTypes.CONFIRM; }
+<YYINITIAL> (end-confirm|endconfirm|END-CONFIRM|ENDCONFIRM)   { return SPLTypes.CONFIRM_END; }
+<YYINITIAL> (continue|CONTINUE)                               { return SPLTypes.CONTINUE; }
+<YYINITIAL> (continue-entry|CONTINUE-ENTRY)                   { return SPLTypes.CONTINUE_ENTRY; }
+<YYINITIAL> (delete|DELETE)                                   { return SPLTypes.DELETE; }
+<YYINITIAL> (disable-all-triggers|DISABLE-ALL-TRIGGERS)       { return SPLTypes.DISABLE_ALL_TRIGGERS; }
+<YYINITIAL> (display|DISPLAY)                                 { return SPLTypes.DISPLAY; }
+<YYINITIAL> (do|DO)                                           { return SPLTypes.DO; }
+<YYINITIAL> (drop-down|DROP-DOWN)                             { return SPLTypes.DROP_DOWN; }
+<YYINITIAL> (end-drop-down|END-DROP-DOWN)                     { return SPLTypes.DROP_DOWN_END; }
+<YYINITIAL> (enquiry|ENQUIRY)                                 { return SPLTypes.QUERY; }
+<YYINITIAL> (exit|EXIT)                                       { return SPLTypes.EXIT; }
+<YYINITIAL> (extract|EXTRACT)                                 { return SPLTypes.EXTRACT; }
+<YYINITIAL> (end-extract|END-EXTRACT)                         { return SPLTypes.EXTRACT_END; }
+<YYINITIAL> (field-group|FIELD-GROUP)                         { return SPLTypes.FIELD_GROUP; }
+<YYINITIAL> (end-field-group|END-FIELD-GROUP)                 { return SPLTypes.FIELD_GROUP_END; }
+<YYINITIAL> (for|FOR)                                         { return SPLTypes.FOR; }
+<YYINITIAL> (end-for|END-FOR|endfor|ENDFOR)                   { return SPLTypes.FOR_END; }
+<YYINITIAL> (get|GET)                                         { return SPLTypes.GET; }
+<YYINITIAL> (if|IF)                                           { return SPLTypes.IF; }
+<YYINITIAL> (endif|ENDIF|end-if|END-IF)                       { return SPLTypes.ENDIF; }
+<YYINITIAL> (initialise|INITIALISE)                           { return SPLTypes.INITIALISE; }
+<YYINITIAL> (insert|INSERT)                                   { return SPLTypes.INSERT; }
+<YYINITIAL> (link|LINK)                                       { return SPLTypes.LINK; }
+<YYINITIAL> (lock-method|LOCK-METHOD)                         { return SPLTypes.LOCK_METHOD; }
 <YYINITIAL> (message|MESSAGE)                                 { return SPLTypes.MESSAGE; }
+<YYINITIAL> (message-box|messagebox|MESSAGE-BOX|MESSAGEBOX)   { return SPLTypes.MESSAGEBOX; }
+<YYINITIAL> (need|NEED)                                       { return SPLTypes.NEED; }
+<YYINITIAL> (open|OPEN)                                       { return SPLTypes.OPEN; }
+<YYINITIAL> (option|OPTION)                                   { return SPLTypes.OPTION; }
+<YYINITIAL> (end-option|END-OPTION)                           { return SPLTypes.OPTION_END; }
+<YYINITIAL> (page|PAGE)                                       { return SPLTypes.PAGE; }
+<YYINITIAL> (pause|PAUSE)                                     { return SPLTypes.PAUSE; }
+<YYINITIAL> (pop|POP)                                         { return SPLTypes.POP; }
+<YYINITIAL> (position|POSITION)                               { return SPLTypes.POSITION; }
+<YYINITIAL> (print|PRINT)                                     { return SPLTypes.PRINT; }
+<YYINITIAL> (push|PUSH)                                       { return SPLTypes.PUSH; }
+<YYINITIAL> (query|QUERY)                                     { return SPLTypes.QUERY; }
+<YYINITIAL> (radio-button|RADIO-BUTTON)                       { return SPLTypes.RADIO_BUTTON; }
+<YYINITIAL> (end-radio-button|END-RADIO-BUTTON)               { return SPLTypes.RADIO_BUTTON_END; }
+<YYINITIAL> (re-enter|RE-ENTER)                               { return SPLTypes.RE_ENTER; }
+<YYINITIAL> (refresh|REFRESH)                                 { return SPLTypes.REFRESH; }
+<YYINITIAL> (repeat|REPEAT)                                   { return SPLTypes.REPEAT; }
+<YYINITIAL> (end-repeat|END-REPEAT)                           { return SPLTypes.REPEAT_END; }
+<YYINITIAL> (report|REPORT)                                   { return SPLTypes.REPORT; }
+<YYINITIAL> (re-select|RE-SELECT)                             { return SPLTypes.RE_SELECT; }
+<YYINITIAL> (restore|RESTORE)                                 { return SPLTypes.RESTORE; }
+<YYINITIAL> (rollback work|ROLLBACK WORK)                     { return SPLTypes.ROLLBACK_WORK; }
+<YYINITIAL> (save|SAVE)                                       { return SPLTypes.SAVE; }
+<YYINITIAL> (screen-group|SCREEN-GROUP)                       { return SPLTypes.SCREEN_GROUP; }
+<YYINITIAL> (end-screen-group|END-SCREEN-GROUP)               { return SPLTypes.SCREEN_GROUP_END; }
+<YYINITIAL> (screen-section|SCREEN-SECTION)                   { return SPLTypes.SCREEN_SECTION; }
+<YYINITIAL> (end-screen-section|END-SCREEN-SECTION)           { return SPLTypes.SCREEN_SECTION_END; }
+<YYINITIAL> (select|SELECT)                                   { return SPLTypes.SELECT; }
+<YYINITIAL> (end-select|END-SELECT)                           { return SPLTypes.SELECT_END; }
+<YYINITIAL> (serial|SERIAL)                                   { return SPLTypes.SERIAL; }
+<YYINITIAL> (set|SET)                                         { return SPLTypes.SET; }
+<YYINITIAL> (set-date-validation|SET-DATE-VALIDATION)         { return SPLTypes.SET_DATE_VALIDATION; }
+<YYINITIAL> (skip|SKIP)                                       { return SPLTypes.SKIP; }
+<YYINITIAL> (spl|SPL)                                         { return SPLTypes.CALL; }
+<YYINITIAL> (sql-delete|SQL-DELETE)                           { return SPLTypes.SQL_DELETE; }
+<YYINITIAL> (sql-update|SQL-UPDATE)                           { return SPLTypes.SQL_UPDATE; }
+<YYINITIAL> (statement-group|STATEMENT-GROUP)                 { return SPLTypes.STATEMENT_GROUP; }
+<YYINITIAL> (end-statement-group|END-STATEMENT-GROUP)         { return SPLTypes.STATEMENT_GROUP_END; }
+<YYINITIAL> (string|STRING)                                   { return SPLTypes.STRINGSTATMENT; }
+<YYINITIAL> (switch|SWITCH)                                   { return SPLTypes.SWITCH; }
+<YYINITIAL> (end-switch|END-SWITCH|endswitch|ENDSWITCH)       { return SPLTypes.SWITCH_END; }
+<YYINITIAL> (transaction|TRANSACTION)                         { return SPLTypes.TRANSACTION; }
+<YYINITIAL> (unlock|UNLOCK)                                   { return SPLTypes.UNLOCK; }
+<YYINITIAL> (update|UPDATE)                                   { return SPLTypes.UPDATE; }
+<YYINITIAL> (version-number|VERSION-NUMBER)                   { return SPLTypes.VERSION_NUMBER; }
+<YYINITIAL> (web-client-local-agent|workstation-local-agent)  { return SPLTypes.WEB_CLIENT_LOCAL_AGENT; }
+<YYINITIAL> (while|WHILE)                                     { return SPLTypes.WHILE; }
+<YYINITIAL> (end-while|END-WHILE)                             { return SPLTypes.WHILE_END; }
 
-<YYINITIAL> (else|ELSE)                                        { return SPLTypes.ELSE; }
 
 //Arithmetic functions
 <YYINITIAL> (aand|AAND)                                     { return SPLTypes.AAND; }
@@ -272,8 +467,6 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (tan|TAN)                                       { return SPLTypes.TAN; }
 
 //DateTime functions
-<YYINITIAL> {DATE}                                          { return SPLTypes.DATE; }
-<YYINITIAL> {TIME}                                          { return SPLTypes.TIME; }
 <YYINITIAL> (add-month|ADD-MONTH)                           { return SPLTypes.ADD_MONTH; }
 <YYINITIAL> (client-date-time-string|CLIENT-DATE-TIME-STRING) { return SPLTypes.CLIENT_DATE_TIME_STRING; }
 <YYINITIAL> (date-from-date-time|DATE-FROM-DATE-TIME)       { return SPLTypes.DATE_FROM_DATE_TIME; }
@@ -451,73 +644,6 @@ KEYWORDS_OTHER=(if|else|elseif|endif|then|endselect|end-select|case|end-on|endsw
 <YYINITIAL> (valid-number|VALID-NUMBER)                     { return SPLTypes.VALIDNUMBER; }
 <YYINITIAL> (write-blob-to-file|WRITE-BLOB-TO-FILE)         { return SPLTypes.WRITEBLOBTOFILE; }
 <YYINITIAL> (zstr|ZSTR)                                     { return SPLTypes.ZSTR; }
-
-//SCREEN DEFINITION
-<YYINITIAL> (screen|SCREEN)                                 { return SPLTypes.SCREEN; }
-<YYINITIAL> (end-screen|END-SCREEN|endscreen|ENDSCREEN)     { return SPLTypes.SCREEN_END; }
-<YYINITIAL> (responsive|RESPONSIVE)                         { return SPLTypes.SCREEN_RESPONSIVE; }
-
-
-<YYINITIAL> (primary|PRIMARY)                               { return SPLTypes.SCREEN_PRIMARY; }
-<YYINITIAL> (on index|ON INDEX)                             { return SPLTypes.SCREEN_ON; }
-<YYINITIAL> (same|different|SAME|DIFFERENT)                 { return SPLTypes.SCREEN_SAME_DIFFERENT; }
-<YYINITIAL> (select|SELECT)                                 { return SPLTypes.SCREEN_SELECT; }
-<YYINITIAL> (quick-link|QUICK-LINK)                         { return SPLTypes.SCREEN_QUICK_LINK; }
-<YYINITIAL> (review colour|REVIEW COLOUR)                   { return SPLTypes.SCREEN_REVIEW; }
-<YYINITIAL> (allowed|ALLOWED)                               { return SPLTypes.SCREEN_ALLOWED; }
-<YYINITIAL> (no-prompt-for-search|prompt-for-search)        { return SPLTypes.SCREEN_PROMPT_FOR_SEARCH; }
-<YYINITIAL> (find-for-currency|FIND-FOR-CURRENCY)           { return SPLTypes.SCREEN_FIND_FOR_CURRENCY; }
-<YYINITIAL> (data-grid|DATA-GRID)                           { return SPLTypes.SCREEN_DATA_GRID; }
-<YYINITIAL> (review occurs|REVIEW OCCURS)                   { return SPLTypes.SCREEN_REVIEW_OCCURS; }
-<YYINITIAL> (review-from-start|review-from-current|review-from-end|review-bottom-to-top) { return SPLTypes.SCREEN_REVIEW_FROM_START; }
-<YYINITIAL> (no-review-row-separators)                      { return SPLTypes.SCREEN_NO_REVIEW_ROW_SEPARATORS; }
-<YYINITIAL> (no-review-column-separators)                   { return SPLTypes.SCREEN_NO_REVIEW_COLUMN_SEPARATORS; }
-<YYINITIAL> (no-review-separators)                          { return SPLTypes.SCREEN_NO_REVIEW_SEPARATORS; }
-<YYINITIAL> (start-on-current-record|START-ON-CURRENT-RECORD) { return SPLTypes.SCREEN_START_ON_CURRENT_RECORD; }
-<YYINITIAL> (leave-parent-screen|LEAVE-PARENT-SCREEN)       { return SPLTypes.SCREEN_LEAVE_PARENT_SCREEN; }
-<YYINITIAL> (when|WHEN)                                     { return SPLTypes.WHEN; }
-<YYINITIAL> (position-on-ok|no-ok-cancel)                   { return SPLTypes.SCREEN_POSITION_ON_OK; }
-<YYINITIAL> (stay-in-correct|STAY-IN-CORRECT)               { return SPLTypes.SCREEN_STAY_IN_CORRECT; }
-<YYINITIAL> (form-entry|FORM-ENTRY)                         { return SPLTypes.SCREEN_FORM_ENTRY; }
-
-<YYINITIAL> (help-context|HELP-CONTEXT)                     { return SPLTypes.HELP_CONTEXT; }
-
-
-
-//proceedure
-<YYINITIAL> (procedure|PROCEDURE)                           { return SPLTypes.PROCEDURE; }
-<YYINITIAL> (end-procedure|END-PROCEDURE|endprocedure|ENDPROCEDURE) { return SPLTypes.PROCEDURE_END; }
-<YYINITIAL> (auto-transaction|AUTO-TRANSACTION|autotransaction|AUTOTRANSACTION) { return SPLTypes.AUTO_TRANSACTION; }
-
-//api
-<YYINITIAL> (api|API)                                       { return SPLTypes.API; }
-<YYINITIAL> (end-api|END-API|endapi|ENDAPI)                 { return SPLTypes.API_END; }
-
-//field & local field
-<YYINITIAL> (field|FIELD|fields|FIELDS)                     { return SPLTypes.FIELD; }
-<YYINITIAL> (local|LOCAL)                                   { return SPLTypes.LOCAL; }
-
-//menu
-<YYINITIAL> (menu|MENU)                                     { return SPLTypes.MENU; }
-<YYINITIAL> (end-menu|endmenu|END-MENU|ENDMENU)             { return SPLTypes.MENU_END; }
-<YYINITIAL> (treemenu|TREEMENU|tree-menu|TREE-MENU)         { return SPLTypes.TREEMENU; }
-<YYINITIAL> (nohide|NOHIDE|no-hide|NO-HIDE)                 { return SPLTypes.NOHIDE; }
-<YYINITIAL> (button-width|BUTTON-WIDTH|buttonwidth|BUTTONWIDTH) { return SPLTypes.MENU_BUTTON_WIDTH; }
-
-//mode
-<YYINITIAL> (mode|MODE)                                     { return SPLTypes.MODE; }
-<YYINITIAL> (help|HELP)                                     { return SPLTypes.HELP; }
-<YYINITIAL> (security|SECURITY)                             { return SPLTypes.SECURITY; }
-<YYINITIAL> (entry|correct|remove|duplicate|entry-once|find|next-scr|prev-scr) { return SPLTypes.MODEENTRY; }
-<YYINITIAL> (process|PROCESS)                               { return SPLTypes.PROCESS; }
-<YYINITIAL> (currency|CURRENCY)                             { return SPLTypes.MODECURRENCY; }
-<YYINITIAL> (lock|LOCK)                                     { return SPLTypes.LOCK; }
-<YYINITIAL> (perform|PERFORM)                               { return SPLTypes.PERFORM; }
-<YYINITIAL> (always-show|ALWAYS-SHOW)                       { return SPLTypes.ALWAYS_SHOW; }
-<YYINITIAL> (always-add|ALWAYS-ADD)                         { return SPLTypes.ALWAYS_ADD; }
-
-//object
-<YYINITIAL> (object|OBJECT)                                 { return SPLTypes.OBJECT; }
 
 
 <YYINITIAL> ";"                                             { return SPLTypes.SEMICOLON; }
