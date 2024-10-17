@@ -16,13 +16,13 @@
 splFile ::= item_*
 
 item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
-    declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_
+    declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_ | comments_
 
     statement_ ::= abort_ | accept_ | acknowledge_ | audit_ | back-to-detail_ | beginwork_ | box_ | break_ | call_ | callurl_ | checkbox_ | clear_ | close_ | command_ | commitwork_ | confirm_ | continue_
                  | continueentry_ | delete_ | disablealltriggers_ | display_ | do_ | dropdown_ | exit_ | extract_ | field-group_ | for_ | get_ | if_ | initialise_ | insert_ | link_ | lock-method_ | message_ | messagebox_
                  | need_ | open_ | option_ | page_ | pause_ | pop_ | position_ | print_ | push_ | query_ | radio-button_ | re-enter_ | refresh_ | repeat_ | report_ | reportfinish_ | reportsection_ | reportsectionfinish_
                  | re-select_ | restore_ | rollbackwork_ | save_ | screengroup_ | screensection_ | select_ | serial_ | set_ | set2_ | set-date-validation_ | skip_ | sql-delete_ | sql-update_ | statement-group_ | stringstatement_ | switch_
-                 | transaction_ | unlock_ | update_ | version-number_ | web-client-local-agent_ | while_
+                 | transaction_ | unlock_ | update_ | version-number_ | web-client-local-agent_ | while_ | comments_
 
     preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
 
@@ -90,7 +90,7 @@ acknowledge_ ::= ACKNOWLEDGE string_ (prompt_)?
 audit_ ::= AUDIT ("ON"|"OFF")? (IDENTIFIER)*
 back-to-detail_ ::= BACK_TO_DETAIL
 beginwork_ ::= BEGIN_WORK (ON string_ (COMMA string_)*)? (LEAVING string_ (COMMA string_)*)? FREE_LOCKS? (ON ERROR number_* statement_* END_ON)?
-box_ ::= BOX (rowcol_ "to" rowcol_)? DOUBLE? NO_CROSS? (TITLE ("is")? string_)? SUNKEN? colour_? ABSOLUTE_COORDINATES
+box_ ::= BOX (rowcol_ "to" rowcol_)? DOUBLE? NO_CROSS? (TITLE ("is")? string_)? SUNKEN? colour_? ABSOLUTE_COORDINATES?
 break_ ::= BREAK
 call_ ::= CALL string_ parameters_? max_parameters_? returning_? home_? BATCH? LEAVE_FILES_OPEN? EXTERNAL? backgroundnowait_? (ON ERROR statement_* END_ON)?
 max_parameters_ ::= MAX_PARAMETERS ("are")? number_
@@ -234,7 +234,7 @@ tan_ ::= TAN LPAREN number_ RPAREN
 add-month_ ::= ADD_MONTH LPAREN datestring_ COMMA number_ COMMA number_ RPAREN
 client-date-time-string_ ::= CLIENT_DATE_TIME_STRING LPAREN RPAREN
 date-from-date-time_ ::= DATE_FROM_DATE_TIME LPAREN datestring_ COMMA boolean_ RPAREN
-date-time_ ::= DATE_TIME LPAREN DATE COMMA TIME COMMA boolean_ RPAREN
+date-time_ ::= DATE_TIME LPAREN datestring_ COMMA datestring_ COMMA boolean_ RPAREN
 date-to-julian_ ::= DATE_TO_JULIAN LPAREN string_ RPAREN
 day_ ::= DAY LPAREN datestring_ RPAREN
 day-name_ ::= DAY_NAME LPAREN datestring_ RPAREN
@@ -539,14 +539,14 @@ datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_ | modification-time
 picture_ ::= pic_group_ | pic_words
 pic_words ::= "ddmmmyybhh:mm"| "HH:MM:SS" // Date and time format
 pic_group_ ::= (NUMBER | IDENTIFIER) (LPAREN number_ RPAREN)? (IDENTIFIER LPAREN number_ RPAREN)?
+comments_ ::= COMMENT | BLOCK_COMMENT
 
 element_ ::= FUNCTION_DECLARATION
            | KEYWORD
            | STRING
            | NUMBER
            | IDENTIFIER
-           | COMMENT
-           | BLOCK_COMMENT
+           | comments_
            | TITLE
            | DEFAULT
            | WINDOW

@@ -207,7 +207,7 @@ PREPROCESSOR=(#include|#define|#define|#undef|#ifdef|#ifndef|#if|#else|#endif|#I
 <YYINITIAL> (auto)                                          { return SPLTypes.AUTO; }
 <YYINITIAL> (no[-_]?prompt)                                 { return SPLTypes.NO_PROMPT; }
 <YYINITIAL> (no[-_]?window)                                 { return SPLTypes.NO_WINDOW; }
-<YYINITIAL> (comfirmed)                                     { return SPLTypes.CONFIRMED; }
+<YYINITIAL> (confirmed)                                     { return SPLTypes.CONFIRMED; }
 <YYINITIAL> (not[-_]?confirmed)                             { return SPLTypes.NOT_CONFIRMED; }
 <YYINITIAL> (col)                                           { return SPLTypes.COL; }
 <YYINITIAL> (bitmap)                                        { return SPLTypes.BITMAP; }
