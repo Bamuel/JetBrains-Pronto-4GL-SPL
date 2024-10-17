@@ -26,7 +26,7 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
 
     preprocessor_ ::= preprocessor_include_ | preprocessor_define_ | preprocessor_undef_ | preprocessor_ifdef_ | preprocessor_ifndef_ | preprocessor_if_
 
-    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_
+    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_ | securityfunction_
 
         arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
         | min-value_ | power-of_ | random_ | rshift_ | sign-of_ | sin_ | smallest-increment_ | square-root_ | sum_ | sum-array_ | tan_
@@ -57,6 +57,8 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         | concat_ |  formatpicture_ | freeblob_ | fstr_ | leftjustify_ | lowercase_ | ltrim_ | maxalphavalue_ | num_ | paramtext_ | pattern_
         | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
+
+        securityfunction_ ::= crc32_ | decrypt_ | encrypt_ | security_level_ | sign_data_ | verify_signed_data_
 
 //Statement rules
 abort_ ::= ABORT string_ (PIC ("is")? picture_)? NOLOG?
@@ -419,6 +421,14 @@ validnumber_ ::= VALIDNUMBER LPAREN string_ RPAREN
 writeblobtofile_ ::= WRITEBLOBTOFILE LPAREN string_ COMMA string_ RPAREN
 zstr_ ::= ZSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
 
+//Security functions
+crc32_ ::= CRC32 LPAREN string_ COMMA string_ RPAREN
+decrypt_ ::= DECRYPT LPAREN string_ COMMA string_ COMMA string_ RPAREN
+encrypt_ ::= ENCRYPT LPAREN string_ COMMA string_ COMMA string_ RPAREN
+security_level_ ::= SECURITY_LEVEL LPAREN RPAREN
+sign_data_ ::= SIGN_DATA LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+verify_signed_data_ ::= VERIFY_SIGNED_DATA LPAREN string_ COMMA string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+
 
 // Preprocessor rule
 preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
@@ -535,9 +545,9 @@ after_ ::= AFTER statement_*
 rowcol_ ::= AT NUMBER COMMA NUMBER
 expression_ ::= item_* //todo: expression
 condition_ ::= item_* //todo: condition, Need to double check the differnce between expression and condition
-string_ ::= STRING | IDENTIFIER | PREDEFINED | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
-number_ ::= NUMBER | IDENTIFIER | PREDEFINED | arithmeticfunction_ | datetimefunction_ | environmentfunction_ | filehandlingfunction_
-boolean_ ::= PREDEFINED | "1" | "0"
+string_ ::= STRING | IDENTIFIER | PREDEFINED | function_
+number_ ::= NUMBER | IDENTIFIER | PREDEFINED | function_
+boolean_ ::= PREDEFINED | "1" | "0" | function_
 datestring_ ::= DATE | TIME | IDENTIFIER | PREDEFINED | datetimefunction_ | modification-time_
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.

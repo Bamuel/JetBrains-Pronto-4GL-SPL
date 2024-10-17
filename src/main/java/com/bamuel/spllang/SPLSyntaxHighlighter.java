@@ -611,6 +611,14 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WRITEBLOBTOFILE, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ZSTR, new TextAttributesKey[]{FUNCTION_CALL});
 
+        //Security Functions
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.CRC32, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DECRYPT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ENCRYPT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SECURITY_LEVEL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SIGN_DATA, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.VERIFY_SIGNED_DATA, new TextAttributesKey[]{FUNCTION_CALL});
+
         //Other
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{PREDEFINED});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});
