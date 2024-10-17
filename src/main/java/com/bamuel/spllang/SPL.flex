@@ -336,6 +336,8 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (begin)                                         { return SPLTypes.BEGIN; }
 <YYINITIAL> (commit)                                        { return SPLTypes.COMMIT; }
 <YYINITIAL> (rollback)                                      { return SPLTypes.ROLLBACK; }
+<YYINITIAL> (to)                                            { return SPLTypes.TO; }
+<YYINITIAL> (is)                                            { return SPLTypes.IS; }
 
 
 //Constants

@@ -403,6 +403,8 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BEGIN, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMIT, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ROLLBACK, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.TO, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.IS, new TextAttributesKey[]{METADATA});
 
         //Constants
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS_VALUES, new TextAttributesKey[]{CONSTANT});
