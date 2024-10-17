@@ -86,9 +86,9 @@ acceptdefault_ ::= DEFAULT IS? string_
 acceptallow_ ::= ALLOW string_ (TO string_)*
 acceptdisallow_ ::= DISALLOW string_ (TO string_)*
 timeout_ ::= TIMEOUT IS? number_
-acceptedits_ ::= EDIT ("is"|"are")? (string_)*
-acceptfill_ ::= FILL ("with")? ("leading"|"trailing")? string_
-acceptlookup_ ::= LOOKUP ("not")? ("in")? string_ ("on index" string_)? ("key" IS? string_*)?
+acceptedits_ ::= EDIT (IS|ARE)? (string_)*
+acceptfill_ ::= FILL WITH? (LEADING|TRAILING)? string_
+acceptlookup_ ::= LOOKUP ("not")? ("in")? string_ (ON INDEX string_)? (KEY IS? string_*)?
 accpetcase_ ::= LOWERCASE | UPPERCASE
 acceptjustify_ ::= LEFT | CENTRE | RIGHT | CENTRE_COORD | RIGHT_COORD
 accepthelp_ ::= HELP IS? string_
@@ -96,7 +96,7 @@ acceptonerror_ ::= ON ERROR statement_* END_ON
 acceptfunctionkey_ ::= ON FUNCTION_KEY statement_* END_ON
 accepttag_ ::= TAG IS? NUMBER
 accepthelpcontext_ ::= HELP_CONTEXT IS? string_*
-accepthelpscreen_ ::= HELP_SCREEN ("primary") IDENTIFIER rowcol_ (OCCURS number_)? SHOWING IDENTIFIER STRING (COMMA IDENTIFIER STRING)* (USING IDENTIFIER)
+accepthelpscreen_ ::= HELP_SCREEN SCREEN_PRIMARY IDENTIFIER rowcol_ (OCCURS number_)? SHOWING IDENTIFIER STRING (COMMA IDENTIFIER STRING)* (USING IDENTIFIER)
 acceptwhen_ ::= WHEN condition_ //todo: condition
 beforeaccept_ ::= BEFORE_ACCEPT statement_* END_BEFORE_ACCEPT
 acceptvalidation_ ::= VALIDATIONS statement_* END_VALIDATIONS
@@ -104,18 +104,18 @@ acceptproceduralstatement_ ::= statement_*
 scale_ ::= SCALE IS? number_
 acceptonchange_ ::= ON CHANGE statement_* END_ON
 acknowledge_ ::= ACKNOWLEDGE string_ (prompt_)?
-audit_ ::= AUDIT ("ON"|"OFF")? (IDENTIFIER)*
+audit_ ::= AUDIT (ON|OFF)? (IDENTIFIER)*
 back-to-detail_ ::= BACK_TO_DETAIL
-beginwork_ ::= BEGIN_WORK (ON string_ (COMMA string_)*)? (LEAVING string_ (COMMA string_)*)? FREE_LOCKS? (ON ERROR number_* statement_* END_ON)?
+beginwork_ ::= BEGIN WORK (ON string_ (COMMA string_)*)? (LEAVING string_ (COMMA string_)*)? FREE_LOCKS? (ON ERROR number_* statement_* END_ON)?
 box_ ::= BOX (rowcol_ TO rowcol_)? DOUBLE? NO_CROSS? (TITLE IS? string_)? SUNKEN? colour_? ABSOLUTE_COORDINATES?
 break_ ::= BREAK
 call_ ::= CALL string_ parameters_? max_parameters_? returning_? home_? BATCH? LEAVE_FILES_OPEN? EXTERNAL? backgroundnowait_? (ON ERROR statement_* END_ON)?
-max_parameters_ ::= MAX_PARAMETERS ("are")? number_
+max_parameters_ ::= MAX_PARAMETERS ARE? number_
 home_ ::= HOME IS? string_
 backgroundnowait_ ::= BACKGROUND | BACKGROUNDNOWAITWAIT
 callurl_ ::= CALL_URL string_ httpheaders_? httpbody_? httpmethod_? httpproxy_? httpauthany_? timeout_? cacertificate_? sslcertificate_? sslkey_? sslkeypassword_? allowredirection_? sftpcommand_? sftppostcommand_? sftpcreatedirs_? urluser_? urlloginoptions_? callreturning_? (ON ERROR number_? statement_* END_ON)?
-httpheaders_ ::= HTTP_HEADERS ("are")? string_|"file" IS? string_?
-httpbody_ ::= HTTP_BODY IS? string_|"file" IS? string_?
+httpheaders_ ::= HTTP_HEADERS ARE? (string_|FILE) IS? string_?
+httpbody_ ::= HTTP_BODY IS? (string_|FILE) IS? string_?
 httpmethod_ ::= HTTP_METHOD IS? string_ //todo: http methods
 httpproxy_ ::= HTTP_PROXY IS? string_
 httpauthany_ ::= HTTP_AUTH_ANY
@@ -128,14 +128,14 @@ sftppostcommand_ ::= SFTP_POST_COMMAND IS? string_
 sftpcreatedirs_ ::= SFTP_CREATE_DIRS
 urluser_ ::= URL_USER IS? string_ (string_)?
 urlloginoptions_ ::= URL_LOGIN_OPTIONS IS? string_
-callreturning_ ::= RETURNING (HTTP_HEADERS ("in")? string_|"file" IS? string_?)? (HTTP_BODY IS string_|"file" IS? string_?)?
-checkbox_ ::= CHECK_BOX string_ rowcol_ (VALUES string_ string_)? (TITLE string_)? colour_? RIGHT_COORDINATE? (DEFAULT IS? ("TRUE"|"FALSE"))? READ_ONLY? (WHEN condition_)? (BEFORE_CHECK_BOX statement_* END_BEFORE_CHECK_BOX)? (VALIDATIONS statement_* END_VALIDATIONS)? (ON CHANGE item_* END_ON)? CHECK_BOX_END?
+callreturning_ ::= RETURNING (HTTP_HEADERS ("in")? (string_|FILE) IS? string_?)? (HTTP_BODY IS (string_|FILE) IS? string_?)?
+checkbox_ ::= CHECK_BOX string_ rowcol_ (VALUES string_ string_)? (TITLE string_)? colour_? RIGHT_COORDINATE? (DEFAULT IS? (boolean_))? READ_ONLY? (WHEN condition_)? (BEFORE_CHECK_BOX statement_* END_BEFORE_CHECK_BOX)? (VALIDATIONS statement_* END_VALIDATIONS)? (ON CHANGE item_* END_ON)? CHECK_BOX_END?
 clear_ ::= CLEAR clearoptions_?
 clearoptions_ ::= (ROWS number_ (TO) number_) | (rowcol_ (TO) rowcol_) | (DATA) | (DATA|PROMPT rowcol_ TO rowcol_) | ABSOLUTE_COORDINATES
-close_ ::= (CLOSE (string_ ("and remove")? (ON ERROR statement_* END_ON)?)) | (CLOSE "ALL" ("LOCAL"|"RECONNECT")?)
+close_ ::= (CLOSE (string_ ("and remove")? (ON ERROR statement_* END_ON)?)) | (CLOSE ALL ("LOCAL"|"RECONNECT")?)
 command_ ::= COMMAND parameters_? home_? NO_MESSAGE? NO_REFRESH? NO_XTERM? max_parameters_? BATCH? (BACKGROUND|BACKGROUNDNOWAITWAIT)? EXTERNAL? (ON ERROR statement_* END_ON)? 
-commitwork_ ::= COMMIT_WORK (ON ERROR statement_* END_ON)?
-confirm_ ::= CONFIRM rowcol_? (AUTO? (WHEN condition_)?)? prompt_? NO_PROMPT? (DEFAULT IS? ("yes"|"no"))? (NO_WINDOW|WINDOW)? (BEFORE statement_*)? (CONFIRMED statement_*)? (NOT_CONFIRMED statement_*)? (AFTER statement_*)? CONFIRM_END
+commitwork_ ::= COMMIT WORK (ON ERROR statement_* END_ON)?
+confirm_ ::= CONFIRM rowcol_? (AUTO? (WHEN condition_)?)? prompt_? NO_PROMPT? (DEFAULT IS? boolean_)? (NO_WINDOW|WINDOW)? (BEFORE statement_*)? (CONFIRMED statement_*)? (NOT_CONFIRMED statement_*)? (AFTER statement_*)? CONFIRM_END
 continue_ ::= CONTINUE
 continueentry_ ::= CONTINUE_ENTRY
 delete_ ::= DELETE string_ NO_WARNING? (ON ERROR statement_* END_ON)?
@@ -192,7 +192,7 @@ reportsection_ ::= REPORT SECTION IS? string_? (HIDDEN|CAN_HIDE)? colour_? (STYL
 reportsectionfinish_ ::= REPORT SECTION FINISHED (ON string_)?
 re-select_ ::= RE_SELECT
 restore_ ::= RESTORE (string_ (LEAVING string_ (COMMA string_)*)? (LEAVING ALL)? )|((string_ (COMMA string_)*) FROM string_)
-rollbackwork_ ::= ROLLBACK_WORK (ON ERROR statement_* END_ON)? 
+rollbackwork_ ::= ROLLBACK WORK (ON ERROR statement_* END_ON)?
 save_ ::= SAVE string_
 screengroup_ ::= SCREEN_GROUP (WHEN condition_)? (TITLE IS? string_)? (NEXT ROW)? HORIZONTAL? (WIDTH IS? number_)? (GROUP_STYLE IS? number_)? (TAG IS? number_)? statement_* SCREEN_GROUP_END
 screensection_ ::= SCREEN_SECTION (WHEN condition_)? (TITLE IS? string_)? help_? (SECTION_WHEN condition_)? ALWAYS_SHOW? (HIDDEN|HIDE)? do_ SCREEN_SECTION_END
@@ -207,7 +207,7 @@ assignmentoperator_ ::= "=" | "+=" | "-=" | "*=" | "/=" | "%="
 set-date-validation_ ::= SET_DATE_VALIDATION accepthelpcontext_?
 skip_ ::= SKIP ((expression_? ("lines")?)|(TO ("line")? expression_)) (ON string_)?
 sql-delete_ ::= SQL_DELETE ALL? string_ (WHERE condition_)? (ON ERROR statement_* END_ON)? 
-sql-update_ ::= SQL_UPDATE ALL? string_ SET (IDENTIFIER "=" expression_)* (WHERE condition_)? (ON ERROR statement_* END_ON)? //todo: expression with subquery & procedural-statements
+sql-update_ ::= SQL_UPDATE ALL? string_ SET (IDENTIFIER EQUALS expression_)* (WHERE condition_)? (ON ERROR statement_* END_ON)? //todo: expression with subquery & procedural-statements
 statement-group_ ::= STATEMENT_GROUP item_* STATEMENT_GROUP_END
 stringstatement_ ::= stringstatement1_ | stringstatement2_ | stringstatement3_
 stringstatement1_ ::= STRINGSTATMENT string_ (INSERTING|REPLACING) string_ "at" string_
@@ -221,7 +221,7 @@ transactionrollback_ ::= ROLLBACK (ON ERROR statement_* END_ON)?
 unlock_ ::= UNLOCK (string_|ALL) LOCAL?
 update_ ::= UPDATE string_ NO_WARNING? LOCK? (ON ERROR statement_* END_ON)? 
 version-number_ ::= VERSION_NUMBER IS? number_
-web-client-local-agent_ ::= WEB_CLIENT_LOCAL_AGENT ("ON"| "OFF")
+web-client-local-agent_ ::= WEB_CLIENT_LOCAL_AGENT (boolean_)
 while_ ::= WHILE expression_ DETAIL? statement_* WHILE_END
 
 
@@ -534,11 +534,11 @@ screentitle_ ::= TITLE IS? string_
 screenprimary_ ::= SCREEN_PRIMARY IDENTIFIER (ON INDEX)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?
 screenselect_ ::= SELECT selectclauses_
 screenquicklink_ ::= SCREEN_QUICK_LINK (ON)? IDENTIFIER
-screenreview_ ::= SCREEN_REVIEW IS? "colour" (ON)? IDENTIFIER
-screenallowed_ ::= SCREEN_ALLOWED ("is"|"are")? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"SEARCH"|"ENTRY"|"CORRECT"|"REMOVE"|"find"|"next"|"prev"|"next-scr"|"prev-scr"|"search"|"entry"|"correct"|"remove") IDENTIFIER* //todo: [mode-name ...]]
+screenreview_ ::= REVIEW colour_
+screenallowed_ ::= SCREEN_ALLOWED (IS|ARE)? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"SEARCH"|"ENTRY"|"CORRECT"|"REMOVE"|"find"|"next"|"prev"|"next-scr"|"prev-scr"|"search"|"entry"|"correct"|"remove") IDENTIFIER* //todo: [mode-name ...]]
 screenprompt_ ::= PROMPT rowcol_
 screendatagrid_ ::= SCREEN_DATA_GRID
-screenreviewoccurs ::= SCREEN_REVIEW_OCCURS number_ ("by" number_)?
+screenreviewoccurs ::= REVIEW OCCURS number_ ("by" number_)?
 screenwhen_ ::= WHEN condition_ //todo: conditon
 
 // API rule
@@ -607,7 +607,7 @@ objectrecord_ ::= RECORD IS? (IDENTIFIER fieldclauses_)* RECORD_END
 objectkey_ ::= KEY IS? (IDENTIFIER (DESC)? (UNIQUE)? (DB_INDEX_ONLY)? (COMPRESS)?)*
 
 // Parameters rule
-parameters_ ::= PARAMETERS ("are"|"is")? ((IDENTIFIER fieldclauses_)|string_)*
+parameters_ ::= PARAMETERS (ARE|IS)? ((IDENTIFIER fieldclauses_)|string_)*
 
 // Returning rule
 returning_ ::= RETURNING (IDENTIFIER fieldclauses_)*
@@ -621,7 +621,7 @@ export_ ::= EXPORT (CAN_OVERRIDE)?
 colour_ ::= COLOUR IS? IDENTIFIER (ON IDENTIFIER)?
 helpcontext_ ::= HELP_CONTEXT IS? string_ string_
 window_ ::= WINDOW rowcol_ TO rowcol_ (relative_)?
-relative_ ::= RELATIVE_TO TO rowcol_
+relative_ ::= RELATIVE TO rowcol_
 windowpositision_ ::= WINDOW_POSITION IS? number_
 before_ ::= BEFORE statement_*
 detail_ ::= DETAIL statement_*
@@ -671,7 +671,7 @@ element_ ::= FUNCTION_DECLARATION
            | USE_NAME_IN_DB
            | DB_COLUMN_NAME
            | DRILL_BACK
-           | RELATIVE_TO
+           | RELATIVE
            | WINDOW_POSITION
            | PARAMETERS
            | RETURNING
@@ -806,12 +806,10 @@ element_ ::= FUNCTION_DECLARATION
            | INDEX
            | SCREEN_SAME_DIFFERENT
            | SCREEN_QUICK_LINK
-           | SCREEN_REVIEW
            | SCREEN_ALLOWED
            | SCREEN_PROMPT_FOR_SEARCH
            | SCREEN_FIND_FOR_CURRENCY
            | SCREEN_DATA_GRID
-           | SCREEN_REVIEW_OCCURS
            | SCREEN_REVIEW_FROM_START
            | SCREEN_NO_REVIEW_ROW_SEPARATORS
            | SCREEN_NO_REVIEW_COLUMN_SEPARATORS
@@ -912,6 +910,14 @@ element_ ::= FUNCTION_DECLARATION
            | BEGIN
            | COMMIT
            | ROLLBACK
+           | WORK
+           | LEADINGG
+           | TRAILING
+           | OFF
+           | TO
+           | IS
+           | ARE
+           | WITH
            | MESSAGEBOX_BUTTONS_VALUES
            | MESSAGEBOX_ICON_VALUES
            | MODEENTRY

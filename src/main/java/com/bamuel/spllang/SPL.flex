@@ -95,7 +95,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (use[-_]?name[-_]?in[-_]?db)                    { return SPLTypes.USE_NAME_IN_DB; }
 <YYINITIAL> (db[-_]?column[-_]?name)                        { return SPLTypes.DB_COLUMN_NAME; }
 <YYINITIAL> (drill[-_]?back)                                { return SPLTypes.DRILL_BACK; }
-<YYINITIAL> (relative to|RELATIVE TO)                       { return SPLTypes.RELATIVE_TO; }
+<YYINITIAL> (relative)                                      { return SPLTypes.RELATIVE; }
 <YYINITIAL> (window[-_]?position)                           { return SPLTypes.WINDOW_POSITION; }
 <YYINITIAL> (parameters|parameter)                          { return SPLTypes.PARAMETERS; }
 <YYINITIAL> (returning)                                     { return SPLTypes.RETURNING; }
@@ -230,12 +230,10 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (index)                                         { return SPLTypes.INDEX; }
 <YYINITIAL> (same|different)                                { return SPLTypes.SCREEN_SAME_DIFFERENT; }
 <YYINITIAL> (quick[-_]?link)                                { return SPLTypes.SCREEN_QUICK_LINK; }
-<YYINITIAL> (review colour)                                 { return SPLTypes.SCREEN_REVIEW; }
 <YYINITIAL> (allowed)                                       { return SPLTypes.SCREEN_ALLOWED; }
 <YYINITIAL> (no[-_]?prompt[-_]?for[-_]?search)              { return SPLTypes.SCREEN_PROMPT_FOR_SEARCH; }
 <YYINITIAL> (find[-_]?for[-_]?currency)                     { return SPLTypes.SCREEN_FIND_FOR_CURRENCY; }
 <YYINITIAL> (data[-_]?grid)                                 { return SPLTypes.SCREEN_DATA_GRID; }
-<YYINITIAL> (review occurs)                                 { return SPLTypes.SCREEN_REVIEW_OCCURS; }
 <YYINITIAL> (review[-_]?from[-_]?start|review[-_]?from[-_]?current|review[-_]?from[-_]?end|review[-_]?bottom[-_]?to[-_]?top) { return SPLTypes.SCREEN_REVIEW_FROM_START; }
 <YYINITIAL> (no[-_]?review[-_]?row[-_]?separators)          { return SPLTypes.SCREEN_NO_REVIEW_ROW_SEPARATORS; }
 <YYINITIAL> (no[-_]?review[-_]?column[-_]?separators)       { return SPLTypes.SCREEN_NO_REVIEW_COLUMN_SEPARATORS; }
@@ -336,8 +334,14 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (begin)                                         { return SPLTypes.BEGIN; }
 <YYINITIAL> (commit)                                        { return SPLTypes.COMMIT; }
 <YYINITIAL> (rollback)                                      { return SPLTypes.ROLLBACK; }
+<YYINITIAL> (work)                                          { return SPLTypes.WORK; }
+<YYINITIAL> (leading)                                       { return SPLTypes.LEADING; }
+<YYINITIAL> (trailing)                                      { return SPLTypes.TRAILING; }
+<YYINITIAL> (off)                                           { return SPLTypes.OFF; }
 <YYINITIAL> (to)                                            { return SPLTypes.TO; }
 <YYINITIAL> (is)                                            { return SPLTypes.IS; }
+<YYINITIAL> (are)                                           { return SPLTypes.ARE; }
+<YYINITIAL> (with)                                          { return SPLTypes.WITH; }
 
 
 //Constants
@@ -348,13 +352,11 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 
 
 //Statements
-//STATEMENTS=(abort|accept|acknowledge|audit|back-to-detail|begin work|box|break|call|call-url|check-box|clear|close|command|commit work|confirm|continue|continue-entry|delete|disable-all-triggers|display|do|drop-down|enquiry|exit|extract|field-group|for|get|initialise|insert|link|lock-method|need|open|option|page|pause|pop|position|print|push|query|radio-button|re-enter|refresh|repeat|report|report section|re-select|restore|rollback work|save|screen-group|screen-section|select|serial|set|set-date-validation|skip|spl|sql-delete|sql-update|statement-group|switch|transaction|unlock|update|version-number|web-client-local-agent|while|workstation-local-agent)
 <YYINITIAL> (abort)                                         { return SPLTypes.ABORT; }
 <YYINITIAL> (accept)                                        { return SPLTypes.ACCEPT; }
 <YYINITIAL> (acknowledge)                                   { return SPLTypes.ACKNOWLEDGE; }
 <YYINITIAL> (audit|auditon)                                 { return SPLTypes.AUDIT; }
 <YYINITIAL> (back[-_]?to[-_]?detail)                        { return SPLTypes.BACK_TO_DETAIL; }
-<YYINITIAL> (begin work)                                    { return SPLTypes.BEGIN_WORK; }
 <YYINITIAL> (box)                                           { return SPLTypes.BOX; }
 <YYINITIAL> (break)                                         { return SPLTypes.BREAK; }
 <YYINITIAL> (call)                                          { return SPLTypes.CALL; }
@@ -364,7 +366,6 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (clear)                                         { return SPLTypes.CLEAR; }
 <YYINITIAL> (close)                                         { return SPLTypes.CLOSE; }
 <YYINITIAL> (command)                                       { return SPLTypes.COMMAND; }
-<YYINITIAL> (commit work)                                   { return SPLTypes.COMMIT_WORK; }
 <YYINITIAL> (confirm)                                       { return SPLTypes.CONFIRM; }
 <YYINITIAL> (end[-_]?confirm)                               { return SPLTypes.CONFIRM_END; }
 <YYINITIAL> (continue)                                      { return SPLTypes.CONTINUE; }
@@ -412,7 +413,6 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (report)                                        { return SPLTypes.REPORT; }
 <YYINITIAL> (re[-_]?select)                                 { return SPLTypes.RE_SELECT; }
 <YYINITIAL> (restore)                                       { return SPLTypes.RESTORE; }
-<YYINITIAL> (rollback work)                                 { return SPLTypes.ROLLBACK_WORK; }
 <YYINITIAL> (save)                                          { return SPLTypes.SAVE; }
 <YYINITIAL> (screen[-_]?group)                              { return SPLTypes.SCREEN_GROUP; }
 <YYINITIAL> (end[-_]?screen[-_]?group)                      { return SPLTypes.SCREEN_GROUP_END; }
