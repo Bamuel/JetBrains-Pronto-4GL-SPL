@@ -33,9 +33,6 @@ COMMENT="//"[^\r\n]*
 BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 
 //FUNCTIONS
-//ole are MS functions that allow you to to inbed into pronto?
-OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-method|ole-call-method|ole-create-control|ole-create-instance|ole-enum-next|ole-enum-reset|ole-error-description|ole-get-active-object|ole-get-dispatch-id|ole-get-event|ole-get-property|ole-put-property|ole-put-property-byref|ole-query-interface|ole-release|ole-status|ole-unadvise-all|ole-unadvise-event)
-//SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
 //XML_FUNCTIONS=(xml-add-child-node|xml-add-child-node-blob|xml-add-child-node-clob|xml-add-child-node-no-quotes|xml-add-child-node-number|xml-add-child-node-text|xml-add-node-attribute|xml-add-ns|xml-child-node-blob|xml-child-node-clob|xml-child-node-text|xml-close-document|xml-copy-node-handle|xml-delete-node|xml-delete-node-attribute|xml-document-is-json|xml-free-node-handle|xml-get-child-by-name|xml-get-doc-encoding|xml-get-first-attribute-name|xml-get-first-child-node|xml-get-last-child-node|xml-get-next-attribute-name|xml-get-next-node|xml-get-node-attribute|xml-get-ns-prefix-url|xml-get-prev-node|xml-get-root-node|xml-modify-node-attribute|xml-modify-node-text|xml-new-document|xml-next-element-sibling|xml-node-blob|xml-node-clob|xml-node-name|xml-node-ns-prefix|xml-node-ns-url|xml-node-string|xml-node-text|xml-node-type|xml-parse-file|xml-parse-text|xml-prev-element-sibling|xml-save-as-file|xml-save-as-file-ex|xml-save-as-text|xml-save-as-text-ex|xml-set-json-array|xml-validate-doc)
 
 PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]?time|space|spaces)
@@ -46,9 +43,6 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 
 <YYINITIAL> {COMMENT}                                       { return SPLTypes.COMMENT; }
 <YYINITIAL> {BLOCK_COMMENT}                                 { return SPLTypes.BLOCK_COMMENT; }
-
-//OLE
-<YYINITIAL> {OLE_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 
 <YYINITIAL> {SINGLEQUOTE}                                   { return SPLTypes.STRING; }
 <YYINITIAL> {DOUBLEQUOTE}                                   { return SPLTypes.STRING; }
@@ -615,8 +609,31 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (rmdir)                                         { return SPLTypes.RMDIR; }
 <YYINITIAL> (start[-_]?dir[-_]?search|next[-_]?dir[-_]?entry|finish[-_]?dir[-_]?search) { return SPLTypes.START_DIR_SEARCH; }
 
+//OLE functions
+<YYINITIAL> (ole[-_]?addref)                                { return SPLTypes.OLE_ADDREF; }
+<YYINITIAL> (ole[-_]?advise[-_]?event)                      { return SPLTypes.OLE_ADVISE_EVENT; }
+<YYINITIAL> (ole[-_]?bulk[-_]?put)                          { return SPLTypes.OLE_BULK_PUT; }
+<YYINITIAL> (ole[-_]?call[-_]?interactive[-_]?method)       { return SPLTypes.OLE_CALL_INTERACTIVE_METHOD; }
+<YYINITIAL> (ole[-_]?call[-_]?method)                       { return SPLTypes.OLE_CALL_METHOD; }
+<YYINITIAL> (ole[-_]?create[-_]?control)                    { return SPLTypes.OLE_CREATE_CONTROL; }
+<YYINITIAL> (ole[-_]?create[-_]?instance)                   { return SPLTypes.OLE_CREATE_INSTANCE; }
+<YYINITIAL> (ole[-_]?enum[-_]?next)                         { return SPLTypes.OLE_ENUM_NEXT; }
+<YYINITIAL> (ole[-_]?enum[-_]?reset)                        { return SPLTypes.OLE_ENUM_RESET; }
+<YYINITIAL> (ole[-_]?error[-_]?description)                 { return SPLTypes.OLE_ERROR_DESCRIPTION; }
+<YYINITIAL> (ole[-_]?get[-_]?active[-_]?object)             { return SPLTypes.OLE_GET_ACTIVE_OBJECT; }
+<YYINITIAL> (ole[-_]?get[-_]?dispatch[-_]?id)               { return SPLTypes.OLE_GET_DISPATCH_ID; }
+<YYINITIAL> (ole[-_]?get[-_]?event)                         { return SPLTypes.OLE_GET_EVENT; }
+<YYINITIAL> (ole[-_]?get[-_]?property)                      { return SPLTypes.OLE_GET_PROPERTY; }
+<YYINITIAL> (ole[-_]?put[-_]?property)                      { return SPLTypes.OLE_PUT_PROPERTY; }
+<YYINITIAL> (ole[-_]?put[-_]?property[-_]?byref)            { return SPLTypes.OLE_PUT_PROPERTY_BYREF; }
+<YYINITIAL> (ole[-_]?query[-_]?interface)                   { return SPLTypes.OLE_QUERY_INTERFACE; }
+<YYINITIAL> (ole[-_]?release)                               { return SPLTypes.OLE_RELEASE; }
+<YYINITIAL> (ole[-_]?status)                                { return SPLTypes.OLE_STATUS; }
+<YYINITIAL> (ole[-_]?unadvise[-_]?all)                      { return SPLTypes.OLE_UNADVISE_ALL; }
+<YYINITIAL> (ole[-_]?unadvise[-_]?event)                    { return SPLTypes.OLE_UNADVISE_EVENT; }
+
+
 //Security functions
-//SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
 <YYINITIAL> (crc32)                                         { return SPLTypes.CRC32; }
 <YYINITIAL> (decrypt)                                       { return SPLTypes.DECRYPT; }
 <YYINITIAL> (encrypt)                                       { return SPLTypes.ENCRYPT; }

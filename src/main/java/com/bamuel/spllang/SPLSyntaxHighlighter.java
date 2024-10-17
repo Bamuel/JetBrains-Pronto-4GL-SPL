@@ -578,6 +578,29 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.RMDIR, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.START_DIR_SEARCH, new TextAttributesKey[]{FUNCTION_CALL});
 
+        //OLE Functions
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_ADDREF, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_ADVISE_EVENT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_BULK_PUT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_CALL_INTERACTIVE_METHOD, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_CALL_METHOD, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_CREATE_CONTROL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_CREATE_INSTANCE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_ENUM_NEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_ENUM_RESET, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_ERROR_DESCRIPTION, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_GET_ACTIVE_OBJECT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_GET_DISPATCH_ID, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_GET_EVENT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_GET_PROPERTY, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_PUT_PROPERTY, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_PUT_PROPERTY_BYREF, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_QUERY_INTERFACE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_RELEASE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_STATUS, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_UNADVISE_ALL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OLE_UNADVISE_EVENT, new TextAttributesKey[]{FUNCTION_CALL});
+
         //String Functions
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ASCII_CHAR, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ASCII_NUM, new TextAttributesKey[]{FUNCTION_CALL});

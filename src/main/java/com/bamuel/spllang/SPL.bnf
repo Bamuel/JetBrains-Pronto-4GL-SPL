@@ -26,7 +26,7 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
 
     preprocessor_ ::= preprocessor_include_ | preprocessor_define_ | preprocessor_undef_ | preprocessor_ifdef_ | preprocessor_ifndef_ | preprocessor_if_
 
-    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_ | securityfunction_
+    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | olefunction_ | stringfunction_ | securityfunction_
 
         arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
         | min-value_ | power-of_ | random_ | rshift_ | sign-of_ | sin_ | smallest-increment_ | square-root_ | sum_ | sum-array_ | tan_
@@ -53,12 +53,19 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         | set-keyboard-focus_ | set-module-code_ | set-registry-value_ | set-web-window_ | sleep_ | spool-file-name_ | time-elapsed_
         | transaction-active_ | tty_ | uid_ | user-group_ | valid-activation-key_ | wait-for-input_
 
+        olefunction_ ::= ole_addref_ | ole_advise_event_ | ole_bulk_put_ | ole_call_interactive_method_ | ole_call_method_ | ole_create_control_
+                       | ole_create_instance_ | ole_enum_next_ | ole_enum_reset_ | ole_error_description_ | ole_get_active_object_ | ole_get_dispatch_id_
+                       | ole_get_event_ | ole_get_property_ | ole_put_property_ | ole_put_property_byref_ | ole_query_interface_ | ole_release_
+                       | ole_status_ | ole_unadvise_all_ | ole_unadvise_event_
+
+        securityfunction_ ::= crc32_ | decrypt_ | encrypt_ | security_level_ | sign_data_ | verify_signed_data_
+
         stringfunction_ ::= ascii-char_ | ascii-num_ | base64toblob_| blobappend_ | blobappendbase64_ | blobsection_ | blobtobase64_
         | concat_ |  formatpicture_ | freeblob_ | fstr_ | leftjustify_ | lowercase_ | ltrim_ | maxalphavalue_ | num_ | paramtext_ | pattern_
         | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
 
-        securityfunction_ ::= crc32_ | decrypt_ | encrypt_ | security_level_ | sign_data_ | verify_signed_data_
+
 
 //Statement rules
 abort_ ::= ABORT string_ (PIC ("is")? picture_)? NOLOG?
@@ -429,6 +436,28 @@ security_level_ ::= SECURITY_LEVEL LPAREN RPAREN
 sign_data_ ::= SIGN_DATA LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
 verify_signed_data_ ::= VERIFY_SIGNED_DATA LPAREN string_ COMMA string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
 
+//OLE functions
+ole_addref_ ::= OLE_ADDREF LPAREN string_ RPAREN
+ole_advise_event_ ::= OLE_ADVISE_EVENT LPAREN string_ COMMA string_ COMMA string_ RPAREN
+ole_bulk_put_ ::= OLE_BULK_PUT LPAREN boolean_ RPAREN
+ole_call_interactive_method_ ::= OLE_CALL_INTERACTIVE_METHOD LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+ole_call_method_ ::= OLE_CALL_METHOD LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+ole_create_control_ ::= OLE_CREATE_CONTROL LPAREN string_ COMMA number_ COMMA number_ COMMA number_ COMMA number_ RPAREN
+ole_create_instance_ ::= OLE_CREATE_INSTANCE LPAREN string_ COMMA string_ RPAREN
+ole_enum_next_ ::= OLE_ENUM_NEXT LPAREN string_ COMMA string_ RPAREN
+ole_enum_reset_ ::= OLE_ENUM_RESET LPAREN string_ RPAREN
+ole_error_description_ ::= OLE_ERROR_DESCRIPTION LPAREN number_ RPAREN
+ole_get_active_object_ ::= OLE_GET_ACTIVE_OBJECT LPAREN string_ RPAREN
+ole_get_dispatch_id_ ::= OLE_GET_DISPATCH_ID LPAREN string_ COMMA string_ RPAREN
+ole_get_event_ ::= OLE_GET_EVENT LPAREN string_ COMMA string_ RPAREN
+ole_get_property_ ::= OLE_GET_PROPERTY LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+ole_put_property_ ::= OLE_PUT_PROPERTY LPAREN string_ COMMA string_ COMMA string_ RPAREN
+ole_put_property_byref_ ::= OLE_PUT_PROPERTY_BYREF LPAREN string_ COMMA string_ COMMA string_ RPAREN
+ole_query_interface_ ::= OLE_QUERY_INTERFACE LPAREN string_ COMMA string_ RPAREN
+ole_release_ ::= OLE_RELEASE LPAREN number_ RPAREN
+ole_status_ ::= OLE_STATUS LPAREN RPAREN
+ole_unadvise_all_ ::= OLE_UNADVISE_ALL LPAREN string_ RPAREN
+ole_unadvise_event_ ::= OLE_UNADVISE_EVENT LPAREN string_ COMMA string_ RPAREN
 
 // Preprocessor rule
 preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
