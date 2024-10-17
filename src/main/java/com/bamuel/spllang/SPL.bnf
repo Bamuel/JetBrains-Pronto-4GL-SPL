@@ -509,7 +509,7 @@ objectrecord_ ::= RECORD ("is")? (IDENTIFIER fieldclauses_)* RECORD_END
 objectkey_ ::= KEY ("is")? (IDENTIFIER (DESC)? (UNIQUE)? (DB_INDEX_ONLY)? (COMPRESS)?)*
 
 // Parameters rule
-parameters_ ::= PARAMETERS ("are"|"is")? (IDENTIFIER fieldclauses_)*
+parameters_ ::= PARAMETERS ("are"|"is")? ((IDENTIFIER fieldclauses_)|string_)*
 
 // Returning rule
 returning_ ::= RETURNING (IDENTIFIER fieldclauses_)*
@@ -535,10 +535,10 @@ after_ ::= AFTER statement_*
 rowcol_ ::= AT NUMBER COMMA NUMBER
 expression_ ::= item_* //todo: expression
 condition_ ::= item_* //todo: condition, Need to double check the differnce between expression and condition
-string_ ::= STRING | IDENTIFIER | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
-number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | datetimefunction_ | environmentfunction_ | filehandlingfunction_
-boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
-datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_ | modification-time_
+string_ ::= STRING | IDENTIFIER | PREDEFINED | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
+number_ ::= NUMBER | IDENTIFIER | PREDEFINED | arithmeticfunction_ | datetimefunction_ | environmentfunction_ | filehandlingfunction_
+boolean_ ::= PREDEFINED | "1" | "0"
+datestring_ ::= DATE | TIME | IDENTIFIER | PREDEFINED | datetimefunction_ | modification-time_
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
 // todo: add more picture string characters, this covers the basics.
@@ -548,7 +548,7 @@ pic_group_ ::= (NUMBER | IDENTIFIER) (LPAREN number_ RPAREN)? (IDENTIFIER LPAREN
 comments_ ::= COMMENT | BLOCK_COMMENT
 
 element_ ::= FUNCTION_DECLARATION
-           | KEYWORD
+           | PREDEFINED
            | STRING
            | NUMBER
            | IDENTIFIER

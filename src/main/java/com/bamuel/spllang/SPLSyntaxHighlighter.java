@@ -23,6 +23,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey CONSTANT = createTextAttributesKey("SPL_CONSTANT", DefaultLanguageHighlighterColors.CONSTANT);
     public static final TextAttributesKey KEYWORD = createTextAttributesKey("SPL_KEYWORD", DefaultLanguageHighlighterColors.KEYWORD);
     public static final TextAttributesKey IDENTIFIER = createTextAttributesKey("SPL_IDENTIFIER", DefaultLanguageHighlighterColors.IDENTIFIER);
+    public static final TextAttributesKey PREDEFINED = createTextAttributesKey("SPL_BOOLEAN", DefaultLanguageHighlighterColors.PREDEFINED_SYMBOL);
     public static final TextAttributesKey STRING = createTextAttributesKey("SPL_STRING", DefaultLanguageHighlighterColors.STRING);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("SPL_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey COMMA = createTextAttributesKey("SPL_COMMA", DefaultLanguageHighlighterColors.COMMA);
@@ -611,6 +612,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ZSTR, new TextAttributesKey[]{FUNCTION_CALL});
 
         //Other
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{PREDEFINED});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NUMBER, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMA, new TextAttributesKey[]{COMMA});

@@ -37,9 +37,7 @@ OLE_FUNCTIONS=(ole-addref|ole-advise-event|ole-bulk-put|ole-call-interactive-met
 SECURITY_FUNCTIONS=(crc32|decrypt|encrypt|security-level|sign-data|verify-signed-data)
 XML_FUNCTIONS=(xml-add-child-node|xml-add-child-node-blob|xml-add-child-node-clob|xml-add-child-node-no-quotes|xml-add-child-node-number|xml-add-child-node-text|xml-add-node-attribute|xml-add-ns|xml-child-node-blob|xml-child-node-clob|xml-child-node-text|xml-close-document|xml-copy-node-handle|xml-delete-node|xml-delete-node-attribute|xml-document-is-json|xml-free-node-handle|xml-get-child-by-name|xml-get-doc-encoding|xml-get-first-attribute-name|xml-get-first-child-node|xml-get-last-child-node|xml-get-next-attribute-name|xml-get-next-node|xml-get-node-attribute|xml-get-ns-prefix-url|xml-get-prev-node|xml-get-root-node|xml-modify-node-attribute|xml-modify-node-text|xml-new-document|xml-next-element-sibling|xml-node-blob|xml-node-clob|xml-node-name|xml-node-ns-prefix|xml-node-ns-url|xml-node-string|xml-node-text|xml-node-type|xml-parse-file|xml-parse-text|xml-prev-element-sibling|xml-save-as-file|xml-save-as-file-ex|xml-save-as-text|xml-save-as-text-ex|xml-set-json-array|xml-validate-doc)
 
-PREFDEFINED=(true|false|yes|no|zero|zero_date|zero_time|zero_date_time|space|spaces)
-//SQL_DEFINE=(select|endselect|get|update|insert)
-//OPERATION_SIGN=(to|or|and|not|in|\\+|-|=|\\*|\/|\\+=|-=|\\*=|\/=|!=|<=|>=|<|>|<>)
+PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]?time|space|spaces)
 
 %%
 
@@ -52,15 +50,14 @@ PREFDEFINED=(true|false|yes|no|zero|zero_date|zero_time|zero_date_time|space|spa
 <YYINITIAL> {SECURITY_FUNCTIONS}                            { return SPLTypes.FUNCTION_DECLARATION; }
 <YYINITIAL> {XML_FUNCTIONS}                                 { return SPLTypes.FUNCTION_DECLARATION; }
 
-<YYINITIAL> {PREFDEFINED}                                   { return SPLTypes.KEYWORD; }
-
 <YYINITIAL> {SINGLEQUOTE}                                   { return SPLTypes.STRING; }
 <YYINITIAL> {DOUBLEQUOTE}                                   { return SPLTypes.STRING; }
-
 <YYINITIAL> {NUMBER}                                        { return SPLTypes.NUMBER; }
-
 <YYINITIAL> {DATE}                                          { return SPLTypes.DATE; }
 <YYINITIAL> {TIME}                                          { return SPLTypes.TIME; }
+
+
+<YYINITIAL> {PREDEFINED}                                    { return SPLTypes.PREDEFINED; }
 
 //Preprocessor
 <YYINITIAL> (#include)                                      { return SPLTypes.PREPROCESSOR_INCLUDE; }
