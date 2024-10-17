@@ -19,12 +19,12 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
     declaration_ ::= api_ | field_ | local_ | menu_ | mode_ | object_ | parameters_ | procedure_ | returning_ | screen_ | comments_
 
     statement_ ::= abort_ | accept_ | acknowledge_ | audit_ | back-to-detail_ | beginwork_ | box_ | break_ | call_ | callurl_ | checkbox_ | clear_ | close_ | command_ | commitwork_ | confirm_ | continue_
-                 | continueentry_ | delete_ | disablealltriggers_ | display_ | do_ | dropdown_ | exit_ | extract_ | field-group_ | for_ | get_ | if_ | initialise_ | insert_ | link_ | lock-method_ | message_ | messagebox_
+                 | continueentry_ | delete_ | disablealltriggers_ | display_ | do_ | do2_ | dropdown_ | exit_ | extract_ | field-group_ | for_ | get_ | if_ | initialise_ | insert_ | link_ | lock-method_ | message_ | messagebox_
                  | need_ | open_ | option_ | page_ | pause_ | pop_ | position_ | print_ | push_ | query_ | radio-button_ | re-enter_ | refresh_ | repeat_ | report_ | reportfinish_ | reportsection_ | reportsectionfinish_
                  | re-select_ | restore_ | rollbackwork_ | save_ | screengroup_ | screensection_ | select_ | serial_ | set_ | set2_ | set-date-validation_ | skip_ | sql-delete_ | sql-update_ | statement-group_ | stringstatement_ | switch_
                  | transaction_ | unlock_ | update_ | version-number_ | web-client-local-agent_ | while_ | comments_
 
-    preprocessor_ ::= preprocessors_ //Pre-processor commands summary //todo: split into individual preprocessor commands
+    preprocessor_ ::= preprocessor_include_ | preprocessor_define_ | preprocessor_undef_ | preprocessor_ifdef_ | preprocessor_ifndef_ | preprocessor_if_
 
     function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | stringfunction_
 
@@ -128,6 +128,7 @@ displayoptions_ ::= displayoption1_ | displayoption2_
 displayoption1_ ::= string_ rowcol_ (COL number_)? (PIC picture_)? (TITLE string_)? MULTILINE? (ROWS number_)? (COLUMNS number_)? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? BOLD? DIM? FLASHING? INVERSE? ITALIC? UNDERLINED? BELL? FOREGROUND? BACKGROUND? DATA? PROMPT? colour_? scale_? FIXED_WIDTH_FONT? acceptjustify_? (HELP_IS string_)?
 displayoption2_ ::= BITMAP string_ rowcol_ ("to" rowcol_)? BACKGROUNDNOWAITWAIT
 do_ ::= DO string_ (SCREEN_MODE string_)? SAME? ONCE? SUB_SCREEN? (INITIAL_MODE ("is")? string_)? parameters_? returning_? (NEXT string_)? BACKGROUNDNOWAITWAIT? NO_SECTION?
+do2_ ::= DO NEXT string_
 dropdown_ ::= DROP_DOWN DYNAMIC? OPTIONAL? EDIT? (WIDTH ("is")? number_)? concat_title_? DROP_DOWN_END
 concat_title_ ::= CONCAT_TITLE (dropdownvalues_? | selectclauses_?)
 dropdownvalues_ ::= (string_ TITLE string_)* | (ICON "is"? string_)* | (WHEN condition_ SHOW_VALUE?)
@@ -420,11 +421,16 @@ zstr_ ::= ZSTR LPAREN number_ COMMA number_ COMMA number_ RPAREN
 
 
 // Preprocessor rule
-preprocessors_ ::= PREPROCESSOR (IDENTIFIER | STRING)
+preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
+preprocessor_define_ ::= PREPROCESSOR_DEFINE item_*
+preprocessor_undef_ ::= PREPROCESSOR_UNDEF string_
+preprocessor_ifdef_ ::= PREPROCESSOR_IFDEF string_
+preprocessor_ifndef_ ::= PREPROCESSOR_IFNDEF string_
+preprocessor_if_ ::= PREPROCESSOR_IF condition_ item_* (PREPROCESSOR_ELSE item_*)? PREPROCESSOR_ENDIF?
 
 
 // Screen rule
-screen_ ::= SCREEN IDENTIFIER (SCREEN_RESPONSIVE)? (window_)? (windowpositision_)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (colour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (export_)? (screenhelpcontext_)? (before_)? (detail_)? (after_)? SCREEN_END
+screen_ ::= SCREEN IDENTIFIER (export_)? (SCREEN_RESPONSIVE)? (window_)? (windowpositision_)? (screentitle_)? (screenprimary_)? (screenselect_)? (screenquicklink_)? (colour_)? (screenreview_)? (screenallowed_)? (SCREEN_PROMPT_FOR_SEARCH)? (SCREEN_FIND_FOR_CURRENCY)? (screenprompt_)? (screendatagrid_)? (screenreviewoccurs)? (SCREEN_REVIEW_FROM_START)? (SCREEN_NO_REVIEW_ROW_SEPARATORS)? (SCREEN_NO_REVIEW_COLUMN_SEPARATORS)? (SCREEN_NO_REVIEW_SEPARATORS)? (SCREEN_START_ON_CURRENT_RECORD)? (SCREEN_LEAVE_PARENT_SCREEN)? (screenwhen_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (SCREEN_POSITION_ON_OK)? (SCREEN_STAY_IN_CORRECT)? (SCREEN_FORM_ENTRY)? (export_)? (screenhelpcontext_)? (before_)? (detail_)? (after_)? SCREEN_END
 
 screentitle_ ::= TITLE ("is")? string_
 screenprimary_ ::= SCREEN_PRIMARY IDENTIFIER (ON INDEX)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?
@@ -456,7 +462,7 @@ fielddrillback_ ::= DRILL_BACK ("is")? string_
 local_ ::= LOCAL (FIELD)? (IDENTIFIER fieldclauses_)*
 
 // Menu rule
-menu_ ::= MENU IDENTIFIER menucaluses_ MENU_END
+menu_ ::= MENU IDENTIFIER (export_)? menucaluses_ MENU_END
 menucaluses_ ::= (window_)? (windowpositision_)? (local_)? (parameters_)? (returning_)? (menubuttonwidth_)? (STOP_EXIT_ALL_KEY)? (TITLE ("is")? string_)? (TREEMENU)? (NOHIDE)? (colour_)? (export_)? (helpcontext_)? (before_)? (detail_)? (after_)?
 menubuttonwidth_ ::= MENU_BUTTON_WIDTH ("is")? number_
 
@@ -509,7 +515,7 @@ parameters_ ::= PARAMETERS ("are"|"is")? (IDENTIFIER fieldclauses_)*
 returning_ ::= RETURNING (IDENTIFIER fieldclauses_)*
 
 // Procedure rule
-procedure_ ::= PROCEDURE IDENTIFIER procedureclauses_ PROCEDURE_END
+procedure_ ::= PROCEDURE IDENTIFIER (export_)? procedureclauses_ PROCEDURE_END
 procedureclauses_ ::= (window_)? (relative_)? (NOHIDE)? (windowpositision_)? (colour_)? (local_)? (parameters_)? (returning_)? (STOP_EXIT_ALL_KEY)? (TITLE string_)? (export_)? (AUTO_TRANSACTION)? (helpcontext_)? statement_*
 
 // Other rules
@@ -529,7 +535,7 @@ after_ ::= AFTER statement_*
 rowcol_ ::= AT NUMBER COMMA NUMBER
 expression_ ::= item_* //todo: expression
 condition_ ::= item_* //todo: condition, Need to double check the differnce between expression and condition
-string_ ::= STRING | IDENTIFIER | BAD_CHARACTER | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
+string_ ::= STRING | IDENTIFIER | datetimefunction_ | environmentfunction_  | filehandlingfunction_ | stringfunction_
 number_ ::= NUMBER | IDENTIFIER | arithmeticfunction_ | datetimefunction_ | environmentfunction_ | filehandlingfunction_
 boolean_ ::= "TRUE" | "FALSE" | "true" | "false" | "1" | "0"
 datestring_ ::= DATE | TIME | IDENTIFIER | datetimefunction_ | modification-time_
