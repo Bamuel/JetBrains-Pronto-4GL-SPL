@@ -642,6 +642,57 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SIGN_DATA, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.VERIFY_SIGNED_DATA, new TextAttributesKey[]{FUNCTION_CALL});
 
+        //XML Functions
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_CHILD_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_CHILD_NODE_BLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_CHILD_NODE_CLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_CHILD_NODE_NO_QUOTES, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_CHILD_NODE_NUMBER, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_CHILD_NODE_TEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_NODE_ATTRIBUTE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_ADD_NS, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_CHILD_NODE_BLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_CHILD_NODE_CLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_CHILD_NODE_TEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_CLOSE_DOCUMENT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_COPY_NODE_HANDLE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_DELETE_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_DELETE_NODE_ATTRIBUTE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_DOCUMENT_IS_JSON, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_FREE_NODE_HANDLE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_CHILD_BY_NAME, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_DOC_ENCODING, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_FIRST_ATTRIBUTE_NAME, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_FIRST_CHILD_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_LAST_CHILD_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_NEXT_ATTRIBUTE_NAME, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_NEXT_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_NODE_ATTRIBUTE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_NS_PREFIX_URL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_PREV_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_GET_ROOT_NODE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_MODIFY_NODE_ATTRIBUTE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_MODIFY_NODE_TEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NEW_DOCUMENT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NEXT_ELEMENT_SIBLING, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_BLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_CLOB, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_NAME, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_NS_PREFIX, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_NS_URL, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_STRING, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_TEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_NODE_TYPE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_PARSE_FILE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_PARSE_TEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_PREV_ELEMENT_SIBLING, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SAVE_AS_FILE, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SAVE_AS_FILE_EX, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SAVE_AS_TEXT, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SAVE_AS_TEXT_EX, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SET_JSON_ARRAY, new TextAttributesKey[]{FUNCTION_CALL});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_VALIDATE_DOC, new TextAttributesKey[]{FUNCTION_CALL});
+
         //Other
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{PREDEFINED});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});

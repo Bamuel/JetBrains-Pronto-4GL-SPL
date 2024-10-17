@@ -32,9 +32,6 @@ DOUBLEQUOTE="\""[^\"]*"\""
 COMMENT="//"[^\r\n]*
 BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 
-//FUNCTIONS
-//XML_FUNCTIONS=(xml-add-child-node|xml-add-child-node-blob|xml-add-child-node-clob|xml-add-child-node-no-quotes|xml-add-child-node-number|xml-add-child-node-text|xml-add-node-attribute|xml-add-ns|xml-child-node-blob|xml-child-node-clob|xml-child-node-text|xml-close-document|xml-copy-node-handle|xml-delete-node|xml-delete-node-attribute|xml-document-is-json|xml-free-node-handle|xml-get-child-by-name|xml-get-doc-encoding|xml-get-first-attribute-name|xml-get-first-child-node|xml-get-last-child-node|xml-get-next-attribute-name|xml-get-next-node|xml-get-node-attribute|xml-get-ns-prefix-url|xml-get-prev-node|xml-get-root-node|xml-modify-node-attribute|xml-modify-node-text|xml-new-document|xml-next-element-sibling|xml-node-blob|xml-node-clob|xml-node-name|xml-node-ns-prefix|xml-node-ns-url|xml-node-string|xml-node-text|xml-node-type|xml-parse-file|xml-parse-text|xml-prev-element-sibling|xml-save-as-file|xml-save-as-file-ex|xml-save-as-text|xml-save-as-text-ex|xml-set-json-array|xml-validate-doc)
-
 PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]?time|space|spaces)
 
 %%
@@ -676,6 +673,57 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (valid[-_]?number)                              { return SPLTypes.VALIDNUMBER; }
 <YYINITIAL> (write[-_]?blob[-_]?to[-_]?file)                { return SPLTypes.WRITEBLOBTOFILE; }
 <YYINITIAL> (zstr)                                          { return SPLTypes.ZSTR; }
+
+//XML Functions
+<YYINITIAL> (xml[-_]?add[-_]?child[-_]?node)                { return SPLTypes.XML_ADD_CHILD_NODE; }
+<YYINITIAL> (xml[-_]?add[-_]?child[-_]?node[-_]?blob)       { return SPLTypes.XML_ADD_CHILD_NODE_BLOB; }
+<YYINITIAL> (xml[-_]?add[-_]?child[-_]?node[-_]?clob)       { return SPLTypes.XML_ADD_CHILD_NODE_CLOB; }
+<YYINITIAL> (xml[-_]?add[-_]?child[-_]?node[-_]?no[-_]?quotes) { return SPLTypes.XML_ADD_CHILD_NODE_NO_QUOTES; }
+<YYINITIAL> (xml[-_]?add[-_]?child[-_]?node[-_]?number)     { return SPLTypes.XML_ADD_CHILD_NODE_NUMBER; }
+<YYINITIAL> (xml[-_]?add[-_]?child[-_]?node[-_]?text)       { return SPLTypes.XML_ADD_CHILD_NODE_TEXT; }
+<YYINITIAL> (xml[-_]?add[-_]?node[-_]?attribute)            { return SPLTypes.XML_ADD_NODE_ATTRIBUTE; }
+<YYINITIAL> (xml[-_]?add[-_]?ns)                            { return SPLTypes.XML_ADD_NS; }
+<YYINITIAL> (xml[-_]?child[-_]?node[-_]?blob)               { return SPLTypes.XML_CHILD_NODE_BLOB; }
+<YYINITIAL> (xml[-_]?child[-_]?node[-_]?clob)               { return SPLTypes.XML_CHILD_NODE_CLOB; }
+<YYINITIAL> (xml[-_]?child[-_]?node[-_]?text)               { return SPLTypes.XML_CHILD_NODE_TEXT; }
+<YYINITIAL> (xml[-_]?close[-_]?document)                    { return SPLTypes.XML_CLOSE_DOCUMENT; }
+<YYINITIAL> (xml[-_]?copy[-_]?node[-_]?handle)              { return SPLTypes.XML_COPY_NODE_HANDLE; }
+<YYINITIAL> (xml[-_]?delete[-_]?node)                       { return SPLTypes.XML_DELETE_NODE; }
+<YYINITIAL> (xml[-_]?delete[-_]?node[-_]?attribute)         { return SPLTypes.XML_DELETE_NODE_ATTRIBUTE; }
+<YYINITIAL> (xml[-_]?document[-_]?is[-_]?json)              { return SPLTypes.XML_DOCUMENT_IS_JSON; }
+<YYINITIAL> (xml[-_]?free[-_]?node[-_]?handle)              { return SPLTypes.XML_FREE_NODE_HANDLE; }
+<YYINITIAL> (xml[-_]?get[-_]?child[-_]?by[-_]?name)         { return SPLTypes.XML_GET_CHILD_BY_NAME; }
+<YYINITIAL> (xml[-_]?get[-_]?doc[-_]?encoding)              { return SPLTypes.XML_GET_DOC_ENCODING; }
+<YYINITIAL> (xml[-_]?get[-_]?first[-_]?attribute[-_]?name)  { return SPLTypes.XML_GET_FIRST_ATTRIBUTE_NAME; }
+<YYINITIAL> (xml[-_]?get[-_]?first[-_]?child[-_]?node)      { return SPLTypes.XML_GET_FIRST_CHILD_NODE; }
+<YYINITIAL> (xml[-_]?get[-_]?last[-_]?child[-_]?node)       { return SPLTypes.XML_GET_LAST_CHILD_NODE; }
+<YYINITIAL> (xml[-_]?get[-_]?next[-_]?attribute[-_]?name)   { return SPLTypes.XML_GET_NEXT_ATTRIBUTE_NAME; }
+<YYINITIAL> (xml[-_]?get[-_]?next[-_]?node)                 { return SPLTypes.XML_GET_NEXT_NODE; }
+<YYINITIAL> (xml[-_]?get[-_]?node[-_]?attribute)            { return SPLTypes.XML_GET_NODE_ATTRIBUTE; }
+<YYINITIAL> (xml[-_]?get[-_]?ns[-_]?prefix[-_]?url)         { return SPLTypes.XML_GET_NS_PREFIX_URL; }
+<YYINITIAL> (xml[-_]?get[-_]?prev[-_]?node)                 { return SPLTypes.XML_GET_PREV_NODE; }
+<YYINITIAL> (xml[-_]?get[-_]?root[-_]?node)                 { return SPLTypes.XML_GET_ROOT_NODE; }
+<YYINITIAL> (xml[-_]?modify[-_]?node[-_]?attribute)         { return SPLTypes.XML_MODIFY_NODE_ATTRIBUTE; }
+<YYINITIAL> (xml[-_]?modify[-_]?node[-_]?text)              { return SPLTypes.XML_MODIFY_NODE_TEXT; }
+<YYINITIAL> (xml[-_]?new[-_]?document)                      { return SPLTypes.XML_NEW_DOCUMENT; }
+<YYINITIAL> (xml[-_]?next[-_]?element[-_]?sibling)          { return SPLTypes.XML_NEXT_ELEMENT_SIBLING; }
+<YYINITIAL> (xml[-_]?node[-_]?blob)                         { return SPLTypes.XML_NODE_BLOB; }
+<YYINITIAL> (xml[-_]?node[-_]?clob)                         { return SPLTypes.XML_NODE_CLOB; }
+<YYINITIAL> (xml[-_]?node[-_]?name)                         { return SPLTypes.XML_NODE_NAME; }
+<YYINITIAL> (xml[-_]?node[-_]?ns[-_]?prefix)                { return SPLTypes.XML_NODE_NS_PREFIX; }
+<YYINITIAL> (xml[-_]?node[-_]?ns[-_]?url)                   { return SPLTypes.XML_NODE_NS_URL; }
+<YYINITIAL> (xml[-_]?node[-_]?string)                       { return SPLTypes.XML_NODE_STRING; }
+<YYINITIAL> (xml[-_]?node[-_]?text)                         { return SPLTypes.XML_NODE_TEXT; }
+<YYINITIAL> (xml[-_]?node[-_]?type)                         { return SPLTypes.XML_NODE_TYPE; }
+<YYINITIAL> (xml[-_]?parse[-_]?file)                        { return SPLTypes.XML_PARSE_FILE; }
+<YYINITIAL> (xml[-_]?parse[-_]?text)                        { return SPLTypes.XML_PARSE_TEXT; }
+<YYINITIAL> (xml[-_]?prev[-_]?element[-_]?sibling)          { return SPLTypes.XML_PREV_ELEMENT_SIBLING; }
+<YYINITIAL> (xml[-_]?save[-_]?as[-_]?file)                  { return SPLTypes.XML_SAVE_AS_FILE; }
+<YYINITIAL> (xml[-_]?save[-_]?as[-_]?file[-_]?ex)           { return SPLTypes.XML_SAVE_AS_FILE_EX; }
+<YYINITIAL> (xml[-_]?save[-_]?as[-_]?text)                  { return SPLTypes.XML_SAVE_AS_TEXT; }
+<YYINITIAL> (xml[-_]?save[-_]?as[-_]?text[-_]?ex)           { return SPLTypes.XML_SAVE_AS_TEXT_EX; }
+<YYINITIAL> (xml[-_]?set[-_]?json[-_]?array)                { return SPLTypes.XML_SET_JSON_ARRAY; }
+<YYINITIAL> (xml[-_]?validate[-_]?doc)                      { return SPLTypes.XML_VALIDATE_DOC; }
 
 
 <YYINITIAL> ";"                                             { return SPLTypes.SEMICOLON; }

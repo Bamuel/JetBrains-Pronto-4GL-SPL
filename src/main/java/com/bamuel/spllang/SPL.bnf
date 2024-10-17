@@ -26,7 +26,7 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
 
     preprocessor_ ::= preprocessor_include_ | preprocessor_define_ | preprocessor_undef_ | preprocessor_ifdef_ | preprocessor_ifndef_ | preprocessor_if_
 
-    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | olefunction_ | stringfunction_ | securityfunction_
+    function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | olefunction_ | stringfunction_ | securityfunction_ | xmlfunction_
 
         arithmeticfunction_ ::= aand_ | abs_ | anot_ | aor_ | cos_ | fraction_ | integer_ | lshift_ | max-value_ | max-presentation-value_
         | min-value_ | power-of_ | random_ | rshift_ | sign-of_ | sin_ | smallest-increment_ | square-root_ | sum_ | sum-array_ | tan_
@@ -65,7 +65,15 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
         | readblobfromfile_ | reserved_ | rightjustify_ | rtrim_ | sizeof_ | sqlsubstring_ | strconcat_ | str_ | strlen_ | substring_
         | substringutf8_ | uppercase_ | validnumber_ | writeblobtofile_ | zstr_
 
-
+        xmlfunction_ ::= xml_add_child_node_ | xml_add_child_node_blob_ | xml_add_child_node_clob_ | xml_add_child_node_no_quotes_ | xml_add_child_node_number_
+                       | xml_add_child_node_text_ | xml_add_node_attribute_ | xml_add_ns_ | xml_child_node_blob_ | xml_child_node_clob_ | xml_child_node_text_
+                       | xml_close_document_ | xml_copy_node_handle_ | xml_delete_node_ | xml_delete_node_attribute_ | xml_document_is_json_ | xml_free_node_handle_
+                       | xml_get_child_by_name_ | xml_get_doc_encoding_ | xml_get_first_attribute_name_ | xml_get_first_child_node_ | xml_get_last_child_node_
+                       | xml_get_next_attribute_name_ | xml_get_next_node_ | xml_get_node_attribute_ | xml_get_ns_prefix_url_ | xml_get_prev_node_ | xml_get_root_node_
+                       | xml_modify_node_attribute_ | xml_modify_node_text_ | xml_new_document_ | xml_next_element_sibling_ | xml_node_blob_ | xml_node_clob_
+                       | xml_node_name_ | xml_node_ns_prefix_ | xml_node_ns_url_ | xml_node_string_ | xml_node_text_ | xml_node_type_ | xml_parse_file_ | xml_parse_text_
+                       | xml_prev_element_sibling_ | xml_save_as_file_ | xml_save_as_file_ex_ | xml_save_as_text_ | xml_save_as_text_ex_ | xml_set_json_array_
+                       | xml_validate_doc_
 
 //Statement rules
 abort_ ::= ABORT string_ (PIC ("is")? picture_)? NOLOG?
@@ -458,6 +466,57 @@ ole_release_ ::= OLE_RELEASE LPAREN number_ RPAREN
 ole_status_ ::= OLE_STATUS LPAREN RPAREN
 ole_unadvise_all_ ::= OLE_UNADVISE_ALL LPAREN string_ RPAREN
 ole_unadvise_event_ ::= OLE_UNADVISE_EVENT LPAREN string_ COMMA string_ RPAREN
+
+//XML functions
+xml_add_child_node_ ::= XML_ADD_CHILD_NODE LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_add_child_node_blob_ ::= XML_ADD_CHILD_NODE_BLOB LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_add_child_node_clob_ ::= XML_ADD_CHILD_NODE_CLOB LPAREN string_ COMMA string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_add_child_node_no_quotes_ ::= XML_ADD_CHILD_NODE_NO_QUOTES LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_add_child_node_number_ ::= XML_ADD_CHILD_NODE_NUMBER LPAREN string_ COMMA string_ COMMA string_ COMMA number_ COMMA number_ RPAREN
+xml_add_child_node_text_ ::= XML_ADD_CHILD_NODE_TEXT LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_add_node_attribute_ ::= XML_ADD_NODE_ATTRIBUTE LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_add_ns_ ::= XML_ADD_NS LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_child_node_blob_ ::= XML_CHILD_NODE_BLOB LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_child_node_clob_ ::= XML_CHILD_NODE_CLOB LPAREN string_ COMMA string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_child_node_text_ ::= XML_CHILD_NODE_TEXT LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_close_document_ ::= XML_CLOSE_DOCUMENT LPAREN string_ RPAREN
+xml_copy_node_handle_ ::= XML_COPY_NODE_HANDLE LPAREN string_ RPAREN
+xml_delete_node_ ::= XML_DELETE_NODE LPAREN string_ RPAREN
+xml_delete_node_attribute_ ::= XML_DELETE_NODE_ATTRIBUTE LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_document_is_json_ ::= XML_DOCUMENT_IS_JSON LPAREN string_ RPAREN
+xml_free_node_handle_ ::= XML_FREE_NODE_HANDLE LPAREN string_ RPAREN
+xml_get_child_by_name_ ::= XML_GET_CHILD_BY_NAME LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_get_doc_encoding_ ::= XML_GET_DOC_ENCODING LPAREN string_ RPAREN
+xml_get_first_attribute_name_ ::= XML_GET_FIRST_ATTRIBUTE_NAME LPAREN string_ COMMA ("0"|"Non zero") RPAREN
+xml_get_first_child_node_ ::= XML_GET_FIRST_CHILD_NODE LPAREN string_ RPAREN
+xml_get_last_child_node_ ::= XML_GET_LAST_CHILD_NODE LPAREN string_ RPAREN
+xml_get_next_attribute_name_ ::= XML_GET_NEXT_ATTRIBUTE_NAME LPAREN string_ COMMA ("0"|"Non zero") RPAREN
+xml_get_next_node_ ::= XML_GET_NEXT_NODE LPAREN string_ RPAREN
+xml_get_node_attribute_ ::= XML_GET_NODE_ATTRIBUTE LPAREN string_ COMMA string_ RPAREN
+xml_get_ns_prefix_url_ ::= XML_GET_NS_PREFIX_URL LPAREN string_ COMMA string_ RPAREN
+xml_get_prev_node_ ::= XML_GET_PREV_NODE LPAREN string_ RPAREN
+xml_get_root_node_ ::= XML_GET_ROOT_NODE LPAREN string_ RPAREN
+xml_modify_node_attribute_ ::= XML_MODIFY_NODE_ATTRIBUTE LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_modify_node_text_ ::= XML_MODIFY_NODE_TEXT LPAREN string_ COMMA string_ RPAREN
+xml_new_document_ ::= XML_NEW_DOCUMENT LPAREN string_ COMMA string_ RPAREN
+xml_next_element_sibling_ ::= XML_NEXT_ELEMENT_SIBLING LPAREN string_ RPAREN
+xml_node_blob_ ::= XML_NODE_BLOB LPAREN string_ COMMA string_ RPAREN
+xml_node_clob_ ::= XML_NODE_CLOB LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_node_name_ ::= XML_NODE_NAME LPAREN string_ RPAREN
+xml_node_ns_prefix_ ::= XML_NODE_NS_PREFIX LPAREN string_ RPAREN
+xml_node_ns_url_ ::= XML_NODE_NS_URL LPAREN string_ RPAREN
+xml_node_string_ ::= XML_NODE_STRING LPAREN string_ RPAREN
+xml_node_text_ ::= XML_NODE_TEXT LPAREN string_ RPAREN
+xml_node_type_ ::= XML_NODE_TYPE LPAREN string_ RPAREN
+xml_parse_file_ ::= XML_PARSE_FILE LPAREN string_ RPAREN
+xml_parse_text_ ::= XML_PARSE_TEXT LPAREN string_ RPAREN
+xml_prev_element_sibling_ ::= XML_PREV_ELEMENT_SIBLING LPAREN string_ RPAREN
+xml_save_as_file_ ::= XML_SAVE_AS_FILE LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_save_as_file_ex_ ::= XML_SAVE_AS_FILE_EX LPAREN string_ COMMA string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_save_as_text_ ::= XML_SAVE_AS_TEXT LPAREN string_ COMMA string_ COMMA string_ RPAREN
+xml_save_as_text_ex_ ::= XML_SAVE_AS_TEXT_EX LPAREN string_ COMMA string_ COMMA string_ COMMA string_ RPAREN
+xml_set_json_array_ ::= XML_SET_JSON_ARRAY LPAREN string_ RPAREN
+xml_validate_doc_ ::= XML_VALIDATE_DOC LPAREN string_ COMMA string_ RPAREN
 
 // Preprocessor rule
 preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
