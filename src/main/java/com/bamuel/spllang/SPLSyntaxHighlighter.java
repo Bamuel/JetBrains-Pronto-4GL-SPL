@@ -27,6 +27,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey STRING = createTextAttributesKey("SPL_STRING", DefaultLanguageHighlighterColors.STRING);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("SPL_NUMBER", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey COMMA = createTextAttributesKey("SPL_COMMA", DefaultLanguageHighlighterColors.COMMA);
+    public static final TextAttributesKey OPERATION_SIGN = createTextAttributesKey("SPL_OPERATION_SIGN", DefaultLanguageHighlighterColors.OPERATION_SIGN);
     public static final TextAttributesKey PARENTHESES = createTextAttributesKey("SPL_PARENTHESES", DefaultLanguageHighlighterColors.PARENTHESES);
     public static final TextAttributesKey COMMENT = createTextAttributesKey("SPL_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT);
     public static final TextAttributesKey BLOCK_COMMENT = createTextAttributesKey("SPL_BLOCK_COMMENT", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
@@ -406,6 +407,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.IS, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ARE, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.WITH, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COLLATE, new TextAttributesKey[]{METADATA});
 
         //Constants
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS_VALUES, new TextAttributesKey[]{CONSTANT});
@@ -695,6 +697,24 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SAVE_AS_TEXT_EX, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_SET_JSON_ARRAY, new TextAttributesKey[]{FUNCTION_CALL});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.XML_VALIDATE_DOC, new TextAttributesKey[]{FUNCTION_CALL});
+
+        //Operators
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.ADD, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SUBTRACT, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MULTIPLY, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DIVIDE, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODULUS, new TextAttributesKey[]{OPERATION_SIGN});
+        //AND OR NOT
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.AND, new TextAttributesKey[]{KEYWORD});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OR, new TextAttributesKey[]{KEYWORD});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOT, new TextAttributesKey[]{METADATA});
+        //Comparison
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.GREATERTHAN, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LESSTHAN, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.EQUALTO, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOTEQUALTO, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.GREATERTHANOREQUALTO, new TextAttributesKey[]{OPERATION_SIGN});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LESSTHANOREQUALTO, new TextAttributesKey[]{OPERATION_SIGN});
 
         //Other
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{PREDEFINED});

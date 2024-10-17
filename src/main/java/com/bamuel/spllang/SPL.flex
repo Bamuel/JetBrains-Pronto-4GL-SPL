@@ -342,6 +342,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (is)                                            { return SPLTypes.IS; }
 <YYINITIAL> (are)                                           { return SPLTypes.ARE; }
 <YYINITIAL> (with)                                          { return SPLTypes.WITH; }
+<YYINITIAL> (collate)                                       { return SPLTypes.COLLATE; }
 
 
 //Constants
@@ -730,7 +731,6 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 
 <YYINITIAL> ";"                                             { return SPLTypes.SEMICOLON; }
 <YYINITIAL> "."                                             { return SPLTypes.DOT; }
-<YYINITIAL> "="                                             { return SPLTypes.EQUALS; }
 <YYINITIAL> "{"                                             { return SPLTypes.LBRACE; }
 <YYINITIAL> "}"                                             { return SPLTypes.RBRACE; }
 <YYINITIAL> "["                                             { return SPLTypes.LBRACE; }
@@ -740,17 +740,23 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> ","                                             { return SPLTypes.COMMA; }
 <YYINITIAL> "@"                                             { return SPLTypes.AT; }
 
+<YYINITIAL> "+"                                             { return SPLTypes.ADD; }
+<YYINITIAL> "-"                                             { return SPLTypes.SUBTRACT; }
+<YYINITIAL> "*"                                             { return SPLTypes.MULTIPLY; }
+<YYINITIAL> "/"                                             { return SPLTypes.DIVIDE; }
+<YYINITIAL> "%"                                             { return SPLTypes.MODULUS; }
+<YYINITIAL> ">"                                             { return SPLTypes.GREATERTHAN; }
+<YYINITIAL> "<"                                             { return SPLTypes.LESSTHAN; }
+<YYINITIAL> "="                                             { return SPLTypes.EQUALTO; }
+<YYINITIAL> "!="                                            { return SPLTypes.NOTEQUALTO; }
+<YYINITIAL> "<>"                                            { return SPLTypes.NOTEQUALTO; }
+<YYINITIAL> ">="                                            { return SPLTypes.GREATERTHANOREQUALTO; }
+<YYINITIAL> "<="                                            { return SPLTypes.LESSTHANOREQUALTO; }
+<YYINITIAL> "AND"                                           { return SPLTypes.AND; }
+<YYINITIAL> "OR"                                            { return SPLTypes.OR; }
+<YYINITIAL> "NOT"                                           { return SPLTypes.NOT; }
+
 <YYINITIAL> "\\"                                            { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "+"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "-"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "*"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "/"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "%"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "!="                                            { return SPLTypes.SYMBOLS; }
 <YYINITIAL> ":"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> ":"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> ">"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "<"                                             { return SPLTypes.SYMBOLS; }
-<YYINITIAL> "<>"                                            { return SPLTypes.SYMBOLS; }
 <YYINITIAL> {IDENTIFIER}                                    { return SPLTypes.IDENTIFIER; }
 [^]                                                         { return TokenType.BAD_CHARACTER; }

@@ -152,9 +152,9 @@ dropdownvalues_ ::= (string_ TITLE string_)* | (ICON IS? string_)* | (WHEN condi
 exit_ ::= EXIT number_? //todo: any number between -1 and 255
 extract_ ::= EXTRACT ALL? ((NEXT|PREVIOUS) (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)?)? LOCK? (ON INDEX string_)? (KEY IS? string_*)? (WHERE condition_)? (FINISH WHEN condition_)? (ON ERROR statement_* END_ON)? (DETAIL statement_*)? (BEFORE (IDENTIFIER fieldclauses_)* statement_*)? (AFTER (IDENTIFIER fieldclauses_)* statement_*)? EXTRACT_END
 field-group_ ::= FIELD_GROUP (WHEN condition_)? (TITLE IS? string_)? VERTICAL? WRAP? (TAG IS? number_)? statement_* FIELD_GROUP_END
-for_ ::= FOR string_ EQUALS expression_ DOWN? TO expression_ (STEP expression_)? DETAIL? statement_* FOR_END 
+for_ ::= FOR string_ EQUALTO condition_ DOWN? TO condition_ (STEP condition_)? DETAIL? statement_* FOR_END
 get_ ::= GET ((IDENTIFIER fieldclauses_)* FROM)? string_ (NEXT|PREVIOUS)? (SCREEN_SAME_DIFFERENT (IDENTIFIER fieldclauses_)*)? (FROM | FIRST | LAST | CURRENT | LOOKUP)? (LOCK)? (ON INDEX string_)? (KEY IS? string_*)? (ON ERROR statement_* END_ON)?
-if_ ::= IF expression_ THEN? statement_* (ELSEIF expression_ statement_*)* (ELSE statement_*)? ENDIF
+if_ ::= IF condition_ THEN? statement_* (ELSEIF condition_ statement_*)* (ELSE statement_*)? ENDIF
 initialise_ ::= INITIALISE string_ (LEAVING string_ (COMMA string_)*)?
 insert_ ::= INSERT string_ LOCK? (ON ERROR statement_* END_ON)?
 link_ ::= LINK string_ NO_MAIN?
@@ -179,14 +179,14 @@ page_ ::= PAGE NO_HEADER? NO_FOOTER? (ON string_)?
 pause_ ::= PAUSE
 pop_ ::= POP (string_ (LEAVING string_ (COMMA string_)*)? (LEAVING ALL)? )|((string_ (COMMA string_)*) FROM string_)
 position_ ::= POSITION (BEFORE|AFTER)? string_ (ON INDEX string_)? (KEY IS? string_*)? (FIRST|LAST)? NO_WARNING?
-print_ ::= PRINT string_ (("in") COLUMN number_)? rowcol_? (PIC IS? picture_)? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? BOLD? UNDERLINED? ITALIC? (SUBSCRIPT|SUPERSCRIPT)? (FONT number_)? (STATIC)? colour_? scale_? (LEFT|RIGHT|CENTRE)? (SECTION IS? string_)? accepttag_? expression_? NO_NEWLINE? (ON string_)?
+print_ ::= PRINT string_ (("in") COLUMN number_)? rowcol_? (PIC IS? picture_)? BLANK_WHEN_ZERO? BLANK_DECIMALS_WHEN_ZERO? BOLD? UNDERLINED? ITALIC? (SUBSCRIPT|SUPERSCRIPT)? (FONT number_)? (STATIC)? colour_? scale_? (LEFT|RIGHT|CENTRE)? (SECTION IS? string_)? accepttag_? condition_? NO_NEWLINE? (ON string_)?
 push_ ::= PUSH string_
 query_ ::= QUERY string_ parameters_? home_? BATCH? NO_PAUSE? SPOOL? max_parameters_? (ON ERROR statement_* END_ON)? 
-radio-button_ ::= RADIO_BUTTON string_ (rowcol_ boolean_ TITLE string_ colour_?)* (BUTTON_WHEN expression_)? (RIGHT_COORDINATE)? (DEFAULT IS? expression_)? (WHEN expression_)? READ_ONLY? (BEFORE_RADIO_BUTTON statement_* END_BEFORE_RADIO_BUTTON)? (VALIDATIONS statement_* END_VALIDATIONS)? (ON CHANGE item_* END_ON)? RADIO_BUTTON_END
+radio-button_ ::= RADIO_BUTTON string_ (rowcol_ boolean_ TITLE string_ colour_?)* (BUTTON_WHEN condition_)? (RIGHT_COORDINATE)? (DEFAULT IS? condition_)? (WHEN condition_)? READ_ONLY? (BEFORE_RADIO_BUTTON statement_* END_BEFORE_RADIO_BUTTON)? (VALIDATIONS statement_* END_VALIDATIONS)? (ON CHANGE item_* END_ON)? RADIO_BUTTON_END
 re-enter_ ::= RE_ENTER (string_)? (OPTIONAL|AUTO)?
 refresh_ ::= REFRESH (DATA|WHENS|PROMPTS|REVIEW|TITLE|string_)
-repeat_ ::= REPEAT statement_* UNTIL expression_ statement_* REPEAT_END
-report_ ::= REPORT string_ (FILE IS? string_)? (DIRECT (TO)? string_)? (NAME IS? string_)? (HEADER IS? string_)? (FOOTER IS? string_)? (WIDTH IS? expression_)? (DEPTH IS? expression_)? (LENGTH IS? expression_)? (MARGIN IS? expression_)? (DEFAULT FONT IS? expression_)? FULL_PAGE? (FORM TYPE IS? string_) NO_XML? SPOOL_ONLY? FULL_XML? NO_MESSAGE? (ON ERROR statement_* END_ON)?
+repeat_ ::= REPEAT statement_* UNTIL condition_ statement_* REPEAT_END
+report_ ::= REPORT string_ (FILE IS? string_)? (DIRECT (TO)? string_)? (NAME IS? string_)? (HEADER IS? string_)? (FOOTER IS? string_)? (WIDTH IS? condition_)? (DEPTH IS? condition_)? (LENGTH IS? condition_)? (MARGIN IS? condition_)? (DEFAULT FONT IS? condition_)? FULL_PAGE? (FORM TYPE IS? string_) NO_XML? SPOOL_ONLY? FULL_XML? NO_MESSAGE? (ON ERROR statement_* END_ON)?
 reportfinish_ ::= REPORT FINISHED (ON string_)?
 reportsection_ ::= REPORT SECTION IS? string_? (HIDDEN|CAN_HIDE)? colour_? (STYLE_CLASS IS? string_)? (ON string_)?
 reportsectionfinish_ ::= REPORT SECTION FINISHED (ON string_)?
@@ -199,15 +199,15 @@ screensection_ ::= SCREEN_SECTION (WHEN condition_)? (TITLE IS? string_)? help_?
 select_ ::= selectclauses_ (ON ERROR statement_* END_ON)? (BEFORE statement_* END_BEFORE)? (AFTER statement_* END_AFTER)? SELECT_END
 selectclauses_ ::= SELECT DISTINCT? selectlist_* FROM string_ (WHERE condition_)? (DATABASE_SQL|LOCAL_SQL)? (ORDER "by" (string_ DESC?)*)? (GROUP "by" string_*)? (HAVING condition_)? ((FOR UPDATE) | FOR_UPDATE)?
 selectlist_ ::=  "*" | (IDENTIFIER (COMMA IDENTIFIER)*)
-serial_ ::= SERIAL string_ string_ (ON INDEX string_)? (KEY IS? expression_) (ON ERROR statement_* END_ON)?
-set_ ::= SET objectarraystring_* assignmentoperator_ (expression_|objectarraystring_*) (NO_WARNING)?
+serial_ ::= SERIAL string_ string_ (ON INDEX string_)? (KEY IS? condition_) (ON ERROR statement_* END_ON)?
+set_ ::= SET objectarraystring_* assignmentoperator_ (condition_|objectarraystring_*) (NO_WARNING)?
 objectarraystring_ ::= string_ | "[" | "]" | "*" | "."
-set2_ ::= SET (PAGE_NO|(DEFAULT FONT)) assignmentoperator_ expression_ (ON string_)?
+set2_ ::= SET (PAGE_NO|(DEFAULT FONT)) assignmentoperator_ condition_ (ON string_)?
 assignmentoperator_ ::= "=" | "+=" | "-=" | "*=" | "/=" | "%="
 set-date-validation_ ::= SET_DATE_VALIDATION accepthelpcontext_?
-skip_ ::= SKIP ((expression_? ("lines")?)|(TO ("line")? expression_)) (ON string_)?
+skip_ ::= SKIP ((condition_? ("lines")?)|(TO ("line")? condition_)) (ON string_)?
 sql-delete_ ::= SQL_DELETE ALL? string_ (WHERE condition_)? (ON ERROR statement_* END_ON)? 
-sql-update_ ::= SQL_UPDATE ALL? string_ SET (IDENTIFIER EQUALS expression_)* (WHERE condition_)? (ON ERROR statement_* END_ON)? //todo: expression with subquery & procedural-statements
+sql-update_ ::= SQL_UPDATE ALL? string_ SET (IDENTIFIER EQUALTO condition_)* (WHERE condition_)? (ON ERROR statement_* END_ON)? //todo: expression with subquery & procedural-statements
 statement-group_ ::= STATEMENT_GROUP item_* STATEMENT_GROUP_END
 stringstatement_ ::= stringstatement1_ | stringstatement2_ | stringstatement3_
 stringstatement1_ ::= STRINGSTATMENT string_ (INSERTING|REPLACING) string_ "at" string_
@@ -222,7 +222,7 @@ unlock_ ::= UNLOCK (string_|ALL) LOCAL?
 update_ ::= UPDATE string_ NO_WARNING? LOCK? (ON ERROR statement_* END_ON)? 
 version-number_ ::= VERSION_NUMBER IS? number_
 web-client-local-agent_ ::= WEB_CLIENT_LOCAL_AGENT (boolean_)
-while_ ::= WHILE expression_ DETAIL? statement_* WHILE_END
+while_ ::= WHILE condition_ DETAIL? statement_* WHILE_END
 
 
 //Arithmetic functions
@@ -631,10 +631,19 @@ after_ ::= AFTER statement_*
 //row and col
 //Syntax @row,col
 rowcol_ ::= AT NUMBER COMMA NUMBER
-expression_ ::= item_* //todo: expression
-condition_ ::= item_* //todo: condition, Need to double check the differnce between expression and condition
-string_ ::= STRING | IDENTIFIER | PREDEFINED | function_
-number_ ::= NUMBER | IDENTIFIER | PREDEFINED | function_
+
+condition_ ::= ("not")? relationalexpression_ (logicaloperator_ condition_)?
+logicaloperator_ ::= AND | OR | NOT
+
+relationalexpression_ ::= (string_|arithmeticexpression_) (relationaloperator_ (string_|arithmeticexpression_))? | ("not")? relationalexpression_
+relationaloperator_ ::= (ASCII_NUM | COLLATE)? (GREATERTHAN | LESSTHAN | EQUALTO | NOTEQUALTO | GREATERTHANOREQUALTO | LESSTHANOREQUALTO | LIKE)
+
+arithmeticexpression_ ::= number_ (arithmeticoperator_ arithmeticexpression_)?
+arithmeticoperator_ ::= ADD | SUBTRACT | MULTIPLY | DIVIDE | MODULUS
+
+
+string_ ::= STRING | IDENTIFIER | PREDEFINED | function_ //This is a alphanumeric expression
+number_ ::= NUMBER | IDENTIFIER | PREDEFINED | function_ | arithmeticexpression_
 boolean_ ::= PREDEFINED | "1" | "0" | function_
 datestring_ ::= DATE | TIME | IDENTIFIER | PREDEFINED | datetimefunction_ | modification-time_
 //The following picture string characters are used to specify the format of a field being defined.
@@ -918,9 +927,25 @@ element_ ::= FUNCTION_DECLARATION
            | IS
            | ARE
            | WITH
+           | COLLATE
            | MESSAGEBOX_BUTTONS_VALUES
            | MESSAGEBOX_ICON_VALUES
            | MODEENTRY
+           | ADD
+           | SUBTRACT
+           | MULTIPLY
+           | DIVIDE
+           | MODULUS
+           | GREATERTHAN
+           | LESSTHAN
+           | EQUALTO
+           | NOTEQUALTO
+           | NOTEQUALTO
+           | GREATERTHANOREQUALTO
+           | LESSTHANOREQUALTO
+           | AND
+           | OR
+           | NOT
            | othersymbols_
 
-othersymbols_ ::= SYMBOLS | SEMICOLON | DOT | EQUALS | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
+othersymbols_ ::= SYMBOLS | SEMICOLON | DOT | EQUALTO | LBRACE | RBRACE | LPAREN | RPAREN | COMMA | AT
