@@ -54,6 +54,10 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <fileType name="SPL Error File" implementationClass="com.bamuel.spllang.ERRFileType" fieldName="INSTANCE" language="ERR" extensions="err"/>
         <lang.parserDefinition language="ERR" implementationClass="com.bamuel.spllang.ERRParserDefinition"/>
         <lang.syntaxHighlighterFactory language="ERR" implementationClass="com.bamuel.spllang.ERRSyntaxHighlighterFactory"/>
+        <additionalTextAttributes scheme="Default" file="colorSchemes/ERR.xml"/>
+        <additionalTextAttributes scheme="Light" file="colorSchemes/ERR.xml"/>
+        <additionalTextAttributes scheme="Dark" file="colorSchemes/ERR.xml"/>
+        <additionalTextAttributes scheme="Darcula" file="colorSchemes/ERR.xml"/>
 
         <applicationConfigurable instance="com.bamuel.spllang.AppSettingsConfigurable" id="com.bamuel.spllang.AppSettingsConfigurable" displayName="Pronto Xi Settings"/>
         <applicationService serviceImplementation="com.bamuel.spllang.AppSettings"/>

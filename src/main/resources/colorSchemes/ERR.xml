@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scheme name="ERRDefault" version="1">
+    <attributes>
+        <option name="LOG_ERROR">
+            <value>
+                <option name="FOREGROUND" value="da3544"/> <!-- Custom color for ERROR -->
+                <option name="FONT_TYPE" value="1"/> <!-- Bold font -->
+            </value>
+        </option>
+        <option name="LOG_WARNING">
+            <value>
+                <option name="FOREGROUND" value="fdbf07"/> <!-- Custom color for WARNING -->
+                <option name="FONT_TYPE" value="1"/> <!-- Bold font -->
+            </value>
+        </option>
+        <option name="LOG_INFO">
+            <value>
+                <option name="FOREGROUND" value="17a1b7"/> <!-- Custom color for INFO -->
+                <option name="FONT_TYPE" value="1"/> <!-- Bold font -->
+            </value>
+        </option>
+    </attributes>
+</scheme>
