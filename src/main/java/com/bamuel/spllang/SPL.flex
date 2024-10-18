@@ -348,6 +348,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (MSG_BOX_OK|MSG_BOX_CANCEL|MSG_BOX_YES|MSG_BOX_NO|MSG_BOX_RETRY|MSG_BOX_OK_CANCEL|MSG_BOX_YES_NO|MSG_BOX_YES_NO_CANCEL) { return SPLTypes.MESSAGEBOX_BUTTONS_VALUES; }
 <YYINITIAL> (MSG_BOX_STOP|MSG_BOX_WARNING|MSG_BOX_INFORMATION|MSG_BOX_QUESTION|MSG_BOX_EXCLAMATION) { return SPLTypes.MESSAGEBOX_ICON_VALUES; }
 <YYINITIAL> (entry|correct|remove|duplicate|entry[-_]?once|find|next[-_]?scr|prev[-_]?scr) { return SPLTypes.MODEENTRY; }
+<YYINITIAL> (aqua|black|blue|fuchsia|green|grey|gray|lime|maroon|navy|olive|purple|red|silver|teal|white|yellow) { return SPLTypes.COLOUR_NAME; }
 
 
 

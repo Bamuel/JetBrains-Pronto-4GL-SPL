@@ -413,6 +413,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_BUTTONS_VALUES, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MESSAGEBOX_ICON_VALUES, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.MODEENTRY, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COLOUR_NAME, new TextAttributesKey[]{CONSTANT});
 
         //Arithmetic Functions
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.AAND, new TextAttributesKey[]{FUNCTION_CALL});

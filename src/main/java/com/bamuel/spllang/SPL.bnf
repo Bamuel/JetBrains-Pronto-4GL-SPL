@@ -617,7 +617,7 @@ procedureclauses_ ::= (window_)? (relative_)? (NOHIDE)? (windowpositision_)? (co
 
 // Other rules
 export_ ::= EXPORT (CAN_OVERRIDE)?
-colour_ ::= COLOUR IS? identifier_ (ON identifier_)?
+colour_ ::= COLOUR IS? (COLOUR_NAME|number_) (ON COLOUR_NAME|number_)?
 helpcontext_ ::= HELP_CONTEXT IS? string_ string_
 window_ ::= WINDOW rowcol_ TO rowcol_ (relative_)?
 relative_ ::= RELATIVE TO rowcol_
@@ -931,6 +931,7 @@ element_ ::= FUNCTION_DECLARATION
            | MESSAGEBOX_BUTTONS_VALUES
            | MESSAGEBOX_ICON_VALUES
            | MODEENTRY
+           | COLOUR_NAME
            | ADD
            | SUBTRACT
            | MULTIPLY

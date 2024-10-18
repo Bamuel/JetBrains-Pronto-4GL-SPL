@@ -21,6 +21,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
          <h2>New Features</h2>
          <ul>
             <li>Added BraceMatcher for .spl & .pcs</li>
+            <li>Color Preview for .spl</li>
          </ul>
          <h2>Bug Fixes</h2>
          <ul>
@@ -37,6 +38,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <colorSettingsPage implementation="com.bamuel.spllang.SPLColorSettingsPage"/>
         <lang.commenter language="SPL" implementationClass="com.bamuel.spllang.SPLCommenter"/>
         <lang.braceMatcher language="SPL" implementationClass="com.bamuel.spllang.SPLBraceMatcher"/>
+        <colorProvider implementation="com.bamuel.spllang.SPLColorProvider"/>
 
         <fileType name="SPL Compiled File" implementationClass="com.bamuel.spllang.OP7FileType" fieldName="INSTANCE" language="OP7" extensions="op7"/>
 
