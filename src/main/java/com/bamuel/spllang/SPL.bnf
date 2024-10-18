@@ -651,7 +651,7 @@ datestring_ ::= DATE | TIME | identifier_ | PREDEFINED | datetimefunction_ | mod
 // todo: add more picture string characters, this covers the basics.
 picture_ ::= pic_group_ | pic_words
 pic_words ::= "ddmmmyybhh:mm"| "HH:MM:SS" // Date and time format
-pic_group_ ::= (NUMBER | identifier_) (LPAREN number_ RPAREN)? (identifier_ LPAREN number_ RPAREN)?
+pic_group_ ::= ("$")* (NUMBER | identifier_) (LPAREN number_ RPAREN)? ((NUMBER | identifier_) LPAREN number_ RPAREN)? ("DR"|"CR")?
 comments_ ::= COMMENT | BLOCK_COMMENT
 
 element_ ::= FUNCTION_DECLARATION
