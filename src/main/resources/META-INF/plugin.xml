@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.10</version>
+    <version>1.11</version>
     <category>Languages</category>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
@@ -18,19 +18,15 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
 
     <change-notes>
         <![CDATA[
-            <ul>
-              <li><b>1.10</b> Syntax Highlighting for .spl update. Added all the SPL syntaxes</li>
-              <li><b>1.9</b> Syntax Highlighting for .spl update. Added all the Statements and Clauses</li>
-              <li><b>1.8</b> Syntax Highlighting for .err files</li>
-              <li><b>1.7</b> Syntax Highlighting for .spl files Declarations and some Function/Statement</li>
-              <li><b>1.6</b> Syntax Highlighting for .pcs files</li>
-              <li><b>1.5</b> Numbers and Syntax Highlighter</li>
-              <li><b>1.4</b> Better Settings Layout & Ability to select from multiple data-area</li>
-              <li><b>1.3</b> Right Click run from Pronto Xi Thin Client & Plugin Settings & Bug Fixes</li>
-              <li><b>1.2</b> Added Support for new file created</li>
-              <li><b>1.1</b> Slightly better syntax highlighting and added Line/Block Comments</li>
-              <li><b>1.0</b> Initial release with basic syntax highlighting and file type recognition for SPL files.</li>
-            </ul>
+         <h2>New Features</h2>
+         <ul>
+            <li>Added BraceMatcher for .spl & .pcs</li>
+         </ul>
+         <h2>Bug Fixes</h2>
+         <ul>
+            <li>Fixed Deprecated method TextAttributesKey.createTextAttributesKey(...)</li>
+            <li>Added Objects as test[*] as an allowed item</li>
+         </ul>
         ]]>
     </change-notes>
 
@@ -40,6 +36,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <lang.syntaxHighlighterFactory language="SPL" implementationClass="com.bamuel.spllang.SPLSyntaxHighlighterFactory"/>
         <colorSettingsPage implementation="com.bamuel.spllang.SPLColorSettingsPage"/>
         <lang.commenter language="SPL" implementationClass="com.bamuel.spllang.SPLCommenter"/>
+        <lang.braceMatcher language="SPL" implementationClass="com.bamuel.spllang.SPLBraceMatcher"/>
 
         <fileType name="SPL Compiled File" implementationClass="com.bamuel.spllang.OP7FileType" fieldName="INSTANCE" language="OP7" extensions="op7"/>
 
@@ -50,6 +47,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <lang.syntaxHighlighterFactory language="PCS" implementationClass="com.bamuel.spllang.PCSSyntaxHighlighterFactory"/>
         <colorSettingsPage implementation="com.bamuel.spllang.PCSColorSettingsPage"/>
         <lang.commenter language="PCS" implementationClass="com.bamuel.spllang.PCSCommenter"/>
+        <lang.braceMatcher language="PCS" implementationClass="com.bamuel.spllang.PCSBraceMatcher"/>
 
         <fileType name="SPL Error File" implementationClass="com.bamuel.spllang.ERRFileType" fieldName="INSTANCE" language="ERR" extensions="err"/>
         <lang.parserDefinition language="ERR" implementationClass="com.bamuel.spllang.ERRParserDefinition"/>
