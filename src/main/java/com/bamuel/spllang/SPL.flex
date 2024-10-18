@@ -20,8 +20,7 @@ import com.intellij.psi.TokenType;
 WHITE_SPACE=[\ \n\t\f]
 IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_-]*
 
-//Currently correct, but may need to be updated
-NUMBER=-?[0-9]+
+NUMBER=-?[0-9]+(\.[0-9]+)?
 
 DATE=(\d{2}-[A-Z]{3}-\d{4})
 TIME=(\d{2}:\d{2}:\d{2})
