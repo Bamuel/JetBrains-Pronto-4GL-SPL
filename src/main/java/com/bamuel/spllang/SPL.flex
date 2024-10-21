@@ -339,6 +339,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (off)                                           { return SPLTypes.OFF; }
 <YYINITIAL> (to)                                            { return SPLTypes.TO; }
 <YYINITIAL> (is)                                            { return SPLTypes.IS; }
+<YYINITIAL> (in)                                            { return SPLTypes.IN; }
 <YYINITIAL> (are)                                           { return SPLTypes.ARE; }
 <YYINITIAL> (with)                                          { return SPLTypes.WITH; }
 <YYINITIAL> (collate)                                       { return SPLTypes.COLLATE; }
@@ -470,7 +471,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (client[-_]?date[-_]?time[-_]?string)           { return SPLTypes.CLIENT_DATE_TIME_STRING; }
 <YYINITIAL> (date[-_]?from[-_]?date[-_]?time)               { return SPLTypes.DATE_FROM_DATE_TIME; }
 <YYINITIAL> (date[-_]?time)                                 { return SPLTypes.DATE_TIME; }
-<YYINITIAL> (date[-_]?to[-_]?julian)                        { return SPLTypes.DATE_TO_JULIAN; }
+<YYINITIAL> (date[-_]?to[-_]?julian|date2julian)            { return SPLTypes.DATE_TO_JULIAN; }
 <YYINITIAL> (day)                                           { return SPLTypes.DAY; }
 <YYINITIAL> (day[-_]?name)                                  { return SPLTypes.DAY_NAME; }
 <YYINITIAL> (days[-_]?in[-_]?month)                         { return SPLTypes.DAYS_IN_MONTH; }

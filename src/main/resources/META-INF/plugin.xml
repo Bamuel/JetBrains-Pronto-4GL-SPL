@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.11</version>
+    <version>1.12</version>
     <category>Languages</category>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
@@ -20,13 +20,11 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <![CDATA[
          <h2>New Features</h2>
          <ul>
-            <li>Added BraceMatcher for .spl & .pcs</li>
-            <li>Color Preview for .spl</li>
+            <li>Color Preview for .pcs files</li>
          </ul>
          <h2>Bug Fixes</h2>
          <ul>
-            <li>Fixed Deprecated method TextAttributesKey.createTextAttributesKey(...)</li>
-            <li>Added Objects as test[*] as an allowed item</li>
+            <li>Syntax fixes for .spl files</li>
          </ul>
         ]]>
     </change-notes>
@@ -50,6 +48,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <colorSettingsPage implementation="com.bamuel.spllang.PCSColorSettingsPage"/>
         <lang.commenter language="PCS" implementationClass="com.bamuel.spllang.PCSCommenter"/>
         <lang.braceMatcher language="PCS" implementationClass="com.bamuel.spllang.PCSBraceMatcher"/>
+        <colorProvider implementation="com.bamuel.spllang.PCSColorProvider"/>
 
         <fileType name="SPL Error File" implementationClass="com.bamuel.spllang.ERRFileType" fieldName="INSTANCE" language="ERR" extensions="err"/>
         <lang.parserDefinition language="ERR" implementationClass="com.bamuel.spllang.ERRParserDefinition"/>

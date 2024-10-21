@@ -16,7 +16,7 @@
 
 ## Getting Started
 
-1. **Install the Plugin** : Install the plugin from disk.
+1. **Install the Plugin** : Install the plugin from [JetBrains MarketPlace](https://plugins.jetbrains.com/plugin/25523).
 
 2. **Open SPL Files** : Open any supported file type (`.spl`, `.op7`, `.enq`, `.pcs`, `.err`) in your JetBrains IDE.
 
