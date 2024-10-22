@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-au" xml:lang="en-au" class="_Skins__global_sidenav_sidenav" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-output-analytics-server="https://prontosoftwareptyltd.api.madcapcentral.com/" data-mc-output-analytics-topic-id="1xBCeJNnhjBdfvY8LHA1MewwzI3Vn4TuHRN21QTXxuUDHZLqJix68slCgwMKq0CRn4VkNP+1F3ZPawxfTvnQfIS7UXd6da4KAoShT/QNrrPi1fHML+uW+niVr6LLG5oH1Sn+avoV+LjGL0eo/Ka0wT2lDz8jqO/B7bUUQycr+kNBrd5LzhbSvw==" data-mc-has-content-body="True" data-mc-toc-path="[%=System.LinkedTitle%]|[%=System.LinkedTitle%]|[%=System.LinkedTitle%]" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" /><title>FIELD declaration</title>
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../_global/resources/css/sidenav/sdk-special-overrides.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.topic-ratings-button
+{
+	-pie-background: transparent url('../../../Skins/Default/Stylesheets/Images/star-full.png') no-repeat center center;
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-expanded-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.email-tct-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE.htc');
+}
+
+</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+        </script>
+        <script type="text/javascript" src="../../../Skins/Default/Scripts/_global/sidenav/sidenav-toolbar.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" role="banner" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-device-width: 1000px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../_home/sidenav/sidenav-home-sdk.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" role="navigation" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search..." />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="Filter your results by subject area." role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">Filter your results by subject area.</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div class="row collapse">
+                                        <div class="top-bar">
+                                            <div class="buttons popup-container clearfix topicToolbarProxy _Skins__global_sidenav_sidenav_toolbar mc-component nocontent" style="mc-topic-toolbar-items: ;">
+                                                <div class="button-group-container-left">
+                                                    <div class="button-group star-buttons loading feedback-topic-required">
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="button needs-pie remove-highlight-button" title="Remove highlights">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Remove highlights">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie print-expanded-button" onclick="MadCap.TextEffects.TextEffectControl.ExpandAll(&quot;open&quot;); setTimeout(function(){ window.print(); }, 1500);" title="Print this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie email-tct-button" onclick="document.location.href=&quot;mailto:pronto.edu@pronto.net?subject=Help feedback for &quot;+document.title+&quot;&amp;body=Topic: &quot;+ location.href + &quot;%0A%0AComments:%0A%0A&quot;;" title="Email us with feedback about this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="breadcrumbs">
+                                                <div class="nocontent">
+                                                    <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="10" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script src="../../_global/resources/masterpage/sidenav/scripts/back-to-top.js">
+                                            </script><a name="top"></a><a class="back-to-top-button" href="#top"></a>
+                                        </div>
+                                        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+                                        </script>
+                                        <div class="content-box">
+                                            <div class="left-content column">
+                                                <div role="main" id="mc-main-content">
+                                                    <h1 id="FIELDdeclaration" data-magellan-target="FIELDdeclaration">FIELD declaration</h1><a name="aanchor351"></a>
+                                                    <MadCap:concept term="4GL Programming" data-mc-conditions="_global/target-type.online" />
+                                                    <p>This defines a data field that does not belong in any of the objects being referenced. This statement is non-procedural. It can occur anywhere in the program without affecting the program’s logic flow.</p>
+                                                    <p>Fields defined using the FIELD statement are global to the program, however they cannot be referenced until after they are defined.</p>
+                                                    <p>The name of the field must be a valid name and must not be defined in the dictionary being used.</p>
+                                                    <p>If only the TYPE clause is included, a default PIC is allocated. If only the PIC clause is included, a default type is allocated. The TYPE and PIC clauses can be used together, but neither can be used in conjunction with the LIKE clause.</p>
+                                                    <p>Multiple fields can be defined in the one FIELD statement.</p>
+                                                    <h2 class="nontoc" id="Syntax" data-magellan-target="Syntax">Syntax</h2><pre xml:space="preserve"><span class="code_highlight">field</span> field-name
+       [<span class="code_highlight"><a href="#clause_type">type</a></span> [<span class="code_highlight">is</span>] type]
+       [<span class="code_highlight"><a href="#clause_picture">pic</a></span> [<span class="code_highlight">is</span>] picture]
+       [<span class="code_highlight">occurs</span> occurrence [<span class="code_highlight">times</span>]]
+       [<span class="code_highlight"><a href="#clause_like">like</a></span> field-name-2]
+       [<span class="code_highlight"><a href="#clause_uppercase">uppercase</a></span>|<span class="code_highlight"><a href="#clause_lowercase">lowercase</a></span>]
+       [<span class="code_highlight"><a href="#clause_justify">justify</a></span>]
+       [<span class="code_highlight"><a href="#clause_usenameindb">use-name-in-db</a></span>]
+       [<span class="code_highlight"><a href="#clause_dbcolumnname">db-column-name</a></span> [<span class="code_highlight">is</span>] alpha-literal]
+       [<span class="code_highlight"><a href="#clause_drillback">drill-back</a></span> [<span class="code_highlight">is</span>] alpha-literal]
+      field-name
+         .
+         .
+         .
+</pre>
+                                                    <h2 class="unnumbered_nontoc" id="Clauses" data-magellan-target="Clauses"><a name="clause_type"></a>Clauses</h2>
+                                                    <table style="width: 100%;" class="general" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <col style="width: 20%" />
+                                                        <col />
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Clause</th>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_picture"></a>TYPE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Defines the type of field.</p>
+                                                                    <p>For more information, see <a href="#fourgl_tp_field_datatypes" class="standard MCXref xref xrefstandard">Data types</a> and <a href="#fourgl_tp_field_max_sizes" class="standard MCXref xref xrefstandard">Field maximum sizes (Alpha / String / Varchar)</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_like"></a>PICTURE or PIC</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Defines the type and size of a field.</p>
+                                                                    <p class="example">For example, x(30) defines an alphanumeric field of 30 characters.</p>
+                                                                    <p>The picture is in the format of a standard picture string (without numeric editing characters).</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_uppercase"></a>LIKE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Sets the picture, type and occurrence values of the field to the same values as that of <span class="emphasis">field-name-2</span>. If this clause is used, neither the TYPE or PIC clauses can be specified.<a name="clause_lowercase"></a></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_justify"></a>UPPERCASE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The ACCEPT statement maps any lowercase characters entered to uppercase.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_usenameindb"></a>LOWERCASE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The ACCEPT statement maps any uppercase characters entered to lowercase.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_dbcolumnname"></a>JUSTIFY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The ACCEPT statement right-justifies any characters entered.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_drillback"></a>USE-NAME-IN-DB</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The field’s name is used as its column name if this field is contained in a table stored in an RDBMS.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>DB-COLUMN-NAME</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies the column name for this field if it is used in an RDBMS table.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>DRILL-BACK</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Defines the program to start to perform a data drillback for this field when it is included in an XML report.</p>
+                                                                    <p>The parameter being passed must be a <span class="emphasis">global</span> field and have a <span class="field_value">%</span> either side of the parameter.</p>
+                                                                    <p class="example">drillback is <span class="file_path">testprog %field-name%</span></p>
+                                                                    <p>Local fields cannot be specified as the parameter (between the <span class="field_value">%</span>).</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h2 class="nontoc" id="Datatypes" data-magellan-target="Datatypes"><a name="fourgl_tp_field_datatypes">Data types</a>
+                                                    </h2>
+                                                    <ul class="nest_list_bold">
+                                                        <li>
+                                                            <p>NUMERIC or DECIMAL</p>
+                                                            <p>Default numeric format</p>
+                                                            <p>This is stored as a fixed precision computational / binary value.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>MONEY</p>
+                                                            <p>Local currency numeric format</p>
+                                                            <p>Fields which store local currency amounts should use this data type.</p>
+                                                            <p>The <span class="field_name">Decimal Currency</span> field in the <span class="screen_title"><span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> System Parameters</span> screen of the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> <span class="module">System Administration Utility</span> (proadmin) specifies whether the local currency contains decimal places. For more information, see <a href="../../util_proadmin/ref_option/pxi_system_parameters.htm" class="standard MCXref xref xrefstandard">Pronto&#160;Xi System Parameters</a>. The <span class="envar">PRODECIMALCURRENCY</span> environment variable if set to <span class="field_value">Y</span> will override this control setting, and if set to <span class="field_value">N</span> will specify that decimal currency is not used.</p>
+                                                            <p>If the local currency does not contain decimal places, then fields of type MONEY will be shown without decimal places, and include (comma) punctuation every three integer places.</p>
+                                                            <p>If the local currency contains decimal places, then fields of type MONEY will be displayed as normal numbers.</p>
+                                                            <p>This is equivalent to the NUMERIC data type in how the number is defined and stored. That is, it is stored as a fixed precision computational / binary value.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>FLOATING</p>
+                                                            <p>Floating-point numeric format</p>
+                                                            <p>All type FLOATING numeric fields are stored as double precision values.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>ALPHA</p>
+                                                            <p>Alphanumeric character string of a fixed size</p>
+                                                            <p>The full size of the field defined (including trailing spaces) is used by most functions.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>STRING</p>
+                                                            <p>Alphanumeric character string</p>
+                                                            <p>Trailing blanks (spaces) in the value of a field defined as type STRING are ignored by certain functions, for example, the CONCAT() function.</p>
+                                                            <div>
+                                                                <p>If you define a field with just type string, it will default to 40 characters. That is:</p>
+                                                                <p class="codeblock">ws-fld-name type string</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <p>VARCHAR</p>
+                                                            <p>Large alphanumeric character string (runtime version 7.1 or higher only)</p>
+                                                            <p>This data type is more efficient than the STRING data type for large text fields. The VARCHAR data type can be used to declare strings of up to 16000 characters. If you do not specify the size, a default size of 128 characters is used. Note that databases limit the maximum size of VARCHAR fields. <span class="mc-variable _global/product-external.Oracle variable">Oracle</span>, for example, has a 4000 character limit. A VARCHAR field is not guaranteed to use less storage in the database than an ALPHA field. This is database dependent.</p>
+                                                            <p>The storage for a VARCHAR field is not dynamically allocated (only BLOBs have their storage dynamically allocated). You must define the maximum size that you need, and that space is allocated regardless of whether you store anything in the field.</p>
+                                                            <p>VARCHAR fields differ from ALPHA fields in that the actual string length of a VARCHAR value is stored separately so the runtime does not need to process all characters of the string's defined length to determine the actual length of the stored value. For example, to compare an ALPHA of PIC X(1000) to the literal "A", the runtime must test all of the 999 trailing bytes to ensure they are all spaces. With a VARCHAR, however, the runtime only needs to compare the number of bytes in the separately stored string length (which for "A" is 1). This means that a VARCHAR field is more efficient than an ALPHA field when smaller strings are stored in a large field.</p>
+                                                            <p>Trailing blanks (spaces) in the value of a field defined as type VARCHAR are ignored by certain functions, for example, the CONCAT() function.</p>
+                                                            <p>Within Informix there are two types of VARCHAR (VARCHAR and LVARCHAR). A standard VARCHAR (VARCHAR) uses a single byte to store the size of the data. This means that the size values are between 0 and 255. A VARCHAR declared with a size greater than 255 must be defined as a long VARCHAR (LVARCHAR). The way long VARCHARs are stored and passed is potentially less efficient than a standard VARCHAR.</p>
+                                                            <p>If you require a field to be around the 250 to 270 character length, it is recommended that you use pic x(250) instead of pic x(256). This means that the field will be defined as a VARCHAR and not an LVARCHAR.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>BLOB</p>
+                                                            <p><a name="Binary_large_object">Binary large object</a> (runtime version 7.1 or higher only)</p>
+                                                            <p>This data type is intended to store large text strings or binary data for use with functions that support them, in particular the XML functions. It is only currently supported for fields defined in a program, not dictionary fields, so BLOB data cannot be written to the database.</p>
+                                                            <p>A BLOB field cannot be defined as an array. A BLOB does not have any storage pre-allocated to it. BLOBS are stored in memory, and storage is allocated dynamically once a value is assigned to the field. Allocating an exceptionally large document to a BLOB may cause the program to run out of memory, which could cause a program crash. The amount of memory available for BLOB&#160;data is system-dependent. If a BLOB field is assigned to another BLOB field using the SET statement or using the PARAMETER or RETURNING clause of a DO statement, only an internal pointer to the BLOB data is passed. Both fields will initially refer to the same BLOB data.</p>
+                                                            <p>The runtime maintains a reference count for each allocated BLOB, and multiple fields can reference the same BLOB area. The data for a BLOB is automatically deallocated when its reference count reaches zero. The reference count for BLOB data in a locally defined field is automatically decremented when the routine exits. The FREE-BLOB function can be used to deallocate the memory for a BLOB field. The value of a BLOB&#160;field can also be written to and from a file using the WRITE-BLOB-TO-FILE and READ-BLOB-FROM-FILE&#160;functions respectively.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>XML-HANDLE</p>
+                                                            <p>Used to store the document handle or node handle returned by an XML function.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>DATE</p>
+                                                            <p>Date format</p>
+                                                            <p>Dates from January 1, 1900 through to 2079 can be stored.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>TIME</p>
+                                                            <p>Time format (in a single day)</p>
+                                                            <p>Times from 00:00:00 to 23:59:59 can be stored.</p>
+                                                            <p>A time is undefined if it goes negative or if it goes beyond 24:00:00. You can only work with date-time fields if that is possible.</p>
+                                                            <div class="example">
+                                                                <p>For example, if you want to reduce the time within a loop and use:</p><pre xml:space="preserve">
+<span class="code_comment">// where lf-run-time type time.</span>
+<span class="code_highlight">while</span> lf-run-time &gt; time-from-date-time(lp-gmt,true)
+    <span class="code_highlight">set</span> lf-run-time -= asme-hours * 3600
+<span class="code_highlight">endwhile</span>
+<span class="code_comment">// Note this code could make the time go negative, this will hang the program.</span></pre>
+                                                                <p>Instead, you should use a date time field:</p><pre xml:space="preserve">
+<span class="code_comment">//where lf-next-due-datetime type date-time</span>
+<span class="code_highlight">while</span> lf-next-due-datetime &gt; lp-gmt
+    <span class="code_highlight">set</span> lf-next-due-datetime -= asme-hours * 3600
+<span class="code_highlight">endwhile</span></pre>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <p>DATE-TIME</p>
+                                                            <p>Date and time format (used for time stamps).</p>
+                                                            <p>See the Notes section below.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>LOCAL-DATE-TIME</p>
+                                                            <p>Local date and time format (time zones are not applied)</p>
+                                                            <p>If you are entering a specific time for a different time zone, then you should use a LOCAL-DATE-TIME field so that local time zones are not applied. However, if you do that and you need to compare date/times, then this will make sense only for date/times in the same time zone.</p>
+                                                            <p>The actual time zone is never stored for a DATE-TIME field. Instead, the date/time that is stored is first converted to GMT time (based on the local time zone). The local time zone applied takes into consideration daylight savings. When displayed, the local time zone is reapplied, so that the date/time relative to your time zone is displayed. Anyone in a different time zone will see the date/time with their time zone applied (for example, 09:00 AM in Melbourne is 07:00 AM in Perth).</p>
+                                                            <div class="example">
+                                                                <p>A sales order is entered at 09:00 AM in Melbourne, and another is entered at 09:00 AM in Perth, but the server is in Adelaide.</p>
+                                                                <p>If 09:00 AM is entered in Melbourne, it is converted to GMT when stored (around 23:00 <span class="no_glossary">PM</span> the previous day). If 09:00 AM is entered in Perth, it is stored in GMT relative to them (so around 01:00 AM). Neither relate to 09:00 AM in Adelaide.</p>
+                                                                <p>If the field is defined as LOCAL-DATE-TIME, then no time zone is processed. If you enter it as 09:00 AM anywhere, then that is what is stored and displayed.</p>
+                                                                <p>The important aspect that you need to know is what 09:00 AM means. If it is simply the time that the sales order was entered, then there is no problem. If it is a delivery time in Adelaide, then there will be a problem if it was entered in Perth, as in Perth the local time zone will be applied when converting it to GMT.</p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <p>BOOLEAN</p>
+                                                            <p>Numeric format can be used to store TRUE/FALSE values</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>COLOUR or COLOR</p>
+                                                            <p>Numeric format used to store a colour</p>
+                                                            <p>See the Notes section below.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>OLE-INTERFACE</p>
+                                                            <p>Used to store an OLE interface ID</p>
+                                                            <p>This data type can only be specified for fields defined in a 4GL program. This data type is not valid for dictionary based fields.</p>
+                                                        </li>
+                                                    </ul>
+                                                    <h2 class="nontoc" id="Precisionrestrictions" data-magellan-target="Precisionrestrictions">Precision restrictions</h2>
+                                                    <p>The <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> runtime uses double precision floating point for all internal arithmetic. This suffers rounding errors once you go past 16 digits (integer + decimal). This is a floating point restriction over which <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> has no control.</p><pre xml:space="preserve"><span class="code_highlight">procedure</span> main
+ <span class="code_comment">// Assume this field is defined as 18 digits // being 12 significant digits and 6 decimals places. // Incrementing by 0.000001 might be a problem // depending on the number of significant // digits in the whole number.</span>
+<span class="code_highlight">set</span> sys-money-value = 1234567890
+ <span class="code_comment">// 10 significant digits</span> 
+<span class="code_highlight">message</span> "Value Before:" sys-money-value
+<span class="code_highlight">set</span> sys-money-value += 0.000001
+<span class="code_highlight">message</span> "After Incrementing:" sys-money-value
+ <span class="code_comment">// Yields correct result 1234567890.000001 //</span>
+<span class="code_highlight">set</span> sys-money-value = 12345678900
+ <span class="code_comment">// But with 11 or 12 significant digits</span>
+<span class="code_highlight">message</span> "Value Before :" sys-money-value
+<span class="code_highlight">set</span> sys-money-value += 0.000001
+<span class="code_highlight">message</span> "After Incrementing:" sys-money-value
+ <span class="code_comment">// Does not provide the correct result</span>
+</pre>
+                                                    <h2 class="nontoc" id="FieldmaximumsizesAlphaStringVarchar" data-magellan-target="FieldmaximumsizesAlphaStringVarchar"><a name="fourgl_tp_field_max_sizes">Field maximum sizes (Alpha / String / Varchar)</a>
+                                                    </h2>
+                                                    <p>The limit for both alphanumeric and string fields is 1024 characters.</p>
+                                                    <div class="note">
+                                                        <p>The compiler will assume a VARCHAR field type if you:</p>
+                                                        <ul>
+                                                            <li>
+                                                                <p>don’t specify ‘type alpha’ or ‘type string’, and</p>
+                                                            </li>
+                                                            <li>
+                                                                <p>set the size - x(nnnn) greater than 1024.</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <p>ALPHA and STRING field types are both fixed length character field types, with maximum size of 1024 characters.</p>
+                                                    <p>An ALPHA field defined as ‘pic x(1024)’ set with a single letter <span class="emphasis">A</span> will have 1023 trailing spaces added to the field.</p>
+                                                    <p>A STRING field defined as ‘pic x(1024) type string’ set with a single letter <span class="emphasis">A</span> will be:</p>
+                                                    <ol style="list-style-type: lower-alpha;">
+                                                        <li value="1">
+                                                            <p>padded with trailing nulls by the runtime</p>
+                                                        </li>
+                                                        <li value="2">
+                                                            <p>padded with spaces within the database.</p>
+                                                        </li>
+                                                    </ol>
+                                                    <p class="recommendation">It is recommended that you use the VARCHAR field type instead of the STRING field type.</p>
+                                                    <p>A VARCHAR (variable size character field) field type contains a character count, and padding is not required. Its maximum size is larger (currently 16000 characters) in working storage (memory) fields, 4000 characters in a database. Since they have no padding overhead, the database might be able to store them more efficiently.</p>
+                                                    <p>One downside of a VARCHAR field type is that they can be less efficient for smaller fields or fields used in indexes, although this also depends on the database used.</p>
+                                                    <p>In summary, the database constraints recommend:</p>
+                                                    <ul>
+                                                        <li>
+                                                            <p><span class="emphasis">not</span> to use a VARCHAR as an index (because fixed-length text is optimal)</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>maximum VARCHAR size of 4000 characters when used in a database.</p>
+                                                        </li>
+                                                    </ul>
+                                                    <h2 class="nontoc" id="Notes" data-magellan-target="Notes">Notes</h2>
+                                                    <ul>
+                                                        <li>
+                                                            <p>The format of NUMERIC and FLOATING types when stored in a RDBMS is the native RDBMS numeric format. This DATE-TIME data type is intended to store time stamp values returned by the DATE-TIME, GMT and SYS-TIME functions. DATE-TIME values do not have any special formatting characteristics and are displayed as a number only. These values should be displayed using the DATE-FROM-DATE-TIME and TIME-FROM-DATE-TIME functions.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Fields of type DATE-TIME which are directly associated with an ACCEPT or DISPLAY statement are interpreted as being GMT based (not local time based).</p>
+                                                            <p>When entering into a field defined as DATE-TIME, it will be entered based on the local time zone, however, the date / time that is stored is first converted to GMT time (based on your local time zone). When it is displayed or printed, your local time zone is reapplied, so that you see the date / time relative to your time zone. Anyone in a different time zone will see the date / time with their time zone applied. For example, in Melbourne it will show as 09:00 AM, and in Perth it will show as 07:00 AM.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Fields of type TIME should not be used to store these values, as the value will be lost (due to overflowing) if the field is written to an EXTERNAL file. This can happen if the file is being exported or imported.</p>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="example">
+                                                        <p>COLOUR can be used for defining colour fields.</p><pre xml:space="preserve">
+<span class="code_highlight">field</span>
+   ws-back <span class="code_highlight">type colour</span>
+   ws-fore <span class="code_highlight">type colour</span>
+
+<span class="code_highlight">procedure</span> main
+  <span class="code_highlight">set</span> ws-back = <span class="code_highlight">blue</span>
+  <span class="code_highlight">set</span> ws-fore = <span class="code_highlight">red</span>
+  <span class="code_highlight">do</span> deb-maint
+<span class="code_highlight">end-procedure</span>
+
+<span class="code_highlight">screen</span> deb-maint
+  <span class="code_highlight">primary</span> deb-master
+  <span class="code_highlight">window</span> @1,1 <span class="code_highlight">to</span> @22,80
+  <span class="code_highlight">colour is</span> ws-back <span class="code_highlight">on</span> ws-fore
+</pre>
+                                                    </div>
+                                                </div>
+                                                <div class="MCRelationshipsProxy_related-topics_0">
+                                                    <p class="referenceHeading_reference_0">REFERENCE</p>
+                                                    <p class="referenceItem_reference_0"><a href="local_declaration.htm">LOCAL FIELD declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/max_value.htm">MAX-VALUE() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/max_presentation_value.htm">MAX-PRESENTATION-VALUE() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/min_value.htm">MIN-VALUE() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="parameter_declaration.htm">PARAMETER declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="returning_declaration.htm">RETURNING declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/set_statement.htm">SET statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/set_date_validation_statement.htm">SET-DATE-VALIDATION statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/string_statement.htm">STRING statement</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="right-content column">
+                                                <ul data-magellan="" data-animation-duration="250" data-active-class="selected" data-scroll-container=".body-container" data-scroll-container-on="only screen and (min-width: 1001px)" class="on-this-page _Skins__global_sidenav_side_menu mc-component">
+                                                    <li><a href="#FIELDdeclaration">FIELD declaration</a>
+                                                    </li>
+                                                    <ul>
+                                                        <li><a href="#Syntax">Syntax</a>
+                                                        </li>
+                                                        <li><a href="#Clauses">Clauses</a>
+                                                        </li>
+                                                        <li><a href="#Datatypes">Data types</a>
+                                                        </li>
+                                                        <li><a href="#Precisionrestrictions">Precision restrictions</a>
+                                                        </li>
+                                                        <li><a href="#FieldmaximumsizesAlphaStringVarchar">Field maximum sizes (Alpha / String / Varchar)</a>
+                                                        </li>
+                                                        <li><a href="#Notes">Notes</a>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+		</script>-->
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.tablesorter.js">
+                                    </script>
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.stickytableheaders.js">
+                                    </script>
+                                    <script>/* <![CDATA[ */
+			$(document).ready(function()
+			{
+			$("table").tablesorter();
+			$("table").stickyTableHeaders();
+			
+			}
+			);
+		/* ]]> */</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

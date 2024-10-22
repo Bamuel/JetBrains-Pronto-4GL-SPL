@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-au" xml:lang="en-au" class="_Skins__global_sidenav_sidenav" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-output-analytics-server="https://prontosoftwareptyltd.api.madcapcentral.com/" data-mc-output-analytics-topic-id="1xBCeJNnhjBdfvY8LHA1MewwzI3Vn4TuHRN21QTXxuUDHZLqJix68slCgwMKq0CRn4VkNP+1F3ZPawxfTvnQfOxm5UiuuomtA9+fRX4yo33b7VvGmwLe18pV26FfT91JqBm0sqCegMxEeJ0Y319ZSewP0rsqXqUlBI5GvUU4EwcGXoxRTUl7sGVEOTXHTPXtfksgbc3OFN0IDVqoRrAFxu+swsEW9CIaNt+SnForPGgQ9wGdq3xIwQ==" data-mc-has-content-body="True" data-mc-toc-path="[%=System.LinkedTitle%]|[%=System.LinkedTitle%]" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" /><title>Environment variables used for 4GL programming</title>
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../_global/resources/css/sidenav/sdk-special-overrides.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.topic-ratings-button
+{
+	-pie-background: transparent url('../../../Skins/Default/Stylesheets/Images/star-full.png') no-repeat center center;
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-expanded-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.email-tct-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE.htc');
+}
+
+</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+        </script>
+        <script type="text/javascript" src="../../../Skins/Default/Scripts/_global/sidenav/sidenav-toolbar.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" role="banner" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-device-width: 1000px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../_home/sidenav/sidenav-home-sdk.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" role="navigation" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search..." />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="Filter your results by subject area." role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">Filter your results by subject area.</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div class="row collapse">
+                                        <div class="top-bar">
+                                            <div class="buttons popup-container clearfix topicToolbarProxy _Skins__global_sidenav_sidenav_toolbar mc-component nocontent" style="mc-topic-toolbar-items: ;">
+                                                <div class="button-group-container-left">
+                                                    <div class="button-group star-buttons loading feedback-topic-required">
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="button needs-pie remove-highlight-button" title="Remove highlights">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Remove highlights">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie print-expanded-button" onclick="MadCap.TextEffects.TextEffectControl.ExpandAll(&quot;open&quot;); setTimeout(function(){ window.print(); }, 1500);" title="Print this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie email-tct-button" onclick="document.location.href=&quot;mailto:pronto.edu@pronto.net?subject=Help feedback for &quot;+document.title+&quot;&amp;body=Topic: &quot;+ location.href + &quot;%0A%0AComments:%0A%0A&quot;;" title="Email us with feedback about this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="breadcrumbs">
+                                                <div class="nocontent">
+                                                    <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="10" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script src="../../_global/resources/masterpage/sidenav/scripts/back-to-top.js">
+                                            </script><a name="top"></a><a class="back-to-top-button" href="#top"></a>
+                                        </div>
+                                        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+                                        </script>
+                                        <div class="content-box">
+                                            <div class="left-content column">
+                                                <div role="main" id="mc-main-content">
+                                                    <h1>Environment variables used for 4GL programming</h1><a name="aanchor695"></a>
+                                                    <MadCap:concept term="4GL Programming" data-mc-conditions="_global/target-type.online" />
+                                                    <p>Certain environment variables can be set to change or specify the way in which <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> performs certain functions.</p>
+                                                    <p>The following environment variables are recognised by <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span>.</p>
+                                                    <table style="width: 100%;" class="field">
+                                                        <caption>4GL Environment Variables</caption>
+                                                        <col style="width: 20%" />
+                                                        <col />
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Environment variable</th>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRONTO</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="note">This environment variable must be set.</p>
+                                                                <p>Specifies the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> home directory.</p>
+                                                                <p>This is the parent directory of the subdirectories <span class="file_path">lib</span> and <span class="file_path">bin</span> that contain the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> system files and programs.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>BMS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the parent directory for the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> applications software.</p>
+                                                                <p>Programs for each <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> module are contained in one subdirectory of this directory.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>CUS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the directory where customer specific applications are installed.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>EDIT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the name of the default text editor.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>NETPRONTO</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="restriction">For <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> implementations only.</p>
+                                                                <p>The full network path to the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> directory on the server machine.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PATH</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the search path list for external (non-<span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span>) commands executed.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROCMPCT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Enable codified text translations when using <span class="file_path">procmp</span> to compile a program.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROCMPINC</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the path to the directory in which the include files are located when using <span class="file_path">procmp</span> to compile a program.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROCURRENCY</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Set the default currency symbol (for example, <span class="field_value">$</span>) to use.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRODATABASE</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="restriction">For RDBMS implementations only.</p>
+                                                                <p>Specify the name of the database instance containing the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> data.</p>
+                                                                <p>If not set, the default database instance for the machine is used.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRODATEFMT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the required date format (day, month, and year ordering) to use.</p>
+                                                                <dl class="dl_narrow">
+                                                                    <dt>
+                                                                        <p>1</p>
+                                                                    </dt>
+                                                                    <dd>
+                                                                        <p>DD/MM/YY Ordering</p>
+                                                                    </dd>
+                                                                    <dt>
+                                                                        <p>2</p>
+                                                                    </dt>
+                                                                    <dd>
+                                                                        <p>MM/DD/YY Ordering</p>
+                                                                    </dd>
+                                                                    <dt>
+                                                                        <p>3</p>
+                                                                    </dt>
+                                                                    <dd>
+                                                                        <p>YY/MM/DD Ordering (not currently supported)</p>
+                                                                    </dd>
+                                                                </dl>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRODECPT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default decimal point character to use.</p>
+                                                                <p>The allowed values are ".", or "," (include the quotes when setting the environment variable).</p>
+                                                                <div class="tip">
+                                                                    <p>If the <span class="file_path">U_PRODECPT</span> override program exists in the override program table, and the entered value in the <span class="envar">PRODEDPT</span> environment variable is a comma, the values are exported as they appear in the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> screen.</p>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRODEFDATAGRID</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="note">This environment variable is intended specifically for Software Developers and Testers.</p>
+                                                                <p>This environment variable allows Developers and Testers to run applications with their default data grid settings, eliminating confusion caused by user changes to them.</p>
+                                                                <p>When this environment variable is set to a non-null value, all columns in the default view of a data grid are displayed at their default widths and any stored user modifications are ignored.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRODICT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the standard dictionary file to use for this session.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRODISTDICT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the distributor-supplied dictionary to be used in addition to the standard and user dictionaries.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROLANGDIR</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the name of the database containing the language translation tables used by <span class="field_name">procmpnls</span> to generate the NLS files for each program.</p>
+                                                                <p>The NLS file contains the language translation information for a program.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROLANGUAGE</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the foreign language to be used.</p>
+                                                                <p class="example">For example, US-English, French, Mexican, or Spanish.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROLOGINTLOCKS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Write log interactive locks to a file for analysis purposes only.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROLOGLOSTLOCKS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Write a log of lost locks caused by the <span class="emphasis">SERIAL</span> 4GL statement to a file for analysis purposes only.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROMONTHS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Comma-separated list of 12 month names to override the default English names.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROPATH</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify a list of directories to search for SPL programs and SQL enquiries. </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROPRINTERS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the set of printers that are available to the user.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PRORUNSTATS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the path and file name that trace statistics are to be written to for the <span class="function_name">Realtime Trace Control (SYS M025)</span> function. </p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROSINGLEKEY</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Override system-wide setting for single keystroke menu/mode selection.</p>
+                                                                <p>The value <span class="field_value">Y</span> or <span class="field_value">y</span> turns on single keystroke menu selection. The value <span class="field_value">N</span> or <span class="field_value">n</span> turns it off.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROTERM</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the terminal type on which <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> is being run.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROTIMEOUT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Automatically log users out of <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> after a specified number of minutes of inactivity.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROUSRDICT</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the custom dictionary to be used in addition to the standard dictionary.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROWEEKDAYS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Comma-separated list of 7 day names to override the default English names.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLDETAILBG</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default background colour for the report detail/body when generating an XML/XSL report (when no customised style sheet is being used).</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLDETAILFG</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default foreground colour for the report detail/body when generating an XML/XSL report (when no customised style sheet is being used).</p>
+                                                                <p>For more information, see <a href="../../sys_ref_info/sys_env_variables/proxmldetailfg_environment_variable.htm" class="standard MCXref xref xrefstandard">PROXMLDETAILFG environment variable</a>.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLDISPLAYSIZE</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default display font size when generating an XML report (when no customised style sheet is being used).</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLENCODING</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the XML character set code used when generating an XML report; for example, ISO-8859-1 or GB2312.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLHEADERBG</p>
+                                                            </td>
+                                                            <td>
+                                                                <p> Specify the default background colour for the report page header when generating an XML/XSL report (when no customised style sheet is being used).</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLHEADERFG</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default foreground colour for the report page header when generating an XML/XSL report (when no customised style sheet is being used).</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLPRINTSIZE</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default print font size to use when generating an XML report (when no customised style sheet is being used).</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROXMLREPORTS</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the report format, and how the report is to be viewed.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>PROYEAROFFSET</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the number of years to offset from the system date.</p>
+                                                                <p>This is intended in countries whose years are not based on the Gregorian calendar.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>REPORTDIR</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the directory in which to place all report (spool) files generated.</p>
+                                                                <p>If this is not defined all reports are spooled into your current directory (usually the data directory).</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>SHELL</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the default shell to run when a shell is called.</p>
+                                                                <p class="restriction">This is applicable only to UNIX systems.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>TERM</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the terminal type name as defined in the terminfo database (for example, VT100).</p>
+                                                                <p>If this is defined it overrides any default terminal type defined for your terminal in <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span>.</p>
+                                                                <p class="restriction">This applies only to UNIX/Linux based machines.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>TMPDIR</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the directory in which to place all temporary files that are generated.</p>
+                                                                <p>If this is not defined, the standard temporary files directory on your system is used.</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <p>TZ</p>
+                                                            </td>
+                                                            <td>
+                                                                <p>Specify the time zone environment.</p>
+                                                                <p>This is used for setting the time zone. It is used by various time functions to calculate times relative to Coordinated Universal Time (UTC), formerly known as Greenwich Mean Time (GMT). The format is specified by the operating system. This environment variable will affect the <a href="../functions/tod.htm" class="standard MCXref xref xrefstandard">TOD()</a>, <a href="../functions/today.htm" class="standard MCXref xref xrefstandard">TODAY()</a>, and <a href="../functions/time_zone.htm" class="standard MCXref xref xrefstandard">TIME-ZONE()</a> functions.</p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <p>Path lists as required by <span class="envar">PROPATH</span> and <span class="envar">PATH</span> are a set of one or more directory names (usually specified with their full path), each separated by a colon (<span class="field_value">:</span>). The current directory is not searched unless it is specified in the list or a colon appears first in the list. Directories are searched in the order that they appear in the list.</p>
+                                                    <p>On <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> systems, the separator for a path list is a semi-colon (<span class="field_value">;</span>) since colons are used to specify a device.</p>
+                                                </div>
+                                            </div>
+                                            <div class="right-content column">
+                                                <ul class="in-this-section _Skins__global_sidenav_side_menu mc-component" data-mc-is-context-sensitive="True" data-mc-linked-toc="Data/Tocs/_local__4gl_reference.js" data-mc-side-menu="True" data-mc-max-depth="-1" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="False" data-mc-include-parent="False" data-mc-toc="True">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+		</script>-->
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.tablesorter.js">
+                                    </script>
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.stickytableheaders.js">
+                                    </script>
+                                    <script>/* <![CDATA[ */
+			$(document).ready(function()
+			{
+			$("table").tablesorter();
+			$("table").stickyTableHeaders();
+			
+			}
+			);
+		/* ]]> */</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

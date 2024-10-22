@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-au" xml:lang="en-au" class="_Skins__global_sidenav_sidenav" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-output-analytics-server="https://prontosoftwareptyltd.api.madcapcentral.com/" data-mc-output-analytics-topic-id="1xBCeJNnhjBdfvY8LHA1MewwzI3Vn4TuHRN21QTXxuUDHZLqJix68slCgwMKq0CRn4VkNP+1F3ZPawxfTvnQfIS7UXd6da4KAoShT/QNrrMsMbIQkkOeuSAhAEOJLAcfixi9dPPsV878tp3aW7JpBmydnxwYS8nkiswFJPu3Cx7RwXOEX2i4cQ==" data-mc-has-content-body="True" data-mc-toc-path="[%=System.LinkedTitle%]|[%=System.LinkedTitle%]|[%=System.LinkedTitle%]" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" /><title>SCREEN declaration</title>
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../_global/resources/css/sidenav/sdk-special-overrides.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.topic-ratings-button
+{
+	-pie-background: transparent url('../../../Skins/Default/Stylesheets/Images/star-full.png') no-repeat center center;
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-expanded-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.email-tct-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE.htc');
+}
+
+</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+        </script>
+        <script type="text/javascript" src="../../../Skins/Default/Scripts/_global/sidenav/sidenav-toolbar.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" role="banner" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-device-width: 1000px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../_home/sidenav/sidenav-home-sdk.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" role="navigation" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search..." />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="Filter your results by subject area." role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">Filter your results by subject area.</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div class="row collapse">
+                                        <div class="top-bar">
+                                            <div class="buttons popup-container clearfix topicToolbarProxy _Skins__global_sidenav_sidenav_toolbar mc-component nocontent" style="mc-topic-toolbar-items: ;">
+                                                <div class="button-group-container-left">
+                                                    <div class="button-group star-buttons loading feedback-topic-required">
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="button needs-pie remove-highlight-button" title="Remove highlights">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Remove highlights">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie print-expanded-button" onclick="MadCap.TextEffects.TextEffectControl.ExpandAll(&quot;open&quot;); setTimeout(function(){ window.print(); }, 1500);" title="Print this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie email-tct-button" onclick="document.location.href=&quot;mailto:pronto.edu@pronto.net?subject=Help feedback for &quot;+document.title+&quot;&amp;body=Topic: &quot;+ location.href + &quot;%0A%0AComments:%0A%0A&quot;;" title="Email us with feedback about this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="breadcrumbs">
+                                                <div class="nocontent">
+                                                    <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="10" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script src="../../_global/resources/masterpage/sidenav/scripts/back-to-top.js">
+                                            </script><a name="top"></a><a class="back-to-top-button" href="#top"></a>
+                                        </div>
+                                        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+                                        </script>
+                                        <div class="content-box">
+                                            <div class="left-content column">
+                                                <div role="main" id="mc-main-content">
+                                                    <h1 data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="SCREENdeclaration" data-magellan-target="SCREENdeclaration">SCREEN declaration</h1><a name="aanchor343"></a>
+                                                    <MadCap:concept term="4GL Programming" data-mc-conditions="_global/target-type.online" />
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">Defines a screen for displaying and accepting data.</p>
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">This screen can be called from another screen, menu, or procedure. If this is the first procedure defined (or its name is <span class="emphasis">main</span>) the program will start at this screen.</p>
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">This statement automatically ends any previous SCREEN, PROCEDURE, or MENU declaration.</p>
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">The DETAIL section loops until it is backed out of or until an EXIT statement is encountered. Backing out of or exiting the first procedure terminates the program.</p>
+                                                    <h2 class="nontoc" id="Syntax" data-magellan-target="Syntax">Syntax</h2><pre xml:space="preserve" data-mc-conditions="IDE_Extract.IDE_4GL_Full"><span class="code_highlight">screen</span> screen-name
+   [<span class="code_highlight"><a href="#clause_responsive">responsive</a></span>]
+   [<span class="code_highlight"><a href="#clause_rowselectionobject">row-selection-object</a></span> [<span class="code_highlight">is</span>] memory-object-name [<span href="#no-truncate" class="code_highlight"><a href="#no-truncate">no-truncate</a></span>]]
+   [<span class="code_highlight"><a href="#clause_window">window</a></span> [@row,col <span class="code_highlight">to</span> @row,col]
+      [<span class="code_highlight"><a href="#clause_window">relative to</a></span> @row,col]]
+   [<span class="code_highlight"><a href="#clause_windowposition">window-position</a></span> [<span class="code_highlight">is</span>] numeric-value]
+   [<span class="code_highlight"><a href="#clause_title">title</a></span> expression]
+   [<span class="code_highlight"><a href="#clause_primary">primary</a></span> object-name
+      [<span class="code_highlight"><a href="#clause_primary">on index</a></span> index]
+      [<span class="code_highlight"><a href="#clause_primary">same</a></span>|<span class="code_highlight"><a href="#clause_primary">different</a></span> [field-list]]]
+   [<span class="code_highlight"><a href="#clause_select">select</a></span> select-clauses]
+   [<span class="code_highlight"><a href="#clause_quick_link">quick-link</a></span> [<span class="code_highlight">on</span>] object-name]
+   [<span class="code_highlight"><a href="#clause_noquicklinks">no-quick-links</a></span>]
+   [<span class="code_highlight"><a href="#clause_colour">colour</a></span> [<span class="code_highlight">is</span>] colour [<span class="code_highlight">on</span> colour]]
+   [<span class="code_highlight"><a href="#clause_colour">review colour</a></span> [<span class="code_highlight">is</span>] colour [<span class="code_highlight">on</span> colour]]
+   [<span class="code_highlight"><a href="#clause_allowed">allowed</a></span> [<span class="code_highlight">is</span>|<span class="code_highlight">are</span>] mode [mode-name ...]]
+   [<span class="code_highlight"><a href="#clause_nopromptforsearch">no-prompt-for-search</a></span>|<span class="code_highlight"><a href="#clause_promptforsearch">prompt-for-search</a></span>]
+   [<span class="code_highlight"><a href="#clause_findforcurrency">find-for-currency</a></span>]
+   [<span class="code_highlight"><a href="#clause_prompt">prompt</a></span> @row,col]
+   [<span class="code_highlight"><a href="#clause_local">local field</a></span> field-name field-definition ...]
+   [<span class="code_highlight"><a href="#clause_local_mode">local mode</a></span> mode-name mode-definition...]
+<span>   [<span class="code_highlight"><a href="#clause_datagrid">data-grid</a></span>]</span>
+   [<span class="code_highlight"><a href="#clause_review">review occurs</a></span> n [<span class="code_highlight">by</span> n]]
+   [<span class="code_highlight"><a href="#clause_reviewfromstart">review-from-start</a></span>|<span class="code_highlight"><a href="#clause_reviewfromcurrent">review-from-current</a></span>|<span class="code_highlight"><a href="#clause_reviewfromend">review-from-end</a></span>|<span class="code_highlight"><a href="#clause_reviewbottomtotop">review-bottom-to-top</a></span>]
+   [<span class="code_highlight"><a href="#clause_noreviewrowseparators">no-review-row-separators</a></span>]
+   [<span class="code_highlight"><a href="#clause_noreviewrowseparators">no-review-column-separators</a></span>]
+   [<span class="code_highlight"><a href="#clause_noreviewrowseparators">no-review-separators</a></span>]
+   [<span class="code_highlight"><a href="#clause_startoncurrentrecord">start-on-current-record</a></span>]
+   [<span class="code_highlight"><a href="#clause_leaveparentscreen">leave-parent-screen</a></span>]
+   [<span class="code_highlight"><a href="#clause_when">when</a></span> condition]
+   [<span class="code_highlight"><a href="#clause_parameters">parameters</a></span>[<span class="code_highlight">are</span>] field-name field-definition ...]
+   [<span class="code_highlight"><a href="#clause_returning">returning</a></span> field-name field-definition ...]
+   [<span class="code_highlight"><a href="#clause_stopexitallkey">stop-exit-all-key</a></span>]
+   [<span class="code_highlight"><a href="#clause_positiononok">position-on-ok</a></span>|<span class="code_highlight"><a href="#clause_positiononok">no-ok-cancel</a></span>]
+   [<span class="code_highlight"><a href="#clause_stayincorrect">stay-in-correct</a></span>]
+   [<span class="code_highlight"><a href="#clause_formentry">form-entry</a></span>]
+   [<span class="code_highlight"><a href="#clause_export">export</a></span>|<span class="code_highlight"><a href="#clause_usertrigger">user-trigger</a></span> [<span class="code_highlight"><a href="#clause_canoverride">can-override</a></span>|<span class="code_highlight"><a href="#clause_canoverride">no-override</a></span>]]
+   <span>[<span class="code_highlight"><a href="#clause_helpcontext">help-context</a></span> [<span class="code_highlight">is</span>] help-file-expression  context-id-expression]</span>
+   [<span class="code_highlight"><a href="#claus_screen_style" class="standard MCXref xref xrefstandard">SCREEN-STYLE</a></span>[<span class="code_highlight">is</span>] &lt;numeric-expression&gt;]
+...<MadCap:conditionalText data-mc-conditions="_global/target-release.770">[<span class="code_highlight"><a href="#claus_screen_style" class="standard MCXref xref xrefstandard">SCREEN-STYLE</a></span></MadCap:conditionalText>	
+   [<span class="code_highlight"><a href="#clause_before">before</a></span> 
+      procedural-statements]
+   [<span class="code_highlight"><a href="#clause_detail">detail</a></span> 
+      procedural-statements]
+   [<span class="code_highlight"><a href="#clause_after">after</a></span> 
+      procedural-statements]
+[<span class="code_highlight">end-screen</span>]
+</pre>
+                                                    <h2 class="unnumbered_nontoc" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="Clauses" data-magellan-target="Clauses"><a name="clause_responsive"></a>Clauses</h2>
+                                                    <table style="width: 100%;" class="general" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <col style="width: 20%" />
+                                                        <col />
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Clause</th>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_rowselectionobject"></a>RESPONSIVE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">The RESPONSIVE clause specifies that a <span class="mc-variable _global/product.pxi-webui variable">Pronto&#160;Xi web interface</span> screen is responsive. Within the SCREEN declaration, the RESPONSIVE clause must be used to indicate that the screen is responsive, otherwise it is a fixed <span class="no_glossary">position</span> (non-responsive) screen.</p>
+                                                                    <p>For more information, see <a href="../../4gl_responsive/syntax/responsive_clause.htm" class="standard MCXref xref xrefstandard">RESPONSIVE clause</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_window"></a><a name="row-selection-object">ROW-SELECTION-OBJECT</a>
+                                                                    </p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The ROW-SELECTION-OBJECT clause, and  ROW-SELECTION-COUNT() and ROW-SELECTION-CHANGED() functions, allow you to select (tag) records from a set (usually the primary object or select on the screen) and then perform some action with the tagged (or non tagged) records.</p>
+                                                                    <p>For example, you could use this for:</p>
+                                                                    <ul>
+                                                                        <li>
+                                                                            <p>selecting a number of orders to process or release from backorder</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>tagging multiple lines in a bank reconciliation process.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>ROW-SELECTION-COUNT() and ROW-SELECTION-CHANGED() allow you to display things when something happens or apply logic to a mode button. For example, the <span class="ui_control">Process</span> button is active only when the  ROW-SELECTION-COUNT() is greater than zero.</p>
+                                                                    <p>As records are tagged, the tagged records are inserted into a temporary object. You can read the temporary object to perform an action based on the <span class="emphasis">index</span> stored in that table.</p>
+                                                                    <p>The ROW-SELECTION-OBJECT clause is relevant for the screen declaration section of a DATA-GRID screen. It nominates an object of type memory to record the rows selected by the user. The key for index 1 of the object must specify the fields to uniquely identify selected rows.</p>
+                                                                    <p>When a row is selected, a record is added to the nominated object. The fields of the object will be set to the current values of the selected row.</p>
+                                                                    <p>When a row is deselected, the record with the corresponding index 1 key for that row will be deleted.</p>
+                                                                    <p>Any existing content of the row selection object will be cleared when the screen begins.</p>
+                                                                    <p><a name="no-truncate"></a>The NO-TRUNCATE clause can be added to the ROW-SELECTION-OBJECT clause of a SCREEN. It should be specified after the object name.</p>
+                                                                    <p>This indicates that the row selection object should not be truncated and any existing entries in the object should be retained.</p>
+                                                                    <p>If there is no existing temporary file for the row selection object, then one will be created automatically.</p>
+                                                                    <p>The syntax is:</p>
+                                                                    <p class="codeblock">ROW-SELECTION-OBJECT &lt;object-name&gt; [NO-TRUNCATE]</p>
+                                                                    <p>For more information, see <a href="../functions/row_selection_count.htm" class="standard MCXref xref xrefstandard">ROW-SELECTION-COUNT()</a> and <a href="../functions/row_selection_changed.htm" class="standard MCXref xref xrefstandard">ROW-SELECTION-CHANGED()</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>WINDOW</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The screen is defined as being a window over the current screen. When the screen returns, the window disappears automatically.</p>
+                                                                    <p>If no coordinates for the window are specified, the window occupies the entire screen.</p>
+                                                                    <p>If RELATIVE TO is specified, the window is displayed relative to these coordinates.</p>
+                                                                    <p>The row and column values can be arithmetic expressions, but neither should exceed 255 or errors will occur at runtime.</p>
+                                                                    <p>Windows can be defined as larger than 80X24 in size. Windows larger than the normal size cause the screen to change to its wide mode, where available.</p>
+                                                                    <p><a name="clause_windowposition"></a>An attempt to call a screen with a larger window than the defined maximum size for the terminal results in a fatal error. The MAX-SCREEN-COLUMNS and MAX-SCREEN-ROWS functions can be used to determine the maximum available screen size for the current terminal.</p>
+                                                                    <p class="restriction">Decimal addressing is not supported for data grids. The row and column coordinates for each field in the data grid must be specified as a whole number.</p>
+                                                                    <p class="note"><a name="clause_title"></a>Refer to the notes section below regarding changes to the implementation of the mode line from the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> Dimensions release onwards.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>WINDOW-POSITION</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause, which only takes effect if the WINDOW clause is also specified, is used to specify the initial position of the window, or to display it in full screen mode.</p>
+                                                                    <p>The allowed values are:</p>
+                                                                    <dl class="dl_narrow">
+                                                                        <dt>
+                                                                            <p>-1</p>
+                                                                        </dt>
+                                                                        <dd>
+                                                                            <p>Displays the window in full screen mode</p>
+                                                                        </dd>
+                                                                        <dt>
+                                                                            <p>1 to 9</p>
+                                                                        </dt>
+                                                                        <dd>
+                                                                            <p>Sets the initial position of the current window in the container window, where 1 = top left, 2 = top centre, and so on as shown in the following grid:</p>
+                                                                            <p>
+                                                                                <img src="../../_local/images/diag/diag_4glref_win_pos_grid.png" alt="POS grid" />
+                                                                            </p>
+                                                                        </dd>
+                                                                    </dl>
+                                                                    <div class="example">
+                                                                        <p>For example, to open the window at the bottom centre of the container window:</p>
+                                                                        <p class="codeblock"><span class="code_highlight">window-position is</span> 8</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_primary"></a>TITLE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The TITLE clause is available for any MENU/SCREEN/PROCEDURE with a window. This will set the title on the title bar of the window. It is processed once only upon entry to the routine.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>PRIMARY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This defines the primary object that the screen is accessing. All record searching is performed using this object.</p>
+                                                                    <p>If this clause is not specified, no automatic searching, reviewing, correction, insertion or removal of records can take place in the screen.</p>
+                                                                    <p>The ON INDEX clause forces the object to be accessed only on this index. If not specified the screen will access the object using index 1. <span class="emphasis">index</span> can be specified by the index number (for example, 1) or by listing every field (in order) which makes up the key to the required index.</p>
+                                                                    <p>The SAME option specifies that when searching, look only for records with the same values as those fields listed. If no fields are listed, it defaults to the fields that make up the specified index. The fields listed must match either all or part of the leading fields in the key for the specified index.</p>
+                                                                    <p><a name="clause_select"></a>The DIFFERENT option specifies that when searching, show only each different (unique) value of those fields listed.</p>
+                                                                    <p class="note" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">Only the fields listed (as being different) are returned to the screen. No other fields in the PRIMARY are returned.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>SELECT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p><a name="clause_quick_link"></a>An SQL SELECT statement can be specified instead of a PRIMARY clause.</p>
+                                                                    <p>For more information, see <a href="../clauses/select_clause.htm" class="standard MCXref xref xrefstandard">SELECT clause</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_noquicklinks"></a>QUICK-LINK</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>If the SELECT statement for the screen has multiple objects in the FROM list, this clause can be used to specify which object quick links for that screen will be stored against. If this clause is not specified, the first object is used.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_colour"></a>NO-QUICK-LINKS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The NO-QUICK-LINKS clause specifies that the Quick Links options will not be available for this screen.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>COLOUR or COLOR</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The COLOUR clause is valid for a SCREEN/MENU/PROCEDURE to specify the default window colours. If only a single colour is specified, it is assumed to be the background colour.</p>
+                                                                    <p>When <span class="field_value">0</span> or no colour is specified, the default foreground or background colour set by the user in the colour settings of the <span class="mc-variable _global/product.pxi-client variable">Pronto Xi Client</span> is used, for example:</p><pre xml:space="preserve"><span class="code_highlight">colour is red on</span> 0</pre>
+                                                                    <p>Windows RGB colour values can be specified by using the <a href="../functions/rgb_to_colour.htm" class="standard MCXref xref xrefstandard">RGB-TO-COLOUR()</a> function.</p>
+                                                                    <p>This clause is only valid if the WINDOW clause is also specified (with the exception of the main window).</p>
+                                                                    <p><a name="clause_allowed"></a>The REVIEW COLOUR clause can be used in a review screen to specify the background colour for the review area. If only a single colour is specified, it is assumed to be the background colour.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>ALLOWED</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause lists all the modes that are allowed with this screen when no modes are specified in the call to the screen. If this clause is not specified, the default screen modes of SEARCH, ENTRY, CORRECT and REMOVE are displayed.</p>
+                                                                    <p>The following rules/restrictions apply:</p>
+                                                                    <ul data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                                        <li>
+                                                                            <p>If only one mode is specified, the screen is placed in this mode automatically. Otherwise, the available modes are displayed and the user must select one.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>You can define your own screen modes using the MODE statement.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>The following predefined modes can be used: SEARCH, ENTRY, CORRECT, and REMOVE. SEARCH expands to all the valid searching options for the screen, that is, FIND, NEXT, PREV, NEXT-SCR, PREV-SCR.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>REMOVE and SEARCH are only valid if a PRIMARY object or SELECT is specified.</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p><a name="clause_nopromptforsearch"></a>If this screen is called from another screen and the parent screen is in show mode, this screen is also in show mode and the specified screen modes (including ENTRY and CORRECT) are ignored.</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_promptforsearch"></a>NO-PROMPT-FOR-SEARCH</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>When search is specified as an allowed mode, the available search modes are prompted for along with the other allowed modes. If this option is specified, those search modes that can be selected by means of function or arrow keys are not prompted for.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_findforcurrency"></a>PROMPT-FOR-SEARCH</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Search modes that are normally not shown (for example, <span class="ui_control">Next</span>, <span class="ui_control">Prev</span>, <span class="ui_control">Next Scr</span> and <span class="ui_control">Prev Scr</span>) are displayed on the mode list.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_prompt"></a>FIND-FOR-CURRENCY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies that whenever an allowed mode for this screen that requires currency on a record is selected, the <span class="ui_control">Find</span> mode is to be performed automatically beforehand.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_local_mode"></a>PROMPT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies the position to display the mode prompts on the screen.</p>
+                                                                    <p>If not specified, the mode prompts are displayed at a default position (generally the second bottom line of the current screen or window).</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>LOCAL MODE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies a local mode. A local mode is the same as a standard global mode, but can be referenced only by the screen in which it is defined.</p>
+                                                                    <p>A local mode can refer to local and parameter fields in any conditions or expressions. The local/parameter fields must be defined prior to referencing them.</p>
+                                                                    <p>Local modes are automatically added to the allowed mode list for the screen if they are not explicitly listed.</p>
+                                                                    <p>An ALWAYS-SHOW clause will be assumed for a local mode unless a MODE-WHEN clause is specified. For more information, see <a href="mode_declaration.htm#mode_when_for_xref" class="standard MCXref xref xrefstandard">MODE-WHEN</a>.</p>
+                                                                    <p>Any conflicting screen clauses (for example, WHEN) must not be specified immediately after local mode definitions otherwise they will be assumed to be part of the mode definition.</p>
+                                                                    <p>Multiple mode definitions can be specified:</p>
+                                                                    <div class="example"><pre xml:space="preserve"><span class="code_highlight">local mode</span>  mode1 correct process
+	mode2 entry prompt "entry"
+	mode3 prompt "Do stuff"</pre>
+                                                                    </div>
+                                                                    <p class="restriction"><a name="clause_datagrid"></a>A local mode cannot be passed in the mode list of the DO statement.</p>
+                                                                    <div class="example"><pre xml:space="preserve"><span class="code_highlight">screen</span> my-screen
+<span class="code_highlight">parameter is</span> p1 pic x
+<span class="code_highlight">local mode</span> local-correct correct process <span class="code_highlight">mode-when</span> p1 = 1
+<span class="code_highlight">allowed</span> search local-correct</pre>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>DATA-GRID</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This is an enhanced version of a REVIEW screen. A data-grid is generated with moveable button style column headings, allowing columns to be resized and repositioned.</p>
+                                                                    <p class="note">Hidden data grid columns are supported.</p>
+                                                                    <p>The column headings used are defined by the TITLE clause associated with each ACCEPT or DISPLAY in the DETAIL section of the SCREEN.</p>
+                                                                    <p>The column coordinate of the ACCEPT and DISPLAY statements that form the columns of the data grid are used for ordering and identification purposes only, and do not represent the actual location of the column.</p>
+                                                                    <p><a name="clause_review"></a>A default of 20 rows is used for the data grid in a non-section (non-responsive) screen. In a responsive screen, a default of 5 rows is used. For more information, see <a href="../../4gl_responsive/syntax/screen_section_statement.htm" class="standard MCXref xref xrefstandard">SCREEN-SECTION statement</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>REVIEW</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Indicates that this is a review screen.</p>
+                                                                    <p>The number of different primary records in the review screen can be specified using the OCCURS clause. If not specified, a default number is used. A single record in a review screen can be spread over multiple lines. The number of lines per record is defined by the BY clause following the OCCURS.</p>
+                                                                    <p class="example"><a name="clause_reviewfromstart"></a>OCCURS 10 BY 2. Co-ordinates for the additional lines are relative to the base (first) row specified in the DETAIL section.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_reviewfromcurrent"></a>REVIEW-FROM-START</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Show records from the start of the file/list onwards when re-displaying the list of review records.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_reviewfromend"></a>REVIEW-FROM-CURRENT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Show the previous screen of records starting at, and including, the current record when re-displaying the list of review records. The current record is maintained.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_reviewbottomtotop"></a>REVIEW-FROM-END</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Show records from the end of the file/list backwards when re-displaying the list of review records. Not supported on relational databases.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>REVIEW-BOTTOM-TO-TOP</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause will cause the records in a review screen to be display from the bottom of the review area up to the top of the review area, instead of from top to bottom.</p>
+                                                                    <p>This is not the same as the REVIEW-FROM-END clause as the REVIEW-BOTTOM-TO-TOP clause reads forward through the list of records and not backwards from the end of the records. It therefore reverses the orientation of the records on the screen.</p>
+                                                                    <p><a name="clause_noreviewrowseparators"></a>The REVIEW-FROM-END clause can be simulated by a combination of this clause and a SELECT statement with an ORDER BY specifying a DESCENDING order.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>NO-REVIEW-ROW-SEPARATORS</p>
+                                                                    <p>NO-REVIEW-COLUMN-SEPARATORS</p>
+                                                                    <p><a name="clause_startoncurrentrecord"></a>NO-REVIEW-SEPARATORS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The drawing of separator lines between columns and rows in a review screen can be suppressed with the following clauses: NO-REVIEW-ROW-SEPARATORS, NO-REVIEW-COLUMN-SEPARATORS, and NO-REVIEW-SEPARATORS (the latter suppresses both).</p>
+                                                                    <p>This only works on review screens, not data grids.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_leaveparentscreen"></a>START-ON-CURRENT-RECORD</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>If this clause is included and a PRIMARY SAME key is also specified in the SCREEN declaration, the file is not positioned at the start of the key range if the current record is in that key range already. This also applies to screens defined with a SELECT, where by default the first record shown is the first valid record in the sequence specified by the ORDER BY.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_when"></a>LEAVE-PARENT-SCREEN</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause only has an affect if specified for the initial routine with the program (for example, screen main).</p>
+                                                                    <p>If the program is called directly from another Pronto RAD program using the CALL or SPL statement, the contents of the screen in the calling program is retained instead of being cleared.</p>
+                                                                    <p>If the initial routine has a WINDOW specified, this clause is invalid.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_local"></a>WHEN</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>When searching for records, allow only records that satisfy the specified condition. This clause is only valid if used with a PRIMARY clause.</p>
+                                                                    <div class="tip">
+                                                                        <p>For optimum performance, avoiding using an expression in the WHEN clause where possible. For example, the following expression should be evaluated before the SCREEN declaration:</p>
+                                                                        <p class="codeblock">service-call-master.customer-code = uppercase(strconcat(ws-param-001))</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_parameters"></a>LOCAL FIELD</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The LOCAL FIELD declaration defines fields that are local in scope to this routine.</p>
+                                                                    <p>For more information, see <a href="local_declaration.htm" class="standard MCXref xref xrefstandard">LOCAL FIELD declaration</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_returning"></a>PARAMETERS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Allows the definition of parameters that are passed to the routine.</p>
+                                                                    <p>For more information, see <a href="parameter_declaration.htm" class="standard MCXref xref xrefstandard">PARAMETER declaration</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_stopexitallkey"></a>RETURNING</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Allows the definition of parameters that are returned to the calling routine.</p>
+                                                                    <p>For more information, see <a href="returning_declaration.htm" class="standard MCXref xref xrefstandard">RETURNING declaration</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>STOP-EXIT-ALL-KEY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>When <span class="keybd">F8</span> is pressed, the runtime automatically backs out all programs being run by the user.</p>
+                                                                    <p>It accomplishes this by flagging that all requests for keyboard input are to be treated as though the <span class="keybd">Esc</span> key had been pressed, to try and allow the programs to back out gracefully. All screen output is stopped while in this mode.</p>
+                                                                    <p>The EXIT-ALL operation is cancelled if the program executes a BACK-TO-DETAIL statement, as the intention of this statement is to stop users from being able to exit the screen by pressing <span class="keybd">Esc</span>.</p>
+                                                                    <p>The STOP-EXIT-ALL-KEY clause was added to the SCREEN, MENU and PROCEDURE declarations to also stop the EXIT-ALL operation. The automatic backout is cancelled when a routine with this clause specified is encountered.</p>
+                                                                    <p class="note" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">When this clause is included in a routine, the EXIT-ALL operation is not stopped if the user presses the EXIT-ALL key while in the routine. It only takes effect if the EXIT-ALL key is pressed in a child routine.</p>
+                                                                    <p>Any code that loops to stop a user from being able to exit by pressing <span class="keybd">Esc</span> (other than by using the BACK-TO-DETAIL statement) can cause the application to hang if the EXIT-ALL key is pressed. Any routines that contain this type of code should either be rewritten or specify the STOP-EXIT-ALL-KEY clause to avoid this problem.</p>
+                                                                    <p>As a fail-safe, a 10 second limit is placed on the EXIT-ALL operation. If the EXIT-ALL is still in effect after 10 seconds, it is automatically cancelled.<a name="clause_title"></a></p>
+                                                                    <p class="important"> This should not be relied upon, as this timeout is not available on all systems.</p>
+                                                                    <p><a name="clause_positiononok"></a>
+                                                                    </p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>POSITION-ON-OK</p>
+                                                                    <p>NO-OK-CANCEL</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause is used for screens that have no primary clause (for example a report parameters screen).</p>
+                                                                    <p>The POSITION-ON-OK clause for a screen indicates that the <span class="ui_control">OK</span> button should be positioned on initially (that is, gain focus) when the screen is in <span class="ui_control">Correct</span> mode.</p>
+                                                                    <p>If the screen requires confirmation based on the CONFIRM statement, the <span class="ui_control">Cancel</span> button is the default instead of <span class="ui_control">OK</span> if the default for the CONFIRM is NO.</p>
+                                                                    <p>The runtime automatically displays <span class="ui_control">OK</span>/<span class="ui_control">Cancel</span> buttons when the screen is in entry or correct mode. They are not shown for entry in a procedure.</p>
+                                                                    <p>When the <span class="ui_control">Entry</span> or <span class="ui_control">Correct</span> mode is selected in a screen, the screen’s modes are hidden and the <span class="ui_control">OK</span> and <span class="ui_control">Cancel</span> buttons are displayed in the centre of the line used by the modes.</p>
+                                                                    <p>Clicking the <span class="ui_control">OK</span> button is equivalent to pressing <span class="keybd">F4 (Confirm)</span>. Clicking the <span class="ui_control">Cancel</span> button is equivalent to pressing <span class="keybd">Esc</span>.</p>
+                                                                    <p>The <span class="ui_control">OK</span>/<span class="ui_control">Cancel</span> buttons only gain focus for keyboard entry if the screen would normally ask for confirmation for entry/correct. The <span class="ui_control">OK</span>/<span class="ui_control">Cancel</span> buttons replace the confirmation question in this situation.</p>
+                                                                    <p>A screen in correct mode that does not have a PRIMARY defined is assumed to be an options/defaults screen. In this situation the <span class="ui_control">OK</span> button initially has the keyboard focus, instead of the first ACCEPT.</p>
+                                                                    <p>Only the screen that defines the current window can gain keyboard focus on the <span class="ui_control">OK</span>/<span class="ui_control">Cancel</span> buttons. Sub-screens inheriting the window of the calling routine do not give focus to the <span class="ui_control">OK</span>/<span class="ui_control">Cancel</span> buttons. They can still be clicked when a sub-screen is being processed.</p>
+                                                                    <p><a name="clause_stayincorrect"></a>The <span class="ui_control">OK</span>/<span class="ui_control">Cancel</span> buttons are not shown on a window that is less than four lines deep.</p>
+                                                                    <p>The NO-OK-CANCEL clause can be used on a screen to disable this functionality. If the CONFIRM statement is used, the NO-OK-CANCEL clause changes the way the confirm is presented to the user when the screen is in Correct mode. For more information, see <a href="../statements/confirm_statement.htm#effect_of_no_ok_cancel" class="standard MCXref xref xrefstandard">Notes</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_formentry"></a>STAY-IN-CORRECT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>When the screen is in Correct mode and the user finishes correcting the screen, if this clause has been specified, instead of control passing back to mode selection the next valid row in the screen is read and the screen is placed back into correct mode for that row. This continues until the user cancels correct mode or there are no more valid rows.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>FORM-ENTRY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>If this clause is included, the Entry mode of the screen is processed differently to the traditional sequential Entry mode.</p>
+                                                                    <p>When <span class="ui_control">Entry</span> mode is selected, all fields with an associated ACCEPT statement are set to their default values. The screen then operates the same as in Correct mode, that is, the user can navigate to any field.</p>
+                                                                    <p>When a screen defined as FORM-ENTRY is setting the default field values at the start of Entry mode, the following expression evaluates to TRUE in any VALIDATIONS or ON CHANGE sections that are executed at that time. This enables you to write separate validation logic for when the user is entering a value (expression evaluates to FALSE) and the automatic setting of the default value (expression evaluates to TRUE).</p>
+                                                                    <p class="codeblock">if SCREEN-MODE() = FORM-ENTRY-DEFAULTS</p>
+                                                                    <p>On exiting Entry mode, the VALIDATION section of all ACCEPT fields are processed.</p>
+                                                                    <p>The screen area associated with a DISPLAY, ACCEPT, etc. with a WHEN clause are greyed if the WHEN condition evaluates to FALSE. The WHEN clauses for all statements in the screen are evaluated each time screen input is requested.</p>
+                                                                    <p>A FORM-ENTRY screen with an ACCEPT with FILL WITH TRAILING specified will always have the trailing character added to the current field value whenever the ACCEPT is processed, even in Correct mode.</p>
+                                                                    <p><a name="clause_export"></a>The boolean function FORM-ENTRY-VALIDATION() indicates if the screen is performing the final form validation in a FORM-ENTRY or RESPONSIVE screen. For more information, see <a href="../functions/form_entry_validation.htm" class="standard MCXref xref xrefstandard">FORM-ENTRY-VALIDATION()</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_usertrigger"></a>EXPORT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Indicates that the routine is an entry point to an operations table when used as a component library.</p>
+                                                                    <p>For more information, see <a href="../clauses/export_clause.htm" class="standard MCXref xref xrefstandard">EXPORT clause</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_canoverride"></a>USER-TRIGGER</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause is similar to the EXPORT clause described above, but also allows the routine to be called as a component library trigger by <span class="module"><span class="mc-variable _global/product.pt-proscreen variable">Screen Customiser</span></span>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>CAN-OVERRIDE</p>
+                                                                    <p><a name="clause_helpcontext"></a>NO-OVERRIDE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>These clauses specify whether the routine is allowed to be overridden by custom component versions. If neither clause is included, CAN-OVERRIDE is assumed.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>HELP-CONTEXT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies a context-sensitive help topic to display when the user presses <span class="keybd">F1</span> while this screen is displayed.</p>
+                                                                    <p><span class="emphasis">help-file-expression</span> is an alpha expression or literal that specifies the name of the help file. <span class="emphasis">context-id-expression</span> is a numeric expression or literal that specifies the context ID of the topic in that help file that is to display.</p>
+                                                                    <p>This setting will override the help context information stored in the <span class="function_name">System Modules &amp; Functions (SYS M412)</span> function for the menu function that was used to access this screen, or a help context defined using the SET-HELP-CONTEXT function.</p>
+                                                                    <p class="restriction"><a name="clause_before"></a>This feature requires runtime version 7.1 or higher and a <span class="emphasis">.chm</span>, <span class="emphasis">.hlp</span> or <span class="emphasis">.htm</span> format context-sensitive help system that has been generated using a suitable help authoring tool.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_before"></a>BEFORE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies the BEFORE command group.</p>
+                                                                    <p>This should contain any setup code for the screen (for example, headings)</p>
+                                                                    <p> This is performed once at the start of the screen and whenever the screen is refreshed using the REFRESH statement.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_detail"></a>DETAIL</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This contains the iterative code for the screen.</p>
+                                                                    <p>This code is performed for every screen operation (for example, entry, search, and so on).</p>
+                                                                    <p>This command group should contain ACCEPT statements for entering or specifying field values.</p>
+                                                                    <p class="important">You must have at least one valid input field in a screen. If you want to effectively hide it, that field can be placed outside the window bounds.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_after"></a>AFTER</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies the AFTER command group.</p>
+                                                                    <p>This should contain any finalisation code for the screen.</p>
+                                                                    <p>This is performed once when exiting the screen.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="claus_screen_style"></a>SCREEN-STYLE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies a numeric screen style which will be sent to the web client.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr data-mc-conditions="">
+                                                                <td>
+                                                                    <p>NO-MODES<a name="no-modes"></a></p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Defines a screen that has no mode selection or field input.</p>
+                                                                    <p>The screen is closed by clicking on the <span class="ui_control">X</span> close button for the window or by pressing <span class="keybd">Esc</span>.</p>
+                                                                    <p>The OPTION statement can be used to define clickable buttons within the screen.</p>
+                                                                    <p>An EVENTS-SECTION may be specified to process screen events.</p>
+                                                                    <p>If a PRIMARY or SELECT clause is specified then either the first row or first page of the result set will be displayed.</p>
+                                                                    <p>Specifying an EVENTS-SECTION with a TIMEOUT and issuing a REFRESH DATA or REFRESH REVIEW will continually update the data if a PRIMARY or SELECT was specified.</p>
+                                                                    <p class="restriction">ACCEPT, RADIO-BUTTON, CHECK-BOX and CONFIRM statements are not valid in a NO-MODES screen.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h2 class="nontoc" id="Notes" data-magellan-target="Notes">Notes</h2>
+                                                    <ul data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <li>
+                                                            <p>There is a special case where the name of the screen is <span class="emphasis">main</span>. In this circumstance the procedure is the first performed for the program regardless of its location in the program.</p>
+                                                            <p class="note" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">Absolute row coordinates are allowed in a REVIEW screen.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Row coordinates outside the review area can be specified in the DETAIL section of a review screen. Any ACCEPT or DISPLAY statement that specifies a row outside the review area will function as in a normal screen.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>The row coordinates for the first ACCEPT or DISPLAY statement identifies the first row of the review area. As a consequence, the first ACCEPT or DISPLAY statement cannot have an expression for the row coordinate.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Parameters for a routine can be defined as a complete row/record for an object. For more information, see <a href="parameter_declaration.htm" class="standard MCXref xref xrefstandard">PARAMETER declaration</a>.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>From the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> Dimensions release onwards, the screen mode line has been separated from the standard screen area and can be moved using <span class="ui_path">Settings &gt; General</span> in the <span class="mc-variable _global/product.pxi-desktop variable">Pronto Xi Enterprise Client</span>. When defining the window for a screen, the height of the screen must still be specified as though the modes are displayed as buttons on the bottom row. Note also that the mode area is associated with the window for a screen. When a screen inherits the window of a parent screen, the use of a mode area is solely determined by the parent screen that owns the window.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Modes are displayed as traditional buttons, and the mode area is not separated in the following situations:</p>
+                                                            <ul data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                                <li>
+                                                                    <p>The screen specifies the location of modes using PROMPT @&lt;row&gt;,&lt;col&gt;.</p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>The screen has a single mode not requiring mode selection or the OK/Cancel buttons to be displayed.</p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>Only windows for screens create a mode area. Windows for procedures or menus do not create mode areas.</p>
+                                                                </li>
+                                                                <li>
+                                                                    <p>The screen inherits a parent window that does not have a mode area.</p>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <p>Screen windows when created are positioned in the available area not covered by the docked menu pane. If the screen window does not fit in the available area, the menu pane is set to auto hide mode so that it does not overlap the screen window.</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="MCRelationshipsProxy_related-topics_0">
+                                                    <p class="referenceHeading_reference_0">REFERENCE</p>
+                                                    <p class="referenceItem_reference_0"><a href="api_declaration.htm">API declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/confirm_statement.htm">CONFIRM statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/escape.htm">ESCAPE() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="menu_declaration.htm">MENU declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="mode_declaration.htm">MODE declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/option_statement.htm">OPTION statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/pause_statement.htm">PAUSE statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="procedure_declaration.htm">PROCEDURE declaration</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../statements/re_select_statement.htm">RE-SELECT statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../clauses/select_clause.htm">SELECT clause</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="right-content column">
+                                                <ul data-magellan="" data-animation-duration="250" data-active-class="selected" data-scroll-container=".body-container" data-scroll-container-on="only screen and (min-width: 1001px)" class="on-this-page _Skins__global_sidenav_side_menu mc-component">
+                                                    <li><a href="#SCREENdeclaration">SCREEN declaration</a>
+                                                    </li>
+                                                    <ul>
+                                                        <li><a href="#Syntax">Syntax</a>
+                                                        </li>
+                                                        <li><a href="#Clauses">Clauses</a>
+                                                        </li>
+                                                        <li><a href="#Notes">Notes</a>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+		</script>-->
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.tablesorter.js">
+                                    </script>
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.stickytableheaders.js">
+                                    </script>
+                                    <script>/* <![CDATA[ */
+			$(document).ready(function()
+			{
+			$("table").tablesorter();
+			$("table").stickyTableHeaders();
+			
+			}
+			);
+		/* ]]> */</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

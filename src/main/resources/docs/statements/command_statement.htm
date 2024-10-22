@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-au" xml:lang="en-au" class="_Skins__global_sidenav_sidenav" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-output-analytics-server="https://prontosoftwareptyltd.api.madcapcentral.com/" data-mc-output-analytics-topic-id="1xBCeJNnhjBdfvY8LHA1MewwzI3Vn4TuHRN21QTXxuUDHZLqJix68slCgwMKq0CRn4VkNP+1F3ZPawxfTvnQfHNnKux8QZjqpioM523Tp6zYPN52bSQl4CwhBzl+0/v/9aFBlxgA6e+E4SF6bqytpyKoIYSFDW+qYzVCNeWlBv1gr6RJk02R6Q==" data-mc-has-content-body="True" data-mc-toc-path="[%=System.LinkedTitle%]|[%=System.LinkedTitle%]|[%=System.LinkedTitle%]" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" /><title>COMMAND statement</title>
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../_global/resources/css/sidenav/sdk-special-overrides.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.topic-ratings-button
+{
+	-pie-background: transparent url('../../../Skins/Default/Stylesheets/Images/star-full.png') no-repeat center center;
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-expanded-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.email-tct-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE.htc');
+}
+
+</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+        </script>
+        <script type="text/javascript" src="../../../Skins/Default/Scripts/_global/sidenav/sidenav-toolbar.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" role="banner" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-device-width: 1000px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../_home/sidenav/sidenav-home-sdk.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" role="navigation" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search..." />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="Filter your results by subject area." role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">Filter your results by subject area.</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div class="row collapse">
+                                        <div class="top-bar">
+                                            <div class="buttons popup-container clearfix topicToolbarProxy _Skins__global_sidenav_sidenav_toolbar mc-component nocontent" style="mc-topic-toolbar-items: ;">
+                                                <div class="button-group-container-left">
+                                                    <div class="button-group star-buttons loading feedback-topic-required">
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="button needs-pie remove-highlight-button" title="Remove highlights">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Remove highlights">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie print-expanded-button" onclick="MadCap.TextEffects.TextEffectControl.ExpandAll(&quot;open&quot;); setTimeout(function(){ window.print(); }, 1500);" title="Print this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie email-tct-button" onclick="document.location.href=&quot;mailto:pronto.edu@pronto.net?subject=Help feedback for &quot;+document.title+&quot;&amp;body=Topic: &quot;+ location.href + &quot;%0A%0AComments:%0A%0A&quot;;" title="Email us with feedback about this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="breadcrumbs">
+                                                <div class="nocontent">
+                                                    <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="10" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script src="../../_global/resources/masterpage/sidenav/scripts/back-to-top.js">
+                                            </script><a name="top"></a><a class="back-to-top-button" href="#top"></a>
+                                        </div>
+                                        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+                                        </script>
+                                        <div class="content-box">
+                                            <div class="left-content column">
+                                                <div role="main" id="mc-main-content">
+                                                    <h1 data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="COMMANDstatement" data-magellan-target="COMMANDstatement"><a name="title">COMMAND</a> statement</h1><a name="aanchor631"></a>
+                                                    <MadCap:concept term="4GL Programming" data-mc-conditions="_global/target-type.online" />
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">Executes the specified operating system command or program.</p>
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">This statement can be used to run any executable on the system. In UNIX/<span class="mc-variable _global/product-external.linux variable">Linux</span>, a shell script can be run as long as execute permission is allowed.</p>
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">This statement can also be used to execute/open a <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span>-based document using standard <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> functionality (for example, open an <span class="mc-variable _global/product-external.Microsoft_Excel variable">Microsoft Excel</span> spreadsheet or a <span class="mc-variable _global/product-external.Microsoft_Word variable">Microsoft Word</span> document).</p>
+                                                    <h2 class="nontoc" id="Syntax" data-magellan-target="Syntax">Syntax</h2><pre xml:space="preserve"><span class="code_highlight">command</span> <a href="#clause_programname">program-name</a>
+   [<span class="code_highlight"><a href="#clause_parameters">parameter</a></span>[<span class="code_highlight">s</span>] [<span class="code_highlight">is</span>|<span class="code_highlight">are</span>] alpha-expression ...]
+   [<span class="code_highlight"><a href="#clause_home">home</a></span> [<span class="code_highlight">is</span>] alpha-expression]
+   [<span class="code_highlight"><a href="#clause_nomessage">no-message</a></span>]
+   [<span class="code_highlight"><a href="#clause_norefresh">no-refresh</a></span>]
+   [<span class="code_highlight"><a href="#clause_noxterm">no-xterm</a></span>]
+   [<span class="code_highlight"><a href="#clause_maxparameters">max-parameters</a></span>]
+   [<span class="code_highlight"><a href="#clause_batch">batch</a></span>]
+   [<span class="code_highlight"><a href="#clause_background">background</a></span>|<span class="code_highlight"><a href="#clause_background">no-wait</a></span>]
+   [<span class="code_highlight"><a href="#clause_wait">wait</a></span>]
+   [<span class="code_highlight"><a href="#clause_external">external</a></span>]
+   [<span class="code_highlight"><a href="#clause_onerror">on error</a></span>]
+      procedural-statements
+    [<span class="code_highlight">else</span>
+      procedural-statements]
+     <span class="code_highlight">end-on</span>]
+</pre>
+                                                    <h2 class="unnumbered_nontoc" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="Clauses" data-magellan-target="Clauses">Clauses<a name="clause_programname"></a></h2>
+                                                    <table style="width: 100%;" class="general" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <col style="width: 20%" />
+                                                        <col />
+                                                        <thead>
+                                                            <tr>
+                                                                <th><a name="clause_parameters"></a>Clause</th>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>program-name</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The name of the program to execute.</p>
+                                                                    <p>It can be any valid alphanumeric expression.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>PARAMETERS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>List of parameters to pass to the program.</p>
+                                                                    <p>Only alphanumeric parameters can be passed. Arrays are supported.</p>
+                                                                    <div class="example">
+                                                                        <p>On <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> it is often best to add COMMAND statement parameters as individual expressions enclosed in surrounding quotes as illustrated in the following examples:<a name="clause_home"></a></p><pre xml:space="preserve"><span class="code_highlight">command</span> strconcat(getenv("PRONTO"),"\Util\RUNCMD.exe")
+    <span class="code_highlight">parameters</span> "/c" 'dir' 'c:\tmp\*.txt' '&gt;' "C:\tmp\list.out"
+
+<span class="code_highlight">command</span> strconcat(getenv("PRONTO"),"\Util\RUNCMD.exe")
+    <span class="code_highlight">parameters</span> "/c dir c:\tmp\*.txt &gt; C:\tmp\list.out"</pre>
+                                                                        <p>When using pipe directives, they too must be in separate quotes.</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_nomessage"></a>HOME</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Execute the command with this home directory.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_norefresh"></a>NO-MESSAGE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Suppresses the display of error messages, for example messages that indicate that the called program failed with a signal.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_noxterm"></a>NO-REFRESH</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Stops the COMMAND statement from refreshing the screen when control is passed back to the calling program. This should only be used when there is no possibility of the child program writing to the screen, as subsequent screen output from the calling program can be incorrectly positioned.</p>
+                                                                    <p>This clause is obsolete as it applies to character based terminals only.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_maxparameters"></a>NO-XTERM</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Stops the COMMAND statement from calling up an xterm session to run the child task when run on an X terminal. This should only be used when the child task being called is an X-Windows program.</p>
+                                                                    <p><a name="clause_batch"></a>This clause only has an effect when running on the X-Windows version of <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>MAX-PARAMETERS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Allows a numeric expression to be specified which evaluates to the maximum number of parameters to be passed, regardless of the number of parameters specified.<a name="clause_background"></a></p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>BATCH</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Submit this command to queue zero of the <span class="mc-variable _global/product.pxi variable">Pronto&#160;Xi</span> batch queue. The program will not wait for the command to be executed.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>BACKGROUND</p>
+                                                                    <p>or NO-WAIT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Flags that the child program should be detached from the calling program and run in the background on graphical systems (for example, <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> and X-Windows). The calling program will return immediately, and will not wait for the child to complete. The child program will run independently of the calling program.</p>
+                                                                    <p><a name="clause_wait"></a>The EXIT-STATUS function will only indicate the success of the command, and not the actual exit status of the child program.</p>
+                                                                    <p><a name="clause_external"></a>This clause only affects Windows based systems.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>WAIT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Wait for child program to finish before continuing. </p>
+                                                                    <p>This is the default, although this might not be possible when opening Windows documents.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_onerror"></a>EXTERNAL</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Run on the local machine (workstation).</p>
+                                                                    <p>The user must be running the <span class="mc-variable _global/product.pxi-client variable">Pronto Xi Client</span> on their workstation when using a UNIX based server. This clause is ignored when the application is run on a <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span>-based system (as you are already running on the workstation), for example:</p><pre xml:space="preserve"><span class="code_highlight">if operating-system</span>() != "WINDOWS"
+    <span class="code_highlight">command</span> 'send2proterm' <span class="code_highlight">parameters</span> '-r'
+       ws-unix-file-name ws-file-name
+    <span class="code_highlight">on error</span>
+        <span class="code_highlight">message</span> "a c:\tmp must exist"
+    <span class="code_highlight">end-on</span>
+<span class="code_highlight">endif</span>
+<span class="code_highlight">command</span> ws-file-name <span class="code_highlight">external no-wait</span>
+  <span class="code_highlight">on error</span>
+    <span class="code_highlight">message</span> "Could not open", ws-file-name
+  <span class="code_highlight">end-on</span>
+</pre>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>ON ERROR</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Perform these statements if the command specified could not be executed.</p>
+                                                                    <p> If the ELSE clause is included, the procedural statements following the ELSE are performed if the operation was successful.</p>
+                                                                    <p>Any invalid home directories are trapped.</p>
+                                                                    <p class="note">The ELSE section of an ON ERROR is only performed if there is no error.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h2 class="nontoc" id="Notes" data-magellan-target="Notes">Notes</h2>
+                                                    <ul data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <li>
+                                                            <p>The PARAMETERS clause of the CALL/QUERY/COMMAND statements allow numeric values to be specified. Parameters for external programs are still passed in alphanumeric format; however, numeric values are automatically converted into their preferred alphanumeric format when passed.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>To open a <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span>-based document, the required software for that document type must be installed on the workstation. For example, to open a <span class="mc-variable _global/product-external.Microsoft_Excel variable">Microsoft Excel</span> spreadsheet, <span class="mc-variable _global/product-external.Microsoft_Excel variable">Microsoft Excel</span> must be installed on the workstation.</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="MCRelationshipsProxy_related-topics_0">
+                                                    <p class="referenceHeading_reference_0">REFERENCE</p>
+                                                    <p class="referenceItem_reference_0"><a href="call_statement.htm">CALL statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="do_statement.htm">DO statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="enquiry_statement.htm">ENQUIRY statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/exit_status.htm">EXIT-STATUS() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="query_statement.htm">QUERY statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="spl_statement.htm">SPL statement</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="right-content column">
+                                                <ul data-magellan="" data-animation-duration="250" data-active-class="selected" data-scroll-container=".body-container" data-scroll-container-on="only screen and (min-width: 1001px)" class="on-this-page _Skins__global_sidenav_side_menu mc-component">
+                                                    <li><a href="#COMMANDstatement">COMMAND statement</a>
+                                                    </li>
+                                                    <ul>
+                                                        <li><a href="#Syntax">Syntax</a>
+                                                        </li>
+                                                        <li><a href="#Clauses">Clauses</a>
+                                                        </li>
+                                                        <li><a href="#Notes">Notes</a>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+		</script>-->
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.tablesorter.js">
+                                    </script>
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.stickytableheaders.js">
+                                    </script>
+                                    <script>/* <![CDATA[ */
+			$(document).ready(function()
+			{
+			$("table").tablesorter();
+			$("table").stickyTableHeaders();
+			
+			}
+			);
+		/* ]]> */</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

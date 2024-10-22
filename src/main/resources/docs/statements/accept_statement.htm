@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-au" xml:lang="en-au" class="_Skins__global_sidenav_sidenav" data-mc-search-type="Stem" data-mc-help-system-file-name="index.xml" data-mc-path-to-help-system="../../../" data-mc-output-analytics-server="https://prontosoftwareptyltd.api.madcapcentral.com/" data-mc-output-analytics-topic-id="1xBCeJNnhjBdfvY8LHA1MewwzI3Vn4TuHRN21QTXxuUDHZLqJix68slCgwMKq0CRn4VkNP+1F3ZPawxfTvnQfHNnKux8QZjqXd6z2CHaOYv0jGsmaBZ08qJG57pOc0NamST+u30MXYS7gJ7hDzMItE9IzttYPEFBR8db3gCL6UCRas/+0UL1xw==" data-mc-has-content-body="True" data-mc-toc-path="[%=System.LinkedTitle%]|[%=System.LinkedTitle%]|[%=System.LinkedTitle%]" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic;Default" data-mc-preload-images="false" data-mc-in-preview-mode="false">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="msapplication-config" content="../../../Skins/Favicons/browserconfig.xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" /><title>ACCEPT statement</title>
+        <meta http-equiv="Cache-control" content="no-cache" />
+        <link href="../../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Default/Stylesheets/Components/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/foundation.6.2.3.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Styles.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Tablet.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Mobile.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../../Skins/Fluid/Stylesheets/Print.css" rel="stylesheet" type="text/css" data-mc-generated="True" />
+        <link href="../../_global/resources/css/sidenav/sdk-special-overrides.css" rel="stylesheet" type="text/css" />
+        <style>/*&lt;meta /&gt;*/
+
+.button.topic-ratings-button
+{
+	-pie-background: transparent url('../../../Skins/Default/Stylesheets/Images/star-full.png') no-repeat center center;
+}
+
+.button.remove-highlight-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.expand-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.print-expanded-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.email-tct-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.button.collapse-all-button
+{
+	-pie-background: linear-gradient(transparent, transparent);
+}
+
+.needs-pie
+{
+	behavior: url('../../../Resources/Scripts/PIE.htc');
+}
+
+</style>
+        <link rel="apple-touch-icon" sizes="180x180" href="../../../Skins/Favicons/apple-touch-icon.png" />
+        <link rel="shortcut icon" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="96x96" href="../../../Skins/Favicons/favicon-96x96.png" />
+        <link rel="icon" sizes="32x32" href="../../../Skins/Favicons/favicon-32x32.png" />
+        <link rel="icon" sizes="16x16" href="../../../Skins/Favicons/favicon-16x16.png" />
+        <script src="../../../Resources/Scripts/jquery.min.js" type="text/javascript">
+        </script>
+        <script src="../../../Resources/Scripts/purify.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/require.config.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/foundation.6.2.3_custom.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/plugins.min.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../../Resources/Scripts/MadCapAll.js" type="text/javascript" defer="defer">
+        </script>
+        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+        </script>
+        <script type="text/javascript" src="../../../Skins/Default/Scripts/_global/sidenav/sidenav-toolbar.js">
+        </script>
+    </head>
+    <body>
+        <div class="foundation-wrap off-canvas-wrapper">
+            <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper="">
+                <aside class="off-canvas position-right" role="navigation" id="offCanvas" data-off-canvas="" data-position="right" data-mc-ignore="true">
+                    <ul class="off-canvas-drilldown vertical menu off-canvas-list" data-drilldown="" data-mc-back-link="Back" data-mc-css-tree-node-expanded="is-drilldown-submenu-parent" data-mc-css-tree-node-collapsed="is-drilldown-submenu-parent" data-mc-css-sub-menu="vertical menu slide-in-right is-drilldown-submenu" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="True" data-mc-include-back="True" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.drilldown" data-mc-toc="True">
+                    </ul>
+                </aside>
+                <div class="off-canvas-content inner-wrap" data-off-canvas-content="">
+                    <div data-sticky-container="" class="title-bar-container">
+                        <nav class="title-bar tab-bar sticky" role="banner" data-sticky="" data-options="marginTop:0" style="width:100%" data-sticky-on="only screen and (max-device-width: 1000px)" data-mc-ignore="true"><a class="skip-to-content fluid-skip showOnFocus" href="#">Skip To Main Content</a>
+                            <div class="middle title-bar-section outer-row clearfix">
+                                <div class="menu-icon-container relative clearfix">
+                                    <div class="central-account-wrapper">
+                                        <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                            <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                                <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="menu-icon" aria-label="Show Navigation Panel" data-toggle="offCanvas"><span></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="title-bar-layout outer-row">
+                                <div class="logo-wrapper"><a class="logo" href="../../_home/sidenav/sidenav-home-sdk.htm" alt="Logo"></a>
+                                </div>
+                                <div class="navigation-wrapper nocontent">
+                                    <ul class="navigation clearfix" role="navigation" data-mc-css-tree-node-has-children="has-children" data-mc-css-sub-menu="sub-menu" data-mc-expand-event="mouseenter" data-mc-top-nav-menu="True" data-mc-max-depth="3" data-mc-include-icon="False" data-mc-include-indicator="False" data-mc-include-children="True" data-mc-include-siblings="True" data-mc-include-parent="True" data-mc-toc="True">
+                                        <li class="placeholder" style="visibility:hidden"><a>placeholder</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="central-account-wrapper">
+                                    <div class="central-dropdown"><a class="central-account-drop"><span class="central-account-image"></span><span class="central-account-text">Account</span></a>
+                                        <div class="central-dropdown-content"><a class="MCCentralLink central-dropdown-content-settings">Settings</a>
+                                            <hr class="central-separator" /><a class="MCCentralLink central-dropdown-content-logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nav-search-wrapper">
+                                    <div class="nav-search row">
+                                        <form class="search" action="#">
+                                            <div class="search-bar search-bar-container needs-pie">
+                                                <input class="search-field needs-pie" type="search" aria-label="Search Field" placeholder="Search..." />
+                                                <div class="search-filter-wrapper"><span class="invisible-label" id="search-filters-label">Filter: </span>
+                                                    <div class="search-filter" aria-haspopup="true" aria-controls="sf-content" aria-expanded="false" aria-label="Search Filter" title="Filter your results by subject area." role="button" tabindex="0">
+                                                    </div>
+                                                    <div class="search-filter-content" id="sf-content">
+                                                        <ul>
+                                                            <li>
+                                                                <button class="mc-dropdown-item" aria-labelledby="search-filters-label filterSelectorLabel-00001"><span id="filterSelectorLabel-00001">Filter your results by subject area.</span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="search-submit-wrapper" dir="ltr">
+                                                    <div class="search-submit" title="Search" role="button" tabindex="0"><span class="invisible-label">Submit Search</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="main-section">
+                        <div class="row outer-row sidenav-layout">
+                            <nav class="sidenav-wrapper">
+                                <div class="sidenav-container">
+                                    <ul class="off-canvas-accordion vertical menu sidenav" data-accordion-menu="" data-mc-css-tree-node-expanded="is-accordion-submenu-parent" data-mc-css-tree-node-collapsed="is-accordion-submenu-parent" data-mc-css-sub-menu="vertical menu accordion-menu is-accordion-submenu nested" data-mc-include-indicator="False" data-mc-include-icon="False" data-mc-include-parent-link="False" data-mc-include-back="False" data-mc-defer-expand-event="True" data-mc-expand-event="click.zf.accordionMenu" data-mc-toc="True" data-mc-side-nav-menu="True">
+                                    </ul>
+                                </div>
+                            </nav>
+                            <div class="body-container">
+                                <div data-mc-content-body="True">
+                                    <div class="row collapse">
+                                        <div class="top-bar">
+                                            <div class="buttons popup-container clearfix topicToolbarProxy _Skins__global_sidenav_sidenav_toolbar mc-component nocontent" style="mc-topic-toolbar-items: ;">
+                                                <div class="button-group-container-left">
+                                                    <div class="button-group star-buttons loading feedback-topic-required">
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="button star-button topic-ratings-empty-button" data-state1-class="topic-ratings-empty-button" data-state2-class="topic-ratings-button" title="Click a star to rate this topic" data-state1-title="Click a star to rate this topic" data-state2-title="Click a star to rate this topic">
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Click a star to rate this topic" data-state1-alt="Click a star to rate this topic" data-state2-alt="Click a star to rate this topic">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="button needs-pie remove-highlight-button" title="Remove highlights">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Remove highlights">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie expand-all-button" data-state1-class="expand-all-button" data-state2-class="collapse-all-button" data-state2-title="Collapse all" title="Expand all" data-state1-title="Expand all">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper" aria-label="Expand all">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie print-expanded-button" onclick="MadCap.TextEffects.TextEffectControl.ExpandAll(&quot;open&quot;); setTimeout(function(){ window.print(); }, 1500);" title="Print this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                    <button class="button needs-pie email-tct-button" onclick="document.location.href=&quot;mailto:pronto.edu@pronto.net?subject=Help feedback for &quot;+document.title+&quot;&amp;body=Topic: &quot;+ location.href + &quot;%0A%0AComments:%0A%0A&quot;;" title="Email us with feedback about this topic">
+                                                        <div>
+                                                            <div role="img" class="button-icon-wrapper">
+                                                                <div class="button-icon"> </div>
+                                                            </div>
+                                                        </div>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="breadcrumbs">
+                                                <div class="nocontent">
+                                                    <div class="MCBreadcrumbsBox_0 breadcrumbs" role="navigation" aria-label="Breadcrumbs" data-mc-breadcrumbs-divider=" &gt; " data-mc-breadcrumbs-count="10" data-mc-toc="True"><span class="MCBreadcrumbsPrefix">You are here: </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script src="../../_global/resources/masterpage/sidenav/scripts/back-to-top.js">
+                                            </script><a name="top"></a><a class="back-to-top-button" href="#top"></a>
+                                        </div>
+                                        <script src="../../_global/resources/masterpage/sidenav/scripts/responsive-tables.js">
+                                        </script>
+                                        <div class="content-box">
+                                            <div class="left-content column">
+                                                <div role="main" id="mc-main-content">
+                                                    <h1 data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="ACCEPTstatement" data-magellan-target="ACCEPTstatement"><a name="title">ACCEPT</a> statement</h1><a name="aanchor820"></a>
+                                                    <MadCap:concept term="4GL Programming" data-mc-conditions="_global/target-type.online" />
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">Displays a field on the current screen for entry or correction of data.</p>
+                                                    <p data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">The ACCEPT statement is principally designed to be placed in the DETAIL section of a SCREEN declaration where it is used for data entry and correction. It can however be used (for data entry only) in most sections of code, for example in the BEFORE section of a SCREEN declaration. An ACCEPT statement can also be used in a FOR, WHILE or EXTRACT loop.</p>
+                                                    <h2 class="nontoc" id="Syntax" data-magellan-target="Syntax">Syntax</h2><pre xml:space="preserve" data-mc-conditions="IDE_Extract.IDE_4GL_Full"><span class="code_highlight">accept</span> field-name <a href="#clause_rowcol">@row,col</a>
+   [<span class="code_highlight"><a href="#clause_col">col</a></span> expression]
+   [<span class="code_highlight"><a href="#clause_title">title</a></span>|<span class="code_highlight"><a href="#clause_title">column-title</a></span> [<span class="code_highlight">is</span>] alpha-expression [@row,col]]
+   [<span class="code_highlight"><a href="#clause_notitle">no-title</a></span>]
+   [<span class="code_highlight"><a href="#clause_multiline">multi-line</a></span>]
+   [<span class="code_highlight"><a href="#clause_rows">rows</a></span> numeric-expression]
+   [<span class="code_highlight"><a href="#clause_columns">columns</a></span> numeric-expression]
+   [<span class="code_highlight"><a href="#clause_picture">pic</a></span> [<span class="code_highlight">is</span>] picture]
+   [<span class="code_highlight"><a href="#clause_blankwhenzero">blank-when-zero</a></span>] [<span class="code_highlight"><a href="#clause_blankwhenzero">blank-decimals-when-zero</a></span>]
+   [<span class="code_highlight"><a href="#clause_optional">optional</a></span>]
+   [<span class="code_highlight"><a href="#clause_default">default</a></span> [<span class="code_highlight">is</span>] expression]
+   [<span class="code_highlight"><a href="#clause_defaultifwhenfalse">default-if-when-false</a></span>]
+   [<span class="code_highlight"><a href="#clause_allow">allow</a></span> expression [<span class="code_highlight">to</span> expression] ...]
+   [<span class="code_highlight"><a href="#clause_disallow">disallow</a></span> expression [<span class="code_highlight">to</span> expression] ...]
+   [<span class="code_highlight"><a href="#clause_justify">justify</a></span>]
+   [<span class="code_highlight"><a href="#clause_autoreturn">auto-return</a></span>]
+   [<span class="code_highlight"><a href="#clause_timeout">time-out</a></span> [<span class="code_highlight">is</span>] seconds]
+   [<span class="code_highlight"><a href="#clause_fill">fill</a></span> [<span class="code_highlight">with</span>] [<span class="code_highlight"><a href="#clause_fill">leading</a></span>|<span class="code_highlight"><a href="#clause_fill">trailing</a></span>] alpha-character]
+   [<span class="code_highlight"><a href="#clause_lookup">lookup</a></span> [<span class="code_highlight">not</span>] [<span class="code_highlight">in</span>] object-name
+     [<span class="code_highlight">on index</span> index]
+     [<span class="code_highlight">key</span> [<span class="code_highlight">is</span>] expression ...]
+   [<span class="code_highlight"><a href="#clause_lowercase">lowercase</a></span>|<span class="code_highlight"><a href="#clause_lowercase">uppercase</a></span>]
+   [<span class="code_highlight"><a href="#clause_left">left</a></span>|<span class="code_highlight"><a href="#clause_left">centre</a></span>|<span class="code_highlight"><a href="#clause_left">right</a></span>|<span class="code_highlight"><a href="#clause_left">centre-coord</a></span>|<span class="code_highlight"><a href="#clause_left">right-coord</a></span>]
+   [<span class="code_highlight"><a href="#clause_help">help</a></span> [<span class="code_highlight">is</span>] expression]
+   [<span class="code_highlight"><a href="#clause_bold">bold</a></span>] [<span class="code_highlight"><a href="#clause_bold">dim</a></span>] [<span class="code_highlight"><a href="#clause_bold">flashing</a></span>] [<span class="code_highlight"><a href="#clause_bold">inverse</a></span>] [<span class="code_highlight"><a href="#clause_bold">italic</a></span>] [<span class="code_highlight"><a href="#clause_bold">underlined</a></span>]
+   [<span class="code_highlight"><a href="#clause_foreground">foreground</a></span>] [<span class="code_highlight"><a href="#clause_foreground">background</a></span>]
+   [<span class="code_highlight"><a href="#clause_blank">blank</a></span>]
+   [<span class="code_highlight"><a href="#clause_onerror">on error</a></span> 
+      procedural-statements
+   <span class="code_highlight">end-on</span>]
+   [<span class="code_highlight"><a href="#clause_onfunctionkey">on</a></span> function-key
+      procedural-statements
+    <span class="code_highlight">end-on</span>]
+   [<span class="code_highlight"><a href="#clause_tag">tag</a></span> [<span class="code_highlight">is</span>] numeric-literal]
+   [<span class="code_highlight"><a href="#clause_helpcontext">help-context</a></span> [<span class="code_highlight">is</span>] help-file-expression
+      context-id-expression]
+   [<span class="code_highlight"><a href="#clause_helpscreen">help-screen primary</a></span> object-name @row,col
+     [<span class="code_highlight"><a href="#clause_helpscreen">occurs</a></span> number-of-lines]
+     <span class="code_highlight"><a href="#clause_helpscreen">showing</a></span> field alpha-literal [, field alpha-literal ...]
+     [<span class="code_highlight"><a href="#clause_helpscreen">using</a></span> field]]
+   [<span class="code_highlight"><a href="#clause_when">when</a></span> condition]
+   [<span class="code_highlight"><a href="#clause_showvalue">show-value</a></span>] [<span class="code_highlight"><a href="#clause_noclear">no-clear</a></span>]
+   [<span class="code_highlight"><a href="#clause_suppress">suppress</a></span>]
+   [<span class="code_highlight"><a href="#clause_conditionalsuppress">conditional-suppress</a></span>]
+   [<span class="code_highlight"><a href="#clause_readonly">read-only</a></span>]
+   [<span class="code_highlight"><a href="#clause_static">static</a></span>]
+   [<span class="code_highlight"><a href="#clause_fixedwidthfont">fixed-width-font</a></span>]
+   [<span class="code_highlight"><a href="#clause_colour">colour</a></span> [<span class="code_highlight">is</span>] colour [<span class="code_highlight">on</span> colour]]
+   [<span class="code_highlight"><a href="#clause_beforeaccept">before-accept</a></span> 
+      procedural-statements
+   <span class="code_highlight">end-before-accept</span>]
+   [<span class="code_highlight"><a href="#clause_validations">validations</a></span> 
+      procedural-statements
+   <span class="code_highlight">end-validations</span>]
+   [<span class="code_highlight"><a href="#clause_usevalidatetrigger">use-validate-trigger</a></span>]
+   [<a href="#clause_proceduralstatements">procedural-statements</a>]
+   [<span class="code_highlight"><a href="#clause_scale">scale</a></span> [<span class="code_highlight">is</span>] expression]
+   [<span class="code_highlight"><a href="#clause_nowarning">no warning</a></span> 
+   [<span class="code_highlight"><a href="#clause_onchange">on change</a></span> 
+      procedural-statements
+   <span class="code_highlight">end-on</span>]
+</pre>
+                                                    <h2 data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="Clauses" data-magellan-target="Clauses">Clauses<a name="clause_rowcol"></a></h2>
+                                                    <table style="width: 100%;" class="general" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <col style="width: 20%;" />
+                                                        <col />
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Clause</th>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>@row,col</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="important">The @row,col coordinates do not need to be specified if they are part of a responsive screen. For more information, see <a href="../../4gl_responsive/syntax/responsive_clause.htm" class="standard MCXref xref xrefstandard">RESPONSIVE clause</a>.</p>
+                                                                    <p>The screen coordinates of the field. Both the row and column values can be arithmetic expressions.</p>
+                                                                    <p>Decimal places are supported in the coordinates, for example:</p>
+                                                                    <p class="codeblock"> @10.5,19.2</p>
+                                                                    <p>Row/column values less than 1.0 are invalid.</p>
+                                                                    <p class="note">The coordinate for the origin of the screen (that is, top/left) is @1,1 not @0,0.</p>
+                                                                    <p>While decimal places are supported, coordinate addressing is still based on a character grid. Unless otherwise specified, when an area of the screen is addressed, that area includes a full character cell position to the bottom right of the end coordinate, for example:</p>
+                                                                    <p class="codeblock"><span class="code_highlight">display</span> ws-text @10,10 <span class="code_highlight">pic x(20)</span></p>
+                                                                    <p>The above example occupies an area of the screen from @10.0,10.0 to @10.999,30.999.</p>
+                                                                    <p class="codeblock"><span class="code_highlight">display</span> ws-text @10.5,10.5 <span class="code_highlight">pic x(20)</span></p>
+                                                                    <p>The above example occupies an area of the screen from @10.5,10.5 to @11.4999,31.4999.</p>
+                                                                    <p class="codeblock"><span class="code_highlight">display bitmap</span> "abcd.bmp" @10,10 <span class="code_highlight">to</span> @14,20</p>
+                                                                    <p><a name="clause_col"></a>The above example occupies an area of the screen from @10,10 to @14.9999,20.9999</p>
+                                                                    <p class="codeblock"><span class="code_highlight">window</span> @1,1 <span class="code_highlight">to</span> @23,80</p>
+                                                                    <p>The above example refers to an area from @1.0,1.0 to @23.999,80.999.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_title"></a>COL</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Define the data grid column coordinates.</p>
+                                                                    <p>Within an ACCEPT or DISPLAY statement, the column value for a data grid column can be specified using the following syntax instead of @row,col:</p>
+                                                                    <p>[IN] COL[UMN] &lt;expr&gt;</p>
+                                                                    <p>When this syntax is used instead of @row,col, a row value of the window position (normally 1) is used.</p>
+                                                                    <div class="example">
+                                                                        <p class="codeblock"><span class="code_highlight">display</span> accountcode <span class="code_highlight">col</span> 3</p>
+                                                                    </div>
+                                                                    <p class="note">Requires runtime 7.6v3.0 and above.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_notitle"></a>TITLE or COLUMN-TITLE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Title for the field.</p>
+                                                                    <p>If only one set of coordinates is specified in the ACCEPT statement, the prompt is positioned relative to this location (for example, in the heading for a column, or to the left of the field for a normal screen).</p>
+                                                                    <p class="note">If a variable expression is used, the value must be set in the BEFORE section or before the SCREEN being opened.</p>
+                                                                    <p class="note">To dynamically change variable title expressions, see PROMPTS in <a href="refresh_statement.htm" class="standard MCXref xref xrefstandard">REFRESH statement</a>.</p>
+                                                                    <p>If a DISPLAY or ACCEPT statement in a responsive screen does not specify a title, the title for the field defined in the dictionary will be used.</p>
+                                                                    <p>This applies only when a dictionary field is specified.</p>
+                                                                    <p>The NO-TITLE clause can be specified if no title is wanted.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_multiline"></a>NO-TITLE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies that the dictionary defined title for the field is not to be used.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_multiline2"></a><a name="clause_rows"></a><a name="clause_columns"></a>MULTI-LINE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Defines a free-form text entry field that allows Line Feed (LF) characters to be entered into the data. When using this clause, the text might wrap but there will be no line breaks.</p>
+                                                                    <p>The <span class="mc-variable _global/product.pxi-webui variable">Pronto&#160;Xi web interface</span> interprets this clause as a field that can continue over multiple lines.</p>
+                                                                    <p class="note">This clause can be specified only for responsive screens. The size of the multi-line field is based on the screen group in which it is contained. For more information, see <a href="../../4gl_responsive/syntax/responsive_clause.htm" class="standard MCXref xref xrefstandard">RESPONSIVE clause</a> and <a href="../../4gl_responsive/syntax/screen_group_statement.htm" class="standard MCXref xref xrefstandard">SCREEN-GROUP statement</a>.</p>
+                                                                    <div class="example">
+                                                                        <p>A simple accept of a single text field:</p><pre xml:space="preserve"><span class="code_highlight">local</span>
+   lf-notes-tb     <span class="code_highlight">type varchar pic</span> x(16000)
+.
+.
+.
+   <span class="code_highlight">accept</span> lf-notes-tb
+      <span class="code_highlight">title</span> "Text Box Entry"
+      <span class="code_highlight">help</span> "This is a text box entry field"
+      <span class="code_highlight">multi-line</span>
+      <span class="code_highlight">default</span> lf-notes-tb
+</pre>
+                                                                    </div>
+                                                                    <div class="example"><pre xml:space="preserve">
+   <span class="code_highlight">accept</span> lf-multi-line-address
+      <span class="code_highlight">title</span> 'Address'
+      <span class="code_highlight">multi-line</span>
+      <span class="code_highlight">rows</span> lf-no-of-addr-lines
+      <span class="code_highlight">columns</span> 40
+</pre>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_picture"></a>ROWS</p>
+                                                                    <p>COLUMNS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>In responsive screens, the number of rows and/or columns can be specified for the ACCEPT statement.</p>
+                                                                    <p>The rows/columns values are based on the traditional character grid for the screen.</p>
+                                                                    <p class="note">If multiple rows are specified for an ACCEPT, the <a href="#clause_multiline2">MULTI-LINE</a> clause must also be specified if line-feeds are allowed to be entered.</p>
+                                                                    <div class="example">
+                                                                        <p class="codeblock"><span class="code_highlight">accept</span> my-field-name <span class="code_highlight">rows</span> 4 <span class="code_highlight">columns</span> 20</p>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_blankwhenzero"></a>PICTURE or PIC</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Override picture for displaying and accepting the field.</p>
+                                                                    <p>A PICTURE on a DISPLAY or ACCEPT adjusts the amount of space used by the field on the screen, but will not limit the amount of characters being displayed (or entered). The amount of characters being displayed (or entered) is based on the definition of the field.</p>
+                                                                    <p class="example">It is possible to display a 30 character field when a PIC X(20) is specified.</p>
+                                                                    <p>The amount of characters displayed will depend upon their size.</p>
+                                                                    <p>For version 6.0 or higher this can be an expression that is evaluated at runtime.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_optional"></a>BLANK-WHEN-ZERO</p>
+                                                                    <p>BLANK-DECIMALS-WHEN-ZERO</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The BLANK-WHEN-ZERO clause generates a PICTURE that displays blanks if the value is zero.</p>
+                                                                    <p>The BLANK-DECIMALS-WHEN-ZERO clause generates a PICTURE that displays blanks where the decimal places would normally be displayed, if the decimal places are zero.</p>
+                                                                    <p>These clauses cannot be used in conjunction with a PICTURE clause.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_default"></a>OPTIONAL</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The entry of a value when in entry mode is optional. If no value is entered, the field is set to zero if numeric, or SPACES if alphanumeric.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_defaultifwhenfalse"></a>DEFAULT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The entry of a value when in entry mode is optional.</p>
+                                                                    <p>If no value is entered, the specified default value is used.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_allow"></a>DEFAULT-IF-WHEN-FALSE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Traditionally if an ACCEPT has a WHEN clause that evaluates to FALSE, then in Entry mode the field's value will not be set to the DEFAULT value if one was specified. This was to cater for multiple overlaid fields in legacy applications.</p>
+                                                                    <p>The DEFAULT-IF-WHEN-FALSE clause overrides this behaviour and sets the field to the default value in Entry mode even if the WHEN condition evaluates to FALSE.</p>
+                                                                    <p class="restriction">This clause is valid only in FORM-ENTRY and RESPONSIVE screens.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_disallow"></a>ALLOW</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>List of allowable values that can be entered for the field.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_justify"></a>DISALLOW</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The user is not allowed to enter values in the specified range or ranges. </p>
+                                                                    <p>Although we do not recommend it, it is permissible to use both an ALLOW and a DISALLOW clause in the same ACCEPT statement.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_autoreturn"></a>JUSTIFY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Right justify the value entered. This is equivalent to writing FILL WITH LEADING SPACES.</p>
+                                                                    <p>This option is only available when the field is of type ALPHA or STRING.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_timeout"></a>AUTO-RETURN</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Indicates that once the user has entered the maximum number of characters for the field, the ACCEPT will continue on as if the &lt;Enter&gt; key had been pressed. This is primarily for single character fields, but can be used on fields of any length.</p>
+                                                                    <p class="note">Not available in version 6.1 or higher.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_edit"></a>TIME-OUT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Indicates that if no input occurs in the specified number of seconds, the ON ERROR section of the ACCEPT statement is activated. The ACCEPT statement must have an ON ERROR section.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_lookup"></a><a name="clause_fill"></a>FILL</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>If LEADING is specified, the entered value is right justified and leading blanks are filled with the specified character.</p>
+                                                                    <p>If TRAILING (or neither) is specified, the unentered part of the value (trailing blanks) are filled with this character.</p>
+                                                                    <p>This option is only available when the field is of type ALPHA or STRING.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_lowercase"></a>LOOKUP</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>After a value has been entered lookup the specified object. If the lookup fails the value entered is invalid. If NOT is used, the value entered is invalid if the lookup does not fail.</p>
+                                                                    <p>A field list if specified only needs to match the leading fields of a valid index. The index used is the first index found with the specified leading fields.</p>
+                                                                    <p>If a partial field list is used for the ON INDEX clause, the operation will act as though the real index only contained the specified fields.</p>
+                                                                    <p>Values do not need to be specified for each of the fields in the index used. The operation will act as though the real index only contained the leading fields that correspond to the number of key values specified.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_left"></a>LOWERCASE</p>
+                                                                    <p>UPPERCASE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Map any characters input to their uppercase / lowercase equivalent.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>LEFT</p>
+                                                                    <p><a name="clause_help"></a>CENTRE</p>
+                                                                    <p>RIGHT</p>
+                                                                    <p>CENTRE-COORD</p>
+                                                                    <p>RIGHT-COORD</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The CENTRE clause causes text to be centred in the field instead of left justified. </p>
+                                                                    <p>The RIGHT clause causes text to be right justified in the field instead of left justified.</p>
+                                                                    <p>The CENTRE-COORD indicates that the coordinate represents the centre of the field (and also centres the text in the field). </p>
+                                                                    <p>The RIGHT-COORD indicates that the coordinate represents the far right position of the field (and also right justifies the text in the field). </p>
+                                                                    <p>The LEFT clause causes text to be left justified (this is generally the default).</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_bold"></a>HELP</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The HELP clause defines a help line for the field.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>BOLD</p>
+                                                                    <p>DIM</p>
+                                                                    <p>FLASHING</p>
+                                                                    <p><a name="clause_foreground"></a>INVERSE</p>
+                                                                    <p>ITALIC</p>
+                                                                    <p>UNDERLINED</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Valid for version 6.1 or higher.</p>
+                                                                    <p>Bold, italic, and underlined will apply the appropriate <span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> font. Dim does nothing.  Inverse will default to centre align.</p>
+                                                                    <p>FLASHING is currently obsolete, but is reserved for future use.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_blank"></a>FOREGROUND</p>
+                                                                    <p>BACKGROUND</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Display this field with the specified foreground/background attribute for the terminal type.</p>
+                                                                    <p>By default, if no attribute is specified either the FOREGROUND or BACKGROUND attribute is applied to a field with an ACCEPT statement. BACKGROUND is the default for ACCEPT statements in the BEFORE section of a SCREEN or MENU. FOREGROUND is the default for all other ACCEPT statements.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_onerror"></a>BLANK</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Do not echo (display) any characters entered for this field. </p>
+                                                                    <p class="example">For example, this is useful for password entry etc.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_onfunctionkey"></a>ON ERROR</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Procedural statements to perform if the value entered fails either a LOOKUP or it is not in the ALLOWED value range. No error message is displayed for the error since this means that you are handling the condition.</p>
+                                                                    <p>Unless a RE-ENTER statement is present in the procedural statements, the value is not forced to be re-entered.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_tag"></a>ON function-key</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Procedural statements to perform if the specified function or arrow key is pressed.</p>
+                                                                    <p>The function keys which can be specified are:</p>
+                                                                    <ul data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                                        <li>
+                                                                            <p>UP-ARROW</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>DOWN-ARROW</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>LEFT-ARROW</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>RIGHT-ARROW</p>
+                                                                        </li>
+                                                                        <li>
+                                                                            <p>HELP-KEY</p>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <p>Several ON <span class="emphasis">function-key</span> clauses can be defined in a single ACCEPT statement. The value of the field is left unchanged.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_helpcontext"></a>TAG</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The TAG clause can be used to uniquely identify this accept for screen customisation purposes when multiple accepts for the same field are defined in a screen.</p>
+                                                                    <p class="note">A literal number between 1 and 65535 must be specified for this clause. Expressions are not allowed.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>HELP-CONTEXT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies a context-sensitive help topic that is displayed when the user presses <span class="keybd">F1</span> during execution of the ACCEPT statement.</p>
+                                                                    <p><span class="emphasis">help-file-expression</span> is an alpha expression or literal that specifies the name of the help file. <span class="emphasis">context-id-expression</span> is a numeric expression or literal that specifies the context ID of the topic in that help file that is displayed.</p>
+                                                                    <p><a name="clause_helpscreen"></a>This setting will override the help context information stored in the field definition in the data dictionary, if set, or can be used to specify a context-sensitive help topic for non-dictionary based fields.</p>
+                                                                    <p class="restriction">This feature requires a <span class="emphasis">.chm</span>, <span class="emphasis">.hlp</span> or <span class="emphasis">.htm</span> format context-sensitive help system that has been generated using a suitable help authoring tool.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>HELP-SCREEN</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Generates an automatic review screen to look for field values when the HELP key is pressed.</p>
+                                                                    <p>The screen displays records from <span class="emphasis">object-name</span>, and show each of the fields listed. The coordinates specify the top left corner of the screen. The OCCURS if specified determines the number of review lines to display. If no OCCURS is specified, the number of lines displayed is determined automatically.</p>
+                                                                    <p>If the field being ACCEPTED does not occur in <span class="emphasis">object-name</span>, the USING verb can specify an alternative field whose value is to return in its place, for example:</p><pre xml:space="preserve"><span class="code_highlight">accept</span> sys-comp-code @6,2
+  <span class="code_highlight">default</span> sys-comp-code
+  <span class="code_highlight">uppercase</span> <span class="code_highlight">help-screen</span> <span class="code_highlight">primary</span> system-companies @5,30 <span class="code_highlight">occurs</span> 10
+    <span class="code_highlight">showing</span> sys-comp-code "Company"
+             sys-comp-desc "Description"
+    <span class="code_highlight">using</span> sys-comp-code
+</pre>
+                                                                    <p class="note"><a name="clause_when"></a>The USING clause must match the ACCEPT clause, which must have a DEFAULT clause.</p>
+                                                                    <p>If you want the accept name to be different from the default, using field names the accept variable name must be defined with a <span class="emphasis">like</span> definition.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_showvalue"></a>WHEN</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Only allow entry/correction of the field when the condition is satisfied.</p>
+                                                                    <p>If the condition is not satisfied, no value is shown for this field unless the SHOW-VALUE clause is also specified.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_noclear"></a>SHOW-VALUE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The current value of the field is shown when the ACCEPT is executed and the WHEN clause is not satisfied.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_suppress"></a>NO-CLEAR</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The area on the screen used by this ACCEPT is not cleared if the WHEN clause is not satisfied. This allows fields with an associated ACCEPT statement to be overlaid on the screen.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_conditionalsuppress"></a>SUPPRESS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The field is suppressed in normal mode, but can be unsuppressed as a screen customisation using <span class="module"><span class="mc-variable _global/product.pt-proscreen variable">Screen Customiser</span></span>. <MadCap:conditionalText data-mc-conditions="_global/target-type.online">For more information, see <a href="../../util_screen_cust/using/c_util_sc_suppress_unsuppress.htm" class="standard MCXref xref xrefstandard">Suppressing and unsuppressing elements</a>.</MadCap:conditionalText></p>
+                                                                    <p>A suppressed field is not shown on the screen. It does not require row or column coordinates to be defined in the ACCEPT. When the suppression attribute for the field is removed, valid row and column values must also be specified if not defined already. A suppressed field is still processed in Entry mode, however there is no user interaction.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_readonly"></a>CONDITIONAL-SUPPRESS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>When this clause is specified, the WHEN condition is used to determine whether the ACCEPT is processed or suppressed. If the WHEN condition evaluates to FALSE, the ACCEPT is suppressed. The condition is evaluated when the screen is initially drawn, and its result must remain consistent for the duration of the screen.</p>
+                                                                    <p>This clause has the greatest effect for a data grid, as the column for the field is not created if the WHEN&#160;condition evaluates to FALSE.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>READ-ONLY</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This field is read only by default, however this property can be changed as a screen customisation using <span class="module"><span class="mc-variable _global/product.pt-proscreen variable">Screen Customiser</span></span>. <MadCap:conditionalText data-mc-conditions="_global/target-type.online">For more information, see <a href="../../util_screen_cust/using/f_util_sc_properties_tabs.htm#attributes" class="standard MCXref xref xrefstandard">Attributes</a>.</MadCap:conditionalText></p>
+                                                                    <p>A READ-ONLY field is shown similar to how it would have been shown on the screen if a DISPLAY statement was used instead of an ACCEPT. However, it is still processed in Entry mode (although there is no user interaction).</p>
+                                                                    <p>The SUPPRESS/READ-ONLY clause on an ACCEPT also implies the OPTIONAL clause.</p>
+                                                                    <p>In entry mode, if there is no default specified for the field, the field is set with its standard <span class="emphasis">null</span> value (for example, zero or SPACES).</p>
+                                                                    <p><a name="clause_static"></a>All validations defined for the accepted field are applied to a suppressed or read-only field. This also applies to fields suppressed or made read-only by the customer as an override.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_fixedwidthfont"></a>STATIC</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The STATIC clause specifies that the field is to be display only and input is never allowed.</p>
+                                                                    <p>This is different to the READ-ONLY clause in that it cannot be overridden by <span class="module"><span class="mc-variable _global/product.pt-proscreen variable">Screen Customiser</span></span>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_colour"></a>FIXED-WIDTH-FONT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This clause causes the font used to be the defined fixed width font, instead of the variable (proportional) width default.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>COLOUR or COLOR</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Usage examples:</p><pre xml:space="preserve"><span class="code_highlight">colour is red on black</span>
+<span class="code_highlight">colour is blue</span>
+<span class="code_highlight">colour is red on</span> 0</pre>
+                                                                    <p>When <span class="field_value">0</span> or no colour is specified, as in the third example above, the default foreground or background colour set by the user in the colour settings of the <span class="mc-variable _global/product.pxi-client variable">Pronto Xi Client</span> is used.</p>
+                                                                    <p><span class="mc-variable _global/product-external.Microsoft_Windows variable">Microsoft Windows</span> RGB colour values can be specified by using the <a href="../functions/rgb_to_colour.htm" class="standard MCXref xref xrefstandard">RGB-TO-COLOUR()</a> function.</p>
+                                                                    <p>Either the foreground colour only, or both the foreground and background colours can be specified. The colours can be specified as an expression, and can be varied at runtime, as shown in the following example.</p><pre xml:space="preserve"><span class="code_highlight">display</span> lf-positions-taken @1,35 <span class="code_highlight">pic</span> z(12)9
+   <span class="code_highlight">colour is</span>
+      <span class="code_highlight">ifthenelse</span>(lf-positions-taken &gt; lf-available-positions,black,0)
+   <span class="code_highlight">on</span>
+      <span class="code_highlight">ifthenelse</span>(lf-positions-taken &gt; lf-available-positions,red,0)
+   <span class="code_highlight">title 'Filled Positions'</span></pre>
+                                                                    <p><a name="clause_beforeaccept"></a>A field type of COLOUR (for example, TYPE IS COLOUR) can be used. Fields storing colours must be at least PIC 9(8).</p>
+                                                                    <p>When this clause is used in a data grid, a different colour can be specified for each cell by setting the colour value using an expression.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_validations"></a>BEFORE-ACCEPT</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>A BEFORE-ACCEPT section is available for an ACCEPT. This section is performed before the field being entered / corrected.</p>
+                                                                    <p class="note" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">It is executed AFTER the WHEN clause before the ACCEPT is evaluated. It is not performed in any of the search modes.</p>
+                                                                    <p>This section is not executed if the ACCEPT is processed as a result of a RE-ENTER operation.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_usevalidatetrigger"></a>VALIDATIONS</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Procedural statements to perform after a value has been entered and has passed all other automatic validations. This clause is usually used to implement extra data validations, but can also be used for other purposes.</p>
+                                                                    <p>The statements contained here are not executed when the screen is in search or show mode (that is, when searching or during a refresh).</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_proceduralstatements"></a>USE-VALIDATE-TRIGGER</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Specifies that if a field accept trigger of type Validate is defined against the field in the dictionary, that trigger code should override any validation code in the VALIDATIONS clause of the ACCEPT statement.</p>
+                                                                    <p>For more information about field accept triggers, see <a href="../../util_dict_maint/ref_screen/field_accept_triggers_screen.htm" class="standard MCXref xref xrefstandard">Field Accept Triggers screen</a>.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_scale"></a>procedural-statements</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Procedural statements following an ACCEPT are always executed after the ACCEPT is processed.</p>
+                                                                    <p>When in correct mode, these statements (and the ACCEPT itself) are only performed if the SELECT key is pressed. They <span class="emphasis">are not</span> executed by arrow keying over the ACCEPT.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_nowarning"></a>SCALE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>Allows the scaling factor of the font used in the DISPLAY statement to be changed.</p>
+                                                                    <p>A scale of 100 (that is, 100 per cent) is normal. A scale of 50 is half size and 200 is double, and so on. If the BOLD attribute is also specified in the DISPLAY statement, a bold (thick) version of the font with the required scaling is used.</p>
+                                                                    <p class="note" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">Proportional fonts base their size on their height and not their width, as the width of individual characters varies in the font.</p>
+                                                                    <p>The syntax of the clause is:</p><pre xml:space="preserve"><span class="code_highlight">display</span> ... <span class="code_highlight">scale</span> [<span class="code_highlight">is</span>] expression</pre>
+                                                                    <p>so</p><pre xml:space="preserve"><span class="code_highlight">display</span> "Hello world" @1,1 <span class="code_highlight">scale is</span> 300</pre>
+                                                                    <p class="note" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">This clause is ignored if the field being accepted forms part of a data grid.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p><a name="clause_onchange"></a>NO-WARNING</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>The compiler warning <span class="field_value">TITLEs are not conditional</span> can be suppressed if this clause is specified on the ACCEPT statement.</p>
+                                                                    <p class="example">For example, accept accountcode @10,10 title "A/C" no-warning when lf-maint = "Y"</p>
+                                                                    <p class="note"> This warning also does not occur if the NO-CLEAR or SHOW-VALUE clauses are specified.</p>
+                                                                    <p>The NO-WARNING clause can be specified anywhere within the statement to suppress any subsequent warning message generated for the statement.</p>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    <p>ON CHANGE</p>
+                                                                </td>
+                                                                <td>
+                                                                    <p>This section is available only when the ACCEPT, RADIO-BUTTON and CHECK-BOX statements are in a FORM-ENTRY screen.</p>
+                                                                    <p>This section is called whenever the value of a field changes.</p>
+                                                                    <p>This section is called automatically at the beginning of entry mode when the initial value of the fields are set to their default values. This occurs regardless of the previous value of the fields.</p>
+                                                                    <p>When specified for a RADIO-BUTTON or CHECK-BOX, this section is called immediately when the user changes the value of the radio button or check box.</p>
+                                                                    <p>All validations are performed before the ON CHANGE section. If any validations fail, the ON CHANGE section is not called.</p>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <h2 class="nontoc" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude" id="Notes" data-magellan-target="Notes">Notes</h2>
+                                                    <ul data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <li>
+                                                            <p>ACCEPT statements that occur in conditional code (for example IF or WHILE statements) are fully supported.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>You cannot arrow key to an <span class="code_highlight">accept</span> in conditional code. The program logic must fall through to the <span class="code_highlight">accept</span> for it to be executed.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>ACCEPTs in conditional code are processed in <span class="ui_control">Entry</span> mode style. You cannot arrow key forward, you can only arrow key to the previous ACCEPT.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>The WHEN clause is still the preferred way to make an <span class="code_highlight">accept</span> conditional.</p>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="nest_list_bold" data-mc-conditions="IDE_Extract.IDE_4GL_Exclude">
+                                                        <li>
+                                                            <p>ON HELP-KEY section processed during a FIND operation</p>
+                                                            <p>During a FIND operation, if the user presses the HELP key on an <span class="code_highlight">accept</span> that contains an ON HELP-KEY section, the code in this section will now be performed.</p>
+                                                            <p>The same applies to the HELP-SCREEN clause of the <span class="code_highlight">accept</span> statement if it is used.</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Automatic invocation of help screens on failed lookup</p>
+                                                            <p>If an <span class="code_highlight">accept</span> has a LOOKUP clause as well as either an ON HELP-KEY section or HELP-SCREEN specified, a failed LOOKUP will automatically cause the ON HELP-KEY section or HELP-SCREEN to be called.</p>
+                                                            <p>This does not apply if there is an ON ERROR section in the ACCEPT. The code in the ON ERROR section is intended to handle the failed LOOKUP.</p>
+                                                            <p>SHOWING clause of HELP-SCREEN can specify field prompts.</p>
+                                                            <p>The field list of the SHOWING clause can include the prompts to display for the fields. The prompt for a field can be specified directly after the field’s name. The prompt must be specified as a single alphanumeric string enclosed in quotes.</p><pre xml:space="preserve"><span class="code_highlight">help-screen primary</span> deb-master @10,10
+   <span class="code_highlight">showing</span> accountcode "A/C", shortname "Name"</pre>
+                                                        </li>
+                                                        <li>
+                                                            <p>Overflows of displayed fields shown</p>
+                                                            <p>A field / expression output with the DISPLAY or PRINT statement which is too large for its default (or specified) PICTURE, is displayed as a set of question marks (though there is an exception). A negative value displayed with an unsigned picture is also displayed as a set of question marks.</p>
+                                                            <p>If the value to display is too large for the specified PICTURE, but the whole (integer) portion of the number can be displayed in the space provided by ignoring the decimal places, the value is displayed without decimal places. This means that the value displayed might be out of alignment with other values displayed, however, it does mean that the value is still visible.</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="MCRelationshipsProxy_related-topics_0">
+                                                    <p class="referenceHeading_reference_0">REFERENCE</p>
+                                                    <p class="referenceItem_reference_0"><a href="abort_statement.htm">ABORT statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="box_statement.htm">BOX statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="check_box_statement.htm">CHECK-BOX statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="clear_statement.htm">CLEAR statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="display_statement.htm">DISPLAY statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="message_statement.htm">MESSAGE statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="message_box_statement.htm">MESSAGE-BOX statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/message_status.htm">MESSAGE-STATUS() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="../functions/param_text.htm">PARAM-TEXT() function</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="radio_button_statement.htm">RADIO-BUTTON statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="re_enter_statement.htm">RE-ENTER statement</a>
+                                                    </p>
+                                                    <p class="referenceItem_reference_0"><a href="refresh_statement.htm">REFRESH statement</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="right-content column">
+                                                <ul data-magellan="" data-animation-duration="250" data-active-class="selected" data-scroll-container=".body-container" data-scroll-container-on="only screen and (min-width: 1001px)" class="on-this-page _Skins__global_sidenav_side_menu mc-component">
+                                                    <li><a href="#ACCEPTstatement">ACCEPT statement</a>
+                                                    </li>
+                                                    <ul>
+                                                        <li><a href="#Syntax">Syntax</a>
+                                                        </li>
+                                                        <li><a href="#Clauses">Clauses</a>
+                                                        </li>
+                                                        <li><a href="#Notes">Notes</a>
+                                                        </li>
+                                                    </ul>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/popper.min.js">
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js">
+		</script>-->
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.tablesorter.js">
+                                    </script>
+                                    <script src="../../_global/resources/masterpage/sidenav/scripts/jquery.stickytableheaders.js">
+                                    </script>
+                                    <script>/* <![CDATA[ */
+			$(document).ready(function()
+			{
+			$("table").tablesorter();
+			$("table").stickyTableHeaders();
+			
+			}
+			);
+		/* ]]> */</script>
+                                </div>
+                            </div>
+                        </div>
+                    </div><a data-close="true"></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
