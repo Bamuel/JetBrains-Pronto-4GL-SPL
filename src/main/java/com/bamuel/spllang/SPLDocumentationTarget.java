@@ -20,6 +20,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SPLDocumentationTarget implements DocumentationTarget {
 
@@ -780,42 +783,163 @@ public class SPLDocumentationTarget implements DocumentationTarget {
 
     public @Nullable String generateDoc(PsiElement element, @Nullable PsiElement originalElement, @Nullable String documentationSource) {
         // Retrieve necessary details for documentation
-        String description = getDescription(documentationSource);
-        String syntax = getSyntax(documentationSource);
-        String clauses = getClauses(documentationSource);
-        String category = getCategory(documentationSource);
-        String runtimever = getRuntimeVersion(documentationSource);
-        String notes = getNotes(documentationSource);
-        String example = getExample(documentationSource);
-
         StringBuilder documentationBuilder = new StringBuilder();
 
-        documentationBuilder.append(DocumentationMarkup.CONTENT_START);
-        documentationBuilder.append(description);
-        documentationBuilder.append(DocumentationMarkup.CONTENT_END);
+        ArrayList<Map<String, String>> documentationSections = getDocumentationSections(documentationSource);
+        if (documentationSections != null) {
+            int x = 0;
+            for (Map<String, String> section : documentationSections) {
+                x++;
+                String href = section.get("href");
+                String text = section.get("text");
+                //System.out.println("Link: " + href + ", Text: " + text);
+                String content = extractContent(documentationSource, href, text);
+                //First section is the description or dl_toptable
+                if (x == 1) {
+                    documentationBuilder.append(DocumentationMarkup.CONTENT_START);
+                    documentationBuilder.append("<h1>").append(text);
+                    if (containselementdl_toptable(content)) {
+                        elementdl_toptable(content, documentationBuilder);
+                    } else {
+                        documentationBuilder.append(content);
+                    }
+                    documentationBuilder.append(DocumentationMarkup.CONTENT_END);
 
-        documentationBuilder.append(DocumentationMarkup.SECTIONS_START);
-        if (syntax != null) {
-            addKeyValueSection("Syntax:", syntax, documentationBuilder);
+                } else {
+                    if (x == 2) {
+                        documentationBuilder.append(DocumentationMarkup.SECTIONS_START);
+                    }
+                    addKeyValueSection(text + ":", content, documentationBuilder);
+                }
+            }
+            documentationBuilder.append(DocumentationMarkup.SECTIONS_END);
         }
-        if (clauses != null) {
-            addKeyValueSection("Clauses:", clauses, documentationBuilder);
-        }
-        if (category != null) {
-            addKeyValueSection("Category:", category, documentationBuilder);
-        }
-        if (runtimever != null) {
-            addKeyValueSection("Runtime Version:", runtimever, documentationBuilder);
-        }
-        if (notes != null) {
-            addKeyValueSection("Notes:", notes, documentationBuilder);
-        }
-        if (example != null) {
-            addKeyValueSection("Example:", example, documentationBuilder);
-        }
-        documentationBuilder.append(DocumentationMarkup.SECTIONS_END);
-
         return documentationBuilder.toString();
+    }
+
+    private void elementdl_toptable(String content, StringBuilder documentationBuilder) {
+        Document doc = Jsoup.parse(content);
+
+        // Get the dl element with class "dl_toptable"
+        Elements dlElements = doc.select("dl.dl_toptable");
+
+        for (Element dlElement : dlElements) {
+            Elements children = dlElement.children(); // Get all child elements of the dl (dt and dd)
+
+            // Iterate over child elements
+            for (int i = 0; i < children.size(); i++) {
+                Element element = children.get(i);
+
+                // If the element is <dt>, check if the text matches and find the corresponding <dd>
+                if (element.tagName().equals("dt")) {
+                    String key = element.text();
+                    Element valueElement = element.nextElementSibling(); // Get the next <dd> element
+
+                    if (valueElement != null && valueElement.tagName().equals("dd")) {
+                        String value = valueElement.text();
+
+                        // Check if it's the description section
+                        if (key.equals("Description")) {
+                            documentationBuilder.append(value); // Append description text
+                        } else {
+                            addKeyValueSection(key + ":", value, documentationBuilder);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    private boolean containselementdl_toptable(String content) {
+        Document doc = Jsoup.parse(content);
+        if (doc.select("dl.dl_toptable").size() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    private String extractContent(@Nullable String documentationSource, String href, String text) {
+        StringBuilder content = new StringBuilder();
+        boolean capture = false; // Flag to start capturing content
+        href = href.replace("#", "");
+
+        try {
+            Document doc = Jsoup.parse(documentationSource);
+            Element mainContent = doc.getElementById("mc-main-content");
+
+            if (mainContent != null) {
+                Elements elements = mainContent.children(); // Get all children of the main content
+
+                for (Element element : elements) {
+                    // Start capturing if the current element has the same ID
+                    if (element.id().equals(href)) {
+                        capture = true; // Start capturing content
+                        continue; // Move to the next element
+                    }
+
+                    // Stop capturing if the next element has class "nontoc" or "unnumbered_nontoc"
+                    if (capture && (element.hasClass("nontoc") || element.hasClass("unnumbered_nontoc"))) {
+                        break;
+                    }
+
+                    // If capturing, add the current element's HTML to the content
+                    if (capture) {
+                        removeJavaScript(element);
+                        element.select("p.note").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
+                        element.select("p.important").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
+                        element.select("p.restriction").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
+
+                        element.select("*.keybd").tagName("strong");
+                        element.select("*.function_name").tagName("strong");
+                        element.select("*.emphasis").tagName("em");
+
+                        element.select("*.code_comment").attr("style", "color: #7A7E85;");
+                        element.select("*.code_highlight").attr("style", "color: #56A8F5;");
+                        content.append(element.outerHtml());
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "<p>Error extracting content.</p>";
+        }
+
+        // Return the content, or null if it's empty
+        return content.isEmpty() ? null : content.toString();
+    }
+
+    private ArrayList<Map<String, String>> getDocumentationSections(@Nullable String documentationSource) {
+        // Extract the sections from the documentation, getting the href and text from class "on-this-page _Skins__global_sidenav_side_menu mc-component"
+        ArrayList<Map<String, String>> sections = new ArrayList<>();
+        try {
+            Document doc = Jsoup.parse(documentationSource);
+            Element mainContent = doc;
+            if (mainContent != null) {
+                // Select the main ul element with the specific class
+                Elements elements = mainContent.select("ul.on-this-page._Skins__global_sidenav_side_menu.mc-component");
+                for (Element element : elements) {
+                    // Get all anchor tags within the current ul (including nested uls)
+                    Elements sectionElements = element.select("a");
+                    for (Element sectionElement : sectionElements) {
+                        String href = sectionElement.attr("href");
+                        String text = sectionElement.text();
+
+                        // Create a map for each section
+                        Map<String, String> section = new HashMap<>();
+                        section.put("href", href);
+                        section.put("text", text);
+
+                        // Add the section map to the sections list
+                        sections.add(section);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return sections;
     }
 
     private void addKeyValueSection(String key, String value, StringBuilder sb) {
@@ -873,245 +997,6 @@ public class SPLDocumentationTarget implements DocumentationTarget {
         }
         // Return the description, or a fallback message if it's empty
         return description.isEmpty() ? null : description.toString();
-    }
-
-    private String getSyntax(String documentationSource) {
-        StringBuilder syntax = new StringBuilder(); // Use StringBuilder
-        try {
-            Document doc = Jsoup.parse(documentationSource);
-            Element mainContent = doc.getElementById("mc-main-content");
-            if (mainContent != null) {
-                Elements elements = mainContent.children();
-                for (Element element : elements) {
-                    // This only apply to function documentation
-                    if (element.tagName().equals("dl") && element.hasClass("dl_toptable")) {
-                        Element Syntaxelement = element.select("dt:contains(Syntax)").first();
-                        if (Syntaxelement != null) {
-                            Syntaxelement = Syntaxelement.nextElementSibling();
-                            syntax.append("<p>").append(Syntaxelement.outerHtml()).append("</p>");
-                            break;
-                        }
-                    }
-                    if (element.text().contains("Syntax") && (element.hasClass("nontoc") || element.hasClass("unnumbered_nontoc"))) {
-                        element = element.nextElementSibling();
-                        if (element != null) {
-                            removeJavaScript(element);
-                            element.select("*.code_comment").attr("style", "color: #7A7E85;");
-                            element.select("*.code_highlight").attr("style", "color: #56A8F5;");
-                            syntax.append(element.outerHtml());
-                        }
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "<p>Error extracting syntax.</p>";
-        }
-        // Return the syntax, or a fallback message if it's empty
-        return syntax.isEmpty() ? null : syntax.toString();
-    }
-
-    private String getClauses(String documentationSource) {
-        StringBuilder clauses = new StringBuilder(); // Use StringBuilder
-        try {
-            Document doc = Jsoup.parse(documentationSource);
-            Element mainContent = doc.getElementById("mc-main-content");
-            if (mainContent != null) {
-                Elements elements = mainContent.children();
-                for (Element element : elements) {
-                    // This only apply to function documentation
-                    if (element.tagName().equals("dl") && element.hasClass("dl_toptable")) {
-                        Element Clauseselement = element.select("dt:contains(Clauses)").first();
-                        if (Clauseselement != null) {
-                            Clauseselement = Clauseselement.nextElementSibling();
-                            clauses.append("<p>").append(Clauseselement.outerHtml()).append("</p>");
-                            break;
-                        }
-                    }
-                    if (element.text().contains("Clauses") && (element.hasClass("nontoc") || element.hasClass("unnumbered_nontoc"))) {
-                        element = element.nextElementSibling();
-                        if (element != null) {
-                            removeJavaScript(element);
-                            element.select("colgroup").remove();
-                            element.select("thead").remove();
-                            element.select("tbody td:nth-child(2)").select("a").tagName("span");
-                            element.select(".MCExpandingBody").remove();
-                            element.select(".example").remove();
-                            element.select("p.note").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                            element.select("p.important").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                            element.select("p.restriction").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                            element.select("*.keybd").tagName("strong");
-                            element.select("*.function_name").tagName("strong");
-                            element.select("*.emphasis").tagName("em");
-                            element.select("*.code_comment").attr("style", "color: #7A7E85;");
-                            element.select("*.code_highlight").attr("style", "color: #56A8F5;");
-
-                            clauses.append(element.outerHtml());
-
-                        }
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "<p>Error extracting Clauses.</p>";
-        }
-        // Return the Clauses, or a fallback message if it's empty
-        return clauses.isEmpty() ? null : clauses.toString();
-    }
-
-    private String getNotes(String documentationSource) {
-        StringBuilder notes = new StringBuilder(); // Use StringBuilder
-        try {
-            Document doc = Jsoup.parse(documentationSource);
-            Element mainContent = doc.getElementById("mc-main-content");
-            if (mainContent != null) {
-                Elements elements = mainContent.children();
-                for (Element element : elements) {
-                    // This only apply to function documentation
-                    if (element.tagName().equals("dl") && element.hasClass("dl_toptable")) {
-                        Element Noteselement = element.select("dt:contains(Notes)").first();
-                        if (Noteselement != null) {
-                            Noteselement = Noteselement.nextElementSibling();
-                            notes.append("<p>").append(Noteselement.outerHtml()).append("</p>");
-                            break;
-                        }
-                    }
-
-                    if (element.text().contains("Notes") && (element.hasClass("nontoc") || element.hasClass("unnumbered_nontoc"))) {
-                        Elements ntoeselements = element.nextElementSiblings();
-                        for (Element subnotes : ntoeselements) {
-                            if (subnotes != null) {
-                                removeJavaScript(subnotes);
-                                subnotes.select(".MCExpandingBody").remove();
-                                subnotes.select(".example").remove();
-                                subnotes.select("p.note").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                                subnotes.select("p.important").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                                subnotes.select("p.restriction").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                                subnotes.select("*.keybd").tagName("strong");
-                                subnotes.select("*.function_name").tagName("strong");
-                                subnotes.select("*.emphasis").tagName("em");
-                                subnotes.select("*.code_comment").attr("style", "color: #7A7E85;");
-                                subnotes.select("*.code_highlight").attr("style", "color: #56A8F5;");
-                                if (subnotes.hasClass("nontoc")) {
-                                    break;
-                                }
-                                notes.append(subnotes.outerHtml());
-                            }
-                        }
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "<p>Error extracting Notes.</p>";
-        }
-        // Return the Notes, or a fallback message if it's empty
-        return notes.isEmpty() ? null : notes.toString();
-    }
-
-    private String getExample(@Nullable String documentationSource) {
-        StringBuilder example = new StringBuilder(); // Use StringBuilder
-        try {
-            Document doc = Jsoup.parse(documentationSource);
-            Element mainContent = doc.getElementById("mc-main-content");
-            if (mainContent != null) {
-                Elements elements = mainContent.children();
-                for (Element element : elements) {
-                    // This only apply to function documentation
-                    if (element.tagName().equals("dl") && element.hasClass("dl_toptable")) {
-                        Element Exampleelement = element.select("dt:contains(Example)").first();
-                        if (Exampleelement != null) {
-                            Exampleelement = Exampleelement.nextElementSibling();
-                            example.append("<p>").append(Exampleelement.outerHtml()).append("</p>");
-                            break;
-                        }
-
-                    }
-                    if (element.text().contains("Example") && (element.hasClass("nontoc") || element.hasClass("unnumbered_nontoc"))) {
-                        element = element.nextElementSibling();
-                        if (element != null) {
-                            removeJavaScript(element);
-                            element.select(".MCExpandingBody").remove();
-                            element.select(".example").remove();
-                            element.select("p.note").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                            element.select("p.important").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                            element.select("p.restriction").prepend(String.valueOf(DocumentationMarkup.INFORMATION_ICON));
-                            element.select("*.keybd").tagName("strong");
-                            element.select("*.function_name").tagName("strong");
-                            element.select("*.emphasis").tagName("em");
-                            element.select("*.code_comment").attr("style", "color: #7A7E85;");
-                            element.select("*.code_highlight").attr("style", "color: #56A8F5;");
-                            example.append(element.outerHtml());
-                        }
-                        break;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "<p>Error extracting example.</p>";
-        }
-        // Return the example, or a fallback message if it's empty
-        return example.isEmpty() ? null : example.toString();
-    }
-
-    private String getRuntimeVersion(@Nullable String documentationSource) {
-        StringBuilder runtime = new StringBuilder(); // Use StringBuilder
-        try {
-            Document doc = Jsoup.parse(documentationSource);
-            Element mainContent = doc.getElementById("mc-main-content");
-            if (mainContent != null) {
-                Elements elements = mainContent.children();
-                for (Element element : elements) {
-                    // This only apply to function documentation
-                    if (element.tagName().equals("dl") && element.hasClass("dl_toptable")) {
-                        Element runtimeelement = element.select("dt:contains(Runtime version)").first();
-                        if (runtimeelement != null) {
-                            runtimeelement = runtimeelement.nextElementSibling();
-                            runtime.append("<p>").append(runtimeelement.outerHtml()).append("</p>");
-                            break;
-                        }
-
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "<p>Error extracting runtime.</p>";
-        }
-        // Return the runtime, or a fallback message if it's empty
-        return runtime.isEmpty() ? null : runtime.toString();
-    }
-
-    private String getCategory(@Nullable String documentationSource) {
-        StringBuilder category = new StringBuilder(); // Use StringBuilder
-        try {
-            Document doc = Jsoup.parse(documentationSource);
-            Element mainContent = doc.getElementById("mc-main-content");
-            if (mainContent != null) {
-                Elements elements = mainContent.children();
-                for (Element element : elements) {
-                    // This only apply to function documentation
-                    if (element.tagName().equals("dl") && element.hasClass("dl_toptable")) {
-                        Element categoryelement = element.select("dt:contains(Category)").first();
-                        if (categoryelement != null) {
-                            categoryelement = categoryelement.nextElementSibling();
-                            category.append("<p>").append(categoryelement.outerHtml()).append("</p>");
-                            break;
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "<p>Error extracting category.</p>";
-        }
-        // Return the category, or a fallback message if it's empty
-        return category.isEmpty() ? null : category.toString();
     }
 
     // Helper method to load the HTML content from the resources directory
