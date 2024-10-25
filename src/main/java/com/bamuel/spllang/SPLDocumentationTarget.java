@@ -5,6 +5,7 @@ import com.intellij.lang.documentation.DocumentationMarkup;
 import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.util.text.HtmlChunk;
 import com.intellij.psi.tree.IElementType;
+import org.apache.commons.compress.utils.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -399,7 +401,7 @@ public class SPLDocumentationTarget implements DocumentationTarget {
         String resourcePath = null;
         IElementType elementType = element.getNode().getElementType();
         resourcePath = getResourcePath(elementType);
-        if (resourcePath == null){
+        if (resourcePath == null) {
             return null;
         }
 
@@ -442,6 +444,7 @@ public class SPLDocumentationTarget implements DocumentationTarget {
         ArrayList<Map<String, String>> documentationSections = getDocumentationSections(documentationSource);
         if (documentationSections != null) {
             int x = 0;
+            boolean dl_toptable = false;
             for (Map<String, String> section : documentationSections) {
                 x++;
                 String href = section.get("href");
@@ -453,6 +456,7 @@ public class SPLDocumentationTarget implements DocumentationTarget {
                     documentationBuilder.append(DocumentationMarkup.CONTENT_START);
                     documentationBuilder.append("<h1>").append(text).append("</h1>");
                     if (containselementdl_toptable(content)) {
+                        dl_toptable = true;
                         elementdl_toptable(content, documentationBuilder);
                     } else {
                         documentationBuilder.append(content);
@@ -460,7 +464,7 @@ public class SPLDocumentationTarget implements DocumentationTarget {
                     documentationBuilder.append(DocumentationMarkup.CONTENT_END);
 
                 } else {
-                    if (x == 2) {
+                    if (x == 2 && !dl_toptable) {
                         documentationBuilder.append(DocumentationMarkup.SECTIONS_START);
                     }
                     addKeyValueSection(text + ":", content, documentationBuilder);
@@ -499,7 +503,11 @@ public class SPLDocumentationTarget implements DocumentationTarget {
                         // Check if it's the description section
                         if (key.equals("Description")) {
                             documentationBuilder.append(value); // Append description text
+                            documentationBuilder.append(DocumentationMarkup.CONTENT_END);
                         } else {
+                            if (i == 2){
+                                documentationBuilder.append(DocumentationMarkup.SECTIONS_START);
+                            }
                             addKeyValueSection(key + ":", value, documentationBuilder);
                         }
                     }
@@ -556,23 +564,46 @@ public class SPLDocumentationTarget implements DocumentationTarget {
 
                         element.select("*.note, *.tip, *.restriction, *.important, *.warning, *.caution, *.example, *.recommendation, *.admin, *.responsive").attr("style",
                                 "padding-top: 0.5em;" +
-                                "padding-bottom: 0.5em;" +
-                                "padding-left: 3em;" +
-                                "padding-right: 1em;" +
-                                "margin-top: 0.5em;" +
-                                "margin-bottom: 0.5em;" +
-                                "margin-left: 0.5em;" +
-                                "border-left-color: rgba(122, 126, 133, 0.2)" +
-                                "position: relative;" +
-                                "border-left-width: 5px;" +
-                                "border-left-style: solid;");
+                                        "padding-bottom: 0.5em;" +
+                                        "padding-left: 3em;" +
+                                        "padding-right: 1em;" +
+                                        "margin-top: 0.5em;" +
+                                        "margin-bottom: 0.5em;" +
+                                        "margin-left: 0.5em;" +
+                                        "border-left-color: rgba(122, 126, 133, 0.2)" +
+                                        "position: relative;" +
+                                        "border-left-width: 5px;" +
+                                        "border-left-style: solid;");
 
-                        element.select("*.keybd").tagName("strong");
-                        element.select("*.function_name").tagName("strong");
-                        element.select("*.emphasis").tagName("em");
+                        element.select("span.ui_control, span.uicontrol, span.uipath, span.ui_path, span.functionname, span.function_name," +
+                                " span.field_name, span.fieldname, span.varname, span.list_item_subject, span.emdash, span.emdash_code, span.module," +
+                                " span.emdash_field, span.screen_title, span.screentitle, span.wintitle, span.screenarea, span.screen_area, span.codetable," +
+                                " span.code_table, span.keybd"
+                        ).attr("style", "font-weight: bold;");
+
+                        element.select("span.file_path, dbtable, db_table, span.envar, span.status, span.emphasis, span.role, cite"
+                        ).attr("style", "font-style: italic;");
 
                         element.select("*.code_comment").attr("style", "color: #7A7E85;");
                         element.select("*.code_highlight").attr("style", "color: #56A8F5;");
+
+
+                        //convert img src to base64 if file exists
+                        Elements imgElements = element.select("img");
+                        for (Element imgElement : imgElements) {
+                            String src = imgElement.attr("src");
+                            if (src != null && src.length() > 0) {
+                                String imgPath = src.replace("../../_local/", "docs/");
+                                ClassLoader classLoader = getClass().getClassLoader();
+                                InputStream inputStream = classLoader.getResourceAsStream(imgPath);
+                                if (inputStream != null) {
+                                    byte[] bytes = IOUtils.toByteArray(inputStream);
+                                    String base64 = Base64.getEncoder().encodeToString(bytes);
+                                    imgElement.attr("src", "data:image/png;base64," + base64);
+                                }
+                            }
+                        }
+
                         content.append(element.outerHtml());
                     }
                 }
