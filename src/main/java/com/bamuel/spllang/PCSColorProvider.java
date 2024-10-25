@@ -61,6 +61,21 @@ public class PCSColorProvider implements ElementColorProvider {
         if (element.getNode().getElementType() == PCSTypes.COLOR_YELLOW) {
             return JBColor.YELLOW;
         }
+        //if element is in PCSColorList_Impl(COLOR_LIST_) then return the color
+        if (element.getNode().getElementType() == PCSTypes.NUMBER && element.getParent().getNode().getElementType() == PCSTypes.COLOR_LIST_) {
+            try {
+                System.out.println("Element text: " + element.getText());
+                int numberColor = Integer.parseInt(element.getText());
+
+                int r = numberColor & 0xFF;
+                int g = (numberColor >> 8) & 0xFF;
+                int b = (numberColor >> 16) & 0xFF;
+
+                return new JBColor(new Color(r, g, b), new Color(r, g, b));
+            } catch (NumberFormatException e) {
+                return null;
+            }
+        }
 
         return null;  // Return null if no color is found
     }

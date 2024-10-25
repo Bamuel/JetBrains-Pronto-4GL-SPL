@@ -81,6 +81,7 @@ clause_for_run_ ::= RUN EQUALS value_*
 
 clause_for_color_ ::= COLOR EQUALS color_value_
 color_value_ ::= color_list_ SLASH color_list_
+//COLOR_NUMBER = 0 to 16777215
 color_list_ ::= COLOR_AQUA
               | COLOR_BLACK
               | COLOR_BLUE
