@@ -17,23 +17,25 @@ public class PCSColorProvider implements ElementColorProvider {
             return null;
         }
         if (element.getParent().getNode().getElementType() == PCSTypes.COLOR_LIST_){
+            // https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+            // Based on 16 named colors
             if (element.getNode().getElementType() == PCSTypes.COLOR_AQUA) {
-                return JBColor.CYAN;
+                return new JBColor(new Color(0x00FFFF), new Color(0x00FFFF)); // RGB(0, 255, 255)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_BLACK) {
                 return new JBColor(new Color(0x000000), new Color(0x000000)); // RGB(0, 0, 0)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_BLUE) {
-                return JBColor.BLUE;
+                return new JBColor(new Color(0x0000FF), new Color(0x0000FF)); // RGB(0, 0, 255)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_FUCHSIA) {
-                return JBColor.MAGENTA;
+                return new JBColor(new Color(0xFF00FF), new Color(0xFF00FF)); // RGB(255, 0, 255)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_GREEN) {
-                return JBColor.GREEN;
+                return new JBColor(new Color(0x008000), new Color(0x008000)); // RGB(0, 128, 0)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_GREY) {
-                return JBColor.GRAY;
+                return new JBColor(new Color(0x808080), new Color(0x808080)); // RGB(128, 128, 128)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_LIME) {
                 return new JBColor(new Color(0x00FF00), new Color(0x00FF00)); // RGB(0, 255, 0)
@@ -51,7 +53,7 @@ public class PCSColorProvider implements ElementColorProvider {
                 return new JBColor(new Color(0x800080), new Color(0x800080)); // RGB(128, 0, 128)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_RED) {
-                return JBColor.RED;
+                return new JBColor(new Color(0xFF0000), new Color(0xFF0000)); // RGB(255, 0, 0)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_SILVER) {
                 return new JBColor(new Color(0xC0C0C0), new Color(0xC0C0C0)); // RGB(192, 192, 192)
@@ -63,7 +65,7 @@ public class PCSColorProvider implements ElementColorProvider {
                 return new JBColor(new Color(0xFFFFFF), new Color(0xFFFFFF)); // RGB(255, 255, 255)
             }
             if (element.getNode().getElementType() == PCSTypes.COLOR_YELLOW) {
-                return JBColor.YELLOW;
+                return new JBColor(new Color(0xFFFF00), new Color(0xFFFF00)); // RGB(255, 255, 0)
             }
             if (element.getNode().getElementType() == PCSTypes.NUMBER) {
                 try {
