@@ -3,6 +3,7 @@ package com.bamuel.spllang;
 import com.bamuel.spllang.psi.SPLTypes;
 import com.intellij.openapi.editor.ElementColorProvider;
 import com.intellij.psi.PsiElement;
+import com.intellij.ui.Gray;
 import com.intellij.ui.JBColor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -59,6 +60,11 @@ public class SPLColorProvider implements ElementColorProvider {
                 try {
                     //System.out.println("Element text: " + element.getText());
                     int numberColor = Integer.parseInt(element.getText());
+                    //0 returns 88,88,88
+                    if (numberColor == 0) {
+                        return new JBColor(Gray._88, Gray._88); // RGB(88, 88, 88)
+                    }
+
                     //needs to be number above 0x1000000
                     if (numberColor < 0x1000000 || numberColor > (0xFFFFFF+0x1000000)) {
                         return null;
