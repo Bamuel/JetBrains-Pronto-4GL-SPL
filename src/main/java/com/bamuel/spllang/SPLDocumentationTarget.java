@@ -2,10 +2,8 @@ package com.bamuel.spllang;
 
 import com.bamuel.spllang.psi.SPLTypes;
 import com.intellij.lang.documentation.DocumentationMarkup;
-import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.util.text.HtmlChunk;
 import com.intellij.psi.tree.IElementType;
-import org.apache.commons.compress.utils.IOUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,7 +12,6 @@ import com.intellij.model.Pointer;
 import com.intellij.platform.backend.documentation.DocumentationResult;
 import com.intellij.platform.backend.documentation.DocumentationTarget;
 import com.intellij.platform.backend.presentation.TargetPresentation;
-import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiElement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -419,7 +416,6 @@ public class SPLDocumentationTarget implements DocumentationTarget {
     @Override
     public @Nullable String computeDocumentationHint() {
         return null;
-        //return generateDocumentationHint(element);
     }
 
     @Override
@@ -592,14 +588,24 @@ public class SPLDocumentationTarget implements DocumentationTarget {
                         Elements imgElements = element.select("img");
                         for (Element imgElement : imgElements) {
                             String src = imgElement.attr("src");
-                            if (src != null && src.length() > 0) {
+                            if (!src.isEmpty()) {
                                 String imgPath = src.replace("../../_local/", "docs/");
                                 ClassLoader classLoader = getClass().getClassLoader();
                                 InputStream inputStream = classLoader.getResourceAsStream(imgPath);
                                 if (inputStream != null) {
-                                    byte[] bytes = IOUtils.toByteArray(inputStream);
-                                    String base64 = Base64.getEncoder().encodeToString(bytes);
-                                    imgElement.attr("src", "data:image/png;base64," + base64);
+                                    try {
+                                        byte[] bytes = inputStream.readAllBytes();
+                                        String base64 = Base64.getEncoder().encodeToString(bytes);
+                                        imgElement.attr("src", "data:image/png;base64," + base64);
+                                    } catch (IOException e) {
+                                        e.printStackTrace(); // Handle exception as needed
+                                    } finally {
+                                        try {
+                                            inputStream.close();
+                                        } catch (IOException e) {
+                                            e.printStackTrace(); // Handle close exception if necessary
+                                        }
+                                    }
                                 }
                             }
                         }
