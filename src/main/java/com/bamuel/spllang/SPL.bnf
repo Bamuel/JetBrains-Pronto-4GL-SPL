@@ -615,7 +615,8 @@ procedureclauses_ ::= (window_)? (relative_)? (NOHIDE)? (windowpositision_)? (co
 
 // Other rules
 export_ ::= EXPORT (CAN_OVERRIDE)?
-colour_ ::= COLOUR IS? (COLOUR_NAME|number_) (ON COLOUR_NAME|number_)?
+colour_ ::= COLOUR IS? (colournames_) (ON colournames_)?
+colournames_ ::= COLOUR_NAME|NUMBER|number_
 helpcontext_ ::= HELP_CONTEXT IS? string_ string_
 window_ ::= WINDOW (rowcol_ TO rowcol_)? (relative_)?
 relative_ ::= RELATIVE TO rowcol_

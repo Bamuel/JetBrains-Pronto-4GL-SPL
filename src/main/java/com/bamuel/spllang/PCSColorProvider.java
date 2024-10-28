@@ -13,6 +13,9 @@ public class PCSColorProvider implements ElementColorProvider {
 
     @Override
     public @Nullable Color getColorFrom(@NotNull PsiElement element) {
+        if (element.getParent().getNode() == null) {
+            return null;
+        }
         if (element.getParent().getNode().getElementType() == PCSTypes.COLOR_LIST_){
             if (element.getNode().getElementType() == PCSTypes.COLOR_AQUA) {
                 return JBColor.CYAN;
