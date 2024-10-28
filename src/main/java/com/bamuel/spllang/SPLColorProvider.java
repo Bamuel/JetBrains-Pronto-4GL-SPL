@@ -59,7 +59,8 @@ public class SPLColorProvider implements ElementColorProvider {
                 try {
                     //System.out.println("Element text: " + element.getText());
                     int numberColor = Integer.parseInt(element.getText());
-                    if (numberColor < 0 || numberColor > 0xFFFFFF) {
+                    //needs to be number above 0x1000000
+                    if (numberColor < 0x1000000 || numberColor > (0xFFFFFF+0x1000000)) {
                         return null;
                     }
                     int r = numberColor & 0xFF;
