@@ -21,7 +21,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <![CDATA[
          <h2>New Features/Bug Fixes</h2>
          <ul>
-            <li>Basic Support for .enq files</li>
+            <li>Support SQL/LST/RPT for .enq files</li>
          </ul>
         ]]>
     </change-notes>

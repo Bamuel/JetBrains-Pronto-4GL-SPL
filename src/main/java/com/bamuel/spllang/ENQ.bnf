@@ -15,7 +15,16 @@
 
 ENQFile ::= statements_*
 
-statements_ ::= sqlstatement_ | lststatement_ | rptstatement_ | formatstatement_
+statements_ ::= sqlstatement_ formatstatement_?
+
+formatstatement_ ::= FORMAT IS format_type_
+format_type_ ::= PRN
+              | CSV
+              | EXTERNAL
+              | XML
+              | EXCEL (STRING)?
+              | RPT rptstatements_
+              | LST lststatements_
 
 sqlstatement_ ::= selectstatement_ | insertstatement_ | updatestatement_ | deletestatement_
 selectstatement_ ::= SELECT fieldnames_* FROM from_* (WHERE where_)? (ORDER BY orderby_)?
@@ -23,8 +32,59 @@ insertstatement_ ::= INSERT INTO from_ LPAREN fieldnames_* RPAREN VALUES LPAREN 
 updatestatement_ ::= UPDATE from_ SET identifier_ EQUAL expression_ (WHERE where_)?
 deletestatement_ ::= DELETE FROM from_ (WHERE where_)?
 
-fieldnames_ ::= (identifier_ EQUAL expression_) | identifier_ | MULT
-from_ ::= identifier_
+lststatements_ ::= (reportwidth_? | titleline_? | fieldtitle_? | newpage_? | suppress_? | fieldorder_?
+                 | unique_? | total_? | subtotal_? | sort_? | displaytype_? | displaypicture_? | set_?
+                 | if_? | labelline_? | labelwidth_? | noheadings_?)*
+reportwidth_ ::= REPORT WIDTH IS? NUMBER
+titleline_ ::= TITLE LINE NUMBER IS? fieldnames_*
+fieldtitle_ ::= FIELD TITLE NUMBER IS? fieldnames_*
+newpage_ ::= NEW PAGE ON? fieldnames_
+suppress_ ::= SUPPRESS fieldnames_
+fieldorder_ ::= FIELD ORDER IS? fieldnames_*
+unique_ ::= UNIQUE RECORD? ON? fieldnames_*
+total_ ::= TOTAL ON? fieldnames_
+subtotal_ ::= SUBTOTAL ON? fieldnames_ WITH BREAKS ON? fieldnames_* (IN fieldnames_*)?
+sort_ ::= SORT ON? (DESCENDING? fieldnames_)*
+displaytype_ ::= DISPLAY TYPE OF? fieldnames_ IS? displaylisttypes_
+displaypicture_ ::= DISPLAY PICTURE OF? fieldnames_ IS? displaylistpictures_
+displaylisttypes_ ::= "todo"
+displaylistpictures_ ::= "todo"
+set_ ::= setnormal_ | settotal_ | setsubtotal_
+setnormal_ ::= SET identifier_ EQUAL expression_
+settotal_ ::= SET TOTAL identifier_ EQUAL expression_
+setsubtotal_ ::= SET SUBTOTAL identifier_ EQUAL expression_ WITH BREAKS ON? fieldnames_* (IN fieldnames_*)?
+if_ ::= IF condition_ statements_* (ELSE statements_*)? ENDIF
+labelline_ ::= LABEL LINE NUMBER IS? fieldnames_*
+labelwidth_ ::= LABEL WIDTH IS? NUMBER (REPEATING NUMBER TIMES?)?
+noheadings_ ::= NO HEADINGS
+
+rptstatements_ ::= noncommandgroup_* commandgroups_*
+
+noncommandgroup_ ::= field_ | width_ | margin_ | depth_ | length_ | defaultfont_ | form_ | sort_
+field_ ::= FIELD fieldnames_ (PICTURE IS? displaylistpictures_)? (TYPE IS? displaytype_)?
+width_ ::= WIDTH NUMBER (COLUMNS)?
+margin_ ::= MARGIN NUMBER (COLUMNS)?
+depth_ ::= DEPTH NUMBER (LINES)?
+length_ ::= LENGTH NUMBER (LINES)?
+defaultfont_ ::= DEFAULT FONT IS? NUMBER
+form_ ::= FORM TYPE IS? identifier_
+
+commandgroups_ ::= (REPORT HEADER | REPORT FOOTER | HEADER | FOOTER | BEFORE fieldnames_ | AFTER fieldnames_ | DETAIL) commandgroupstatements_*
+commandgroupstatements_ ::= for_ | rpt_if_ | need_ | page_ | print_ | rpt_set_ | skip_ | skip_to_ | switch_ | while_
+for_ ::= FOR fieldnames_ EQUAL expression_ (DOWN)? TO expression_ (STEP expression_)? commandgroupstatements_* END_FOR
+rpt_if_ ::= IF condition_ commandgroupstatements_* (ELSE_IF condition_ commandgroupstatements_*)* (ELSE commandgroupstatements_*)? END_IF
+need_ ::= NEED NUMBER LINES
+page_ ::= PAGE (NO HEADER)? (NO FOOTER)?
+print_ ::= PRINT expression_ (IN COLUMN NUMBER)? (PICTURE IS? displaylistpictures_)? (UNDERLINED)? (BOLD)? (DIM)? (ITALIC)? (SUBSCRIPT)? (SUPERSCRIPT)? (FONT NUMBER)? (expression_)* (NONEWLINE)?
+rpt_set_ ::= SET identifier_ EQUAL expression_
+skip_ ::= SKIP NUMBER LINES
+skip_to_ ::= SKIP TO LINE NUMBER
+switch_ ::= SWITCH ON expression_ (CASE expression_ (COMMA expression_)* commandgroupstatements_)* (ELSE commandgroupstatements_*)? END_SWITCH
+while_ ::= WHILE condition_ commandgroupstatements_* END_WHILE
+
+
+fieldnames_ ::= ((identifier_ EQUAL expression_) | identifier_ | MULT) COMMA?
+from_ ::= identifier_ COMMA?
 where_ ::= condition_
 orderby_ ::= identifier_ (COMMA? identifier_)*
 condition_ ::= LPAREN* expression_ NOT? conditioncases_ expression_ RPAREN* ((AND|OR) condition_)*
@@ -37,11 +97,9 @@ conditioncases_ ::= EQUAL
                   | LIKE
                   | IN
 expression_ ::= items_ ((PLUS|MINUS|MULT|DIV|MOD) expression_)*
-items_ ::= identifier_ | DATE | NUMBER | FLOAT | STRING | INPUT STRING | PARAMETER | predefined_ | inlist_
-inlist_ ::= (LBRACE) (items_)* (RBRACE)
-
-formatstatement_ ::= FORMAT IS FORMAT_TYPE (STRING)?
-
+statements_ ::= set_ | if_
+items_ ::= INPUT STRING | DATE | NUMBER | FLOAT | STRING | PARAMETER | identifier_ | predefined_ | inlist_
+inlist_ ::= (LBRACE) (items_ COMMA?)* (RBRACE)
 
 identifier_ ::= IDENTIFIER (DOT ((IDENTIFIER | NUMBER)|MULT))*
 predefined_ ::= YES
