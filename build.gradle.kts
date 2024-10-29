@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.bamuel"
-version = "1.14"
+version = "1.15"
 
 repositories {
     mavenCentral()

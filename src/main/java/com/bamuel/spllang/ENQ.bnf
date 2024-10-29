@@ -1,0 +1,62 @@
+{
+  parserClass="com.bamuel.spllang.parser.ENQParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="ENQ"
+  psiImplClassSuffix="Impl"
+  psiPackage="com.bamuel.spllang.psi"
+  psiImplPackage="com.bamuel.spllang.psi.impl"
+
+  elementTypeHolderClass="com.bamuel.spllang.psi.ENQTypes"
+  elementTypeClass="com.bamuel.spllang.psi.ENQElementType"
+  tokenTypeClass="com.bamuel.spllang.psi.ENQTokenType"
+}
+
+ENQFile ::= statements_*
+
+statements_ ::= sqlstatement_ | lststatement_ | rptstatement_ | formatstatement_
+
+sqlstatement_ ::= selectstatement_ | insertstatement_ | updatestatement_ | deletestatement_
+selectstatement_ ::= SELECT fieldnames_* FROM from_* (WHERE where_)? (ORDER BY orderby_)?
+insertstatement_ ::= INSERT INTO from_ LPAREN fieldnames_* RPAREN VALUES LPAREN items_* RPAREN
+updatestatement_ ::= UPDATE from_ SET identifier_ EQUAL expression_ (WHERE where_)?
+deletestatement_ ::= DELETE FROM from_ (WHERE where_)?
+
+fieldnames_ ::= (identifier_ EQUAL expression_) | identifier_ | MULT
+from_ ::= identifier_
+where_ ::= condition_
+orderby_ ::= identifier_ (COMMA? identifier_)*
+condition_ ::= LPAREN* expression_ NOT? conditioncases_ expression_ RPAREN* ((AND|OR) condition_)*
+conditioncases_ ::= EQUAL
+                  | NOT_EQUAL
+                  | LESS_THAN
+                  | LESS_THAN_EQUAL
+                  | GREATER_THAN
+                  | GREATER_THAN_EQUAL
+                  | LIKE
+                  | IN
+expression_ ::= items_ ((PLUS|MINUS|MULT|DIV|MOD) expression_)*
+items_ ::= identifier_ | DATE | NUMBER | FLOAT | STRING | INPUT STRING | PARAMETER | predefined_ | inlist_
+inlist_ ::= (LBRACE) (items_)* (RBRACE)
+
+formatstatement_ ::= FORMAT IS FORMAT_TYPE (STRING)?
+
+
+identifier_ ::= IDENTIFIER (DOT ((IDENTIFIER | NUMBER)|MULT))*
+predefined_ ::= YES
+              | NO
+              | TRUE
+              | FALSE
+              | ZERO
+              | SPACE
+// Define the comments
+comments_ ::= comment_*
+comment_ ::= COMMENT | BLOCK_COMMENT
+
+// Define the other elements
+element_ ::= LSQUARE
+           | RSQUARE
+           | LPAREN
+           | RPAREN
+           | SEMICOLON

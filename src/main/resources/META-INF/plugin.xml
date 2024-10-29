@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.14</version>
+    <version>1.15</version>
     <category>Languages</category>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
@@ -21,8 +21,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <![CDATA[
          <h2>New Features/Bug Fixes</h2>
          <ul>
-            <li>Added .spl & .psc color finder for numeric</li>
-            <li>fixed Deprecated method usage IOUtils.toByteArray</li>
+            <li>Basic Support for .enq files</li>
          </ul>
         ]]>
     </change-notes>
@@ -40,6 +39,8 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <fileType name="SPL Compiled File" implementationClass="com.bamuel.spllang.OP7FileType" fieldName="INSTANCE" language="OP7" extensions="op7"/>
 
         <fileType name="SPL ENQ File" implementationClass="com.bamuel.spllang.ENQFileType" fieldName="INSTANCE" language="ENQ" extensions="enq"/>
+        <lang.parserDefinition language="ENQ" implementationClass="com.bamuel.spllang.ENQParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="ENQ" implementationClass="com.bamuel.spllang.ENQSyntaxHighlighterFactory"/>
 
         <fileType name="PRONTO Screen Customiser File" implementationClass="com.bamuel.spllang.PCSFileType" fieldName="INSTANCE" language="PCS" extensions="pcs"/>
         <lang.parserDefinition language="PCS" implementationClass="com.bamuel.spllang.PCSParserDefinition"/>
