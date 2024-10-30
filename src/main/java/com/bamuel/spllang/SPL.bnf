@@ -642,7 +642,7 @@ inlist_ ::= (LBRACE|LPAREN) ((function_|string_|number_) COMMA?)* (RBRACE|RPAREN
 
 
 identifier_ ::= IDENTIFIER ((LBRACE (number_|MULTIPLY) RBRACE)|DOT (number_|MULTIPLY))*
-string_ ::= STRING | identifier_ | PREDEFINED | function_ //This is a alphanumeric expression
+string_ ::= STRING | identifier_ | PREDEFINED | COLOUR_NAME | function_ //This is a alphanumeric expression
 number_ ::= NUMBER | identifier_ | PREDEFINED | function_ | arithmeticexpression_
 boolean_ ::= PREDEFINED | "1" | "0" | function_
 datestring_ ::= DATE | TIME | identifier_ | PREDEFINED | datetimefunction_ | modification-time_

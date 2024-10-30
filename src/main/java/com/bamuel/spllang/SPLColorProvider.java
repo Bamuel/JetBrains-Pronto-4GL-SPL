@@ -17,47 +17,47 @@ public class SPLColorProvider implements ElementColorProvider {
         if (element.getParent().getNode() == null) {
             return null;
         }
-        if (element.getParent().getNode().getElementType() == SPLTypes.COLOURNAMES_){
-            if (element.getNode().getElementType() == SPLTypes.COLOUR_NAME) {
-                String colorText = element.getText();
-                switch (colorText) {
-                    // https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
-                    // Based on 16 named colors
-                    case "aqua":
-                        return new JBColor(new Color(0x00FFFF), new Color(0x00FFFF)); // RGB(0, 255, 255)
-                    case "black":
-                        return new JBColor(new Color(0x000000), new Color(0x000000)); // RGB(0, 0, 0)
-                    case "blue":
-                        return new JBColor(new Color(0x0000FF), new Color(0x0000FF)); // RGB(0, 0, 255)
-                    case "fuchsia":
-                        return new JBColor(new Color(0xFF00FF), new Color(0xFF00FF)); // RGB(255, 0, 255)
-                    case "green":
-                        return new JBColor(new Color(0x008000), new Color(0x008000)); // RGB(0, 128, 0)
-                    case "grey":
-                    case "gray":
-                        return new JBColor(new Color(0x808080), new Color(0x808080)); // RGB(128, 128, 128)
-                    case "lime":
-                        return new JBColor(new Color(0x00FF00), new Color(0x00FF00)); // RGB(0, 255, 0)
-                    case "maroon":
-                        return new JBColor(new Color(0x800000), new Color(0x800000)); // RGB(128, 0, 0)
-                    case "navy":
-                        return new JBColor(new Color(0x000080), new Color(0x000080)); // RGB(0, 0, 128)
-                    case "olive":
-                        return new JBColor(new Color(0x808000), new Color(0x808000)); // RGB(128, 128, 0)
-                    case "purple":
-                        return new JBColor(new Color(0x800080), new Color(0x800080)); // RGB(128, 0, 128)
-                    case "red":
-                        return new JBColor(new Color(0xFF0000), new Color(0xFF0000)); // RGB(255, 0, 0)
-                    case "silver":
-                        return new JBColor(new Color(0xC0C0C0), new Color(0xC0C0C0)); // RGB(192, 192, 192)
-                    case "teal":
-                        return new JBColor(new Color(0x008080), new Color(0x008080)); // RGB(0, 128, 128)
-                    case "white":
-                        return new JBColor(new Color(0xFFFFFF), new Color(0xFFFFFF)); // RGB(255, 255, 255)
-                    case "yellow":
-                        return new JBColor(new Color(0xFFFF00), new Color(0xFFFF00)); // RGB(255, 255, 0)
-                }
+        if (element.getNode().getElementType() == SPLTypes.COLOUR_NAME) {
+            String colorText = element.getText();
+            switch (colorText) {
+                // https://developer.mozilla.org/en-US/docs/Web/CSS/named-color
+                // Based on 16 named colors
+                case "aqua":
+                    return new JBColor(new Color(0x00FFFF), new Color(0x00FFFF)); // RGB(0, 255, 255)
+                case "black":
+                    return new JBColor(new Color(0x000000), new Color(0x000000)); // RGB(0, 0, 0)
+                case "blue":
+                    return new JBColor(new Color(0x0000FF), new Color(0x0000FF)); // RGB(0, 0, 255)
+                case "fuchsia":
+                    return new JBColor(new Color(0xFF00FF), new Color(0xFF00FF)); // RGB(255, 0, 255)
+                case "green":
+                    return new JBColor(new Color(0x008000), new Color(0x008000)); // RGB(0, 128, 0)
+                case "grey":
+                case "gray":
+                    return new JBColor(new Color(0x808080), new Color(0x808080)); // RGB(128, 128, 128)
+                case "lime":
+                    return new JBColor(new Color(0x00FF00), new Color(0x00FF00)); // RGB(0, 255, 0)
+                case "maroon":
+                    return new JBColor(new Color(0x800000), new Color(0x800000)); // RGB(128, 0, 0)
+                case "navy":
+                    return new JBColor(new Color(0x000080), new Color(0x000080)); // RGB(0, 0, 128)
+                case "olive":
+                    return new JBColor(new Color(0x808000), new Color(0x808000)); // RGB(128, 128, 0)
+                case "purple":
+                    return new JBColor(new Color(0x800080), new Color(0x800080)); // RGB(128, 0, 128)
+                case "red":
+                    return new JBColor(new Color(0xFF0000), new Color(0xFF0000)); // RGB(255, 0, 0)
+                case "silver":
+                    return new JBColor(new Color(0xC0C0C0), new Color(0xC0C0C0)); // RGB(192, 192, 192)
+                case "teal":
+                    return new JBColor(new Color(0x008080), new Color(0x008080)); // RGB(0, 128, 128)
+                case "white":
+                    return new JBColor(new Color(0xFFFFFF), new Color(0xFFFFFF)); // RGB(255, 255, 255)
+                case "yellow":
+                    return new JBColor(new Color(0xFFFF00), new Color(0xFFFF00)); // RGB(255, 255, 0)
             }
+        }
+        if (element.getParent().getNode().getElementType() == SPLTypes.COLOURNAMES_){
             if (element.getNode().getElementType() == SPLTypes.NUMBER) {
                 try {
                     //System.out.println("Element text: " + element.getText());
