@@ -720,7 +720,8 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LESSTHANOREQUALTO, new TextAttributesKey[]{OPERATION_SIGN});
 
         //Other
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{PREDEFINED});
+        //TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{PREDEFINED});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.PREDEFINED, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.STRING, new TextAttributesKey[]{STRING});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NUMBER, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.COMMA, new TextAttributesKey[]{COMMA});
