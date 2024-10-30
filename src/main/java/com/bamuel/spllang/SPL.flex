@@ -17,7 +17,8 @@ import com.intellij.psi.TokenType;
 %eof}
 
 //CRLF=\R
-WHITE_SPACE=[\ \n\t\f]
+// new line are space, tab, form feed, and line feed and \
+WHITE_SPACE=[\ \\\n\t\f]
 IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_-]*
 
 NUMBER=-?[0-9]+(\.[0-9]+)?
@@ -753,6 +754,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> "<>"                                            { return SPLTypes.NOTEQUALTO; }
 <YYINITIAL> ">="                                            { return SPLTypes.GREATERTHANOREQUALTO; }
 <YYINITIAL> "<="                                            { return SPLTypes.LESSTHANOREQUALTO; }
+<YYINITIAL> "BETWEEN"                                       { return SPLTypes.BETWEEN; }
 <YYINITIAL> "AND"                                           { return SPLTypes.AND; }
 <YYINITIAL> "OR"                                            { return SPLTypes.OR; }
 <YYINITIAL> "NOT"                                           { return SPLTypes.NOT; }

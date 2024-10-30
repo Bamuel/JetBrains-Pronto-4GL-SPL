@@ -710,6 +710,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.AND, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.OR, new TextAttributesKey[]{KEYWORD});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.NOT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.BETWEEN, new TextAttributesKey[]{METADATA});
         //Comparison
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.GREATERTHAN, new TextAttributesKey[]{OPERATION_SIGN});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.LESSTHAN, new TextAttributesKey[]{OPERATION_SIGN});

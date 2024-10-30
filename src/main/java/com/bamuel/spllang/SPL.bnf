@@ -98,7 +98,7 @@ acceptonerror_ ::= onerror_
 acceptfunctionkey_ ::= ON FUNCTION_KEY statement_* END_ON
 accepttag_ ::= TAG IS? NUMBER
 accepthelpcontext_ ::= HELP_CONTEXT IS? string_*
-accepthelpscreen_ ::= HELP_SCREEN SCREEN_PRIMARY identifier_ rowcol_ (OCCURS number_)? SHOWING identifier_ STRING (COMMA identifier_ STRING)* (USING identifier_)
+accepthelpscreen_ ::= HELP_SCREEN SCREEN_PRIMARY identifier_ rowcol_ (OCCURS number_)? SHOWING identifier_ string_ (COMMA? identifier_ STRING)* (USING identifier_)
 beforeaccept_ ::= BEFORE_ACCEPT statement_* END_BEFORE_ACCEPT
 acceptvalidation_ ::= VALIDATIONS statement_* END_VALIDATIONS
 acceptproceduralstatement_ ::= statement_*
@@ -113,7 +113,7 @@ box_ ::= BOX boxitems_
 boxitems_ ::= ((rowcol_ TO rowcol_) | DOUBLE | NO_CROSS | (TITLE IS? string_) | SUNKEN | colour_ | ABSOLUTE_COORDINATES)*
 break_ ::= BREAK
 call_ ::= CALL string_ callitems_
-callitems_ ::= (parameters_ | max_parameters_ | returning_ | home_ | BATCH | LEAVE_FILES_OPEN | EXTERNAL | backgroundnowait | onerror)*
+callitems_ ::= (parameters_ | max_parameters_ | returning_ | home_ | BATCH | LEAVE_FILES_OPEN | EXTERNAL | backgroundnowait | onerror_)*
 max_parameters_ ::= MAX_PARAMETERS ARE? number_
 home_ ::= HOME IS? string_
 backgroundnowait_ ::= BACKGROUND | BACKGROUNDNOWAITWAIT
@@ -143,7 +143,7 @@ command_ ::= COMMAND string_ commanditems_
 commanditems_ ::= (parameters_ | home_ | NO_MESSAGE | NO_REFRESH | NO_XTERM | max_parameters_ | BATCH | (BACKGROUND|BACKGROUNDNOWAITWAIT) | EXTERNAL | onerror_)*
 commitwork_ ::= COMMIT WORK (onerror_)?
 confirm_ ::= CONFIRM confirmitems_ CONFIRM_END
-confirmitems_ ::= (rowcol_ | (AUTO? (when_)?) | prompt_ | NO_PROMPT | (DEFAULT IS? boolean_) | (NO_WINDOW|WINDOW) | (BEFORE statement_*) | (CONFIRMED statement_*) | (NOT_CONFIRMED statement_*) | (AFTER statement_*))*
+confirmitems_ ::= (rowcol_ | (AUTO (when_)?) | prompt_ | NO_PROMPT | (DEFAULT IS? boolean_) | (NO_WINDOW|WINDOW) | (BEFORE statement_*) | (CONFIRMED statement_*) | (NOT_CONFIRMED statement_*) | (AFTER statement_*))*
 continue_ ::= CONTINUE
 continueentry_ ::= CONTINUE_ENTRY
 delete_ ::= DELETE string_ (NO_WARNING | onerror_)*
@@ -154,7 +154,7 @@ displayoption1_ ::= string_ rowcol_ displayoption1items_
 displayoption1items_ ::= ((COL number_) | (PIC picture_) | (TITLE string_) | MULTILINE | (ROWS number_) | (COLUMNS number_) | BLANK_WHEN_ZERO | BLANK_DECIMALS_WHEN_ZERO | BOLD | DIM | FLASHING | INVERSE | ITALIC | UNDERLINED | BELL | FOREGROUND | BACKGROUND | DATA | PROMPT | colour_ | scale_ | FIXED_WIDTH_FONT | acceptjustify_ | (HELP_IS string_))*
 displayoption2_ ::= BITMAP string_ rowcol_ (TO rowcol_)? BACKGROUNDNOWAITWAIT
 do_ ::= DO string_ doitems_
-doitems_ ::= ((SCREEN_MODE string_) | SAME | ONCE | SUB_SCREEN | (INITIAL_MODE IS | string_) | parameters_ | returning_ | (NEXT string_) | BACKGROUNDNOWAITWAIT | NO_SECTION)*
+doitems_ ::= ((SCREEN_MODE string_) | MODEENTRY | SEARCH | SAME | ONCE | SUB_SCREEN | (INITIAL_MODE IS | string_) | parameters_ | returning_ | (NEXT string_) | BACKGROUNDNOWAITWAIT | NO_SECTION)*
 do2_ ::= DO NEXT string_
 dropdown_ ::= DROP_DOWN dropdownitems_ DROP_DOWN_END
 dropdownitems_ ::= (DYNAMIC | OPTIONAL | EDIT | (WIDTH IS? number_) | concat_title_)*
@@ -203,7 +203,7 @@ push_ ::= PUSH string_
 query_ ::= QUERY string_ queryitems_
 queryitems_ ::= (parameters_ | home_ | BATCH | NO_PAUSE | SPOOL | max_parameters_ | onerror_)*
 radio-button_ ::= RADIO_BUTTON string_ (rowcol_ boolean_ TITLE string_ colour_?)* radio-buttonitems_ RADIO_BUTTON_END
-radio-buttonitems_ ::= ((BUTTON_WHEN condition_) | (RIGHT_COORDINATE) | (DEFAULT IS? condition_) | (when_) | READ_ONLY | (BEFORE_RADIO_BUTTON statement_* END_BEFORE_RADIO_BUTTON) | (VALIDATIONS statement_* END_VALIDATIONS) | (ON CHANGE item_* END_ON))*
+radio-buttonitems_ ::= ((BUTTON_WHEN condition_) | (RIGHT_COORDINATE) | (DEFAULT IS? condition_) | (when_) | READ_ONLY | (BEFORE_RADIO_BUTTON statement_* END_BEFORE_RADIO_BUTTON) | (VALIDATIONS statement_* END_VALIDATIONS) | (ON CHANGE statement_* END_ON))*
 re-enter_ ::= RE_ENTER (string_)? (OPTIONAL|AUTO)?
 refresh_ ::= REFRESH (DATA|WHENS|PROMPTS|REVIEW|TITLE|string_)
 repeat_ ::= REPEAT statement_* UNTIL condition_ statement_* REPEAT_END
@@ -237,15 +237,15 @@ sql-update_ ::= SQL_UPDATE ALL? string_ SET (identifier_ EQUALTO condition_)* (W
 statement-group_ ::= STATEMENT_GROUP item_* STATEMENT_GROUP_END
 stringstatement_ ::= stringstatement1_ | stringstatement2_ | stringstatement3_
 stringstatement1_ ::= STRINGSTATMENT string_ (INSERTING|REPLACING) string_ "at" number_
-stringstatement2_ ::= STRINGSTATMENT string_ DELETING arithmeticexpression_ (TO arithmeticexpression_)?
+stringstatement2_ ::= STRINGSTATMENT string_ DELETING "at"? arithmeticexpression_ (TO arithmeticexpression_)?
 stringstatement3_ ::= STRINGSTATMENT string_ APPENDING string_
-switch_ ::= SWITCH ON string_ (CASE (string_|COMMA)* statement_*)* (ELSE statement_*)? SWITCH_END
+switch_ ::= SWITCH ON? string_ (CASE (string_|COMMA)* statement_*)* (ELSE statement_*)? SWITCH_END
 transaction_ ::= TRANSACTION (transactionbegin_ | transactioncommit_ | transactionrollback_)
 transactionbegin_ ::= BEGIN (ON string_ (COMMA STRING)*)? (LEAVING string_ (COMMA STRING)*)? FREE_LOCKS? (onerror_)?
 transactioncommit_ ::= COMMIT (onerror_)?
 transactionrollback_ ::= ROLLBACK (onerror_)?
 unlock_ ::= UNLOCK (string_|ALL) LOCAL?
-update_ ::= UPDATE string_ NO_WARNING? LOCK? (onerror_)?
+update_ ::= UPDATE (string_ IN)? string_ NO_WARNING? LOCK? (onerror_)?
 version-number_ ::= VERSION_NUMBER IS? (number_|string_)
 web-client-local-agent_ ::= WEB_CLIENT_LOCAL_AGENT (boolean_)
 while_ ::= WHILE condition_ DETAIL? statement_* WHILE_END
@@ -546,7 +546,7 @@ xml_validate_doc_ ::= XML_VALIDATE_DOC LPAREN string_ COMMA string_ RPAREN
 
 // Preprocessor rule
 preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
-preprocessor_define_ ::= PREPROCESSOR_DEFINE item_*
+preprocessor_define_ ::= PREPROCESSOR_DEFINE identifier_ LPAREN? (item_|COMMA)* RPAREN?
 preprocessor_undef_ ::= PREPROCESSOR_UNDEF string_
 preprocessor_ifdef_ ::= PREPROCESSOR_IFDEF string_
 preprocessor_ifndef_ ::= PREPROCESSOR_IFNDEF string_
@@ -555,14 +555,14 @@ preprocessor_if_ ::= PREPROCESSOR_IF condition_ item_* (PREPROCESSOR_ELSE item_*
 
 // Screen rule
 screen_ ::= SCREEN identifier_ screenitems_ SCREEN_END
-screenitems_ ::= (SCREEN_RESPONSIVE | window_ | windowpositision_ | screentitle_ | screenprimary_ | screenselect_ | screenquicklink_ | colour_ | screenreview_ | screenallowed_ | SCREEN_PROMPT_FOR_SEARCH | SCREEN_FIND_FOR_CURRENCY | screenprompt_ | screendatagrid_ | screenreviewoccurs | SCREEN_REVIEW_FROM_START | SCREEN_NO_REVIEW_ROW_SEPARATORS | SCREEN_NO_REVIEW_COLUMN_SEPARATORS | SCREEN_NO_REVIEW_SEPARATORS | SCREEN_START_ON_CURRENT_RECORD | SCREEN_LEAVE_PARENT_SCREEN | when_ | local_ | parameters_ | returning_ | STOP_EXIT_ALL_KEY | SCREEN_POSITION_ON_OK | SCREEN_STAY_IN_CORRECT | SCREEN_FORM_ENTRY | screenhelpcontext_ | before_ | detail_ | after_)*
+screenitems_ ::= (SCREEN_RESPONSIVE | window_ | windowpositision_ | screentitle_ | screenprimary_ | screenselect_ | screenquicklink_ | colour_ | screenreview_ | screenallowed_ | SCREEN_PROMPT_FOR_SEARCH | SCREEN_FIND_FOR_CURRENCY | screenprompt_ | screendatagrid_ | screenreviewoccurs | SCREEN_REVIEW_FROM_START | SCREEN_NO_REVIEW_ROW_SEPARATORS | SCREEN_NO_REVIEW_COLUMN_SEPARATORS | SCREEN_NO_REVIEW_SEPARATORS | SCREEN_START_ON_CURRENT_RECORD | SCREEN_LEAVE_PARENT_SCREEN | when_ | local_ | parameters_ | returning_ | STOP_EXIT_ALL_KEY | SCREEN_POSITION_ON_OK | SCREEN_STAY_IN_CORRECT | SCREEN_FORM_ENTRY | screenhelpcontext_ | before_ | detail_ | after_ | comments_)*
 
 screentitle_ ::= TITLE IS? string_
 screenprimary_ ::= SCREEN_PRIMARY identifier_ (ON INDEX (string_|number_)*)? (SCREEN_SAME_DIFFERENT (identifier_ fieldclauses_)*)?
 screenselect_ ::= selectclauses_
 screenquicklink_ ::= SCREEN_QUICK_LINK (ON)? identifier_
 screenreview_ ::= REVIEW colour_
-screenallowed_ ::= SCREEN_ALLOWED (IS|ARE)? ("FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"SEARCH"|"ENTRY"|"CORRECT"|"REMOVE"|"find"|"next"|"prev"|"next-scr"|"prev-scr"|"search"|"entry"|"correct"|"remove") identifier_* //todo: [mode-name ...]]
+screenallowed_ ::= SCREEN_ALLOWED (IS|ARE)? (MODEENTRY|"FIND"|"NEXT"|"PREV"|"NEXT-SCR"|"PREV-SCR"|"SEARCH"|"ENTRY"|"CORRECT"|"REMOVE"|"find"|"next"|"prev"|"next-scr"|"prev-scr"|"search"|"entry"|"correct"|"remove")* identifier_* //todo: [mode-name ...]]
 screenprompt_ ::= PROMPT rowcol_
 screendatagrid_ ::= SCREEN_DATA_GRID
 screenreviewoccurs ::= REVIEW OCCURS number_ ("by" number_)?
@@ -573,7 +573,7 @@ api_ ::= API identifier_ procedureclauses_ API_END
 
 // Field rule
 field_ ::= FIELD (identifier_ fieldclauses_)*
-fieldclauses_ ::= (fieldtype_ | fieldpic_ | fieldoccurs_ | fieldlike_ | fieldcase_ | JUSTIFY | USE_NAME_IN_DB | fielddbcolumnname_ | fielddrillback_)*
+fieldclauses_ ::= (fieldtype_ | fieldpic_ | fieldoccurs_ | fieldlike_ | fieldcase_ | JUSTIFY | USE_NAME_IN_DB | fielddbcolumnname_ | fielddrillback_ | comments_)*
 fieldtype_ ::= TYPE IS? datatypes_
 datatypes_ ::= ("NUMERIC"|"DECIMAL"|"MONEY"|"FLOATING"|"ALPHA"|"STRING"|"VARCHAR"|"BLOB"|"XML-HANDLE"|"DATE"|"TIME"|"DATE-TIME"|"DATETIME"|"DATE_TIME"|"LOCAL-DATE-TIME"|"BOOLEAN"|"COLOUR"|"COLOR"|"OLE-INTERFACE"|"numeric"|"decimal"|"money"|"floating"|"alpha"|"string"|"varchar"|"blob"|"xml-handle"|"date"|"time"|"date-time"|"datetime"|"date_time"|"local-date-time"|"boolean"|"colour"|"color"|"ole-interface")
 fieldpic_ ::= PIC IS? picture_
@@ -588,12 +588,12 @@ local_ ::= LOCAL (FIELD)? (identifier_ fieldclauses_)*
 
 // Menu rule
 menu_ ::= MENU identifier_ menucaluses_ MENU_END
-menucaluses_ ::= (window_ | windowpositision_ | local_ | parameters_ | returning_ | menubuttonwidth_ | STOP_EXIT_ALL_KEY | TITLE IS? string_ | TREEMENU | NOHIDE | colour_ | export_ | helpcontext_ | before_ | detail_ | after_)*
+menucaluses_ ::= (window_ | windowpositision_ | local_ | parameters_ | returning_ | menubuttonwidth_ | STOP_EXIT_ALL_KEY | TITLE IS? string_ | TREEMENU | NOHIDE | colour_ | export_ | helpcontext_ | before_ | detail_ | after_ | comments_)*
 menubuttonwidth_ ::= MENU_BUTTON_WIDTH IS? number_
 
 // Mode rule
-mode_ ::= MODE identifier_ modeclauses_
-modeclauses_ ::= (prompt_ | help_ | security_ | modeentry_ | process_ | modecurrency_ | LOCK | modeperform_ | when_ | colour_ | modeicon_ | alwaysshowaddnohide_)*
+mode_ ::= MODE (identifier_|MODEENTRY) modeclauses_
+modeclauses_ ::= (prompt_ | help_ | security_ | modeentry_ | process_ | modecurrency_ | LOCK | modeperform_ | when_ | colour_ | modeicon_ | alwaysshowaddnohide_ | comments_)*
 prompt_ ::= PROMPT IS? string_
 help_ ::= HELP IS? string_
 security_ ::= SECURITY IS? number_
@@ -623,7 +623,7 @@ alwaysshowaddnohide_ ::= (ALWAYS_SHOW|ALWAYS_ADD|NOHIDE)
 
 // Object rule
 object_ ::= OBJECT (identifier_ objectclauses_)*
-objectclauses_ ::= (objectlike_ | objecttype_ | objectseparator_ | objectfile_ | objectrecord_ | objectkey_ | NOJOINS | NOROWID)*
+objectclauses_ ::= (objectlike_ | objecttype_ | objectseparator_ | objectfile_ | objectrecord_ | objectkey_ | NOJOINS | NOROWID | comments_)*
 objectlike_ ::= LIKE identifier_
 objecttype_ ::= TYPE IS? filetypes_
 filetypes_ ::= ("EXTERNAL"|"TEXT"|"SEQUENTIAL"|"FIXED-LENGTH-TEXT"|"INDEXED"|"ISAM"|"PRN"|"CSV"|"DB-SEQUENTIAL"|"MEMORY"|"external"|"text"|"sequential"|"fixed-length-text"|"indexed"|"isam"|"prn"|"csv"|"db-sequential"|"memory")
@@ -640,7 +640,7 @@ returning_ ::= RETURNING (identifier_ fieldclauses_)*
 
 // Procedure rule
 procedure_ ::= PROCEDURE identifier_ procedureclauses_ PROCEDURE_END
-procedureclauses_ ::= (window_ | relative_ | NOHIDE | windowpositision_ | colour_ | local_ | parameters_ | returning_ | STOP_EXIT_ALL_KEY | TITLE string_ | export_ | AUTO_TRANSACTION | helpcontext_)* statement_*
+procedureclauses_ ::= (window_ | relative_ | NOHIDE | windowpositision_ | colour_ | local_ | parameters_ | returning_ | STOP_EXIT_ALL_KEY | TITLE string_ | export_ | AUTO_TRANSACTION | helpcontext_ | comments_)* statement_*
 
 // Other rules
 export_ ::= EXPORT (CAN_OVERRIDE)?
@@ -660,19 +660,19 @@ onerror_ ::= ON ERROR (number_)? statement_* (ELSE statement_*)? END_ON
 rowcol_ ::= AT NUMBER COMMA NUMBER
 
 condition_ ::= LPAREN* NOT? relationalexpression_ (LPAREN|RPAREN)* (logicaloperator_ condition_)? RPAREN*
-logicaloperator_ ::= AND | OR | NOT
+logicaloperator_ ::= AND | OR | NOT | BETWEEN
 
-relationalexpression_ ::= (arithmeticexpression_|string_) (relationaloperator_ (arithmeticexpression_|string_|inlist_|calusesValues_))? | NOT? relationalexpression_
+relationalexpression_ ::= (arithmeticexpression_|string_) (relationaloperator_ (inlist_|arithmeticexpression_|string_|calusesValues_))? | NOT? relationalexpression_
 relationaloperator_ ::= (ASCII_NUM | COLLATE)? (GREATERTHAN | LESSTHAN | EQUALTO | NOTEQUALTO | GREATERTHANOREQUALTO | LESSTHANOREQUALTO | (NOT? LIKE) | (NOT? IN))
 
-arithmeticexpression_ ::= number_ (arithmeticoperator_ arithmeticexpression_)?
+arithmeticexpression_ ::= (LPAREN|RPAREN)* number_ (LPAREN|RPAREN)* (arithmeticoperator_ arithmeticexpression_)? (LPAREN|RPAREN)*
 arithmeticoperator_ ::= ADD | SUBTRACT | MULTIPLY | DIVIDE | MODULUS
 inlist_ ::= (LBRACE|LPAREN) ((function_|string_|number_) COMMA?)* (RBRACE|RPAREN)
 
 calusesValues_ ::= MESSAGEBOX_BUTTONS_VALUES | MESSAGEBOX_ICON_VALUES | MODEENTRY | COLOUR_NAME
 
-identifier_ ::= IDENTIFIER ((LBRACE (number_|MULTIPLY) RBRACE)|DOT (number_|MULTIPLY))*
-string_ ::= STRING | identifier_ | PREDEFINED | COLOUR_NAME | function_ //This is a alphanumeric expression
+identifier_ ::= ":"? IDENTIFIER ((LBRACE (number_|MULTIPLY) RBRACE)|DOT (number_|MULTIPLY))*
+string_ ::= STRING | identifier_ | PREDEFINED | COLOUR_NAME | function_ | arithmeticexpression_
 number_ ::= NUMBER | identifier_ | PREDEFINED | function_ | arithmeticexpression_
 boolean_ ::= PREDEFINED | "1" | "0" | function_
 datestring_ ::= DATE | TIME | identifier_ | PREDEFINED | datetimefunction_ | modification-time_
