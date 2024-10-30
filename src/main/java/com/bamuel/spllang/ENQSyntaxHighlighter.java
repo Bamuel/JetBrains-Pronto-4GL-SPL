@@ -128,6 +128,8 @@ public class ENQSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(ENQTypes.DATE, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(ENQTypes.FLOAT, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(ENQTypes.STRING, new TextAttributesKey[]{STRING});
+        TOKEN_HIGHLIGHT_MAP.put(ENQTypes.PICTURESTRING, new TextAttributesKey[]{STRING});
+
         TOKEN_HIGHLIGHT_MAP.put(ENQTypes.COMMA, new TextAttributesKey[]{COMMA});
         TOKEN_HIGHLIGHT_MAP.put(ENQTypes.LBRACE, new TextAttributesKey[]{PARENTHESES});
         TOKEN_HIGHLIGHT_MAP.put(ENQTypes.RBRACE, new TextAttributesKey[]{PARENTHESES});

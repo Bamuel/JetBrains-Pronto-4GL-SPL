@@ -25,9 +25,25 @@ FLOAT=-?[0-9]+\.[0-9]+
 PARAMETER=\$[0-9]
 //date 00-00-0000
 DATE=[0-9]{2}-[0-9]{2}-[0-9]{4}
+DATE2=[0-9]{4}-[0-9]{2}-[0-9]{2}
 
 SINGLEQUOTE="'"[^']*"'"
 DOUBLEQUOTE="\""[^\"]*"\""
+
+//Picture String
+// Start with optional minus or sign indicators
+// Optional dollar signs
+// Sequence of Z, 9, or * characters for integer part
+// Optional comma separators for thousands
+// Optional decimal point followed by optional Z or 9 for decimal part
+// Optional T or B placeholders
+// Optional DR or CR for debit/credit
+// Optional brackets for negative values
+// Optional X for alphanumeric field
+// Optional percentage symbol
+PICTURESTRING=(([$Z9*,./VSTB-]{4,100}) ([%-]*) ((DR|CR)?))
+//Picture X string if 3 or more
+PICTURESTRING2=(X{3,100})
 
 // Define comment styles
 COMMENT="//"[^\r\n]*
@@ -136,7 +152,7 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> "NEED"                                                { return ENQTypes.NEED; }
 <YYINITIAL> "LINES"                                               { return ENQTypes.LINES; }
 <YYINITIAL> "PRINT"                                               { return ENQTypes.PRINT; }
-<YYINITIAL> "COLUMN"                                              { return ENQTypes.COLUMN; }
+<YYINITIAL> (COL|COLUMN)                                          { return ENQTypes.COLUMN; }
 <YYINITIAL> "UNDERLINED"                                          { return ENQTypes.UNDERLINED; }
 <YYINITIAL> "BOLD"                                                { return ENQTypes.BOLD; }
 <YYINITIAL> "DIM"                                                 { return ENQTypes.DIM; }
@@ -179,11 +195,15 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> ";"                                                   { return ENQTypes.SEMICOLON; }
 
 // Match identifiers
-<YYINITIAL> {IDENTIFIER}                                          { return ENQTypes.IDENTIFIER; }
 <YYINITIAL> {NUMBER}                                              { return ENQTypes.NUMBER; }
 <YYINITIAL> {FLOAT}                                               { return ENQTypes.FLOAT; }
 <YYINITIAL> {DATE}                                                { return ENQTypes.DATE; }
+<YYINITIAL> {DATE2}                                               { return ENQTypes.DATE; }
 <YYINITIAL> ","                                                   { return ENQTypes.COMMA; }
+<YYINITIAL> {PICTURESTRING}                                       { return ENQTypes.PICTURESTRING; }
+<YYINITIAL> {PICTURESTRING2}                                      { return ENQTypes.PICTURESTRING; }
+
+<YYINITIAL> {IDENTIFIER}                                          { return ENQTypes.IDENTIFIER; }
 
 
 // Catch-all for bad characters

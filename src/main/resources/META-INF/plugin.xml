@@ -41,6 +41,7 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <fileType name="SPL ENQ File" implementationClass="com.bamuel.spllang.ENQFileType" fieldName="INSTANCE" language="ENQ" extensions="enq"/>
         <lang.parserDefinition language="ENQ" implementationClass="com.bamuel.spllang.ENQParserDefinition"/>
         <lang.syntaxHighlighterFactory language="ENQ" implementationClass="com.bamuel.spllang.ENQSyntaxHighlighterFactory"/>
+        <lang.braceMatcher language="ENQ" implementationClass="com.bamuel.spllang.ENQBraceMatcher"/>
 
         <fileType name="PRONTO Screen Customiser File" implementationClass="com.bamuel.spllang.PCSFileType" fieldName="INSTANCE" language="PCS" extensions="pcs"/>
         <lang.parserDefinition language="PCS" implementationClass="com.bamuel.spllang.PCSParserDefinition"/>

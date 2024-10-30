@@ -23,8 +23,8 @@ format_type_ ::= PRN
               | EXTERNAL
               | XML
               | EXCEL (STRING)?
-              | RPT rptstatements_
-              | LST lststatements_
+              | RPT rptstatements_?
+              | LST lststatements_?
 
 sqlstatement_ ::= selectstatement_ | insertstatement_ | updatestatement_ | deletestatement_
 selectstatement_ ::= SELECT fieldnames_* FROM from_* (WHERE where_)? (ORDER BY orderby_)?
@@ -32,9 +32,9 @@ insertstatement_ ::= INSERT INTO from_ LPAREN fieldnames_* RPAREN VALUES LPAREN 
 updatestatement_ ::= UPDATE from_ SET identifier_ EQUAL expression_ (WHERE where_)?
 deletestatement_ ::= DELETE FROM from_ (WHERE where_)?
 
-lststatements_ ::= (reportwidth_? | titleline_? | fieldtitle_? | newpage_? | suppress_? | fieldorder_?
-                 | unique_? | total_? | subtotal_? | sort_? | displaytype_? | displaypicture_? | set_?
-                 | if_? | labelline_? | labelwidth_? | noheadings_?)*
+lststatements_ ::= (reportwidth_ | titleline_ | fieldtitle_ | newpage_ | suppress_ | fieldorder_
+                 | unique_ | total_ | subtotal_ | sort_ | displaytype_ | displaypicture_ | set_
+                 | if_ | labelline_ | labelwidth_ | noheadings_)*
 reportwidth_ ::= REPORT WIDTH IS? NUMBER
 titleline_ ::= TITLE LINE NUMBER IS? fieldnames_*
 fieldtitle_ ::= FIELD TITLE NUMBER IS? fieldnames_*
@@ -45,10 +45,14 @@ unique_ ::= UNIQUE RECORD? ON? fieldnames_*
 total_ ::= TOTAL ON? fieldnames_
 subtotal_ ::= SUBTOTAL ON? fieldnames_ WITH BREAKS ON? fieldnames_* (IN fieldnames_*)?
 sort_ ::= SORT ON? (DESCENDING? fieldnames_)*
-displaytype_ ::= DISPLAY TYPE OF? fieldnames_ IS? displaylisttypes_
-displaypicture_ ::= DISPLAY PICTURE OF? fieldnames_ IS? displaylistpictures_
-displaylisttypes_ ::= "todo"
-displaylistpictures_ ::= "todo"
+displaytype_ ::= DISPLAY TYPE OF? fieldnames_ IS? datatypes_
+displaypicture_ ::= DISPLAY PICTURE OF? fieldnames_ IS? picturestring_
+datatypes_ ::= ("NUMERIC"|"DECIMAL"|"MONEY"|"FLOATING"|"ALPHA"|"STRING"|"VARCHAR"|"BLOB"|"XML-HANDLE"|"DATE"|"TIME"|"DATE-TIME"|"DATETIME"|"DATE_TIME"|"LOCAL-DATE-TIME"|"BOOLEAN"|"COLOUR"|"COLOR"|"OLE-INTERFACE"|"numeric"|"decimal"|"money"|"floating"|"alpha"|"string"|"varchar"|"blob"|"xml-handle"|"date"|"time"|"date-time"|"datetime"|"date_time"|"local-date-time"|"boolean"|"colour"|"color"|"ole-interface")
+//Picture string
+//todo: this struggles with 999v999 and some others.
+picturestring_ ::= picturestringRepetition_? PICTURESTRING? (FLOAT? (DOT? NUMBER?)? ("CR"|"DR")?)?
+picturestringRepetition_ ::= (MINUS? DOT? ("X"|"x"|"9"|"*"|"Z"|"z")? LPAREN NUMBER RPAREN)*
+
 set_ ::= setnormal_ | settotal_ | setsubtotal_
 setnormal_ ::= SET identifier_ EQUAL expression_
 settotal_ ::= SET TOTAL identifier_ EQUAL expression_
@@ -61,7 +65,8 @@ noheadings_ ::= NO HEADINGS
 rptstatements_ ::= noncommandgroup_* commandgroups_*
 
 noncommandgroup_ ::= field_ | width_ | margin_ | depth_ | length_ | defaultfont_ | form_ | sort_
-field_ ::= FIELD fieldnames_ (PICTURE IS? displaylistpictures_)? (TYPE IS? displaytype_)?
+//like field is not in the documentation.
+field_ ::= FIELD fieldnames_ (PICTURE IS? picturestring_)? (TYPE IS? datatypes_)? (LIKE fieldnames_)?
 width_ ::= WIDTH NUMBER (COLUMNS)?
 margin_ ::= MARGIN NUMBER (COLUMNS)?
 depth_ ::= DEPTH NUMBER (LINES)?
@@ -75,10 +80,11 @@ for_ ::= FOR fieldnames_ EQUAL expression_ (DOWN)? TO expression_ (STEP expressi
 rpt_if_ ::= IF condition_ commandgroupstatements_* (ELSE_IF condition_ commandgroupstatements_*)* (ELSE commandgroupstatements_*)? END_IF
 need_ ::= NEED NUMBER LINES
 page_ ::= PAGE (NO HEADER)? (NO FOOTER)?
-print_ ::= PRINT expression_ (IN COLUMN NUMBER)? (PICTURE IS? displaylistpictures_)? (UNDERLINED)? (BOLD)? (DIM)? (ITALIC)? (SUBSCRIPT)? (SUPERSCRIPT)? (FONT NUMBER)? (expression_)* (NONEWLINE)?
+print_ ::= PRINT (printexpression_)* (NONEWLINE)?
+printexpression_ ::= expression_ (IN COLUMN NUMBER)? (PICTURE IS? picturestring_)? (UNDERLINED)? (BOLD)? (DIM)? (ITALIC)? (SUBSCRIPT)? (SUPERSCRIPT)? (FONT NUMBER)?
 rpt_set_ ::= SET identifier_ EQUAL expression_
-skip_ ::= SKIP NUMBER LINES
-skip_to_ ::= SKIP TO LINE NUMBER
+skip_ ::= SKIP NUMBER LINES?
+skip_to_ ::= SKIP TO LINE? NUMBER
 switch_ ::= SWITCH ON expression_ (CASE expression_ (COMMA expression_)* commandgroupstatements_)* (ELSE commandgroupstatements_*)? END_SWITCH
 while_ ::= WHILE condition_ commandgroupstatements_* END_WHILE
 
@@ -86,7 +92,8 @@ while_ ::= WHILE condition_ commandgroupstatements_* END_WHILE
 fieldnames_ ::= ((identifier_ EQUAL expression_) | identifier_ | MULT) COMMA?
 from_ ::= identifier_ COMMA?
 where_ ::= condition_
-orderby_ ::= identifier_ (COMMA? identifier_)*
+//Decending is not in the documentation. I'm assuming it's optional.
+orderby_ ::= identifier_ DESCENDING? (COMMA? identifier_ DESCENDING?)*
 condition_ ::= LPAREN* expression_ NOT? conditioncases_ expression_ RPAREN* ((AND|OR) condition_)*
 conditioncases_ ::= EQUAL
                   | NOT_EQUAL
@@ -98,10 +105,13 @@ conditioncases_ ::= EQUAL
                   | IN
 expression_ ::= items_ ((PLUS|MINUS|MULT|DIV|MOD) expression_)*
 statements_ ::= set_ | if_
-items_ ::= INPUT STRING | DATE | NUMBER | FLOAT | STRING | PARAMETER | identifier_ | predefined_ | inlist_
-inlist_ ::= (LBRACE) (items_ COMMA?)* (RBRACE)
+items_ ::= INPUT STRING | DATE | NUMBER | FLOAT | STRING | PARAMETER | sqlfunction_ | identifier_ | predefined_ | inlist_
+inlist_ ::= (LBRACE|LPAREN) (items_ COMMA?)* (RBRACE|RPAREN)
 
-identifier_ ::= IDENTIFIER (DOT ((IDENTIFIER | NUMBER)|MULT))*
+//There isn't any documentation on what the function is.
+sqlfunction_ ::= IDENTIFIER LPAREN (NUMBER|STRING|COMMA)* RPAREN
+
+identifier_ ::= IDENTIFIER ((DOT ((IDENTIFIER | NUMBER)|MULT)) | (LSQUARE ((IDENTIFIER | NUMBER)|MULT) RSQUARE))*
 predefined_ ::= YES
               | NO
               | TRUE
