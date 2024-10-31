@@ -228,7 +228,7 @@ PREDEFINED=(true|false|yes|no|zero|zero[-_]?date|zero[-_]?time|zero[-_]?date[-_]
 <YYINITIAL> (responsive)                                    { return SPLTypes.SCREEN_RESPONSIVE; }
 <YYINITIAL> (primary)                                       { return SPLTypes.SCREEN_PRIMARY; }
 <YYINITIAL> (index)                                         { return SPLTypes.INDEX; }
-<YYINITIAL> (same|different)                                { return SPLTypes.SCREEN_SAME_DIFFERENT; }
+<YYINITIAL> (different)                                     { return SPLTypes.DIFFERENT; }
 <YYINITIAL> (quick[-_]?link)                                { return SPLTypes.SCREEN_QUICK_LINK; }
 <YYINITIAL> (allowed)                                       { return SPLTypes.SCREEN_ALLOWED; }
 <YYINITIAL> (no[-_]?prompt[-_]?for[-_]?search)              { return SPLTypes.SCREEN_PROMPT_FOR_SEARCH; }

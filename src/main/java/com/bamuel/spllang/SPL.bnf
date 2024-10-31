@@ -162,12 +162,12 @@ concat_title_ ::= CONCAT_TITLE (dropdownvalues_? | selectclauses_?)
 dropdownvalues_ ::= (string_ TITLE string_)* | (ICON IS? string_)* | (when_ SHOW_VALUE?)
 exit_ ::= EXIT number_? //todo: any number between -1 and 255
 extract_ ::= EXTRACT identifier_ extractitems_ EXTRACT_END
-extractitems_ ::= (ALL | ((NEXT|PREVIOUS) (SCREEN_SAME_DIFFERENT (identifier_ fieldclauses_)*)?) | LOCK | (ON INDEX (string_|number_)*) | (KEY IS? string_*) | (WHERE condition_) | (FINISH when_) | (onerror_) | (DETAIL statement_*) | (BEFORE (identifier_ fieldclauses_)* statement_*) | (AFTER (identifier_ fieldclauses_)* statement_*))*
+extractitems_ ::= (ALL | ((NEXT|PREVIOUS) ((SAME|DIFFERENT) (identifier_ fieldclauses_)*)?) | LOCK | (ON INDEX (string_|number_)*) | (KEY IS? string_*) | (WHERE condition_) | (FINISH when_) | (onerror_) | (DETAIL statement_*) | (BEFORE (identifier_ fieldclauses_)* statement_*) | (AFTER (identifier_ fieldclauses_)* statement_*))*
 field-group_ ::= FIELD_GROUP field-groupitems_ FIELD_GROUP_END
 field-groupitems_ ::= ((when_) | (TITLE IS? string_) | VERTICAL | WRAP | (TAG IS? number_) | statement_*)*
 for_ ::= FOR string_ EQUALTO condition_ DOWN? TO condition_ (STEP condition_)? DETAIL? statement_* FOR_END
 get_ ::= GET ((identifier_ fieldclauses_)* FROM)? string_ getitems_
-getitems_ ::= ((NEXT|PREVIOUS) | (SCREEN_SAME_DIFFERENT (identifier_ fieldclauses_)*) | (FROM | FIRST | LAST | CURRENT | LOOKUP) | (LOCK) | (ON INDEX (string_|number_)*) | (KEY IS? string_*) | onerror_)*
+getitems_ ::= ((NEXT|PREVIOUS) | ((SAME|DIFFERENT) (identifier_ fieldclauses_)*) | (FROM | FIRST | LAST | CURRENT | LOOKUP) | (LOCK) | (ON INDEX (string_|number_)*) | (KEY IS? string_*) | onerror_)*
 if_ ::= IF condition_ THEN? statement_* (ELSEIF condition_ THEN? statement_*)* (ELSE statement_*)? ENDIF
 initialise_ ::= INITIALISE string_ (LEAVING string_ (COMMA string_)*)?
 insert_ ::= INSERT string_ (LOCK | onerror_)*
@@ -548,8 +548,8 @@ xml_validate_doc_ ::= XML_VALIDATE_DOC LPAREN string_ COMMA string_ RPAREN
 preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
 preprocessor_define_ ::= PREPROCESSOR_DEFINE identifier_ LPAREN? (item_|COMMA)* RPAREN?
 preprocessor_undef_ ::= PREPROCESSOR_UNDEF string_
-preprocessor_ifdef_ ::= PREPROCESSOR_IFDEF string_
-preprocessor_ifndef_ ::= PREPROCESSOR_IFNDEF string_
+preprocessor_ifdef_ ::= PREPROCESSOR_IFDEF string_ item_* (PREPROCESSOR_ELSE item_*)? PREPROCESSOR_ENDIF?
+preprocessor_ifndef_ ::= PREPROCESSOR_IFNDEF string_ item_* (PREPROCESSOR_ELSE item_*)? PREPROCESSOR_ENDIF?
 preprocessor_if_ ::= PREPROCESSOR_IF condition_ item_* (PREPROCESSOR_ELSE item_*)? PREPROCESSOR_ENDIF?
 
 
@@ -558,7 +558,7 @@ screen_ ::= SCREEN identifier_ screenitems_ SCREEN_END
 screenitems_ ::= (SCREEN_RESPONSIVE | window_ | windowpositision_ | screentitle_ | screenprimary_ | screenselect_ | screenquicklink_ | colour_ | screenreview_ | screenallowed_ | SCREEN_PROMPT_FOR_SEARCH | SCREEN_FIND_FOR_CURRENCY | screenprompt_ | screendatagrid_ | screenreviewoccurs | SCREEN_REVIEW_FROM_START | SCREEN_NO_REVIEW_ROW_SEPARATORS | SCREEN_NO_REVIEW_COLUMN_SEPARATORS | SCREEN_NO_REVIEW_SEPARATORS | SCREEN_START_ON_CURRENT_RECORD | SCREEN_LEAVE_PARENT_SCREEN | when_ | local_ | parameters_ | returning_ | STOP_EXIT_ALL_KEY | SCREEN_POSITION_ON_OK | SCREEN_STAY_IN_CORRECT | SCREEN_FORM_ENTRY | screenhelpcontext_ | before_ | detail_ | after_ | comments_)*
 
 screentitle_ ::= TITLE IS? string_
-screenprimary_ ::= SCREEN_PRIMARY identifier_ (ON INDEX (string_|number_)*)? (SCREEN_SAME_DIFFERENT (identifier_ fieldclauses_)*)?
+screenprimary_ ::= SCREEN_PRIMARY identifier_ (ON INDEX (string_|number_)*)? ((SAME|DIFFERENT) (identifier_ fieldclauses_)*)?
 screenselect_ ::= selectclauses_
 screenquicklink_ ::= SCREEN_QUICK_LINK (ON)? identifier_
 screenreview_ ::= REVIEW colour_
@@ -843,7 +843,7 @@ element_ ::= FUNCTION_DECLARATION
            | SCREEN_RESPONSIVE
            | SCREEN_PRIMARY
            | INDEX
-           | SCREEN_SAME_DIFFERENT
+           | DIFFERENT
            | SCREEN_QUICK_LINK
            | SCREEN_ALLOWED
            | SCREEN_PROMPT_FOR_SEARCH

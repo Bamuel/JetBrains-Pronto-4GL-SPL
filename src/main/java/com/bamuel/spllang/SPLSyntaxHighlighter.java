@@ -293,7 +293,7 @@ public class SPLSyntaxHighlighter extends SyntaxHighlighterBase {
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_RESPONSIVE, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_PRIMARY, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.INDEX, new TextAttributesKey[]{METADATA});
-        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_SAME_DIFFERENT, new TextAttributesKey[]{METADATA});
+        TOKEN_HIGHLIGHT_MAP.put(SPLTypes.DIFFERENT, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_QUICK_LINK, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_ALLOWED, new TextAttributesKey[]{METADATA});
         TOKEN_HIGHLIGHT_MAP.put(SPLTypes.SCREEN_PROMPT_FOR_SEARCH, new TextAttributesKey[]{METADATA});
