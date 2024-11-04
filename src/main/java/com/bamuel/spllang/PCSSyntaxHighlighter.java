@@ -31,29 +31,63 @@ public class PCSSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final Map<IElementType, TextAttributesKey[]> TOKEN_HIGHLIGHT_MAP = new HashMap<>();
 
     static {
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_SCREEN_DEFINITION, new TextAttributesKey[]{FUNCTION_DECLARATION});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OVERRIDE_STATEMENT, new TextAttributesKey[]{KEYWORDS});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BOOLEAN, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.SCREEN, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.MENU, new TextAttributesKey[]{FUNCTION_DECLARATION});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.PROCEDURE, new TextAttributesKey[]{FUNCTION_DECLARATION});
 
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMON_CLAUSES_STATEMENTS, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ACCEPT, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.DISPLAY, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.OPTION, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.MODE, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.CONFIRM, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.WINDOW, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BOX, new TextAttributesKey[]{KEYWORDS});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.MESSAGE, new TextAttributesKey[]{KEYWORDS});
+
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TABORDER, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.NAME, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ORIG_COORDINATE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ORIG_TEXT, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TAG, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TEXT, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.HELPLINE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TITLE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.DEFAULT, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ALLOW, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.DISALLOW, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ADD, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.SUPPRESS, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.READONLY, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.SCALE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COORDINATE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TITLE_COORDINATE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.PICTURE, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ATTRIBUTES, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COLOR, new TextAttributesKey[]{CONSTANT});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.WINDOW_SIZE, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_POINT, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.TRIGGER_TYPE, new TextAttributesKey[]{CONSTANT});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RUN, new TextAttributesKey[]{CONSTANT});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COLOR, new TextAttributesKey[]{CONSTANT});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.ATTRIBUTES, new TextAttributesKey[]{CONSTANT});
+
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BOOLEAN, new TextAttributesKey[]{KEYWORDS});
 
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.NUMBER, new TextAttributesKey[]{NUMBER});
-        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.FLOAT, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COORDINATES, new TextAttributesKey[]{NUMBER});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.FLOAT_COORDINATES, new TextAttributesKey[]{NUMBER});
 
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.STRING, new TextAttributesKey[]{STRING});
 
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMA, new TextAttributesKey[]{COMMA});
+
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.LBRACE, new TextAttributesKey[]{BRACES});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.LSQUARE, new TextAttributesKey[]{BRACES});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RBRACE, new TextAttributesKey[]{BRACES});
+        TOKEN_HIGHLIGHT_MAP.put(PCSTypes.RSQUARE, new TextAttributesKey[]{BRACES});
+
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.COMMENT, new TextAttributesKey[]{COMMENT});
         TOKEN_HIGHLIGHT_MAP.put(PCSTypes.BLOCK_COMMENT, new TextAttributesKey[]{BLOCK_COMMENT});
+
         TOKEN_HIGHLIGHT_MAP.put(TokenType.BAD_CHARACTER, new TextAttributesKey[]{BAD_CHARACTER});
     }
 

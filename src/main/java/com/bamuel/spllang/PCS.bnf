@@ -15,69 +15,104 @@
 
 pcsFile ::= override_screen_definition_*
 
-override_screen_definition_ ::= OVERRIDE_SCREEN_DEFINITION name_of_screen_menu_procedure LBRACE override_statements_ RBRACE
-name_of_screen_menu_procedure ::= IDENTIFIER
+override_screen_definition_ ::= override_screen_definitionlists_ identifier_ LBRACE override_statements_ RBRACE
+override_screen_definitionlists_ ::= SCREEN
+                                   | MENU
+                                   | PROCEDURE
 
-override_statements_ ::= comments_? override_statement_* comments_?
-override_statement_ ::= OVERRIDE_STATEMENT LBRACE clauses_for_statement_* RBRACE
+override_statements_ ::= comments_? override_statementlists_* comments_?
+override_statementlists_ ::= ACCEPT LBRACE  comments_? accept_clauses_*  comments_? RBRACE
+                          |  DISPLAY LBRACE  comments_? display_clauses_*  comments_? RBRACE
+                          |  OPTION LBRACE  comments_? option_clauses_*  comments_? RBRACE
+                          |  MODE LBRACE  comments_? mode_clauses_*  comments_? RBRACE
+                          |  CONFIRM LBRACE  comments_? confirm_clauses_*  comments_? RBRACE
+                          |  TRIGGER LBRACE  comments_? trigger_clauses_*  comments_? RBRACE
+                          |  WINDOW LBRACE  comments_? window_clauses_*  comments_? RBRACE
+                          |  BOX LBRACE  comments_? box_clauses_*  comments_? RBRACE
+                          |  MESSAGE LBRACE  comments_? message_clauses_*  comments_? RBRACE
 
-clauses_for_statement_ ::= clause_for_common_ | clause_for_trigger_point_ | clause_for_trigger_type_ | clause_for_run_ | clause_for_color_ | clause_for_attribute_
+accept_clauses_ ::= NAME EQUALS (STRING|identifier_)
+                  | ORIG_COORDINATE EQUALS ANYCOORDINATES
+                  | TAG EQUALS NUMBER
+                  | HELPLINE EQUALS STRING
+                  | TITLE EQUALS (STRING|identifier_)
+                  | DEFAULT EQUALS (STRING|identifier_|NUMBER)
+                  | ALLOW EQUALS LIST
+                  | DISALLOW EQUALS LIST
+                  | SUPPRESS EQUALS BOOLEAN
+                  | READONLY EQUALS BOOLEAN
+                  | SCALE EQUALS NUMBER
+                  | COORDINATE EQUALS ANYCOORDINATES
+                  | TITLE_COORDINATE EQUALS ANYCOORDINATES
+                  | PICTURE EQUALS picture_
+                  | clause_for_attribute_
+                  | clause_for_color_
+                  | TABORDER EQUALS (STRING|NUMBER)
+                  | UNDOCUMENTED EQUALS (STRING|identifier_|NUMBER|COMMA|BOOLEAN)*
 
-clause_for_common_ ::= COMMON_CLAUSES_STATEMENTS EQUALS value_*
-value_ ::= STRING
-         | NUMBER
-         | FLOAT
-         | COORDINATES
-         | FLOAT_COORDINATES
-         | picture_
-         | BOOLEAN
-         | COMMA
-         | IDENTIFIER
-         | LSQUARE | RSQUARE
-         | LPAREN | RPAREN
-         | "<" | ">"
-         | SLASH
-         | "!"
+display_clauses_ ::= NAME EQUALS (STRING|identifier_)
+                   | ORIG_COORDINATE EQUALS ANYCOORDINATES
+                   | ORIG_TEXT EQUALS STRING
+                   | TAG EQUALS NUMBER
+                   | TEXT EQUALS STRING
+                   | TITLE EQUALS (STRING|identifier_)
+                   | ADD EQUALS BOOLEAN
+                   | SUPPRESS EQUALS BOOLEAN
+                   | SCALE EQUALS NUMBER
+                   | COORDINATE EQUALS ANYCOORDINATES
+                   | TITLE_COORDINATE EQUALS ANYCOORDINATES
+                   | PICTURE EQUALS picture_
+                   | clause_for_attribute_
+                   | clause_for_color_
+                   | UNDOCUMENTED EQUALS (STRING|identifier_|NUMBER|COMMA|BOOLEAN)*
+
+option_clauses_ ::= ORIG_COORDINATE EQUALS ANYCOORDINATES
+                  | ORIG_TEXT EQUALS STRING
+                  | TEXT EQUALS STRING
+                  | HELPLINE EQUALS STRING
+                  | SUPPRESS EQUALS BOOLEAN
+                  | COORDINATE EQUALS ANYCOORDINATES
+
+mode_clauses_ ::= NAME EQUALS (STRING|identifier_)
+               | TEXT EQUALS STRING
+               | HELPLINE EQUALS STRING
+               | ADD EQUALS BOOLEAN
+               | SUPPRESS EQUALS BOOLEAN
+
+confirm_clauses_ ::= NAME EQUALS (STRING|identifier_)
+                  | TEXT EQUALS STRING
+                  | DEFAULT EQUALS (STRING|identifier_|NUMBER)
+                  | SUPPRESS EQUALS BOOLEAN
+                  | COORDINATE EQUALS ANYCOORDINATES
+
+trigger_clauses_ ::= TRIGGER_POINT EQUALS trigger_point_value_
+                    | TRIGGER_TYPE EQUALS trigger_type_value_
+                    | NAME EQUALS (STRING|identifier_)
+                    | ORIG_TEXT EQUALS STRING
+                    | RUN EQUALS LIST
+
+trigger_point_value_ ::= SCREEN_LOAD | SCREEN_EXIT | BEFORE_ACCEPT | AFTER_ACCEPT | ON_HELP | BEFORE_CONFIRM | CONFIRMED | NOT_CONFIRMED | VALIDATE_MODE | OPTION | BEFORE_OPTION | DISPLAY | PRE_VALIDATE
+trigger_type_value_ ::= WINDOWS | WINDOWS_WITH_STATUS | UNIX | COMMAND | UNIX_WITH_STATUS | COMMAND_WITH_STATUS | PRONTO | EXPORT_DATA_GRID | "clib"
+
+window_clauses_ ::= TITLE EQUALS (STRING|identifier_)
+                  | WINDOW_SIZE EQUALS ANYCOORDINATES
+
+box_clauses_ ::= ORIG_COORDINATE EQUALS ANYCOORDINATES
+               | TITLE EQUALS (STRING|identifier_)
+               | ADD EQUALS BOOLEAN
+               | SUPPRESS EQUALS BOOLEAN
+               | COORDINATE EQUALS ANYCOORDINATES
+
+message_clauses_ ::= TEXT EQUALS STRING
+
+LIST ::= ((STRING|identifier_|NUMBER|ANYCOORDINATES) COMMA?)*
+ANYCOORDINATES ::=(COORDINATES|FLOAT_COORDINATES)
+identifier_ ::= IDENTIFIER (LSQUARE NUMBER RSQUARE)*
 
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
 // todo: add more picture string characters, this covers the basics.
-picture_ ::= pic_group_ | pic_words
-pic_words ::= ("ddmmmyybhh:mm" | "dd-mmm-yyyy hh:mm:ss") // Date and time format
-pic_group_ ::= (NUMBER | IDENTIFIER | "-") (".")? (LPAREN (NUMBER | IDENTIFIER) RPAREN)? (".")? (IDENTIFIER LPAREN (NUMBER | IDENTIFIER) RPAREN)?
-
-
-clause_for_trigger_point_ ::= TRIGGER_POINT EQUALS trigger_point_value_
-trigger_point_value_ ::= TRIGGER_POINT_SCREEN_LOAD
-                       | TRIGGER_POINT_SCREEN_EXIT
-                       | TRIGGER_POINT_BEFORE_ACCEPT
-                       | TRIGGER_POINT_AFTER_ACCEPT
-                       | TRIGGER_POINT_ON_HELP
-                       | TRIGGER_POINT_BEFORE_CONFIRM
-                       | TRIGGER_POINT_CONFIRMED
-                       | TRIGGER_POINT_NOT_CONFIRMED
-                       | TRIGGER_POINT_VALIDATE_MODE
-                       | TRIGGER_POINT_OPTION
-                       | TRIGGER_POINT_BEFORE_OPTION
-                       | TRIGGER_POINT_DISPLAY
-                       | TRIGGER_POINT_PREVALIDATE
-                       | OVERRIDE_STATEMENT
-                       | COMMON_CLAUSES_STATEMENTS
-                       | IDENTIFIER
-
-
-clause_for_trigger_type_ ::= TRIGGER_TYPE EQUALS trigger_type_value_
-trigger_type_value_ ::= TRIGGER_TYPE_WINDOWS
-                      | TRIGGER_TYPE_WINDOWS_WITH_STATUS
-                      | TRIGGER_TYPE_UNIX
-                      | TRIGGER_TYPE_COMMAND
-                      | TRIGGER_TYPE_UNIX_WITH_STATUS
-                      | TRIGGER_TYPE_COMMAND_WITH_STATUS
-                      | TRIGGER_TYPE_PRONTO
-                      | TRIGGER_TYPE_EXPORT_DATA_GRID
-                      | IDENTIFIER
-
-clause_for_run_ ::= RUN EQUALS value_*
+picture_ ::= (DOT|NUMBER|STRING|identifier_|LPAREN|LSQUARE|RSQUARE|LPAREN|RPAREN|FLOAT|ANYCOORDINATES)*
 
 clause_for_color_ ::= COLOR EQUALS color_value_
 color_value_ ::= color_list_ SLASH? color_list_?
@@ -100,37 +135,24 @@ color_list_ ::= COLOR_AQUA
               | NUMBER
 
 clause_for_attribute_ ::= ATTRIBUTES EQUALS attribute_value_*
-//atributes = attribute_lists_,attribute_lists_,attribute_lists_, attribute_lists_...
 attribute_value_ ::= attribute_lists_ COMMA?
-attribute_lists_ ::= ATTRIBUTES_UNDERLINE
-                   | ATTRIBUTES_UNDERLINED
-                   | ATTRIBUTES_PROMPT
-                   | ATTRIBUTES_DATA
-                   | ATTRIBUTES_INVERSE
-                   | ATTRIBUTES_BOLD
-                   | ATTRIBUTES_ITALIC
-                   | ATTRIBUTES_FLASH
-                   | ATTRIBUTES_FIXED
-                   | ATTRIBUTES_SUNKEN
-                   | ATTRIBUTES_BACKGROUND
-                   | ATTRIBUTES_CENTER
-                   | ATTRIBUTES_RIGHT
-                   | ATTRIBUTES_LEFT
-                   | ATTRIBUTES_BORDER
-                   | ATTRIBUTES_UPPERCASE
+attribute_lists_ ::= UNDERLINE
+                   | UNDERLINED
+                   | PROMPT
+                   | DATA
+                   | INVERSE
+                   | BOLD
+                   | ITALIC
+                   | FLASH
+                   | FIXED
+                   | SUNKEN
+                   | BACKGROUND
+                   | CENTER
+                   | RIGHT
+                   | LEFT
+                   | BORDER
+                   | UNDOCUMENTED
 
 // Define the comments
 comments_ ::= comment_*
 comment_ ::= COMMENT | BLOCK_COMMENT
-
-// Define the other elements
-element_ ::= IDENTIFIER
-           | LBRACE
-           | RBRACE
-           | LSQUARE
-           | RSQUARE
-           | EQUALS
-           | SEMICOLON
-           | NUMBER
-           | COMMA
-           | STRING

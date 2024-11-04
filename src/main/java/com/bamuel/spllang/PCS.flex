@@ -29,13 +29,14 @@ BOOLEAN=(true|false)
 SINGLEQUOTE="'"[^']*"'"
 DOUBLEQUOTE="\""[^\"]*"\""
 
-OVERRIDE_SCREEN_DEFINITION=(screen|menu|procedure)
-OVERRIDE_STATEMENT=(accept|display|option|mode|confirm|trigger|window|box|message)
-COMMON_CLAUSES_STATEMENTS=(suppress|name|orig_coordinates|orig_coordinate|orig_text|tag|text|helpline|title|default|allow|allowed|disallow|disallowed|add|supress|readonly|read_only|scale|coordinate|coordinates|title_coordinate|title_coordinates|picture|window_size|lock|filter|column_number)
-
 // Define comment styles
 COMMENT="#"[^\r\n]*
 BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
+
+// Define picture string
+PICTURESTRING=(([$Z9*,./VSTB-]{4,100}) ([%-]*) ((DR|CR)?))
+//Picture X string if 3 or more
+PICTURESTRING2=(X{3,100})
 
 %%
 
@@ -50,45 +51,89 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> {BLOCK_COMMENT}                                { return PCSTypes.BLOCK_COMMENT; }
 
 // Match main syntax elements
-<YYINITIAL> {OVERRIDE_SCREEN_DEFINITION}                    { return PCSTypes.OVERRIDE_SCREEN_DEFINITION; }
-<YYINITIAL> {OVERRIDE_STATEMENT}                            { return PCSTypes.OVERRIDE_STATEMENT; }
-<YYINITIAL> {COMMON_CLAUSES_STATEMENTS}                     { return PCSTypes.COMMON_CLAUSES_STATEMENTS; }
+//Override screen definition
+<YYINITIAL> "screen"                                        { return PCSTypes.SCREEN; }
+<YYINITIAL> "menu"                                          { return PCSTypes.MENU; }
+<YYINITIAL> "procedure"                                     { return PCSTypes.PROCEDURE; }
+//Override statement
+<YYINITIAL> "accept"                                        { return PCSTypes.ACCEPT; }
+<YYINITIAL> "display"                                       { return PCSTypes.DISPLAY; }
+<YYINITIAL> "option"                                        { return PCSTypes.OPTION; }
+<YYINITIAL> "mode"                                          { return PCSTypes.MODE; }
+<YYINITIAL> "confirm"                                       { return PCSTypes.CONFIRM; }
+<YYINITIAL> "trigger"                                       { return PCSTypes.TRIGGER; }
+<YYINITIAL> "window"                                        { return PCSTypes.WINDOW; }
+<YYINITIAL> "box"                                           { return PCSTypes.BOX; }
+<YYINITIAL> "message"                                       { return PCSTypes.MESSAGE; }
+
+
+<YYINITIAL> "tab_order"                                     { return PCSTypes.TABORDER; }
+<YYINITIAL> "name"                                          { return PCSTypes.NAME; }
+<YYINITIAL> "orig_coordinate"                               { return PCSTypes.ORIG_COORDINATE; }
+<YYINITIAL> "orig_coordinates"                              { return PCSTypes.ORIG_COORDINATE; }
+<YYINITIAL> "orig_text"                                     { return PCSTypes.ORIG_TEXT; }
+<YYINITIAL> "tag"                                           { return PCSTypes.TAG; }
+<YYINITIAL> "text"                                          { return PCSTypes.TEXT; }
+<YYINITIAL> "helpline"                                      { return PCSTypes.HELPLINE; }
+<YYINITIAL> "title"                                         { return PCSTypes.TITLE; }
+<YYINITIAL> "default"                                       { return PCSTypes.DEFAULT; }
+<YYINITIAL> "allow"                                         { return PCSTypes.ALLOW; }
+<YYINITIAL> "allowed"                                       { return PCSTypes.ALLOW; }
+<YYINITIAL> "disallow"                                      { return PCSTypes.DISALLOW; }
+<YYINITIAL> "disallowed"                                    { return PCSTypes.DISALLOW; }
+<YYINITIAL> "add"                                           { return PCSTypes.ADD; }
+<YYINITIAL> "suppress"                                      { return PCSTypes.SUPPRESS; }
+<YYINITIAL> "readonly"                                      { return PCSTypes.READONLY; }
+<YYINITIAL> "read_only"                                     { return PCSTypes.READONLY; }
+<YYINITIAL> "scale"                                         { return PCSTypes.SCALE; }
+<YYINITIAL> "coordinate"                                    { return PCSTypes.COORDINATE; }
+<YYINITIAL> "coordinates"                                   { return PCSTypes.COORDINATE; }
+<YYINITIAL> "title_coordinate"                              { return PCSTypes.TITLE_COORDINATE; }
+<YYINITIAL> "title_coordinates"                             { return PCSTypes.TITLE_COORDINATE; }
+<YYINITIAL> "picture"                                       { return PCSTypes.PICTURE; }
+<YYINITIAL> "attributes"                                    { return PCSTypes.ATTRIBUTES; }
+<YYINITIAL> (color|colour)                                  { return PCSTypes.COLOR; }
+<YYINITIAL> "window_size"                                   { return PCSTypes.WINDOW_SIZE; }
+
+//undocumented
+<YYINITIAL> (uppercase|lock|filter|column_number)           { return PCSTypes.UNDOCUMENTED; }
+
+
+
+
 
 //trigger_point
 //trigger_point = screen_load|screen_exit|before_accept|after_accept|on_help|before_confirm|confirmed|not_confirmed|validate_mode|option|before_option|display
 <YYINITIAL> "trigger_point"                                 { return PCSTypes.TRIGGER_POINT; }
-<YYINITIAL> "screen_load"                                   { return PCSTypes.TRIGGER_POINT_SCREEN_LOAD; }
-<YYINITIAL> "screen_exit"                                   { return PCSTypes.TRIGGER_POINT_SCREEN_EXIT; }
-<YYINITIAL> "before_accept"                                 { return PCSTypes.TRIGGER_POINT_BEFORE_ACCEPT; }
-<YYINITIAL> "after_accept"                                  { return PCSTypes.TRIGGER_POINT_AFTER_ACCEPT; }
-<YYINITIAL> "on_help"                                       { return PCSTypes.TRIGGER_POINT_ON_HELP; }
-<YYINITIAL> "before_confirm"                                { return PCSTypes.TRIGGER_POINT_BEFORE_CONFIRM; }
-<YYINITIAL> "confirmed"                                     { return PCSTypes.TRIGGER_POINT_CONFIRMED; }
-<YYINITIAL> "not_confirmed"                                 { return PCSTypes.TRIGGER_POINT_NOT_CONFIRMED; }
-<YYINITIAL> "validate_mode"                                 { return PCSTypes.TRIGGER_POINT_VALIDATE_MODE; }
-<YYINITIAL> "option"                                        { return PCSTypes.TRIGGER_POINT_OPTION; }
-<YYINITIAL> "before_option"                                 { return PCSTypes.TRIGGER_POINT_BEFORE_OPTION; }
-<YYINITIAL> "display"                                       { return PCSTypes.TRIGGER_POINT_DISPLAY; }
-<YYINITIAL> "pre_validate"                                  { return PCSTypes.TRIGGER_POINT_PREVALIDATE; }
+
+<YYINITIAL> "screen_load"                                   { return PCSTypes.SCREEN_LOAD; }
+<YYINITIAL> "screen_exit"                                   { return PCSTypes.SCREEN_EXIT; }
+<YYINITIAL> "before_accept"                                 { return PCSTypes.BEFORE_ACCEPT; }
+<YYINITIAL> "after_accept"                                  { return PCSTypes.AFTER_ACCEPT; }
+<YYINITIAL> "on_help"                                       { return PCSTypes.ON_HELP; }
+<YYINITIAL> "before_confirm"                                { return PCSTypes.BEFORE_CONFIRM; }
+<YYINITIAL> "confirmed"                                     { return PCSTypes.CONFIRMED; }
+<YYINITIAL> "not_confirmed"                                 { return PCSTypes.NOT_CONFIRMED; }
+<YYINITIAL> "validate_mode"                                 { return PCSTypes.VALIDATE_MODE; }
+<YYINITIAL> "before_option"                                 { return PCSTypes.BEFORE_OPTION; }
+<YYINITIAL> "pre_validate"                                  { return PCSTypes.PRE_VALIDATE; }
 
 //trigger_type
-//trigger_type = windows|windows_with_status|unix|command|unix_with_status|command_with_status|pronto|export_data_grid
 <YYINITIAL> (type|trigger_type)                            { return PCSTypes.TRIGGER_TYPE; }
-<YYINITIAL> "windows"                                      { return PCSTypes.TRIGGER_TYPE_WINDOWS; }
-<YYINITIAL> "windows_with_status"                          { return PCSTypes.TRIGGER_TYPE_WINDOWS_WITH_STATUS; }
-<YYINITIAL> "unix"                                         { return PCSTypes.TRIGGER_TYPE_UNIX; }
-<YYINITIAL> "command"                                      { return PCSTypes.TRIGGER_TYPE_COMMAND; }
-<YYINITIAL> "unix_with_status"                             { return PCSTypes.TRIGGER_TYPE_UNIX_WITH_STATUS; }
-<YYINITIAL> "command_with_status"                          { return PCSTypes.TRIGGER_TYPE_COMMAND_WITH_STATUS; }
-<YYINITIAL> "pronto"                                       { return PCSTypes.TRIGGER_TYPE_PRONTO; }
-<YYINITIAL> "export_data_grid"                             { return PCSTypes.TRIGGER_TYPE_EXPORT_DATA_GRID; }
+
+<YYINITIAL> "windows"                                      { return PCSTypes.WINDOWS; }
+<YYINITIAL> "windows_with_status"                          { return PCSTypes.WINDOWS_WITH_STATUS; }
+<YYINITIAL> "unix"                                         { return PCSTypes.UNIX; }
+<YYINITIAL> "command"                                      { return PCSTypes.COMMAND; }
+<YYINITIAL> "unix_with_status"                             { return PCSTypes.UNIX_WITH_STATUS; }
+<YYINITIAL> "command_with_status"                          { return PCSTypes.COMMAND_WITH_STATUS; }
+<YYINITIAL> "pronto"                                       { return PCSTypes.PRONTO; }
+<YYINITIAL> "export_data_grid"                             { return PCSTypes.EXPORT_DATA_GRID; }
 
 //run
 <YYINITIAL> "run"                                          { return PCSTypes.RUN; }
 
 //color
-//aqua | black | blue | fuchsia | green | grey | lime | maroon | navy | olive | purple | red | silver | teal | white | yellow
-<YYINITIAL> (color|colour)                                 { return PCSTypes.COLOR; }
 <YYINITIAL> "aqua"                                         { return PCSTypes.COLOR_AQUA; }
 <YYINITIAL> "black"                                        { return PCSTypes.COLOR_BLACK; }
 <YYINITIAL> "blue"                                         { return PCSTypes.COLOR_BLUE; }
@@ -108,23 +153,21 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 
 //attributes
 //underline | underlined | prompt | data | inverse | bold | italic | flash | fixed | sunken | background | center | right | left
-<YYINITIAL> "attributes"                                   { return PCSTypes.ATTRIBUTES; }
-<YYINITIAL> "underline"                                    { return PCSTypes.ATTRIBUTES_UNDERLINE; }
-<YYINITIAL> "underlined"                                   { return PCSTypes.ATTRIBUTES_UNDERLINED; }
-<YYINITIAL> "prompt"                                       { return PCSTypes.ATTRIBUTES_PROMPT; }
-<YYINITIAL> "data"                                         { return PCSTypes.ATTRIBUTES_DATA; }
-<YYINITIAL> "inverse"                                      { return PCSTypes.ATTRIBUTES_INVERSE; }
-<YYINITIAL> "bold"                                         { return PCSTypes.ATTRIBUTES_BOLD; }
-<YYINITIAL> "italic"                                       { return PCSTypes.ATTRIBUTES_ITALIC; }
-<YYINITIAL> "flash"                                        { return PCSTypes.ATTRIBUTES_FLASH; }
-<YYINITIAL> "fixed"                                        { return PCSTypes.ATTRIBUTES_FIXED; }
-<YYINITIAL> "sunken"                                       { return PCSTypes.ATTRIBUTES_SUNKEN; }
-<YYINITIAL> "background"                                   { return PCSTypes.ATTRIBUTES_BACKGROUND; }
-<YYINITIAL> "center"                                       { return PCSTypes.ATTRIBUTES_CENTER; }
-<YYINITIAL> "right"                                        { return PCSTypes.ATTRIBUTES_RIGHT; }
-<YYINITIAL> "left"                                         { return PCSTypes.ATTRIBUTES_LEFT; }
-<YYINITIAL> "border"                                       { return PCSTypes.ATTRIBUTES_BORDER; }
-<YYINITIAL> "uppercase"                                    { return PCSTypes.ATTRIBUTES_UPPERCASE; }
+<YYINITIAL> "underline"                                    { return PCSTypes.UNDERLINE; }
+<YYINITIAL> "underlined"                                   { return PCSTypes.UNDERLINED; }
+<YYINITIAL> "prompt"                                       { return PCSTypes.PROMPT; }
+<YYINITIAL> "data"                                         { return PCSTypes.DATA; }
+<YYINITIAL> "inverse"                                      { return PCSTypes.INVERSE; }
+<YYINITIAL> "bold"                                         { return PCSTypes.BOLD; }
+<YYINITIAL> "italic"                                       { return PCSTypes.ITALIC; }
+<YYINITIAL> "flash"                                        { return PCSTypes.FLASH; }
+<YYINITIAL> "fixed"                                        { return PCSTypes.FIXED; }
+<YYINITIAL> "sunken"                                       { return PCSTypes.SUNKEN; }
+<YYINITIAL> "background"                                   { return PCSTypes.BACKGROUND; }
+<YYINITIAL> "center"                                       { return PCSTypes.CENTER; }
+<YYINITIAL> "right"                                        { return PCSTypes.RIGHT; }
+<YYINITIAL> "left"                                         { return PCSTypes.LEFT; }
+<YYINITIAL> "border"                                       { return PCSTypes.BORDER; }
 
 
 // Match identifiers
@@ -143,8 +186,8 @@ BLOCK_COMMENT="/*" !([^]* "*/" [^]*) ("*/")?
 <YYINITIAL> "{"                                            { return PCSTypes.LBRACE; }
 <YYINITIAL> "}"                                            { return PCSTypes.RBRACE; }
 <YYINITIAL> "="                                            { return PCSTypes.EQUALS; }
-<YYINITIAL> ";"                                            { return PCSTypes.SEMICOLON; }
 <YYINITIAL> "/"                                            { return PCSTypes.SLASH; }
+<YYINITIAL> "."                                            { return PCSTypes.DOT; }
 <YYINITIAL> {IDENTIFIER}                                   { return PCSTypes.IDENTIFIER; }
 
 // Catch-all for bad characters
