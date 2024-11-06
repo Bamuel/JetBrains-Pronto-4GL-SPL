@@ -22,6 +22,7 @@ import java.net.URI;
 public class RunProntoAction extends AnAction {
 
     @Override
+    @SuppressWarnings("all")
     public void actionPerformed(@NotNull AnActionEvent event) {
         AppSettings appSettings = AppSettings.getInstance();
         String application = appSettings.getState().application;
@@ -43,15 +44,19 @@ public class RunProntoAction extends AnAction {
         if (dataareas.size() == 1) {
             dataarea = dataareas.get(0); // Get the first dataarea
         } else {
-            dataarea = (String) JOptionPane.showInputDialog(
-                    null,
-                    "Select Data-Area:",
-                    "Data-Area Selection",
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    dataareas.toArray(),
-                    dataareas.get(0) // Default selection
-            );
+            try {
+                dataarea = (String) JOptionPane.showInputDialog(
+                        null,
+                        "Select Data-Area:",
+                        "Data-Area Selection",
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        dataareas.toArray(),
+                        dataareas.get(0) // Default selection
+                );
+            }catch (Exception e) {
+                dataarea = null;
+                }
             // If the user cancels the selection, return early
             if (dataarea == null) {
                 return;
@@ -140,6 +145,7 @@ public class RunProntoAction extends AnAction {
     }
 
     @Override
+    @SuppressWarnings("all")
     public void update(AnActionEvent event) {
         super.update(event);
         PsiFile psiFile = event.getData(PlatformDataKeys.PSI_FILE);
