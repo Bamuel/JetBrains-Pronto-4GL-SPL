@@ -22,9 +22,9 @@ item_ ::=  declaration_ | statement_ | preprocessor_ | function_ | element_
                  | continueentry_ | delete_ | disablealltriggers_ | display_ | do_ | do2_ | dropdown_ | exit_ | extract_ | field-group_ | for_ | get_ | if_ | initialise_ | insert_ | link_ | lock-method_ | message_ | messagebox_
                  | need_ | open_ | option_ | page_ | pause_ | pop_ | position_ | print_ | push_ | query_ | radio-button_ | re-enter_ | refresh_ | repeat_ | report_ | reportfinish_ | reportsection_ | reportsectionfinish_
                  | re-select_ | restore_ | rollbackwork_ | save_ | screengroup_ | screensection_ | select_ | serial_ | set_ | set2_ | set-date-validation_ | skip_ | sql-delete_ | sql-update_ | statement-group_ | stringstatement_ | switch_
-                 | transaction_ | unlock_ | update_ | version-number_ | web-client-local-agent_ | while_ | comments_
+                 | transaction_ | unlock_ | update_ | version-number_ | web-client-local-agent_ | while_ | comments_ | preprocessordefinedfunction_
 
-    preprocessor_ ::= preprocessor_include_ | preprocessor_define_ | preprocessor_undef_ | preprocessor_ifdef_ | preprocessor_ifndef_ | preprocessor_if_
+    preprocessor_ ::= preprocessor_include_ | preprocessor_define_ | preprocessor_define2_ | preprocessor_undef_ | preprocessor_ifdef_ | preprocessor_ifndef_ | preprocessor_if_
 
     function_ ::= arithmeticfunction_  | datetimefunction_ | filehandlingfunction_ | environmentfunction_ | olefunction_ | stringfunction_ | securityfunction_ | xmlfunction_
 
@@ -546,7 +546,8 @@ xml_validate_doc_ ::= XML_VALIDATE_DOC LPAREN string_ COMMA string_ RPAREN
 
 // Preprocessor rule
 preprocessor_include_ ::= PREPROCESSOR_INCLUDE STRING
-preprocessor_define_ ::= PREPROCESSOR_DEFINE identifier_ LPAREN? (item_|COMMA)* RPAREN?
+preprocessor_define_ ::= PREPROCESSOR_DEFINE identifier_ LPAREN? (identifier_|COMMA)* RPAREN? (statement_)*
+preprocessor_define2_ ::= PREPROCESSOR_DEFINE identifier_ (STRING|NUMBER|identifier_|picture_)
 preprocessor_undef_ ::= PREPROCESSOR_UNDEF string_
 preprocessor_ifdef_ ::= PREPROCESSOR_IFDEF string_ item_* (PREPROCESSOR_ELSE item_*)? PREPROCESSOR_ENDIF?
 preprocessor_ifndef_ ::= PREPROCESSOR_IFNDEF string_ item_* (PREPROCESSOR_ELSE item_*)? PREPROCESSOR_ENDIF?
@@ -676,6 +677,7 @@ string_ ::= STRING | identifier_ | PREDEFINED | COLOUR_NAME | function_ | arithm
 number_ ::= NUMBER | identifier_ | PREDEFINED | function_ | arithmeticexpression_
 boolean_ ::= PREDEFINED | "1" | "0" | function_
 datestring_ ::= DATE | TIME | identifier_ | PREDEFINED | datetimefunction_ | modification-time_
+preprocessordefinedfunction_ ::= IDENTIFIER LPAREN (string_|NUMBER|COMMA)* RPAREN
 //The following picture string characters are used to specify the format of a field being defined.
 // They indicate the size of the field, number of integer/decimal places and whether the field allows negative amounts.
 // todo: add more picture string characters, this covers the basics.
