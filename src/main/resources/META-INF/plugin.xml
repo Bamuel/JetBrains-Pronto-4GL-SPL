@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.bamuel.spllang</id>
     <name>Pronto 4GL SPL Language Support</name>
-    <version>1.20</version>
+    <version>1.21</version>
     <category>Languages</category>
     <vendor email="me@bamuel.com" url="https://bamuel.com">Bamuel</vendor>
     <depends>com.intellij.modules.platform</depends>
@@ -12,7 +12,6 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
     <li>Syntax highlighting.</li>
     <li>File type recognition for .spl, .op7, .enq, .pcs, .err files.</li>
     <li>Running SPL files from Pronto Xi Thin Client.</li>
-    <li>Ctrl + Q over keywords for Documentations</li>
 </ul>
     ]]>
     </description>
@@ -25,7 +24,6 @@ This plugin provides support for 4GL/SPL scripts for Pronto Xi ERP:
         <lang.commenter language="SPL" implementationClass="com.bamuel.spllang.SPLCommenter"/>
         <lang.braceMatcher language="SPL" implementationClass="com.bamuel.spllang.SPLBraceMatcher"/>
         <colorProvider implementation="com.bamuel.spllang.SPLColorProvider"/>
-        <platform.backend.documentation.targetProvider implementation="com.bamuel.spllang.SPLDocumentation"/>
         <codeInsight.lineMarkerProvider language="SPL" implementationClass="com.bamuel.spllang.SPLLineMarkerProvider"/>
 
         <fileType name="SPL Compiled File" implementationClass="com.bamuel.spllang.OP7FileType" fieldName="INSTANCE" language="OP7" extensions="op7"/>
